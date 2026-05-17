@@ -75,6 +75,15 @@ Then commit and push both repositories.
 - Use `.portfolio-gallery-wide` for landscape desktop or web screenshots and the default `.portfolio-gallery` for phone-shaped screenshots.
 - Keep the gallery CSS in both `assets/css/screen.edited.css` and `assets/built/screen.edited.css` unless the CSS build pipeline is restored.
 
+## Bilingual Site Rules
+
+- Keep Korean pages as the primary archive and add English counterparts under `/en/` incrementally.
+- Add a visible top navigation language switch instead of hiding language selection deep in the menu.
+- For Korean pages, the switch should point to the matching English page when it exists, otherwise `/en/`.
+- For English pages, the switch should point back to the matching Korean page when it exists, otherwise `/`.
+- When creating LinkedIn drafts or public summaries, provide Korean and English versions together unless the user explicitly asks for only one language.
+- Do not rewrite GitHub links to a fake mobile URL. GitHub uses responsive `github.com` pages, so keep canonical GitHub URLs and let GitHub handle mobile rendering.
+
 ## AI Workflow Writing Rule
 
 - When an AI agent fixes a non-trivial bug, deployment issue, security alert, UI regression, build failure, or workflow problem, decide whether the process is worth documenting.
