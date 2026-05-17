@@ -10,7 +10,7 @@
       <item>
         <title>오래된 Jekyll 블로그의 Dependabot 취약점 33개를 정리한 기록</title>
         
-          <description>&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;codex-resume&lt;/code&gt; 작업을 포트폴리오와 블로그에 반영하는 과정에서 GitHub push 메시지에 Dependabot 경고가 같이 떴다.
+          <description>&lt;p&gt;&lt;a href=&quot;https://github.com/ytkim4558/codex-resume&quot;&gt;&lt;code&gt;codex-resume&lt;/code&gt;&lt;/a&gt; 작업을 포트폴리오와 블로그에 반영하는 과정에서 GitHub push 메시지에 Dependabot 경고가 같이 떴다.
 처음에는 단순한 경고처럼 보였지만, 실제로 확인해 보니 오래된 Jekyll 블로그 의존성에서 열린 취약점 알림이 여러 개 쌓여 있었다.&lt;/p&gt;
 
 </description>
@@ -26,7 +26,7 @@
       <item>
         <title>codex-resume TUI를 만들면서 외부 TUI 라이브러리를 쓰기로 바꾼 이유</title>
         
-          <description>&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;claude-resume&lt;/code&gt;를 만들 때 가장 중요했던 기능은 단순히 과거 세션 목록을 보여주는 것이 아니었다.
+          <description>&lt;p&gt;&lt;a href=&quot;https://github.com/ytkim4558/claude-resume&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;claude-resume&lt;/code&gt;&lt;/a&gt;를 만들 때 가장 중요했던 기능은 단순히 과거 세션 목록을 보여주는 것이 아니었다.
 핵심은 &lt;strong&gt;예전 대화가 무슨 작업이었는지 LLM 요약으로 바로 알아보고, 필요한 세션으로 이어가는 것&lt;/strong&gt;이었다.&lt;/p&gt;
 
 </description>

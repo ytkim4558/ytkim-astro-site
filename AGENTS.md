@@ -59,6 +59,14 @@ Then commit and push both repositories.
 - If a screenshot includes private context, create a redacted copy under `assets/images/<topic>/` and use that copy as the cover.
 - After changing `cover:`, rebuild and verify the post page, home card, tag page, and Open Graph metadata.
 
+## Linking Rules
+
+- When a tool, repository, or highlighted project name appears as a key term, link the name itself.
+- At minimum, link the first meaningful mention and any section heading or summary bullet where the name is highlighted.
+- Prefer repository links for project names and documentation links for "design doc" or "wiki" labels.
+- Avoid leaving highlighted names such as `claude-resume`, `codex-resume`, or `claude-toolkit` as plain text when the reader would reasonably expect to click them.
+- Do not link every repeated occurrence in the same paragraph; keep links useful rather than noisy.
+
 ## Verification Checklist
 
 Check these after publishing:
