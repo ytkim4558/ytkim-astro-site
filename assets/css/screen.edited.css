@@ -181,6 +181,10 @@ td.code {
     display: none;
 }
 
+.anchor-target {
+    scroll-margin-top: 96px;
+}
+
 .portfolio-page .portfolio-hero {
     position: relative;
     overflow: hidden;
