@@ -112,8 +112,10 @@ into the {body} of the default.hbs template -->
         
             <ul class="nav" role="menu">
     <li class="nav-home" role="menuitem"><a href="/">Notes</a></li>
+    <li class="nav-profile" role="menuitem"><a href="/profile/">Profile</a></li>
     <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
     <li class="nav-portfolio" role="menuitem"><a href="/portfolio/">Portfolio</a></li>
+    <li class="nav-tags" role="menuitem"><a href="/tags/">Tags</a></li>
     <li class="nav-cloud" role="menuitem"><a href="/portfolio/#경력요약">Cloud</a></li>
     <li class="nav-ai-workflow" role="menuitem"><a href="/tag/ai-workflow/">AI Workflow</a></li>
     <li class="nav-resume-tools" role="menuitem"><a href="https://github.com/ytkim4558/claude-toolkit">Resume Tools</a></li>
@@ -126,7 +128,7 @@ into the {body} of the default.hbs template -->
         
         
         
-        <a class="language-switch" href="/en/">EN</a>
+        <a class="language-switch" href="/en/" data-language-switch data-target-lang="en">EN</a>
         <div class="social-links">
             
             
@@ -143,6 +145,136 @@ into the {body} of the default.hbs template -->
 <!-- The main content area -->
 <main id="site-main" class="site-main outer" role="main">
     <div class="inner">
+
+        <section class="home-profile-hero">
+            <p class="profile-eyebrow">Yongtak Kim · AWS CSE / OpenSearch SME</p>
+            <h2>고객 트러블슈팅과 AI 지원 워크플로를 도구로 만드는 엔지니어</h2>
+            <p>
+                OpenSearch 고객 이슈 분석, 분석 워크로드 지원, MCP 기반 support-agent,
+                Slack bot, case aging triage, 응답 검증·이슈 재현 자동화에 관심을 두고 작업합니다.
+            </p>
+            <p class="profile-en">
+                AWS Cloud Support Engineer and OpenSearch SME focused on customer troubleshooting,
+                analytics support, and AI-assisted support engineering workflows.
+            </p>
+            <div class="profile-actions">
+                <a href="/profile/">Quick Profile</a>
+                <a href="/portfolio/">Portfolio</a>
+                <a href="/en/portfolio/">English</a>
+                <a href="https://github.com/ytkim4558/">GitHub</a>
+                <a href="https://www.linkedin.com/in/yongtak-kim-b7553727/">LinkedIn</a>
+            </div>
+        </section>
+
+        <section class="post-marquee" aria-label="Featured posts">
+            <div class="post-marquee-header">
+                <span>Latest Topics</span>
+                <a href="/tags/">Browse by tags</a>
+            </div>
+            <div class="post-marquee-track">
+                
+                    
+                    <a class="post-marquee-card" href="/jekyll-dependabot-cleanup">
+                        
+                        <span class="post-marquee-tag">#ai-workflow</span>
+                        
+                        <strong>오래된 Jekyll 블로그의 Dependabot 취약점 33개를 정리한 기록</strong>
+                        <small>2026.05.17</small>
+                    </a>
+                    
+                    <a class="post-marquee-card" href="/codex-resume-tui-decision">
+                        
+                        <span class="post-marquee-tag">#ai-workflow</span>
+                        
+                        <strong>codex-resume TUI를 만들면서 외부 TUI 라이브러리를 쓰기로 바꾼 이유</strong>
+                        <small>2026.05.17</small>
+                    </a>
+                    
+                    <a class="post-marquee-card" href="/android">
+                        
+                        <span class="post-marquee-tag">#android</span>
+                        
+                        <strong>안드로이드 스튜디오 레이아웃 preview에서 각국언어 버전 보기</strong>
+                        <small>2018.06.30</small>
+                    </a>
+                    
+                    <a class="post-marquee-card" href="/mysql">
+                        
+                        <span class="post-marquee-tag">#mysql</span>
+                        
+                        <strong>MySQL 일부 문자열 검색 기능 like</strong>
+                        <small>2018.06.30</small>
+                    </a>
+                    
+                    <a class="post-marquee-card" href="/git">
+                        
+                        <span class="post-marquee-tag">#git</span>
+                        
+                        <strong>비공개 저장소를 이용한 fork를 사용하지 않은 PR 방법</strong>
+                        <small>2018.06.28</small>
+                    </a>
+                    
+                    <a class="post-marquee-card" href="/Jekyll">
+                        
+                        <span class="post-marquee-tag">#jekyll</span>
+                        
+                        <strong>Jekyll 드디어 검색 기능 수정하다.</strong>
+                        <small>2018.05.11</small>
+                    </a>
+                    
+                
+                    
+                    <a class="post-marquee-card" href="/jekyll-dependabot-cleanup">
+                        
+                        <span class="post-marquee-tag">#ai-workflow</span>
+                        
+                        <strong>오래된 Jekyll 블로그의 Dependabot 취약점 33개를 정리한 기록</strong>
+                        <small>2026.05.17</small>
+                    </a>
+                    
+                    <a class="post-marquee-card" href="/codex-resume-tui-decision">
+                        
+                        <span class="post-marquee-tag">#ai-workflow</span>
+                        
+                        <strong>codex-resume TUI를 만들면서 외부 TUI 라이브러리를 쓰기로 바꾼 이유</strong>
+                        <small>2026.05.17</small>
+                    </a>
+                    
+                    <a class="post-marquee-card" href="/android">
+                        
+                        <span class="post-marquee-tag">#android</span>
+                        
+                        <strong>안드로이드 스튜디오 레이아웃 preview에서 각국언어 버전 보기</strong>
+                        <small>2018.06.30</small>
+                    </a>
+                    
+                    <a class="post-marquee-card" href="/mysql">
+                        
+                        <span class="post-marquee-tag">#mysql</span>
+                        
+                        <strong>MySQL 일부 문자열 검색 기능 like</strong>
+                        <small>2018.06.30</small>
+                    </a>
+                    
+                    <a class="post-marquee-card" href="/git">
+                        
+                        <span class="post-marquee-tag">#git</span>
+                        
+                        <strong>비공개 저장소를 이용한 fork를 사용하지 않은 PR 방법</strong>
+                        <small>2018.06.28</small>
+                    </a>
+                    
+                    <a class="post-marquee-card" href="/Jekyll">
+                        
+                        <span class="post-marquee-tag">#jekyll</span>
+                        
+                        <strong>Jekyll 드디어 검색 기능 수정하다.</strong>
+                        <small>2018.05.11</small>
+                    </a>
+                    
+                
+            </div>
+        </section>
 
         <div class="post-feed">
             <!-- The tag below includes the markup for each post - partials/post-card.hbs -->
@@ -471,6 +603,52 @@ into the {body} of the default.hbs template -->
     <!-- /endif -->
 
     
+
+    <script>
+      (function() {
+        var languageSwitch = document.querySelector('[data-language-switch]');
+        if (languageSwitch) {
+          languageSwitch.addEventListener('click', function() {
+            localStorage.setItem('site-language', languageSwitch.getAttribute('data-target-lang') || 'ko');
+          });
+        }
+
+        var preferredLanguage = localStorage.getItem('site-language');
+        if (preferredLanguage === 'en') {
+          var map = {
+            '/': '/en/',
+            '/about/': '/en/about/',
+            '/portfolio/': '/en/portfolio/'
+          };
+          document.querySelectorAll('.site-nav a, .home-profile-hero a, .profile-actions a').forEach(function(link) {
+            var href = link.getAttribute('href');
+            if (map[href]) link.setAttribute('href', map[href]);
+          });
+        } else if (preferredLanguage === 'ko') {
+          var reverseMap = {
+            '/en/': '/',
+            '/en/about/': '/about/',
+            '/en/portfolio/': '/portfolio/'
+          };
+          document.querySelectorAll('.site-nav a, .home-profile-hero a, .profile-actions a').forEach(function(link) {
+            var href = link.getAttribute('href');
+            if (reverseMap[href]) link.setAttribute('href', reverseMap[href]);
+          });
+        }
+
+        var targets = document.querySelectorAll('.portfolio-page .portfolio-hero, .portfolio-page .portfolio-metrics div');
+        if (!targets.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        targets.forEach(function(target) {
+          target.addEventListener('pointermove', function(event) {
+            var rect = target.getBoundingClientRect();
+            var x = ((event.clientX - rect.left) / rect.width) * 100;
+            var y = ((event.clientY - rect.top) / rect.height) * 100;
+            target.style.setProperty('--cursor-x', x.toFixed(2) + '%');
+            target.style.setProperty('--cursor-y', y.toFixed(2) + '%');
+          });
+        });
+      })();
+    </script>
 
 
     <!-- Add Google Analytics  -->

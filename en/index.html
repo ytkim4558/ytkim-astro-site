@@ -108,8 +108,10 @@ into the {body} of the default.hbs template -->
         
             <ul class="nav" role="menu">
     <li class="nav-home" role="menuitem"><a href="/">Notes</a></li>
+    <li class="nav-profile" role="menuitem"><a href="/profile/">Profile</a></li>
     <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
     <li class="nav-portfolio" role="menuitem"><a href="/portfolio/">Portfolio</a></li>
+    <li class="nav-tags" role="menuitem"><a href="/tags/">Tags</a></li>
     <li class="nav-cloud" role="menuitem"><a href="/portfolio/#경력요약">Cloud</a></li>
     <li class="nav-ai-workflow" role="menuitem"><a href="/tag/ai-workflow/">AI Workflow</a></li>
     <li class="nav-resume-tools" role="menuitem"><a href="https://github.com/ytkim4558/claude-toolkit">Resume Tools</a></li>
@@ -122,7 +124,7 @@ into the {body} of the default.hbs template -->
         
         
         
-        <a class="language-switch" href="/">한국어</a>
+        <a class="language-switch" href="/" data-language-switch data-target-lang="ko">한국어</a>
         <div class="social-links">
             
             
@@ -291,6 +293,52 @@ $(function() {
     <!-- /endif -->
 
     
+
+    <script>
+      (function() {
+        var languageSwitch = document.querySelector('[data-language-switch]');
+        if (languageSwitch) {
+          languageSwitch.addEventListener('click', function() {
+            localStorage.setItem('site-language', languageSwitch.getAttribute('data-target-lang') || 'ko');
+          });
+        }
+
+        var preferredLanguage = localStorage.getItem('site-language');
+        if (preferredLanguage === 'en') {
+          var map = {
+            '/': '/en/',
+            '/about/': '/en/about/',
+            '/portfolio/': '/en/portfolio/'
+          };
+          document.querySelectorAll('.site-nav a, .home-profile-hero a, .profile-actions a').forEach(function(link) {
+            var href = link.getAttribute('href');
+            if (map[href]) link.setAttribute('href', map[href]);
+          });
+        } else if (preferredLanguage === 'ko') {
+          var reverseMap = {
+            '/en/': '/',
+            '/en/about/': '/about/',
+            '/en/portfolio/': '/portfolio/'
+          };
+          document.querySelectorAll('.site-nav a, .home-profile-hero a, .profile-actions a').forEach(function(link) {
+            var href = link.getAttribute('href');
+            if (reverseMap[href]) link.setAttribute('href', reverseMap[href]);
+          });
+        }
+
+        var targets = document.querySelectorAll('.portfolio-page .portfolio-hero, .portfolio-page .portfolio-metrics div');
+        if (!targets.length || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        targets.forEach(function(target) {
+          target.addEventListener('pointermove', function(event) {
+            var rect = target.getBoundingClientRect();
+            var x = ((event.clientX - rect.left) / rect.width) * 100;
+            var y = ((event.clientY - rect.top) / rect.height) * 100;
+            target.style.setProperty('--cursor-x', x.toFixed(2) + '%');
+            target.style.setProperty('--cursor-y', y.toFixed(2) + '%');
+          });
+        });
+      })();
+    </script>
 
 
     <!-- Add Google Analytics  -->

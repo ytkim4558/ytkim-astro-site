@@ -83,6 +83,11 @@ Then commit and push both repositories.
 - For English pages, the switch should point back to the matching Korean page when it exists, otherwise `/`.
 - When creating LinkedIn drafts or public summaries, provide Korean and English versions together unless the user explicitly asks for only one language.
 - Do not rewrite GitHub links to a fake mobile URL. GitHub uses responsive `github.com` pages, so keep canonical GitHub URLs and let GitHub handle mobile rendering.
+- For portfolio interactions, prefer lightweight CSS/vanilla JS effects: hover lift, cursor-follow glow, scroll-snap galleries, and subtle reveal animation.
+- Always include a `prefers-reduced-motion: reduce` fallback when adding animation.
+- Keep `/profile/` as the one-link share page for people who need a quick summary. It should explain who Yongtak Kim is, what he works on, selected projects, and contact links without requiring readers to understand the blog structure first.
+- Keep the root page `/` shareable as the easiest URL to remember. The first screen should summarize the profile before showing blog/navigation content.
+- Preserve the user's language choice across navigation with `localStorage` when matching English/Korean pages exist. Do not redirect content that has no translated counterpart.
 
 ## AI Workflow Writing Rule
 
@@ -104,6 +109,22 @@ Then commit and push both repositories.
 - If the handoff is intended for Claude, ChatGPT, another account, or a later session, provide a compact copy-paste block that does not assume access to prior chat history.
 - If the handoff process itself becomes useful or repeatable, document it as an `AI Workflow` post.
 - Local reusable skill: `C:\Users\ytkim\.codex\skills\agent-handoff\SKILL.md`.
+
+## New Agent Onboarding Response
+
+When a user or agent asks "I'm new to this codebase", "이 프로젝트 설명해줘", or needs a fresh orientation, respond with a high-level overview before diving into files.
+
+Use this structure:
+
+1. Purpose: what this repository is for and what public URL or tool it produces.
+2. Architecture: source repo, generated/live repo, layouts, includes, pages, posts, assets, and build output.
+3. Key workflows: edit source, build with Docker, copy output, commit/push both repos.
+4. Current features: bilingual `/en/` section, top language switch, tag index, post tag panels, portfolio galleries, AI Workflow posts, redacted screenshots.
+5. Technology stack: Jekyll, Jasper2-derived layouts, Liquid, Markdown, CSS, small vanilla JS, Docker Ruby build.
+6. Safety rules: do not edit generated HTML first, redact screenshots, keep canonical GitHub links, avoid fake mobile URLs, preserve Korean primary archive.
+7. Where to start: `AGENTS.md`, `_includes/navigation.html`, `_layouts/default.html`, `portfolio/index.md`, `en/`, `_posts/`, `assets/css/screen.edited.css`.
+
+Keep this response concise and scannable, like a codebase briefing, not a file-by-file dump.
 
 ## Verification Checklist
 
