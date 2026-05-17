@@ -299,6 +299,21 @@ Dependabot 알림도 대부분 이 하위 의존성에서 발생했다.</p>
 
 <p>이런 작업은 눈에 띄는 기능 개발은 아니지만, 운영 중인 개인 사이트를 계속 신뢰 가능한 상태로 유지하는 데 필요한 기본 작업이다.</p>
 
+<h2 id="다른-ai-에이전트에게-남기는-메모">다른 AI 에이전트에게 남기는 메모</h2>
+
+<p>이 블로그를 다음에 수정하는 AI 에이전트는 <code class="language-plaintext highlighter-rouge">ytkim4558.github.io</code>의 HTML을 바로 고치는 대신, 먼저 <code class="language-plaintext highlighter-rouge">GitHubPageMaker</code> 소스를 수정해야 한다.</p>
+
+<ul>
+  <li>소스 repo: <code class="language-plaintext highlighter-rouge">C:\Users\ytkim\projects\GitHubPageMaker</code></li>
+  <li>배포 repo: <code class="language-plaintext highlighter-rouge">C:\Users\ytkim\projects\ytkim4558.github.io</code></li>
+  <li>빌드는 Ruby 3.2 Docker 컨테이너와 Bundler 2.6.9 기준으로 한다.</li>
+  <li>같은 날 작성한 글이 빠지지 않도록 <code class="language-plaintext highlighter-rouge">jekyll build --future</code>를 사용한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">jekyll-tasks</code>는 malware 알림 원인이므로 다시 추가하지 않는다.</li>
+  <li><code class="language-plaintext highlighter-rouge">github-pages ~&gt; 232</code>, <code class="language-plaintext highlighter-rouge">nokogiri &gt;= 1.19.3</code> 제약을 유지한다.</li>
+</ul>
+
+<p>자세한 절차는 저장소 루트의 <code class="language-plaintext highlighter-rouge">AGENTS.md</code>에 남겨두는 것이 좋다.</p>
+
                 </div>
             </section>
 

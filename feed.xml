@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://ytkim4558.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ytkim4558.github.io/" rel="alternate" type="text/html" /><updated>2026-05-17T05:58:34+00:00</updated><id>https://ytkim4558.github.io/feed.xml</id><title type="html">YongTak IT Blog</title><subtitle>Development &amp; Technical Training</subtitle><entry><title type="html">오래된 Jekyll 블로그의 Dependabot 취약점 33개를 정리한 기록</title><link href="https://ytkim4558.github.io/jekyll-dependabot-cleanup" rel="alternate" type="text/html" title="오래된 Jekyll 블로그의 Dependabot 취약점 33개를 정리한 기록" /><published>2026-05-17T16:10:00+00:00</published><updated>2026-05-17T16:10:00+00:00</updated><id>https://ytkim4558.github.io/jekyll-dependabot-cleanup</id><content type="html" xml:base="https://ytkim4558.github.io/jekyll-dependabot-cleanup"><![CDATA[<p><code class="language-plaintext highlighter-rouge">codex-resume</code> 작업을 포트폴리오와 블로그에 반영하는 과정에서 GitHub push 메시지에 Dependabot 경고가 같이 떴다.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://ytkim4558.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ytkim4558.github.io/" rel="alternate" type="text/html" /><updated>2026-05-17T06:03:00+00:00</updated><id>https://ytkim4558.github.io/feed.xml</id><title type="html">YongTak IT Blog</title><subtitle>Development &amp; Technical Training</subtitle><entry><title type="html">오래된 Jekyll 블로그의 Dependabot 취약점 33개를 정리한 기록</title><link href="https://ytkim4558.github.io/jekyll-dependabot-cleanup" rel="alternate" type="text/html" title="오래된 Jekyll 블로그의 Dependabot 취약점 33개를 정리한 기록" /><published>2026-05-17T16:10:00+00:00</published><updated>2026-05-17T16:10:00+00:00</updated><id>https://ytkim4558.github.io/jekyll-dependabot-cleanup</id><content type="html" xml:base="https://ytkim4558.github.io/jekyll-dependabot-cleanup"><![CDATA[<p><code class="language-plaintext highlighter-rouge">codex-resume</code> 작업을 포트폴리오와 블로그에 반영하는 과정에서 GitHub push 메시지에 Dependabot 경고가 같이 떴다.
 처음에는 단순한 경고처럼 보였지만, 실제로 확인해 보니 오래된 Jekyll 블로그 의존성에서 열린 취약점 알림이 여러 개 쌓여 있었다.</p>
 
 <p>이 글은 그 취약점을 무작정 최신화하지 않고, 사이트가 계속 빌드되는지 검증하면서 정리한 기록이다.</p>
@@ -127,7 +127,22 @@ Dependabot 알림도 대부분 이 하위 의존성에서 발생했다.</p>
 
 <p>결과적으로 오래된 Jekyll 블로그를 유지하면서도, GitHub Dependabot 경고를 0개로 줄일 수 있었다.</p>
 
-<p>이런 작업은 눈에 띄는 기능 개발은 아니지만, 운영 중인 개인 사이트를 계속 신뢰 가능한 상태로 유지하는 데 필요한 기본 작업이다.</p>]]></content><author><name>김용탁</name></author><category term="ai-workflow" /><summary type="html"><![CDATA[codex-resume 작업을 포트폴리오와 블로그에 반영하는 과정에서 GitHub push 메시지에 Dependabot 경고가 같이 떴다. 처음에는 단순한 경고처럼 보였지만, 실제로 확인해 보니 오래된 Jekyll 블로그 의존성에서 열린 취약점 알림이 여러 개 쌓여 있었다.]]></summary></entry><entry><title type="html">codex-resume TUI를 만들면서 외부 TUI 라이브러리를 쓰기로 바꾼 이유</title><link href="https://ytkim4558.github.io/codex-resume-tui-decision" rel="alternate" type="text/html" title="codex-resume TUI를 만들면서 외부 TUI 라이브러리를 쓰기로 바꾼 이유" /><published>2026-05-17T14:30:00+00:00</published><updated>2026-05-17T14:30:00+00:00</updated><id>https://ytkim4558.github.io/codex-resume-tui-decision</id><content type="html" xml:base="https://ytkim4558.github.io/codex-resume-tui-decision"><![CDATA[<p><code class="language-plaintext highlighter-rouge">claude-resume</code>를 만들 때 가장 중요했던 기능은 단순히 과거 세션 목록을 보여주는 것이 아니었다.
+<p>이런 작업은 눈에 띄는 기능 개발은 아니지만, 운영 중인 개인 사이트를 계속 신뢰 가능한 상태로 유지하는 데 필요한 기본 작업이다.</p>
+
+<h2 id="다른-ai-에이전트에게-남기는-메모">다른 AI 에이전트에게 남기는 메모</h2>
+
+<p>이 블로그를 다음에 수정하는 AI 에이전트는 <code class="language-plaintext highlighter-rouge">ytkim4558.github.io</code>의 HTML을 바로 고치는 대신, 먼저 <code class="language-plaintext highlighter-rouge">GitHubPageMaker</code> 소스를 수정해야 한다.</p>
+
+<ul>
+  <li>소스 repo: <code class="language-plaintext highlighter-rouge">C:\Users\ytkim\projects\GitHubPageMaker</code></li>
+  <li>배포 repo: <code class="language-plaintext highlighter-rouge">C:\Users\ytkim\projects\ytkim4558.github.io</code></li>
+  <li>빌드는 Ruby 3.2 Docker 컨테이너와 Bundler 2.6.9 기준으로 한다.</li>
+  <li>같은 날 작성한 글이 빠지지 않도록 <code class="language-plaintext highlighter-rouge">jekyll build --future</code>를 사용한다.</li>
+  <li><code class="language-plaintext highlighter-rouge">jekyll-tasks</code>는 malware 알림 원인이므로 다시 추가하지 않는다.</li>
+  <li><code class="language-plaintext highlighter-rouge">github-pages ~&gt; 232</code>, <code class="language-plaintext highlighter-rouge">nokogiri &gt;= 1.19.3</code> 제약을 유지한다.</li>
+</ul>
+
+<p>자세한 절차는 저장소 루트의 <code class="language-plaintext highlighter-rouge">AGENTS.md</code>에 남겨두는 것이 좋다.</p>]]></content><author><name>김용탁</name></author><category term="ai-workflow" /><summary type="html"><![CDATA[codex-resume 작업을 포트폴리오와 블로그에 반영하는 과정에서 GitHub push 메시지에 Dependabot 경고가 같이 떴다. 처음에는 단순한 경고처럼 보였지만, 실제로 확인해 보니 오래된 Jekyll 블로그 의존성에서 열린 취약점 알림이 여러 개 쌓여 있었다.]]></summary></entry><entry><title type="html">codex-resume TUI를 만들면서 외부 TUI 라이브러리를 쓰기로 바꾼 이유</title><link href="https://ytkim4558.github.io/codex-resume-tui-decision" rel="alternate" type="text/html" title="codex-resume TUI를 만들면서 외부 TUI 라이브러리를 쓰기로 바꾼 이유" /><published>2026-05-17T14:30:00+00:00</published><updated>2026-05-17T14:30:00+00:00</updated><id>https://ytkim4558.github.io/codex-resume-tui-decision</id><content type="html" xml:base="https://ytkim4558.github.io/codex-resume-tui-decision"><![CDATA[<p><code class="language-plaintext highlighter-rouge">claude-resume</code>를 만들 때 가장 중요했던 기능은 단순히 과거 세션 목록을 보여주는 것이 아니었다.
 핵심은 <strong>예전 대화가 무슨 작업이었는지 LLM 요약으로 바로 알아보고, 필요한 세션으로 이어가는 것</strong>이었다.</p>
 
 <p>Claude Code의 기본 resume 화면은 세션 ID와 시간 중심이라 대화가 많아지면 찾기가 어렵다.
@@ -224,7 +239,19 @@ Dependabot 알림도 대부분 이 하위 의존성에서 발생했다.</p>
 <p>중요한 것은 요약 자체보다도, 사용자가 “그때 무슨 작업을 하던 세션이지?”를 바로 알 수 있게 만드는 것이다.
 <code class="language-plaintext highlighter-rouge">claude-resume</code>에서 얻은 교훈은 결국 이거였다.</p>
 
-<p>세션 복구 도구의 본질은 ID를 보여주는 것이 아니라, <strong>작업 기억을 다시 찾게 해주는 것</strong>이다.</p>]]></content><author><name>김용탁</name></author><category term="ai-workflow" /><summary type="html"><![CDATA[claude-resume를 만들 때 가장 중요했던 기능은 단순히 과거 세션 목록을 보여주는 것이 아니었다. 핵심은 예전 대화가 무슨 작업이었는지 LLM 요약으로 바로 알아보고, 필요한 세션으로 이어가는 것이었다.]]></summary></entry><entry><title type="html">안드로이드 스튜디오 레이아웃 preview에서 각국언어 버전 보기</title><link href="https://ytkim4558.github.io/android" rel="alternate" type="text/html" title="안드로이드 스튜디오 레이아웃 preview에서 각국언어 버전 보기" /><published>2018-06-30T21:23:23+00:00</published><updated>2018-06-30T21:23:23+00:00</updated><id>https://ytkim4558.github.io/android</id><content type="html" xml:base="https://ytkim4558.github.io/android"><![CDATA[<p>회사에서 개발하는 앱이 영어, 한국어 버전을 동시에 지원한다.</p>
+<p>세션 복구 도구의 본질은 ID를 보여주는 것이 아니라, <strong>작업 기억을 다시 찾게 해주는 것</strong>이다.</p>
+
+<h2 id="다른-ai-에이전트에게-남기는-메모">다른 AI 에이전트에게 남기는 메모</h2>
+
+<p>이 작업을 이어받는 AI 에이전트는 <code class="language-plaintext highlighter-rouge">codex-resume</code>를 단순 세션 ID picker로 보지 말고, <strong>AI 작업 히스토리 브라우저</strong>로 봐야 한다.</p>
+
+<ul>
+  <li>기본 TUI는 <code class="language-plaintext highlighter-rouge">blessed</code> 기반 split-pane 구조를 유지한다.</li>
+  <li>dependency-free picker는 fallback으로만 둔다.</li>
+  <li>다음 핵심 작업은 LLM 요약 캐시다.</li>
+  <li>공개용 스크린샷은 반드시 민감한 세션명, 로컬 경로, 개인 파일명을 가린다.</li>
+  <li>관련 문서는 <code class="language-plaintext highlighter-rouge">claude-toolkit</code>과 <code class="language-plaintext highlighter-rouge">GitHubPageMaker</code>의 AI Workflow 글에 같이 남긴다.</li>
+</ul>]]></content><author><name>김용탁</name></author><category term="ai-workflow" /><summary type="html"><![CDATA[claude-resume를 만들 때 가장 중요했던 기능은 단순히 과거 세션 목록을 보여주는 것이 아니었다. 핵심은 예전 대화가 무슨 작업이었는지 LLM 요약으로 바로 알아보고, 필요한 세션으로 이어가는 것이었다.]]></summary></entry><entry><title type="html">안드로이드 스튜디오 레이아웃 preview에서 각국언어 버전 보기</title><link href="https://ytkim4558.github.io/android" rel="alternate" type="text/html" title="안드로이드 스튜디오 레이아웃 preview에서 각국언어 버전 보기" /><published>2018-06-30T21:23:23+00:00</published><updated>2018-06-30T21:23:23+00:00</updated><id>https://ytkim4558.github.io/android</id><content type="html" xml:base="https://ytkim4558.github.io/android"><![CDATA[<p>회사에서 개발하는 앱이 영어, 한국어 버전을 동시에 지원한다.</p>
 
 <p>먼저 다국어버전을 만들려는 사람을 위해 설명하자면, strings.xml을 다국어버전으로 만들기 위해서는 다음의 절차를 거친다.</p>
 

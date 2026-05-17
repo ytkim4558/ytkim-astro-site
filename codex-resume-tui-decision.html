@@ -267,6 +267,18 @@ into the {body} of the default.hbs template -->
 
 <p>세션 복구 도구의 본질은 ID를 보여주는 것이 아니라, <strong>작업 기억을 다시 찾게 해주는 것</strong>이다.</p>
 
+<h2 id="다른-ai-에이전트에게-남기는-메모">다른 AI 에이전트에게 남기는 메모</h2>
+
+<p>이 작업을 이어받는 AI 에이전트는 <code class="language-plaintext highlighter-rouge">codex-resume</code>를 단순 세션 ID picker로 보지 말고, <strong>AI 작업 히스토리 브라우저</strong>로 봐야 한다.</p>
+
+<ul>
+  <li>기본 TUI는 <code class="language-plaintext highlighter-rouge">blessed</code> 기반 split-pane 구조를 유지한다.</li>
+  <li>dependency-free picker는 fallback으로만 둔다.</li>
+  <li>다음 핵심 작업은 LLM 요약 캐시다.</li>
+  <li>공개용 스크린샷은 반드시 민감한 세션명, 로컬 경로, 개인 파일명을 가린다.</li>
+  <li>관련 문서는 <code class="language-plaintext highlighter-rouge">claude-toolkit</code>과 <code class="language-plaintext highlighter-rouge">GitHubPageMaker</code>의 AI Workflow 글에 같이 남긴다.</li>
+</ul>
+
                 </div>
             </section>
 
