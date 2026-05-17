@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2000" height="666" viewBox="0 0 2000 666" role="img" aria-label="Engineering notes abstract cover">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#07130f"/>
+      <stop offset="0.48" stop-color="#123c35"/>
+      <stop offset="1" stop-color="#f4efe5"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="72%" cy="34%" r="52%">
+      <stop offset="0" stop-color="#9ff7dc" stop-opacity="0.72"/>
+      <stop offset="0.42" stop-color="#2dd4bf" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#2dd4bf" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M64 0H0V64" fill="none" stroke="#ffffff" stroke-opacity="0.08"/>
+    </pattern>
+  </defs>
+  <rect width="2000" height="666" fill="url(#bg)"/>
+  <rect width="2000" height="666" fill="url(#grid)"/>
+  <circle cx="1420" cy="210" r="430" fill="url(#glow)"/>
+  <path d="M126 492C370 330 536 552 790 386S1200 126 1568 302s508-36 636-166" fill="none" stroke="#f7f2e8" stroke-width="3" stroke-opacity="0.34"/>
+  <path d="M170 544C470 388 636 608 902 432s468-270 798-72" fill="none" stroke="#22c55e" stroke-width="2" stroke-opacity="0.38"/>
+  <g fill="#f7f2e8" fill-opacity="0.92">
+    <circle cx="390" cy="356" r="8"/>
+    <circle cx="792" cy="386" r="8"/>
+    <circle cx="1210" cy="154" r="8"/>
+    <circle cx="1568" cy="302" r="8"/>
+  </g>
+  <g transform="translate(138 116)" fill="none" stroke="#f7f2e8" stroke-opacity="0.55">
+    <rect x="0" y="0" width="420" height="260" rx="30"/>
+    <path d="M54 72h238M54 128h312M54 184h190"/>
+    <path d="M330 70l42 42-42 42" stroke="#5eead4" stroke-opacity="0.9"/>
+  </g>
+</svg>

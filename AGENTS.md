@@ -52,6 +52,7 @@ Then commit and push both repositories.
 - Do not leave new posts on the generic `assets/images/blog-cover.jpg` unless there is no better topic image.
 - Use a cover image that explains the post before the user reads it.
 - Prefer first-party assets: redacted screenshots, generated diagrams, or simple custom cover images created for the post.
+- If the page needs a custom visual and no suitable first-party screenshot exists, it is acceptable to create one with available generative image tools such as Codex image generation, Claude image generation, Image2, or a repo-native SVG. The result still needs to match the article/page topic rather than act as generic decoration.
 - For tool posts, prefer an actual redacted screenshot of the tool.
 - For Jekyll/site maintenance posts, prefer Jekyll or site-related imagery, or generate a custom cover that summarizes the maintenance result.
 - If using an external image, use only clearly license-free sources such as Openverse, Wikimedia Commons, Unsplash, or Pexels. Verify the license/source page before committing.
