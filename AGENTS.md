@@ -67,6 +67,14 @@ Then commit and push both repositories.
 - Avoid leaving highlighted names such as `claude-resume`, `codex-resume`, or `claude-toolkit` as plain text when the reader would reasonably expect to click them.
 - Do not link every repeated occurrence in the same paragraph; keep links useful rather than noisy.
 
+## Portfolio Media Rules
+
+- Avoid long vertical stacks of screenshots in `portfolio/index.md`.
+- When a project has multiple screenshots, use a horizontal `.portfolio-gallery` scroll-snap block so desktop and mobile readers can swipe/scroll through the set.
+- Each gallery item should link to the original image and include a specific `alt` text.
+- Use `.portfolio-gallery-wide` for landscape desktop or web screenshots and the default `.portfolio-gallery` for phone-shaped screenshots.
+- Keep the gallery CSS in both `assets/css/screen.edited.css` and `assets/built/screen.edited.css` unless the CSS build pipeline is restored.
+
 ## AI Workflow Writing Rule
 
 - When an AI agent fixes a non-trivial bug, deployment issue, security alert, UI regression, build failure, or workflow problem, decide whether the process is worth documenting.

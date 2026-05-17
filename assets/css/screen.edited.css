@@ -378,6 +378,69 @@ td.code {
     font-weight: 700;
 }
 
+.portfolio-page .portfolio-gallery {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(220px, 31%);
+    gap: 16px;
+    margin: 22px 0 34px;
+    padding: 14px 14px 20px;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-padding-inline: 14px;
+    scroll-snap-type: x mandatory;
+    border: 1px solid rgba(15,23,42,0.08);
+    border-radius: 24px;
+    background: rgba(255,255,255,0.74);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.55);
+}
+
+.portfolio-page .portfolio-gallery::-webkit-scrollbar {
+    height: 10px;
+}
+
+.portfolio-page .portfolio-gallery::-webkit-scrollbar-track {
+    border-radius: 999px;
+    background: rgba(15,23,42,0.06);
+}
+
+.portfolio-page .portfolio-gallery::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: rgba(15,118,110,0.46);
+}
+
+.portfolio-page .portfolio-gallery a {
+    display: block;
+    overflow: hidden;
+    scroll-snap-align: start;
+    border-radius: 18px;
+    background: #0f172a;
+    box-shadow: none;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.portfolio-page .portfolio-gallery a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 40px rgba(15,23,42,0.18);
+}
+
+.portfolio-page .portfolio-gallery img {
+    display: block;
+    width: 100%;
+    height: 420px;
+    margin: 0;
+    background: #0f172a;
+    object-fit: contain;
+}
+
+.portfolio-page .portfolio-gallery-wide {
+    grid-auto-columns: minmax(360px, 58%);
+}
+
+.portfolio-page .portfolio-gallery-wide img {
+    height: 360px;
+}
+
 @media (max-width: 760px) {
     .portfolio-page .post-full-content {
         padding: 22px 18px 0;
@@ -410,5 +473,26 @@ td.code {
     .portfolio-page .portfolio-floating-nav a {
         min-width: auto;
         white-space: nowrap;
+    }
+
+    .portfolio-page .portfolio-gallery {
+        grid-auto-columns: minmax(210px, 82%);
+        gap: 12px;
+        margin: 18px -4px 30px;
+        padding: 10px 10px 16px;
+        border-radius: 20px;
+        scroll-padding-inline: 10px;
+    }
+
+    .portfolio-page .portfolio-gallery img {
+        height: 360px;
+    }
+
+    .portfolio-page .portfolio-gallery-wide {
+        grid-auto-columns: minmax(260px, 88%);
+    }
+
+    .portfolio-page .portfolio-gallery-wide img {
+        height: 300px;
     }
 }
