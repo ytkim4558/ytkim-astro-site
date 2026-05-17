@@ -39,8 +39,8 @@
     <meta property="og:image" content="https://ytkim4558.github.io/assets/images/blog-cover.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2026-05-17T09:30:00-05:00" />
-    <meta property="article:modified_time" content="2026-05-17T09:30:00-05:00" />
+    <meta property="article:published_time" content="2026-05-17T14:30:00+00:00" />
+    <meta property="article:modified_time" content="2026-05-17T14:30:00+00:00" />
     <meta property="article:tag" content="Ai-workflow" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="codex-resume TUI를 만들면서 외부 TUI 라이브러리를 쓰기로 바꾼 이유" />
@@ -168,11 +168,11 @@ into the {body} of the default.hbs template -->
 
             <section class="post-full-content">
                 <div class="kg-card-markdown">
-                    <p><code class="highlighter-rouge">claude-resume</code>를 만들 때 가장 중요했던 기능은 단순히 과거 세션 목록을 보여주는 것이 아니었다.
+                    <p><code class="language-plaintext highlighter-rouge">claude-resume</code>를 만들 때 가장 중요했던 기능은 단순히 과거 세션 목록을 보여주는 것이 아니었다.
 핵심은 <strong>예전 대화가 무슨 작업이었는지 LLM 요약으로 바로 알아보고, 필요한 세션으로 이어가는 것</strong>이었다.</p>
 
 <p>Claude Code의 기본 resume 화면은 세션 ID와 시간 중심이라 대화가 많아지면 찾기가 어렵다.
-그래서 <code class="highlighter-rouge">claude-resume</code>에서는 Python Textual로 두 패널 TUI를 만들고, 백그라운드에서 <code class="highlighter-rouge">claude -p</code>를 호출해 각 세션을 한 줄로 요약하게 했다.
+그래서 <code class="language-plaintext highlighter-rouge">claude-resume</code>에서는 Python Textual로 두 패널 TUI를 만들고, 백그라운드에서 <code class="language-plaintext highlighter-rouge">claude -p</code>를 호출해 각 세션을 한 줄로 요약하게 했다.
 왼쪽에는 요약된 히스토리 목록을 두고, 오른쪽에는 선택한 세션의 전체 대화 내용을 보여주는 구조였다.</p>
 
 <p>이 방식이 좋았던 이유는 명확했다.</p>
@@ -186,21 +186,21 @@ into the {body} of the default.hbs template -->
 
 <h2 id="codex-resume의-첫-구현">codex-resume의 첫 구현</h2>
 
-<p>OpenAI Codex CLI용으로 비슷한 도구인 <code class="highlighter-rouge">codex-resume</code>를 만들 때는 처음에 반대로 접근했다.
+<p>OpenAI Codex CLI용으로 비슷한 도구인 <code class="language-plaintext highlighter-rouge">codex-resume</code>를 만들 때는 처음에 반대로 접근했다.
 외부 의존성을 최소화하고 Node.js 기본 모듈만으로 동작하는 MVP를 먼저 만들었다.</p>
 
 <p>처음 구현한 기능은 다음과 같았다.</p>
 
 <ul>
-  <li><code class="highlighter-rouge">%USERPROFILE%\.codex\sessions</code> 아래 JSONL 로그 스캔</li>
-  <li><code class="highlighter-rouge">session_meta</code>, <code class="highlighter-rouge">user_message</code>, <code class="highlighter-rouge">response_item</code>, <code class="highlighter-rouge">event_msg</code> 파싱</li>
+  <li><code class="language-plaintext highlighter-rouge">%USERPROFILE%\.codex\sessions</code> 아래 JSONL 로그 스캔</li>
+  <li><code class="language-plaintext highlighter-rouge">session_meta</code>, <code class="language-plaintext highlighter-rouge">user_message</code>, <code class="language-plaintext highlighter-rouge">response_item</code>, <code class="language-plaintext highlighter-rouge">event_msg</code> 파싱</li>
   <li>첫 사용자 메시지와 마지막 assistant 메시지로 preview 생성</li>
-  <li><code class="highlighter-rouge">codex resume &lt;session-id&gt;</code>로 handoff</li>
+  <li><code class="language-plaintext highlighter-rouge">codex resume &lt;session-id&gt;</code>로 handoff</li>
   <li>PowerShell/CMD wrapper 제공</li>
 </ul>
 
 <p>이 접근은 빠르게 동작하는 장점이 있었다.
-설치가 거의 필요 없고, 실제 Codex 세션을 읽어 <code class="highlighter-rouge">list</code>, <code class="highlighter-rouge">doctor</code>, <code class="highlighter-rouge">index</code>, <code class="highlighter-rouge">resume</code> 명령을 바로 검증할 수 있었다.</p>
+설치가 거의 필요 없고, 실제 Codex 세션을 읽어 <code class="language-plaintext highlighter-rouge">list</code>, <code class="language-plaintext highlighter-rouge">doctor</code>, <code class="language-plaintext highlighter-rouge">index</code>, <code class="language-plaintext highlighter-rouge">resume</code> 명령을 바로 검증할 수 있었다.</p>
 
 <p>하지만 실제 화면을 캡처해서 보니 문제가 분명해졌다.</p>
 
@@ -210,11 +210,11 @@ into the {body} of the default.hbs template -->
 
 <p>첫 번째 문제는 <strong>표시 폭 계산</strong>이었다.
 한글, 긴 경로, 이미지 파일명, 긴 사용자 요청이 섞이자 좌우 구분선과 텍스트가 겹쳤다.
-문자열 길이와 터미널 표시 폭이 다르기 때문에 단순 <code class="highlighter-rouge">length</code> 기준으로는 안정적인 레이아웃을 만들기 어렵다.</p>
+문자열 길이와 터미널 표시 폭이 다르기 때문에 단순 <code class="language-plaintext highlighter-rouge">length</code> 기준으로는 안정적인 레이아웃을 만들기 어렵다.</p>
 
 <p>두 번째 문제는 <strong>세션 의미 파악이 어렵다</strong>는 점이었다.
 첫 사용자 메시지와 마지막 응답을 그냥 잘라 보여주면, 결국 raw 로그를 조금 예쁘게 보여주는 정도에 그친다.
-<code class="highlighter-rouge">claude-resume</code>에서 좋았던 것은 raw preview가 아니라 LLM이 요약한 “이 세션의 의미”였다.</p>
+<code class="language-plaintext highlighter-rouge">claude-resume</code>에서 좋았던 것은 raw preview가 아니라 LLM이 요약한 “이 세션의 의미”였다.</p>
 
 <p>세 번째 문제는 <strong>TUI 상호작용의 완성도</strong>였다.
 스크롤, 포커스, 선택 상태, 검색 입력, 상세 패널 표시 같은 요소는 직접 만들 수는 있지만, 계속 보수해야 한다.
@@ -225,12 +225,12 @@ into the {body} of the default.hbs template -->
 <p>처음에는 dependency-free 구현이 더 단순하고 배포하기 쉽다고 봤다.
 하지만 실제 화면을 보고 판단이 바뀌었다.</p>
 
-<p><code class="highlighter-rouge">codex-resume</code>는 단순 CLI가 아니라 <strong>과거 AI 작업 히스토리를 찾는 브라우저</strong>다.
+<p><code class="language-plaintext highlighter-rouge">codex-resume</code>는 단순 CLI가 아니라 <strong>과거 AI 작업 히스토리를 찾는 브라우저</strong>다.
 그렇다면 화면 품질은 부가 기능이 아니라 핵심 기능이다.</p>
 
-<p>그래서 기본 UI는 Node.js TUI 라이브러리인 <code class="highlighter-rouge">blessed</code> 기반으로 바꾸고, 기존 의존성 없는 picker는 fallback으로 남기는 방향으로 수정했다.</p>
+<p>그래서 기본 UI는 Node.js TUI 라이브러리인 <code class="language-plaintext highlighter-rouge">blessed</code> 기반으로 바꾸고, 기존 의존성 없는 picker는 fallback으로 남기는 방향으로 수정했다.</p>
 
-<p>이 결정은 <code class="highlighter-rouge">claude-resume</code>에서 Textual을 사용한 이유와 같다.</p>
+<p>이 결정은 <code class="language-plaintext highlighter-rouge">claude-resume</code>에서 Textual을 사용한 이유와 같다.</p>
 
 <ul>
   <li>목록과 상세를 안정적으로 분리하기 위해</li>
@@ -241,10 +241,10 @@ into the {body} of the default.hbs template -->
 
 <h2 id="다음-과제">다음 과제</h2>
 
-<p><code class="highlighter-rouge">codex-resume</code>의 다음 단계는 <code class="highlighter-rouge">claude-resume</code>처럼 LLM 요약 캐시를 붙이는 것이다.</p>
+<p><code class="language-plaintext highlighter-rouge">codex-resume</code>의 다음 단계는 <code class="language-plaintext highlighter-rouge">claude-resume</code>처럼 LLM 요약 캐시를 붙이는 것이다.</p>
 
-<p>Codex 세션 로그는 <code class="highlighter-rouge">~/.codex/sessions/YYYY/MM/DD/*.jsonl</code> 형태로 저장되어 있고, 실제 대화는 <code class="highlighter-rouge">user_message</code>, <code class="highlighter-rouge">response_item</code>, <code class="highlighter-rouge">event_msg</code> 안에 들어 있다.
-이 내용을 요약 provider에 넘기고, 결과를 <code class="highlighter-rouge">%USERPROFILE%\.codex\codex-resume\session-index.json</code> 또는 별도 summary cache에 저장하면 된다.</p>
+<p>Codex 세션 로그는 <code class="language-plaintext highlighter-rouge">~/.codex/sessions/YYYY/MM/DD/*.jsonl</code> 형태로 저장되어 있고, 실제 대화는 <code class="language-plaintext highlighter-rouge">user_message</code>, <code class="language-plaintext highlighter-rouge">response_item</code>, <code class="language-plaintext highlighter-rouge">event_msg</code> 안에 들어 있다.
+이 내용을 요약 provider에 넘기고, 결과를 <code class="language-plaintext highlighter-rouge">%USERPROFILE%\.codex\codex-resume\session-index.json</code> 또는 별도 summary cache에 저장하면 된다.</p>
 
 <p>요약 provider는 처음부터 하나로 고정하지 않는 편이 좋다.</p>
 
@@ -256,7 +256,7 @@ into the {body} of the default.hbs template -->
 </ul>
 
 <p>중요한 것은 요약 자체보다도, 사용자가 “그때 무슨 작업을 하던 세션이지?”를 바로 알 수 있게 만드는 것이다.
-<code class="highlighter-rouge">claude-resume</code>에서 얻은 교훈은 결국 이거였다.</p>
+<code class="language-plaintext highlighter-rouge">claude-resume</code>에서 얻은 교훈은 결국 이거였다.</p>
 
 <p>세션 복구 도구의 본질은 ID를 보여주는 것이 아니라, <strong>작업 기억을 다시 찾게 해주는 것</strong>이다.</p>
 

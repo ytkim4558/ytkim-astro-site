@@ -1,151 +1,151 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="https://ytkim4558.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ytkim4558.github.io/" rel="alternate" type="text/html" /><updated>2026-05-17T00:40:27-05:00</updated><id>https://ytkim4558.github.io/</id><title type="html">YongTak IT Blog</title><subtitle>Development &amp; Technical Training</subtitle><entry><title type="html">codex-resume TUI를 만들면서 외부 TUI 라이브러리를 쓰기로 바꾼 이유</title><link href="https://ytkim4558.github.io/codex-resume-tui-decision" rel="alternate" type="text/html" title="codex-resume TUI를 만들면서 외부 TUI 라이브러리를 쓰기로 바꾼 이유" /><published>2026-05-17T09:30:00-05:00</published><updated>2026-05-17T09:30:00-05:00</updated><id>https://ytkim4558.github.io/codex-resume-tui-decision</id><content type="html" xml:base="https://ytkim4558.github.io/codex-resume-tui-decision">&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;claude-resume&lt;/code&gt;를 만들 때 가장 중요했던 기능은 단순히 과거 세션 목록을 보여주는 것이 아니었다.
-핵심은 &lt;strong&gt;예전 대화가 무슨 작업이었는지 LLM 요약으로 바로 알아보고, 필요한 세션으로 이어가는 것&lt;/strong&gt;이었다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://ytkim4558.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ytkim4558.github.io/" rel="alternate" type="text/html" /><updated>2026-05-17T05:47:38+00:00</updated><id>https://ytkim4558.github.io/feed.xml</id><title type="html">YongTak IT Blog</title><subtitle>Development &amp; Technical Training</subtitle><entry><title type="html">codex-resume TUI를 만들면서 외부 TUI 라이브러리를 쓰기로 바꾼 이유</title><link href="https://ytkim4558.github.io/codex-resume-tui-decision" rel="alternate" type="text/html" title="codex-resume TUI를 만들면서 외부 TUI 라이브러리를 쓰기로 바꾼 이유" /><published>2026-05-17T14:30:00+00:00</published><updated>2026-05-17T14:30:00+00:00</updated><id>https://ytkim4558.github.io/codex-resume-tui-decision</id><content type="html" xml:base="https://ytkim4558.github.io/codex-resume-tui-decision"><![CDATA[<p><code class="language-plaintext highlighter-rouge">claude-resume</code>를 만들 때 가장 중요했던 기능은 단순히 과거 세션 목록을 보여주는 것이 아니었다.
+핵심은 <strong>예전 대화가 무슨 작업이었는지 LLM 요약으로 바로 알아보고, 필요한 세션으로 이어가는 것</strong>이었다.</p>
 
-&lt;p&gt;Claude Code의 기본 resume 화면은 세션 ID와 시간 중심이라 대화가 많아지면 찾기가 어렵다.
-그래서 &lt;code class=&quot;highlighter-rouge&quot;&gt;claude-resume&lt;/code&gt;에서는 Python Textual로 두 패널 TUI를 만들고, 백그라운드에서 &lt;code class=&quot;highlighter-rouge&quot;&gt;claude -p&lt;/code&gt;를 호출해 각 세션을 한 줄로 요약하게 했다.
-왼쪽에는 요약된 히스토리 목록을 두고, 오른쪽에는 선택한 세션의 전체 대화 내용을 보여주는 구조였다.&lt;/p&gt;
+<p>Claude Code의 기본 resume 화면은 세션 ID와 시간 중심이라 대화가 많아지면 찾기가 어렵다.
+그래서 <code class="language-plaintext highlighter-rouge">claude-resume</code>에서는 Python Textual로 두 패널 TUI를 만들고, 백그라운드에서 <code class="language-plaintext highlighter-rouge">claude -p</code>를 호출해 각 세션을 한 줄로 요약하게 했다.
+왼쪽에는 요약된 히스토리 목록을 두고, 오른쪽에는 선택한 세션의 전체 대화 내용을 보여주는 구조였다.</p>
 
-&lt;p&gt;이 방식이 좋았던 이유는 명확했다.&lt;/p&gt;
+<p>이 방식이 좋았던 이유는 명확했다.</p>
 
-&lt;ul&gt;
-  &lt;li&gt;세션 ID가 아니라 “무슨 일을 하던 대화였는지”를 기준으로 찾을 수 있다.&lt;/li&gt;
-  &lt;li&gt;긴 JSONL 로그를 직접 열어보지 않아도 된다.&lt;/li&gt;
-  &lt;li&gt;요약은 캐시되므로 다음 실행부터 빠르게 볼 수 있다.&lt;/li&gt;
-  &lt;li&gt;UI가 두 패널로 나뉘어 있어 목록과 상세 내용을 동시에 비교할 수 있다.&lt;/li&gt;
-&lt;/ul&gt;
+<ul>
+  <li>세션 ID가 아니라 “무슨 일을 하던 대화였는지”를 기준으로 찾을 수 있다.</li>
+  <li>긴 JSONL 로그를 직접 열어보지 않아도 된다.</li>
+  <li>요약은 캐시되므로 다음 실행부터 빠르게 볼 수 있다.</li>
+  <li>UI가 두 패널로 나뉘어 있어 목록과 상세 내용을 동시에 비교할 수 있다.</li>
+</ul>
 
-&lt;h2 id=&quot;codex-resume의-첫-구현&quot;&gt;codex-resume의 첫 구현&lt;/h2&gt;
+<h2 id="codex-resume의-첫-구현">codex-resume의 첫 구현</h2>
 
-&lt;p&gt;OpenAI Codex CLI용으로 비슷한 도구인 &lt;code class=&quot;highlighter-rouge&quot;&gt;codex-resume&lt;/code&gt;를 만들 때는 처음에 반대로 접근했다.
-외부 의존성을 최소화하고 Node.js 기본 모듈만으로 동작하는 MVP를 먼저 만들었다.&lt;/p&gt;
+<p>OpenAI Codex CLI용으로 비슷한 도구인 <code class="language-plaintext highlighter-rouge">codex-resume</code>를 만들 때는 처음에 반대로 접근했다.
+외부 의존성을 최소화하고 Node.js 기본 모듈만으로 동작하는 MVP를 먼저 만들었다.</p>
 
-&lt;p&gt;처음 구현한 기능은 다음과 같았다.&lt;/p&gt;
+<p>처음 구현한 기능은 다음과 같았다.</p>
 
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;%USERPROFILE%\.codex\sessions&lt;/code&gt; 아래 JSONL 로그 스캔&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;session_meta&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;user_message&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;response_item&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;event_msg&lt;/code&gt; 파싱&lt;/li&gt;
-  &lt;li&gt;첫 사용자 메시지와 마지막 assistant 메시지로 preview 생성&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;codex resume &amp;lt;session-id&amp;gt;&lt;/code&gt;로 handoff&lt;/li&gt;
-  &lt;li&gt;PowerShell/CMD wrapper 제공&lt;/li&gt;
-&lt;/ul&gt;
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">%USERPROFILE%\.codex\sessions</code> 아래 JSONL 로그 스캔</li>
+  <li><code class="language-plaintext highlighter-rouge">session_meta</code>, <code class="language-plaintext highlighter-rouge">user_message</code>, <code class="language-plaintext highlighter-rouge">response_item</code>, <code class="language-plaintext highlighter-rouge">event_msg</code> 파싱</li>
+  <li>첫 사용자 메시지와 마지막 assistant 메시지로 preview 생성</li>
+  <li><code class="language-plaintext highlighter-rouge">codex resume &lt;session-id&gt;</code>로 handoff</li>
+  <li>PowerShell/CMD wrapper 제공</li>
+</ul>
 
-&lt;p&gt;이 접근은 빠르게 동작하는 장점이 있었다.
-설치가 거의 필요 없고, 실제 Codex 세션을 읽어 &lt;code class=&quot;highlighter-rouge&quot;&gt;list&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;doctor&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;index&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;resume&lt;/code&gt; 명령을 바로 검증할 수 있었다.&lt;/p&gt;
+<p>이 접근은 빠르게 동작하는 장점이 있었다.
+설치가 거의 필요 없고, 실제 Codex 세션을 읽어 <code class="language-plaintext highlighter-rouge">list</code>, <code class="language-plaintext highlighter-rouge">doctor</code>, <code class="language-plaintext highlighter-rouge">index</code>, <code class="language-plaintext highlighter-rouge">resume</code> 명령을 바로 검증할 수 있었다.</p>
 
-&lt;p&gt;하지만 실제 화면을 캡처해서 보니 문제가 분명해졌다.&lt;/p&gt;
+<p>하지만 실제 화면을 캡처해서 보니 문제가 분명해졌다.</p>
 
-&lt;h2 id=&quot;실제-화면에서-보인-문제&quot;&gt;실제 화면에서 보인 문제&lt;/h2&gt;
+<h2 id="실제-화면에서-보인-문제">실제 화면에서 보인 문제</h2>
 
-&lt;p&gt;PowerShell에서 직접 실행한 화면은 기능적으로는 동작했지만, 도구라고 부르기엔 부족했다.&lt;/p&gt;
+<p>PowerShell에서 직접 실행한 화면은 기능적으로는 동작했지만, 도구라고 부르기엔 부족했다.</p>
 
-&lt;p&gt;첫 번째 문제는 &lt;strong&gt;표시 폭 계산&lt;/strong&gt;이었다.
+<p>첫 번째 문제는 <strong>표시 폭 계산</strong>이었다.
 한글, 긴 경로, 이미지 파일명, 긴 사용자 요청이 섞이자 좌우 구분선과 텍스트가 겹쳤다.
-문자열 길이와 터미널 표시 폭이 다르기 때문에 단순 &lt;code class=&quot;highlighter-rouge&quot;&gt;length&lt;/code&gt; 기준으로는 안정적인 레이아웃을 만들기 어렵다.&lt;/p&gt;
+문자열 길이와 터미널 표시 폭이 다르기 때문에 단순 <code class="language-plaintext highlighter-rouge">length</code> 기준으로는 안정적인 레이아웃을 만들기 어렵다.</p>
 
-&lt;p&gt;두 번째 문제는 &lt;strong&gt;세션 의미 파악이 어렵다&lt;/strong&gt;는 점이었다.
+<p>두 번째 문제는 <strong>세션 의미 파악이 어렵다</strong>는 점이었다.
 첫 사용자 메시지와 마지막 응답을 그냥 잘라 보여주면, 결국 raw 로그를 조금 예쁘게 보여주는 정도에 그친다.
-&lt;code class=&quot;highlighter-rouge&quot;&gt;claude-resume&lt;/code&gt;에서 좋았던 것은 raw preview가 아니라 LLM이 요약한 “이 세션의 의미”였다.&lt;/p&gt;
+<code class="language-plaintext highlighter-rouge">claude-resume</code>에서 좋았던 것은 raw preview가 아니라 LLM이 요약한 “이 세션의 의미”였다.</p>
 
-&lt;p&gt;세 번째 문제는 &lt;strong&gt;TUI 상호작용의 완성도&lt;/strong&gt;였다.
+<p>세 번째 문제는 <strong>TUI 상호작용의 완성도</strong>였다.
 스크롤, 포커스, 선택 상태, 검색 입력, 상세 패널 표시 같은 요소는 직접 만들 수는 있지만, 계속 보수해야 한다.
-처음부터 도구의 핵심이 TUI라면 검증된 TUI 라이브러리를 쓰는 편이 맞다.&lt;/p&gt;
+처음부터 도구의 핵심이 TUI라면 검증된 TUI 라이브러리를 쓰는 편이 맞다.</p>
 
-&lt;h2 id=&quot;결론-외부-tui-라이브러리는-필요하다&quot;&gt;결론: 외부 TUI 라이브러리는 필요하다&lt;/h2&gt;
+<h2 id="결론-외부-tui-라이브러리는-필요하다">결론: 외부 TUI 라이브러리는 필요하다</h2>
 
-&lt;p&gt;처음에는 dependency-free 구현이 더 단순하고 배포하기 쉽다고 봤다.
-하지만 실제 화면을 보고 판단이 바뀌었다.&lt;/p&gt;
+<p>처음에는 dependency-free 구현이 더 단순하고 배포하기 쉽다고 봤다.
+하지만 실제 화면을 보고 판단이 바뀌었다.</p>
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;codex-resume&lt;/code&gt;는 단순 CLI가 아니라 &lt;strong&gt;과거 AI 작업 히스토리를 찾는 브라우저&lt;/strong&gt;다.
-그렇다면 화면 품질은 부가 기능이 아니라 핵심 기능이다.&lt;/p&gt;
+<p><code class="language-plaintext highlighter-rouge">codex-resume</code>는 단순 CLI가 아니라 <strong>과거 AI 작업 히스토리를 찾는 브라우저</strong>다.
+그렇다면 화면 품질은 부가 기능이 아니라 핵심 기능이다.</p>
 
-&lt;p&gt;그래서 기본 UI는 Node.js TUI 라이브러리인 &lt;code class=&quot;highlighter-rouge&quot;&gt;blessed&lt;/code&gt; 기반으로 바꾸고, 기존 의존성 없는 picker는 fallback으로 남기는 방향으로 수정했다.&lt;/p&gt;
+<p>그래서 기본 UI는 Node.js TUI 라이브러리인 <code class="language-plaintext highlighter-rouge">blessed</code> 기반으로 바꾸고, 기존 의존성 없는 picker는 fallback으로 남기는 방향으로 수정했다.</p>
 
-&lt;p&gt;이 결정은 &lt;code class=&quot;highlighter-rouge&quot;&gt;claude-resume&lt;/code&gt;에서 Textual을 사용한 이유와 같다.&lt;/p&gt;
+<p>이 결정은 <code class="language-plaintext highlighter-rouge">claude-resume</code>에서 Textual을 사용한 이유와 같다.</p>
 
-&lt;ul&gt;
-  &lt;li&gt;목록과 상세를 안정적으로 분리하기 위해&lt;/li&gt;
-  &lt;li&gt;키보드 이동, 스크롤, 포커스 상태를 직접 유지보수하지 않기 위해&lt;/li&gt;
-  &lt;li&gt;세션 요약을 중심에 둔 UI를 만들기 위해&lt;/li&gt;
-  &lt;li&gt;Windows Terminal / PowerShell에서 실제로 보기 좋은 도구로 만들기 위해&lt;/li&gt;
-&lt;/ul&gt;
+<ul>
+  <li>목록과 상세를 안정적으로 분리하기 위해</li>
+  <li>키보드 이동, 스크롤, 포커스 상태를 직접 유지보수하지 않기 위해</li>
+  <li>세션 요약을 중심에 둔 UI를 만들기 위해</li>
+  <li>Windows Terminal / PowerShell에서 실제로 보기 좋은 도구로 만들기 위해</li>
+</ul>
 
-&lt;h2 id=&quot;다음-과제&quot;&gt;다음 과제&lt;/h2&gt;
+<h2 id="다음-과제">다음 과제</h2>
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;codex-resume&lt;/code&gt;의 다음 단계는 &lt;code class=&quot;highlighter-rouge&quot;&gt;claude-resume&lt;/code&gt;처럼 LLM 요약 캐시를 붙이는 것이다.&lt;/p&gt;
+<p><code class="language-plaintext highlighter-rouge">codex-resume</code>의 다음 단계는 <code class="language-plaintext highlighter-rouge">claude-resume</code>처럼 LLM 요약 캐시를 붙이는 것이다.</p>
 
-&lt;p&gt;Codex 세션 로그는 &lt;code class=&quot;highlighter-rouge&quot;&gt;~/.codex/sessions/YYYY/MM/DD/*.jsonl&lt;/code&gt; 형태로 저장되어 있고, 실제 대화는 &lt;code class=&quot;highlighter-rouge&quot;&gt;user_message&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;response_item&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;event_msg&lt;/code&gt; 안에 들어 있다.
-이 내용을 요약 provider에 넘기고, 결과를 &lt;code class=&quot;highlighter-rouge&quot;&gt;%USERPROFILE%\.codex\codex-resume\session-index.json&lt;/code&gt; 또는 별도 summary cache에 저장하면 된다.&lt;/p&gt;
+<p>Codex 세션 로그는 <code class="language-plaintext highlighter-rouge">~/.codex/sessions/YYYY/MM/DD/*.jsonl</code> 형태로 저장되어 있고, 실제 대화는 <code class="language-plaintext highlighter-rouge">user_message</code>, <code class="language-plaintext highlighter-rouge">response_item</code>, <code class="language-plaintext highlighter-rouge">event_msg</code> 안에 들어 있다.
+이 내용을 요약 provider에 넘기고, 결과를 <code class="language-plaintext highlighter-rouge">%USERPROFILE%\.codex\codex-resume\session-index.json</code> 또는 별도 summary cache에 저장하면 된다.</p>
 
-&lt;p&gt;요약 provider는 처음부터 하나로 고정하지 않는 편이 좋다.&lt;/p&gt;
+<p>요약 provider는 처음부터 하나로 고정하지 않는 편이 좋다.</p>
 
-&lt;ul&gt;
-  &lt;li&gt;OpenAI API를 쓰는 방식&lt;/li&gt;
-  &lt;li&gt;Codex CLI가 제공하는 비대화형 호출을 쓰는 방식&lt;/li&gt;
-  &lt;li&gt;사용자가 이미 가진 다른 LLM CLI를 쓰는 방식&lt;/li&gt;
-  &lt;li&gt;요약 없이 heuristic summary만 쓰는 fallback&lt;/li&gt;
-&lt;/ul&gt;
+<ul>
+  <li>OpenAI API를 쓰는 방식</li>
+  <li>Codex CLI가 제공하는 비대화형 호출을 쓰는 방식</li>
+  <li>사용자가 이미 가진 다른 LLM CLI를 쓰는 방식</li>
+  <li>요약 없이 heuristic summary만 쓰는 fallback</li>
+</ul>
 
-&lt;p&gt;중요한 것은 요약 자체보다도, 사용자가 “그때 무슨 작업을 하던 세션이지?”를 바로 알 수 있게 만드는 것이다.
-&lt;code class=&quot;highlighter-rouge&quot;&gt;claude-resume&lt;/code&gt;에서 얻은 교훈은 결국 이거였다.&lt;/p&gt;
+<p>중요한 것은 요약 자체보다도, 사용자가 “그때 무슨 작업을 하던 세션이지?”를 바로 알 수 있게 만드는 것이다.
+<code class="language-plaintext highlighter-rouge">claude-resume</code>에서 얻은 교훈은 결국 이거였다.</p>
 
-&lt;p&gt;세션 복구 도구의 본질은 ID를 보여주는 것이 아니라, &lt;strong&gt;작업 기억을 다시 찾게 해주는 것&lt;/strong&gt;이다.&lt;/p&gt;</content><author><name>김용탁</name></author><category term="ai-workflow" /><summary type="html">claude-resume를 만들 때 가장 중요했던 기능은 단순히 과거 세션 목록을 보여주는 것이 아니었다. 핵심은 예전 대화가 무슨 작업이었는지 LLM 요약으로 바로 알아보고, 필요한 세션으로 이어가는 것이었다.</summary></entry><entry><title type="html">안드로이드 스튜디오 레이아웃 preview에서 각국언어 버전 보기</title><link href="https://ytkim4558.github.io/android" rel="alternate" type="text/html" title="안드로이드 스튜디오 레이아웃 preview에서 각국언어 버전 보기" /><published>2018-06-30T16:23:23-05:00</published><updated>2018-06-30T16:23:23-05:00</updated><id>https://ytkim4558.github.io/android</id><content type="html" xml:base="https://ytkim4558.github.io/android">&lt;p&gt;회사에서 개발하는 앱이 영어, 한국어 버전을 동시에 지원한다.&lt;/p&gt;
+<p>세션 복구 도구의 본질은 ID를 보여주는 것이 아니라, <strong>작업 기억을 다시 찾게 해주는 것</strong>이다.</p>]]></content><author><name>김용탁</name></author><category term="ai-workflow" /><summary type="html"><![CDATA[claude-resume를 만들 때 가장 중요했던 기능은 단순히 과거 세션 목록을 보여주는 것이 아니었다. 핵심은 예전 대화가 무슨 작업이었는지 LLM 요약으로 바로 알아보고, 필요한 세션으로 이어가는 것이었다.]]></summary></entry><entry><title type="html">안드로이드 스튜디오 레이아웃 preview에서 각국언어 버전 보기</title><link href="https://ytkim4558.github.io/android" rel="alternate" type="text/html" title="안드로이드 스튜디오 레이아웃 preview에서 각국언어 버전 보기" /><published>2018-06-30T21:23:23+00:00</published><updated>2018-06-30T21:23:23+00:00</updated><id>https://ytkim4558.github.io/android</id><content type="html" xml:base="https://ytkim4558.github.io/android"><![CDATA[<p>회사에서 개발하는 앱이 영어, 한국어 버전을 동시에 지원한다.</p>
 
-&lt;p&gt;먼저 다국어버전을 만들려는 사람을 위해 설명하자면, strings.xml을 다국어버전으로 만들기 위해서는 다음의 절차를 거친다.&lt;/p&gt;
+<p>먼저 다국어버전을 만들려는 사람을 위해 설명하자면, strings.xml을 다국어버전으로 만들기 위해서는 다음의 절차를 거친다.</p>
 
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;app -&amp;gt; res -&amp;gt; values -&amp;gt; strings.xml 에서 오른쪽 버튼을 눌러 나온 메뉴에서 Open Translators Editor 항목을 클릭한다&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;좌측 위 지구본 모양을 클릭하여 원하는 언어를 추가한다.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
+<ol>
+  <li>
+    <p>app -&gt; res -&gt; values -&gt; strings.xml 에서 오른쪽 버튼을 눌러 나온 메뉴에서 Open Translators Editor 항목을 클릭한다</p>
+  </li>
+  <li>
+    <p>좌측 위 지구본 모양을 클릭하여 원하는 언어를 추가한다.</p>
+  </li>
+</ol>
 
-&lt;p&gt;회사에서는 이미 ko 버전도 영어버전과 같이 있었다.&lt;/p&gt;
+<p>회사에서는 이미 ko 버전도 영어버전과 같이 있었다.</p>
 
-&lt;p&gt;다만, 레이아웃에서 preview로 볼 때 각국 버전을 어떻게 보는지에 대해 검색하기가 매우 까다로웠다.&lt;/p&gt;
+<p>다만, 레이아웃에서 preview로 볼 때 각국 버전을 어떻게 보는지에 대해 검색하기가 매우 까다로웠다.</p>
 
-&lt;p&gt;직접 삽질한 결과&lt;/p&gt;
+<p>직접 삽질한 결과</p>
 
-&lt;p&gt;해당 액티비티의 레이아웃에 가서 상단위의 기기명, 블루프린트 등이 보이는 부분중 AppTheme에 커서를 갖다대면 랭귀지 변경하는 창이 나온다.&lt;/p&gt;
+<p>해당 액티비티의 레이아웃에 가서 상단위의 기기명, 블루프린트 등이 보이는 부분중 AppTheme에 커서를 갖다대면 랭귀지 변경하는 창이 나온다.</p>
 
-&lt;p&gt;해당 탭 순서가 블루프린트, 기기, 안드로이드 버전, AppTheme, 언어변경탭 순으로 되어있어서 모니터가 작거나 하면 잘 보이지가 않는다.&lt;/p&gt;
+<p>해당 탭 순서가 블루프린트, 기기, 안드로이드 버전, AppTheme, 언어변경탭 순으로 되어있어서 모니터가 작거나 하면 잘 보이지가 않는다.</p>
 
-&lt;p&gt;&lt;img src=&quot;/assets/images/language_selection.PNG&quot; alt=&quot;언어변경위치&quot; /&gt;&lt;/p&gt;
+<p><img src="/assets/images/language_selection.PNG" alt="언어변경위치" /></p>
 
-&lt;p&gt;붉은색으로 표시한 부분 참고!&lt;/p&gt;</content><author><name>김용탁</name></author><category term="android" /><summary type="html">회사에서 개발하는 앱이 영어, 한국어 버전을 동시에 지원한다. 먼저 다국어버전을 만들려는 사람을 위해 설명하자면, strings.xml을 다국어버전으로 만들기 위해서는 다음의 절차를 거친다. app -&amp;gt; res -&amp;gt; values -&amp;gt; strings.xml 에서 오른쪽 버튼을 눌러 나온 메뉴에서 Open Translators Editor 항목을 클릭한다 좌측 위 지구본 모양을 클릭하여 원하는 언어를 추가한다. 회사에서는 이미 ko 버전도 영어버전과 같이 있었다. 다만, 레이아웃에서 preview로 볼 때 각국 버전을 어떻게 보는지에 대해 검색하기가 매우 까다로웠다. 직접 삽질한 결과 해당 액티비티의 레이아웃에 가서 상단위의 기기명, 블루프린트 등이 보이는 부분중 AppTheme에 커서를 갖다대면 랭귀지 변경하는 창이 나온다. 해당 탭 순서가 블루프린트, 기기, 안드로이드 버전, AppTheme, 언어변경탭 순으로 되어있어서 모니터가 작거나 하면 잘 보이지가 않는다. 붉은색으로 표시한 부분 참고!</summary></entry><entry><title type="html">MySQL 일부 문자열 검색 기능 like</title><link href="https://ytkim4558.github.io/mysql" rel="alternate" type="text/html" title="MySQL 일부 문자열 검색 기능 like" /><published>2018-06-30T16:12:00-05:00</published><updated>2018-06-30T16:12:00-05:00</updated><id>https://ytkim4558.github.io/mysql</id><content type="html" xml:base="https://ytkim4558.github.io/mysql">&lt;p&gt;회사에서 전화번호 뒷자리번호로 검색할 사용자를 검색할 필요가 있어 검색하는데 SQL 문이 기억이 안났다.&lt;/p&gt;
+<p>붉은색으로 표시한 부분 참고!</p>]]></content><author><name>김용탁</name></author><category term="android" /><summary type="html"><![CDATA[회사에서 개발하는 앱이 영어, 한국어 버전을 동시에 지원한다. 먼저 다국어버전을 만들려는 사람을 위해 설명하자면, strings.xml을 다국어버전으로 만들기 위해서는 다음의 절차를 거친다. app -&gt; res -&gt; values -&gt; strings.xml 에서 오른쪽 버튼을 눌러 나온 메뉴에서 Open Translators Editor 항목을 클릭한다 좌측 위 지구본 모양을 클릭하여 원하는 언어를 추가한다. 회사에서는 이미 ko 버전도 영어버전과 같이 있었다. 다만, 레이아웃에서 preview로 볼 때 각국 버전을 어떻게 보는지에 대해 검색하기가 매우 까다로웠다. 직접 삽질한 결과 해당 액티비티의 레이아웃에 가서 상단위의 기기명, 블루프린트 등이 보이는 부분중 AppTheme에 커서를 갖다대면 랭귀지 변경하는 창이 나온다. 해당 탭 순서가 블루프린트, 기기, 안드로이드 버전, AppTheme, 언어변경탭 순으로 되어있어서 모니터가 작거나 하면 잘 보이지가 않는다. 붉은색으로 표시한 부분 참고!]]></summary></entry><entry><title type="html">MySQL 일부 문자열 검색 기능 like</title><link href="https://ytkim4558.github.io/mysql" rel="alternate" type="text/html" title="MySQL 일부 문자열 검색 기능 like" /><published>2018-06-30T21:12:00+00:00</published><updated>2018-06-30T21:12:00+00:00</updated><id>https://ytkim4558.github.io/mysql</id><content type="html" xml:base="https://ytkim4558.github.io/mysql"><![CDATA[<p>회사에서 전화번호 뒷자리번호로 검색할 사용자를 검색할 필요가 있어 검색하는데 SQL 문이 기억이 안났다.</p>
 
-&lt;p&gt;막연히&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-{.sql}&quot;&gt;select * from member where mobile = '*4558';
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;이런식으로 치는 나를 발견.. 당연히 되지 않았다.&lt;/p&gt;
+<p>막연히</p>
+<pre><code class="language-{.sql}">select * from member where mobile = '*4558';
+</code></pre>
+<p>이런식으로 치는 나를 발견.. 당연히 되지 않았다.</p>
 
-&lt;pre&gt;&lt;code class=&quot;language-{.sql}&quot;&gt;select * from member where mobile like '4558%';
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;로 해야지 조회된다.&lt;/p&gt;</content><author><name>김용탁</name></author><category term="mysql" /><summary type="html">회사에서 전화번호 뒷자리번호로 검색할 사용자를 검색할 필요가 있어 검색하는데 SQL 문이 기억이 안났다. 막연히 select * from member where mobile = '*4558'; 이런식으로 치는 나를 발견.. 당연히 되지 않았다. select * from member where mobile like '4558%'; 로 해야지 조회된다.</summary></entry><entry><title type="html">비공개 저장소를 이용한 fork를 사용하지 않은 PR 방법</title><link href="https://ytkim4558.github.io/git" rel="alternate" type="text/html" title="비공개 저장소를 이용한 fork를 사용하지 않은 PR 방법" /><published>2018-06-28T16:16:23-05:00</published><updated>2018-06-28T16:16:23-05:00</updated><id>https://ytkim4558.github.io/git</id><content type="html" xml:base="https://ytkim4558.github.io/git">&lt;p&gt;회사에서 깃 비공개 저장소를 이용하면서 브랜치를 만들고 PR을 만드는데 있어서, 어떤식으로 할 수 있는지 궁금했다.&lt;/p&gt;
+<pre><code class="language-{.sql}">select * from member where mobile like '4558%';
+</code></pre>
+<p>로 해야지 조회된다.</p>]]></content><author><name>김용탁</name></author><category term="mysql" /><summary type="html"><![CDATA[회사에서 전화번호 뒷자리번호로 검색할 사용자를 검색할 필요가 있어 검색하는데 SQL 문이 기억이 안났다. 막연히 select * from member where mobile = '*4558'; 이런식으로 치는 나를 발견.. 당연히 되지 않았다. select * from member where mobile like '4558%'; 로 해야지 조회된다.]]></summary></entry><entry><title type="html">비공개 저장소를 이용한 fork를 사용하지 않은 PR 방법</title><link href="https://ytkim4558.github.io/git" rel="alternate" type="text/html" title="비공개 저장소를 이용한 fork를 사용하지 않은 PR 방법" /><published>2018-06-28T21:16:23+00:00</published><updated>2018-06-28T21:16:23+00:00</updated><id>https://ytkim4558.github.io/git</id><content type="html" xml:base="https://ytkim4558.github.io/git"><![CDATA[<p>회사에서 깃 비공개 저장소를 이용하면서 브랜치를 만들고 PR을 만드는데 있어서, 어떤식으로 할 수 있는지 궁금했다.</p>
 
-&lt;p&gt;인터넷 검색 결과는 무조건 자신의 저장소에 fork를 하라고 되어있는데, 회사 정책상 자신의 저장소에 fork 하는 것을 허용 안하는 회사도 있다.&lt;/p&gt;
+<p>인터넷 검색 결과는 무조건 자신의 저장소에 fork를 하라고 되어있는데, 회사 정책상 자신의 저장소에 fork 하는 것을 허용 안하는 회사도 있다.</p>
 
-&lt;p&gt;삽질한 결과 알게된 것은 다음과 같다.&lt;/p&gt;
+<p>삽질한 결과 알게된 것은 다음과 같다.</p>
 
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;먼저 저장소를 로컬에 clone 한다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;로컬 branch를 만든다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;코드를 수정한다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;commit &amp;amp; push를 한다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;저장소의 기능을 이용해 원래의 branch에 PR을 요청한다.&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;</content><author><name>김용탁</name></author><category term="git" /><summary type="html">회사에서 깃 비공개 저장소를 이용하면서 브랜치를 만들고 PR을 만드는데 있어서, 어떤식으로 할 수 있는지 궁금했다. 인터넷 검색 결과는 무조건 자신의 저장소에 fork를 하라고 되어있는데, 회사 정책상 자신의 저장소에 fork 하는 것을 허용 안하는 회사도 있다. 삽질한 결과 알게된 것은 다음과 같다. 먼저 저장소를 로컬에 clone 한다. 로컬 branch를 만든다. 코드를 수정한다. commit &amp;amp; push를 한다. 저장소의 기능을 이용해 원래의 branch에 PR을 요청한다.</summary></entry><entry><title type="html">Jekyll 드디어 검색 기능 수정하다.</title><link href="https://ytkim4558.github.io/Jekyll" rel="alternate" type="text/html" title="Jekyll 드디어 검색 기능 수정하다." /><published>2018-05-11T11:40:00-05:00</published><updated>2018-05-11T11:40:00-05:00</updated><id>https://ytkim4558.github.io/Jekyll</id><content type="html" xml:base="https://ytkim4558.github.io/Jekyll">&lt;p&gt;검색기능을 붙이는데 꽤 애먹었다.&lt;/p&gt;
+<ol>
+  <li>
+    <p>먼저 저장소를 로컬에 clone 한다.</p>
+  </li>
+  <li>
+    <p>로컬 branch를 만든다.</p>
+  </li>
+  <li>
+    <p>코드를 수정한다.</p>
+  </li>
+  <li>
+    <p>commit &amp; push를 한다.</p>
+  </li>
+  <li>
+    <p>저장소의 기능을 이용해 원래의 branch에 PR을 요청한다.</p>
+  </li>
+</ol>]]></content><author><name>김용탁</name></author><category term="git" /><summary type="html"><![CDATA[회사에서 깃 비공개 저장소를 이용하면서 브랜치를 만들고 PR을 만드는데 있어서, 어떤식으로 할 수 있는지 궁금했다. 인터넷 검색 결과는 무조건 자신의 저장소에 fork를 하라고 되어있는데, 회사 정책상 자신의 저장소에 fork 하는 것을 허용 안하는 회사도 있다. 삽질한 결과 알게된 것은 다음과 같다. 먼저 저장소를 로컬에 clone 한다. 로컬 branch를 만든다. 코드를 수정한다. commit &amp; push를 한다. 저장소의 기능을 이용해 원래의 branch에 PR을 요청한다.]]></summary></entry><entry><title type="html">Jekyll 드디어 검색 기능 수정하다.</title><link href="https://ytkim4558.github.io/Jekyll" rel="alternate" type="text/html" title="Jekyll 드디어 검색 기능 수정하다." /><published>2018-05-11T16:40:00+00:00</published><updated>2018-05-11T16:40:00+00:00</updated><id>https://ytkim4558.github.io/Jekyll</id><content type="html" xml:base="https://ytkim4558.github.io/Jekyll"><![CDATA[<p>검색기능을 붙이는데 꽤 애먹었다.</p>
 
-&lt;p&gt;처음에는 lunr.js 는 내가 &lt;a href=&quot;https://moon9342.github.io/jekyll-search&quot;&gt;참고한 블로그&lt;/a&gt; 에서 말하는 것처럼 바로 &lt;a href=&quot;https://lunrjs.com/&quot;&gt;lunrjs&lt;/a&gt; 사이트에서 최신 버전 받아서 테스트해보았으나 검색이 되지 않았다.&lt;/p&gt;
+<p>처음에는 lunr.js 는 내가 <a href="https://moon9342.github.io/jekyll-search">참고한 블로그</a> 에서 말하는 것처럼 바로 <a href="https://lunrjs.com/">lunrjs</a> 사이트에서 최신 버전 받아서 테스트해보았으나 검색이 되지 않았다.</p>
 
-&lt;p&gt;결국 몇번의 삽질 끝에 &lt;a href=&quot;https://lunrjs.com/&quot;&gt;lunrjs&lt;/a&gt; 사이트에서 바로 받으면 사용하지 못하고 &lt;a href=&quot;https://github.com/olivernn/lunr.js/releases?after=v2.0.0-alpha.1&quot;&gt;0.7.2 버전&lt;/a&gt;을 받아서 검색기능되게끔 구현 완료했다.&lt;/p&gt;</content><author><name>김용탁</name></author><category term="Jekyll" /><summary type="html">검색기능을 붙이는데 꽤 애먹었다. 처음에는 lunr.js 는 내가 참고한 블로그 에서 말하는 것처럼 바로 lunrjs 사이트에서 최신 버전 받아서 테스트해보았으나 검색이 되지 않았다. 결국 몇번의 삽질 끝에 lunrjs 사이트에서 바로 받으면 사용하지 못하고 0.7.2 버전을 받아서 검색기능되게끔 구현 완료했다.</summary></entry></feed>
+<p>결국 몇번의 삽질 끝에 <a href="https://lunrjs.com/">lunrjs</a> 사이트에서 바로 받으면 사용하지 못하고 <a href="https://github.com/olivernn/lunr.js/releases?after=v2.0.0-alpha.1">0.7.2 버전</a>을 받아서 검색기능되게끔 구현 완료했다.</p>]]></content><author><name>김용탁</name></author><category term="Jekyll" /><summary type="html"><![CDATA[검색기능을 붙이는데 꽤 애먹었다. 처음에는 lunr.js 는 내가 참고한 블로그 에서 말하는 것처럼 바로 lunrjs 사이트에서 최신 버전 받아서 테스트해보았으나 검색이 되지 않았다. 결국 몇번의 삽질 끝에 lunrjs 사이트에서 바로 받으면 사용하지 못하고 0.7.2 버전을 받아서 검색기능되게끔 구현 완료했다.]]></summary></entry></feed>

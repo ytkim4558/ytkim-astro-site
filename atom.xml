@@ -10,7 +10,7 @@
       <item>
         <title>codex-resume TUI를 만들면서 외부 TUI 라이브러리를 쓰기로 바꾼 이유</title>
         
-          <description>&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;claude-resume&lt;/code&gt;를 만들 때 가장 중요했던 기능은 단순히 과거 세션 목록을 보여주는 것이 아니었다.
+          <description>&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;claude-resume&lt;/code&gt;를 만들 때 가장 중요했던 기능은 단순히 과거 세션 목록을 보여주는 것이 아니었다.
 핵심은 &lt;strong&gt;예전 대화가 무슨 작업이었는지 LLM 요약으로 바로 알아보고, 필요한 세션으로 이어가는 것&lt;/strong&gt;이었다.&lt;/p&gt;
 
 </description>
@@ -68,11 +68,11 @@
           <description>&lt;p&gt;회사에서 전화번호 뒷자리번호로 검색할 사용자를 검색할 필요가 있어 검색하는데 SQL 문이 기억이 안났다.&lt;/p&gt;
 
 &lt;p&gt;막연히&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-{.sql}&quot;&gt;select * from member where mobile = '*4558';
+&lt;pre&gt;&lt;code class=&quot;language-{.sql}&quot;&gt;select * from member where mobile = &apos;*4558&apos;;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;이런식으로 치는 나를 발견.. 당연히 되지 않았다.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-{.sql}&quot;&gt;select * from member where mobile like '4558%';
+&lt;pre&gt;&lt;code class=&quot;language-{.sql}&quot;&gt;select * from member where mobile like &apos;4558%&apos;;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;로 해야지 조회된다.&lt;/p&gt;
 </description>
