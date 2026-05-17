@@ -88,6 +88,8 @@ Then commit and push both repositories.
 - Keep `/profile/` as the one-link share page for people who need a quick summary. It should explain who Yongtak Kim is, what he works on, selected projects, and contact links without requiring readers to understand the blog structure first.
 - Keep the root page `/` shareable as the easiest URL to remember. The first screen should summarize the profile before showing blog/navigation content.
 - Preserve the user's language choice across navigation with `localStorage` when matching English/Korean pages exist. Do not redirect content that has no translated counterpart.
+- Do not expose LLM API keys in GitHub Pages. Any "ask about me" feature on the static site must use local public-profile facts or require a separate backend before calling a real LLM.
+- Avoid making the portfolio feel like a numbered resume by default. Lead with curated selected work; put long career history behind a detailed resume/archive interaction.
 
 ## AI Workflow Writing Rule
 

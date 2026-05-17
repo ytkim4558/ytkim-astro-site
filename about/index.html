@@ -352,6 +352,43 @@ $(function() {
       })();
     </script>
 
+    <script>
+      (function() {
+        var assistant = document.querySelector('.profile-assistant');
+        if (!assistant) return;
+
+        var input = assistant.querySelector('#profile-question');
+        var answer = assistant.querySelector('.profile-assistant-answer');
+        var submit = assistant.querySelector('.profile-assistant-submit');
+        var facts = {
+          openSearch: '김용탁은 AWS Cloud Support Engineer이자 OpenSearch SME입니다. 고객의 OpenSearch 이슈, 분석 워크로드, 운영 문제, 에스컬레이션 흐름을 다루며 troubleshooting과 기술 커뮤니케이션을 중심으로 일합니다.',
+          aiWorkflow: 'AI workflow 쪽에서는 MCP로 Slack, Outlook, wiki, ticket search, local tools를 연결하고, support-agent persona, 공식 URL 검증, 유사 문서/티켓 검색, 답변 검증, 이슈 재현, case aging triage, Slack bot follow-up 흐름을 설계했습니다.',
+          projects: '대표 작업물은 claude-resume, codex-resume, linkedin-posting-mcp, 그리고 이 Engineering Notes 사이트입니다. claude-resume/codex-resume은 AI coding agent 세션을 찾고 이어가기 위한 TUI 도구입니다.',
+          profile: '김용탁은 모바일 앱과 백엔드 개발에서 시작해 데이터 플랫폼과 AWS Analytics Support로 확장했고, 현재는 OpenSearch SME 경험과 AI 지원 자동화 워크플로를 결합해 반복되는 문제를 도구화하는 데 집중합니다.'
+        };
+
+        function respond(question) {
+          var q = (question || '').toLowerCase();
+          if (!q.trim()) return '질문을 입력해 주세요.';
+          if (q.includes('opensearch') || q.includes('aws') || q.includes('support') || q.includes('서포트')) return facts.openSearch;
+          if (q.includes('mcp') || q.includes('ai') || q.includes('workflow') || q.includes('워크플로') || q.includes('slack') || q.includes('자동화')) return facts.aiWorkflow;
+          if (q.includes('project') || q.includes('프로젝트') || q.includes('대표') || q.includes('도구') || q.includes('tool')) return facts.projects;
+          return facts.profile;
+        }
+
+        assistant.querySelectorAll('[data-profile-question]').forEach(function(button) {
+          button.addEventListener('click', function() {
+            input.value = button.getAttribute('data-profile-question') || '';
+            answer.textContent = respond(input.value);
+          });
+        });
+
+        submit.addEventListener('click', function() {
+          answer.textContent = respond(input.value);
+        });
+      })();
+    </script>
+
 
     <!-- Add Google Analytics  -->
     <!-- Google Analytics Tracking code -->
