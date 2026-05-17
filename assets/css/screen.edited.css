@@ -1641,6 +1641,78 @@ body:before {
     color: #fff !important;
 }
 
+/* Home landing cleanup */
+.home-template .site-header {
+    display: none;
+}
+
+.home-nav-shell {
+    min-height: 92px;
+    background: transparent;
+}
+
+.home-template .site-main {
+    padding-top: 14px;
+}
+
+.home-template .inner {
+    max-width: 1080px;
+}
+
+.home-template .home-profile-hero {
+    min-height: auto;
+    margin: 24px 0 28px;
+    padding: clamp(30px, 5vw, 58px);
+    border-radius: 32px;
+}
+
+.home-template .home-profile-hero:before {
+    width: min(24vw, 280px);
+    height: min(24vw, 280px);
+    opacity: 0.55;
+}
+
+.home-template .home-profile-hero h2 {
+    max-width: 780px;
+    font-size: clamp(4.2rem, 6.2vw, 7.4rem);
+    line-height: 0.98;
+    letter-spacing: -0.078em;
+}
+
+.home-template .home-profile-hero p {
+    max-width: 760px;
+    font-size: clamp(1.55rem, 1.45vw, 1.9rem);
+}
+
+.home-template .post-marquee {
+    border-radius: 28px;
+}
+
+.home-template .site-nav {
+    top: 16px;
+}
+
+@media (max-width: 760px) {
+    .home-nav-shell {
+        min-height: 126px;
+    }
+
+    .home-template .site-main {
+        padding-top: 0;
+    }
+
+    .home-template .home-profile-hero {
+        margin-top: 10px;
+        padding: 28px;
+        border-radius: 26px;
+    }
+
+    .home-template .home-profile-hero h2 {
+        font-size: clamp(3.6rem, 11.4vw, 5.8rem);
+        line-height: 1.02;
+    }
+}
+
 .language-switcher {
     border-color: rgba(23,19,13,0.12);
     background: rgba(255,253,247,0.74);
