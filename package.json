@@ -53,7 +53,6 @@
         "posts_per_page": 25
     },
     "dependencies": {
-        "gulp": "github:gulpjs/gulp",
-        "jekyll-tasks": "^1.2.1"
+        "gulp": "github:gulpjs/gulp"
     }
 }
