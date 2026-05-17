@@ -11,7 +11,7 @@
 
 
 
-    <title>안드로이드 스튜디오 레이아웃 preview에서 각국언어 버전 보기</title>
+    <title>codex-resume TUI를 만들면서 외부 TUI 라이브러리를 쓰기로 바꾼 이유</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
@@ -27,30 +27,30 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="Development & Technical Training" />
     <link rel="shortcut icon" href="https://ytkim4558.github.io/assets/images/favicon.png" type="image/png" />
-    <link rel="canonical" href="https://ytkim4558.github.io/android" />
+    <link rel="canonical" href="https://ytkim4558.github.io/codex-resume-tui-decision" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="YongTak IT Blog" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="안드로이드 스튜디오 레이아웃 preview에서 각국언어 버전 보기" />
-    <meta property="og:description" content="회사에서 개발하는 앱이 영어, 한국어 버전을 동시에 지원한다. 먼저 다국어버전을 만들려는 사람을 위해 설명하자면, strings.xml을 다국어버전으로 만들기 위해서는 다음의 절차를 거친다. app -&gt; res -&gt; values -&gt; strings.xml 에서 오른쪽 버튼을 눌러 나온 메뉴에서 Open Translators Editor 항목을 클릭한다 좌측 위 지구본 모양을 클릭하여 원하는 언어를 추가한다. 회사에서는 이미 ko" />
-    <meta property="og:url" content="https://ytkim4558.github.io/android" />
-    <meta property="og:image" content="https://ytkim4558.github.io/assets/images/android.png" />
+    <meta property="og:title" content="codex-resume TUI를 만들면서 외부 TUI 라이브러리를 쓰기로 바꾼 이유" />
+    <meta property="og:description" content="claude-resume를 만들 때 가장 중요했던 기능은 단순히 과거 세션 목록을 보여주는 것이 아니었다. 핵심은 예전 대화가 무슨 작업이었는지 LLM 요약으로 바로 알아보고, 필요한 세션으로 이어가는 것이었다. Claude Code의 기본 resume 화면은 세션 ID와 시간 중심이라 대화가 많아지면 찾기가 어렵다. 그래서 claude-resume에서는 Python Textual로 두 패널 TUI를 만들고, 백그라운드에서 claude -p를" />
+    <meta property="og:url" content="https://ytkim4558.github.io/codex-resume-tui-decision" />
+    <meta property="og:image" content="https://ytkim4558.github.io/assets/images/blog-cover.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2018-06-30T16:23:23-05:00" />
-    <meta property="article:modified_time" content="2018-06-30T16:23:23-05:00" />
-    <meta property="article:tag" content="Android" />
+    <meta property="article:published_time" content="2026-05-17T09:30:00-05:00" />
+    <meta property="article:modified_time" content="2026-05-17T09:30:00-05:00" />
+    <meta property="article:tag" content="Ai-workflow" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="안드로이드 스튜디오 레이아웃 preview에서 각국언어 버전 보기" />
-    <meta name="twitter:description" content="회사에서 개발하는 앱이 영어, 한국어 버전을 동시에 지원한다. 먼저 다국어버전을 만들려는 사람을 위해 설명하자면, strings.xml을 다국어버전으로 만들기 위해서는 다음의 절차를 거친다. app -&gt; res -&gt; values -&gt; strings.xml 에서 오른쪽 버튼을 눌러 나온 메뉴에서 Open Translators Editor 항목을 클릭한다 좌측 위 지구본 모양을 클릭하여 원하는 언어를 추가한다. 회사에서는 이미 ko" />
+    <meta name="twitter:title" content="codex-resume TUI를 만들면서 외부 TUI 라이브러리를 쓰기로 바꾼 이유" />
+    <meta name="twitter:description" content="claude-resume를 만들 때 가장 중요했던 기능은 단순히 과거 세션 목록을 보여주는 것이 아니었다. 핵심은 예전 대화가 무슨 작업이었는지 LLM 요약으로 바로 알아보고, 필요한 세션으로 이어가는 것이었다. Claude Code의 기본 resume 화면은 세션 ID와 시간 중심이라 대화가 많아지면 찾기가 어렵다. 그래서 claude-resume에서는 Python Textual로 두 패널 TUI를 만들고, 백그라운드에서 claude -p를" />
     <meta name="twitter:url" content="https://ytkim4558.github.io/" />
-    <meta name="twitter:image" content="https://ytkim4558.github.io/assets/images/android.png" />
+    <meta name="twitter:image" content="https://ytkim4558.github.io/assets/images/blog-cover.jpg" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="YongTak IT Blog" />
     <meta name="twitter:label2" content="Filed under" />
-    <meta name="twitter:data2" content="Android" />
+    <meta name="twitter:data2" content="Ai-workflow" />
     <meta name="twitter:site" content="@" />
     <meta name="twitter:creator" content="@" />
     <meta property="og:image:width" content="1400" />
@@ -65,18 +65,18 @@
         "name": "YongTak IT Blog",
         "logo": "https://ytkim4558.github.io/"
     },
-    "url": "https://ytkim4558.github.io/android",
+    "url": "https://ytkim4558.github.io/codex-resume-tui-decision",
     "image": {
         "@type": "ImageObject",
-        "url": "https://ytkim4558.github.io/assets/images/android.png",
+        "url": "https://ytkim4558.github.io/assets/images/blog-cover.jpg",
         "width": 2000,
         "height": 666
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://ytkim4558.github.io/android"
+        "@id": "https://ytkim4558.github.io/codex-resume-tui-decision"
     },
-    "description": "회사에서 개발하는 앱이 영어, 한국어 버전을 동시에 지원한다. 먼저 다국어버전을 만들려는 사람을 위해 설명하자면, strings.xml을 다국어버전으로 만들기 위해서는 다음의 절차를 거친다. app -&gt; res -&gt; values -&gt; strings.xml 에서 오른쪽 버튼을 눌러 나온 메뉴에서 Open Translators Editor 항목을 클릭한다 좌측 위 지구본 모양을 클릭하여 원하는 언어를 추가한다. 회사에서는 이미 ko"
+    "description": "claude-resume를 만들 때 가장 중요했던 기능은 단순히 과거 세션 목록을 보여주는 것이 아니었다. 핵심은 예전 대화가 무슨 작업이었는지 LLM 요약으로 바로 알아보고, 필요한 세션으로 이어가는 것이었다. Claude Code의 기본 resume 화면은 세션 ID와 시간 중심이라 대화가 많아지면 찾기가 어렵다. 그래서 claude-resume에서는 Python Textual로 두 패널 TUI를 만들고, 백그라운드에서 claude -p를"
 }
     </script>
 
@@ -89,7 +89,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="안드로이드 스튜디오 레이아웃 preview에서 각국언어 버전 보기" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="codex-resume TUI를 만들면서 외부 TUI 라이브러리를 쓰기로 바꾼 이유" href="/feed.xml" />
 
 
 </head>
@@ -148,52 +148,117 @@ into the {body} of the default.hbs template -->
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime="30 June 2018">30 June 2018</time>
+                    <time class="post-full-meta-date" datetime="17 May 2026">17 May 2026</time>
                     
                         <span class="date-divider">/</span>
                         
                             
-                               <a href='/tag/android/'>ANDROID</a>
+                               <a href='/tag/ai-workflow/'>AI-WORKFLOW</a>
                             
                         
                     
                 </section>
-                <h1 class="post-full-title">안드로이드 스튜디오 레이아웃 preview에서 각국언어 버전 보기</h1>
+                <h1 class="post-full-title">codex-resume TUI를 만들면서 외부 TUI 라이브러리를 쓰기로 바꾼 이유</h1>
             </header>
 
             
-            <figure class="post-full-image" style="background-image: url(/assets/images/android.png)">
+            <figure class="post-full-image" style="background-image: url(/assets/images/blog-cover.jpg)">
             </figure>
             
 
             <section class="post-full-content">
                 <div class="kg-card-markdown">
-                    <p>회사에서 개발하는 앱이 영어, 한국어 버전을 동시에 지원한다.</p>
+                    <p><code class="highlighter-rouge">claude-resume</code>를 만들 때 가장 중요했던 기능은 단순히 과거 세션 목록을 보여주는 것이 아니었다.
+핵심은 <strong>예전 대화가 무슨 작업이었는지 LLM 요약으로 바로 알아보고, 필요한 세션으로 이어가는 것</strong>이었다.</p>
 
-<p>먼저 다국어버전을 만들려는 사람을 위해 설명하자면, strings.xml을 다국어버전으로 만들기 위해서는 다음의 절차를 거친다.</p>
+<p>Claude Code의 기본 resume 화면은 세션 ID와 시간 중심이라 대화가 많아지면 찾기가 어렵다.
+그래서 <code class="highlighter-rouge">claude-resume</code>에서는 Python Textual로 두 패널 TUI를 만들고, 백그라운드에서 <code class="highlighter-rouge">claude -p</code>를 호출해 각 세션을 한 줄로 요약하게 했다.
+왼쪽에는 요약된 히스토리 목록을 두고, 오른쪽에는 선택한 세션의 전체 대화 내용을 보여주는 구조였다.</p>
 
-<ol>
-  <li>
-    <p>app -&gt; res -&gt; values -&gt; strings.xml 에서 오른쪽 버튼을 눌러 나온 메뉴에서 Open Translators Editor 항목을 클릭한다</p>
-  </li>
-  <li>
-    <p>좌측 위 지구본 모양을 클릭하여 원하는 언어를 추가한다.</p>
-  </li>
-</ol>
+<p>이 방식이 좋았던 이유는 명확했다.</p>
 
-<p>회사에서는 이미 ko 버전도 영어버전과 같이 있었다.</p>
+<ul>
+  <li>세션 ID가 아니라 “무슨 일을 하던 대화였는지”를 기준으로 찾을 수 있다.</li>
+  <li>긴 JSONL 로그를 직접 열어보지 않아도 된다.</li>
+  <li>요약은 캐시되므로 다음 실행부터 빠르게 볼 수 있다.</li>
+  <li>UI가 두 패널로 나뉘어 있어 목록과 상세 내용을 동시에 비교할 수 있다.</li>
+</ul>
 
-<p>다만, 레이아웃에서 preview로 볼 때 각국 버전을 어떻게 보는지에 대해 검색하기가 매우 까다로웠다.</p>
+<h2 id="codex-resume의-첫-구현">codex-resume의 첫 구현</h2>
 
-<p>직접 삽질한 결과</p>
+<p>OpenAI Codex CLI용으로 비슷한 도구인 <code class="highlighter-rouge">codex-resume</code>를 만들 때는 처음에 반대로 접근했다.
+외부 의존성을 최소화하고 Node.js 기본 모듈만으로 동작하는 MVP를 먼저 만들었다.</p>
 
-<p>해당 액티비티의 레이아웃에 가서 상단위의 기기명, 블루프린트 등이 보이는 부분중 AppTheme에 커서를 갖다대면 랭귀지 변경하는 창이 나온다.</p>
+<p>처음 구현한 기능은 다음과 같았다.</p>
 
-<p>해당 탭 순서가 블루프린트, 기기, 안드로이드 버전, AppTheme, 언어변경탭 순으로 되어있어서 모니터가 작거나 하면 잘 보이지가 않는다.</p>
+<ul>
+  <li><code class="highlighter-rouge">%USERPROFILE%\.codex\sessions</code> 아래 JSONL 로그 스캔</li>
+  <li><code class="highlighter-rouge">session_meta</code>, <code class="highlighter-rouge">user_message</code>, <code class="highlighter-rouge">response_item</code>, <code class="highlighter-rouge">event_msg</code> 파싱</li>
+  <li>첫 사용자 메시지와 마지막 assistant 메시지로 preview 생성</li>
+  <li><code class="highlighter-rouge">codex resume &lt;session-id&gt;</code>로 handoff</li>
+  <li>PowerShell/CMD wrapper 제공</li>
+</ul>
 
-<p><img src="/assets/images/language_selection.PNG" alt="언어변경위치" /></p>
+<p>이 접근은 빠르게 동작하는 장점이 있었다.
+설치가 거의 필요 없고, 실제 Codex 세션을 읽어 <code class="highlighter-rouge">list</code>, <code class="highlighter-rouge">doctor</code>, <code class="highlighter-rouge">index</code>, <code class="highlighter-rouge">resume</code> 명령을 바로 검증할 수 있었다.</p>
 
-<p>붉은색으로 표시한 부분 참고!</p>
+<p>하지만 실제 화면을 캡처해서 보니 문제가 분명해졌다.</p>
+
+<h2 id="실제-화면에서-보인-문제">실제 화면에서 보인 문제</h2>
+
+<p>PowerShell에서 직접 실행한 화면은 기능적으로는 동작했지만, 도구라고 부르기엔 부족했다.</p>
+
+<p>첫 번째 문제는 <strong>표시 폭 계산</strong>이었다.
+한글, 긴 경로, 이미지 파일명, 긴 사용자 요청이 섞이자 좌우 구분선과 텍스트가 겹쳤다.
+문자열 길이와 터미널 표시 폭이 다르기 때문에 단순 <code class="highlighter-rouge">length</code> 기준으로는 안정적인 레이아웃을 만들기 어렵다.</p>
+
+<p>두 번째 문제는 <strong>세션 의미 파악이 어렵다</strong>는 점이었다.
+첫 사용자 메시지와 마지막 응답을 그냥 잘라 보여주면, 결국 raw 로그를 조금 예쁘게 보여주는 정도에 그친다.
+<code class="highlighter-rouge">claude-resume</code>에서 좋았던 것은 raw preview가 아니라 LLM이 요약한 “이 세션의 의미”였다.</p>
+
+<p>세 번째 문제는 <strong>TUI 상호작용의 완성도</strong>였다.
+스크롤, 포커스, 선택 상태, 검색 입력, 상세 패널 표시 같은 요소는 직접 만들 수는 있지만, 계속 보수해야 한다.
+처음부터 도구의 핵심이 TUI라면 검증된 TUI 라이브러리를 쓰는 편이 맞다.</p>
+
+<h2 id="결론-외부-tui-라이브러리는-필요하다">결론: 외부 TUI 라이브러리는 필요하다</h2>
+
+<p>처음에는 dependency-free 구현이 더 단순하고 배포하기 쉽다고 봤다.
+하지만 실제 화면을 보고 판단이 바뀌었다.</p>
+
+<p><code class="highlighter-rouge">codex-resume</code>는 단순 CLI가 아니라 <strong>과거 AI 작업 히스토리를 찾는 브라우저</strong>다.
+그렇다면 화면 품질은 부가 기능이 아니라 핵심 기능이다.</p>
+
+<p>그래서 기본 UI는 Node.js TUI 라이브러리인 <code class="highlighter-rouge">blessed</code> 기반으로 바꾸고, 기존 의존성 없는 picker는 fallback으로 남기는 방향으로 수정했다.</p>
+
+<p>이 결정은 <code class="highlighter-rouge">claude-resume</code>에서 Textual을 사용한 이유와 같다.</p>
+
+<ul>
+  <li>목록과 상세를 안정적으로 분리하기 위해</li>
+  <li>키보드 이동, 스크롤, 포커스 상태를 직접 유지보수하지 않기 위해</li>
+  <li>세션 요약을 중심에 둔 UI를 만들기 위해</li>
+  <li>Windows Terminal / PowerShell에서 실제로 보기 좋은 도구로 만들기 위해</li>
+</ul>
+
+<h2 id="다음-과제">다음 과제</h2>
+
+<p><code class="highlighter-rouge">codex-resume</code>의 다음 단계는 <code class="highlighter-rouge">claude-resume</code>처럼 LLM 요약 캐시를 붙이는 것이다.</p>
+
+<p>Codex 세션 로그는 <code class="highlighter-rouge">~/.codex/sessions/YYYY/MM/DD/*.jsonl</code> 형태로 저장되어 있고, 실제 대화는 <code class="highlighter-rouge">user_message</code>, <code class="highlighter-rouge">response_item</code>, <code class="highlighter-rouge">event_msg</code> 안에 들어 있다.
+이 내용을 요약 provider에 넘기고, 결과를 <code class="highlighter-rouge">%USERPROFILE%\.codex\codex-resume\session-index.json</code> 또는 별도 summary cache에 저장하면 된다.</p>
+
+<p>요약 provider는 처음부터 하나로 고정하지 않는 편이 좋다.</p>
+
+<ul>
+  <li>OpenAI API를 쓰는 방식</li>
+  <li>Codex CLI가 제공하는 비대화형 호출을 쓰는 방식</li>
+  <li>사용자가 이미 가진 다른 LLM CLI를 쓰는 방식</li>
+  <li>요약 없이 heuristic summary만 쓰는 fallback</li>
+</ul>
+
+<p>중요한 것은 요약 자체보다도, 사용자가 “그때 무슨 작업을 하던 세션이지?”를 바로 알 수 있게 만드는 것이다.
+<code class="highlighter-rouge">claude-resume</code>에서 얻은 교훈은 결국 이거였다.</p>
+
+<p>세션 복구 도구의 본질은 ID를 보여주는 것이 아니라, <strong>작업 기억을 다시 찾게 해주는 것</strong>이다.</p>
 
                 </div>
             </section>
@@ -317,71 +382,31 @@ into the {body} of the default.hbs template -->
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
             
-                
-    <article class="post-card post-template">
-        
-            <a class="post-card-image-link" href="/codex-resume-tui-decision">
-                <div class="post-card-image" style="background-image: url(/assets/images/blog-cover.jpg)"></div>
-            </a>
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/codex-resume-tui-decision">
-                <header class="post-card-header">
-                    
-                        
-                            
-                                <span class="post-card-tags">Ai-workflow</span>
-                            
-                        
-                    
-
-                    <h2 class="post-card-title">codex-resume TUI를 만들면서 외부 TUI 라이브러리를 쓰기로 바꾼 이유</h2>
-                </header>
-                <section class="post-card-excerpt">
-                    <p>`claude-resume`를 만들 때 가장 중요했던 기능은 단순히 과거 세션 목록을 보여주는 것이 아니었다. 핵심은 **예전 대화가 무슨 작업이었는지 LLM 요약으로 바로 알아보고, 필요한 세션으로 이어가는 것**이었다. Claude Code의 기본 resume 화면은 세션 ID와</p>
-                </section>
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                        
-                        <img class="author-profile-image" src="/assets/images/ytkim4558.png" alt="김용탁" />
-                        
-                        <span class="post-card-author">
-                            <a href="/author/ytkim4558/">김용탁</a>
-                        </span>
-                    
-                
-            </footer>
-        </div>
-    </article>
-
-            
 
             <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
             
                 
     <article class="post-card post-template">
         
-            <a class="post-card-image-link" href="/mysql">
-                <div class="post-card-image" style="background-image: url(/assets/images/mysql.jpg)"></div>
+            <a class="post-card-image-link" href="/android">
+                <div class="post-card-image" style="background-image: url(/assets/images/android.png)"></div>
             </a>
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/mysql">
+            <a class="post-card-content-link" href="/android">
                 <header class="post-card-header">
                     
                         
                             
-                                <span class="post-card-tags">Mysql</span>
+                                <span class="post-card-tags">Android</span>
                             
                         
                     
 
-                    <h2 class="post-card-title">MySQL 일부 문자열 검색 기능 like</h2>
+                    <h2 class="post-card-title">안드로이드 스튜디오 레이아웃 preview에서 각국언어 버전 보기</h2>
                 </header>
                 <section class="post-card-excerpt">
-                    <p>회사에서 전화번호 뒷자리번호로 검색할 사용자를 검색할 필요가 있어 검색하는데 SQL 문이 기억이 안났다. 막연히 select * from member where mobile = '*4558'; 이런식으로 치는 나를 발견.. 당연히 되지 않았다. select * from member</p>
+                    <p>회사에서 개발하는 앱이 영어, 한국어 버전을 동시에 지원한다. 먼저 다국어버전을 만들려는 사람을 위해 설명하자면, strings.xml을 다국어버전으로 만들기 위해서는 다음의 절차를 거친다. app -&gt; res -&gt; values -&gt; strings.xml 에서 오른쪽 버튼을 눌러 나온</p>
                 </section>
             </a>
             <footer class="post-card-meta">
@@ -414,18 +439,18 @@ into the {body} of the default.hbs template -->
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">안드로이드 스튜디오 레이아웃 preview에서 각국언어 버전 보기</div>
+    <div class="floating-header-title">codex-resume TUI를 만들면서 외부 TUI 라이브러리를 쓰기로 바꾼 이유</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C+%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4+%EB%A0%88%EC%9D%B4%EC%95%84%EC%9B%83+preview%EC%97%90%EC%84%9C+%EA%B0%81%EA%B5%AD%EC%96%B8%EC%96%B4+%EB%B2%84%EC%A0%84+%EB%B3%B4%EA%B8%B0&amp;url=https://ytkim4558.github.io/android"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=codex-resume+TUI%EB%A5%BC+%EB%A7%8C%EB%93%A4%EB%A9%B4%EC%84%9C+%EC%99%B8%EB%B6%80+TUI+%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC%EB%A5%BC+%EC%93%B0%EA%B8%B0%EB%A1%9C+%EB%B0%94%EA%BE%BC+%EC%9D%B4%EC%9C%A0&amp;url=https://ytkim4558.github.io/codex-resume-tui-decision"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://ytkim4558.github.io/android"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://ytkim4558.github.io/codex-resume-tui-decision"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
 

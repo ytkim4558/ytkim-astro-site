@@ -8,10 +8,50 @@
     
       
       <item>
+        <title>codex-resume TUI를 만들면서 외부 TUI 라이브러리를 쓰기로 바꾼 이유</title>
+        
+          <description>&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;claude-resume&lt;/code&gt;를 만들 때 가장 중요했던 기능은 단순히 과거 세션 목록을 보여주는 것이 아니었다.
+핵심은 &lt;strong&gt;예전 대화가 무슨 작업이었는지 LLM 요약으로 바로 알아보고, 필요한 세션으로 이어가는 것&lt;/strong&gt;이었다.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sun, 17 May 2026 14:30:00 +0000</pubDate>
+        <link>
+        https://ytkim4558.github.io/codex-resume-tui-decision</link>
+        <guid isPermaLink="true">https://ytkim4558.github.io/codex-resume-tui-decision</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>안드로이드 스튜디오 레이아웃 preview에서 각국언어 버전 보기</title>
         
           <description>&lt;p&gt;회사에서 개발하는 앱이 영어, 한국어 버전을 동시에 지원한다.&lt;/p&gt;
 
+&lt;p&gt;먼저 다국어버전을 만들려는 사람을 위해 설명하자면, strings.xml을 다국어버전으로 만들기 위해서는 다음의 절차를 거친다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;app -&amp;gt; res -&amp;gt; values -&amp;gt; strings.xml 에서 오른쪽 버튼을 눌러 나온 메뉴에서 Open Translators Editor 항목을 클릭한다&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;좌측 위 지구본 모양을 클릭하여 원하는 언어를 추가한다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;회사에서는 이미 ko 버전도 영어버전과 같이 있었다.&lt;/p&gt;
+
+&lt;p&gt;다만, 레이아웃에서 preview로 볼 때 각국 버전을 어떻게 보는지에 대해 검색하기가 매우 까다로웠다.&lt;/p&gt;
+
+&lt;p&gt;직접 삽질한 결과&lt;/p&gt;
+
+&lt;p&gt;해당 액티비티의 레이아웃에 가서 상단위의 기기명, 블루프린트 등이 보이는 부분중 AppTheme에 커서를 갖다대면 랭귀지 변경하는 창이 나온다.&lt;/p&gt;
+
+&lt;p&gt;해당 탭 순서가 블루프린트, 기기, 안드로이드 버전, AppTheme, 언어변경탭 순으로 되어있어서 모니터가 작거나 하면 잘 보이지가 않는다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/language_selection.PNG&quot; alt=&quot;언어변경위치&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;붉은색으로 표시한 부분 참고!&lt;/p&gt;
 </description>
         
         <pubDate>Sat, 30 Jun 2018 21:23:23 +0000</pubDate>
@@ -27,6 +67,14 @@
         
           <description>&lt;p&gt;회사에서 전화번호 뒷자리번호로 검색할 사용자를 검색할 필요가 있어 검색하는데 SQL 문이 기억이 안났다.&lt;/p&gt;
 
+&lt;p&gt;막연히&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-{.sql}&quot;&gt;select * from member where mobile = '*4558';
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;이런식으로 치는 나를 발견.. 당연히 되지 않았다.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-{.sql}&quot;&gt;select * from member where mobile like '4558%';
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;로 해야지 조회된다.&lt;/p&gt;
 </description>
         
         <pubDate>Sat, 30 Jun 2018 21:12:00 +0000</pubDate>
@@ -42,6 +90,27 @@
         
           <description>&lt;p&gt;회사에서 깃 비공개 저장소를 이용하면서 브랜치를 만들고 PR을 만드는데 있어서, 어떤식으로 할 수 있는지 궁금했다.&lt;/p&gt;
 
+&lt;p&gt;인터넷 검색 결과는 무조건 자신의 저장소에 fork를 하라고 되어있는데, 회사 정책상 자신의 저장소에 fork 하는 것을 허용 안하는 회사도 있다.&lt;/p&gt;
+
+&lt;p&gt;삽질한 결과 알게된 것은 다음과 같다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;먼저 저장소를 로컬에 clone 한다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;로컬 branch를 만든다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;코드를 수정한다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;commit &amp;amp; push를 한다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;저장소의 기능을 이용해 원래의 branch에 PR을 요청한다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
 </description>
         
         <pubDate>Thu, 28 Jun 2018 21:16:23 +0000</pubDate>
@@ -56,6 +125,10 @@
         <title>Jekyll 드디어 검색 기능 수정하다.</title>
         
           <description>&lt;p&gt;검색기능을 붙이는데 꽤 애먹었다.&lt;/p&gt;
+
+&lt;p&gt;처음에는 lunr.js 는 내가 &lt;a href=&quot;https://moon9342.github.io/jekyll-search&quot;&gt;참고한 블로그&lt;/a&gt; 에서 말하는 것처럼 바로 &lt;a href=&quot;https://lunrjs.com/&quot;&gt;lunrjs&lt;/a&gt; 사이트에서 최신 버전 받아서 테스트해보았으나 검색이 되지 않았다.&lt;/p&gt;
+
+&lt;p&gt;결국 몇번의 삽질 끝에 &lt;a href=&quot;https://lunrjs.com/&quot;&gt;lunrjs&lt;/a&gt; 사이트에서 바로 받으면 사용하지 못하고 &lt;a href=&quot;https://github.com/olivernn/lunr.js/releases?after=v2.0.0-alpha.1&quot;&gt;0.7.2 버전&lt;/a&gt;을 받아서 검색기능되게끔 구현 완료했다.&lt;/p&gt;
 
 </description>
         
