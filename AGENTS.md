@@ -67,6 +67,15 @@ Then commit and push both repositories.
 - Avoid leaving highlighted names such as `claude-resume`, `codex-resume`, or `claude-toolkit` as plain text when the reader would reasonably expect to click them.
 - Do not link every repeated occurrence in the same paragraph; keep links useful rather than noisy.
 
+## AI Workflow Writing Rule
+
+- When an AI agent fixes a non-trivial bug, deployment issue, security alert, UI regression, build failure, or workflow problem, decide whether the process is worth documenting.
+- If the fix includes reusable reasoning, tradeoff decisions, tooling choices, or verification steps, create or update an `AI Workflow` post.
+- Good candidates: Dependabot cleanup, Jekyll build recovery, screenshot redaction, TUI library decision, portfolio navigation fixes, agent handoff rules.
+- Bad candidates: one-line typo fixes, purely cosmetic copy edits, or changes with no reusable lesson.
+- The post should explain the trigger, failed or rejected options, final decision, exact verification, and any rule added to `AGENTS.md`.
+- Prefer publishing the workflow note near the actual code change so future agents can follow the decision trail.
+
 ## Verification Checklist
 
 Check these after publishing:
