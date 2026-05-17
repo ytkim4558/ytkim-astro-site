@@ -1845,6 +1845,30 @@ body:before {
     font-size: clamp(2.7rem, 4.4vw, 5.2rem);
 }
 
+.page-template .page-nav-shell {
+    min-height: 88px;
+    background: transparent;
+}
+
+.page-template .site-main {
+    padding-top: 22px;
+}
+
+.page-template .post-full-header {
+    padding: 42px 0 22px;
+}
+
+.page-template .post-full-title {
+    font-size: clamp(4.4rem, 7vw, 8.4rem);
+    line-height: 0.92;
+    letter-spacing: -0.085em;
+}
+
+.page-template .post-full-image {
+    height: clamp(220px, 28vw, 360px);
+    margin: 28px auto 0;
+}
+
 /* Stable visible navigation override */
 .site-nav {
     position: fixed;
@@ -1970,6 +1994,27 @@ body:before {
 
     .post-full-image {
         margin-top: 0;
+    }
+
+    .page-template .page-nav-shell {
+        min-height: 124px;
+    }
+
+    .page-template .site-main {
+        padding-top: 8px;
+    }
+
+    .page-template .post-full-header {
+        padding: 28px 0 16px;
+    }
+
+    .page-template .post-full-title {
+        font-size: clamp(3.8rem, 13vw, 6.4rem);
+    }
+
+    .page-template .post-full-image {
+        height: 230px;
+        margin-top: 12px;
     }
 }
 
