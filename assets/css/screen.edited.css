@@ -1980,7 +1980,7 @@ body:before {
     overflow: visible;
     padding: 8px;
     border: 1px solid rgba(23,19,13,0.10);
-    border-radius: 999px;
+    border-radius: 28px;
     background: rgba(255,253,247,0.86);
     box-shadow: 0 16px 54px rgba(47,37,22,0.16);
     backdrop-filter: blur(18px);
@@ -1993,6 +1993,7 @@ body:before {
     overflow-x: auto;
     overflow-y: visible;
     scrollbar-width: none;
+    justify-self: start;
 }
 
 .site-nav-left::-webkit-scrollbar {
@@ -2003,10 +2004,38 @@ body:before {
     display: flex;
     height: auto;
     gap: 8px;
+    justify-self: end;
 }
 
 .nav {
     min-width: max-content;
+    gap: 8px;
+    padding-inline: 0;
+}
+
+.site-nav-logo {
+    margin-right: 8px;
+    padding: 8px 11px;
+    border: 1px solid rgba(23,19,13,0.10);
+    border-radius: 999px;
+    color: #fff !important;
+    background: var(--yt-ink);
+    font-size: 1.15rem;
+    font-weight: 950;
+    letter-spacing: 0.02em;
+}
+
+.home-template .site-nav {
+    grid-template-columns: minmax(0, auto) auto;
+    justify-content: center;
+}
+
+.home-template .site-nav-left {
+    justify-self: end;
+}
+
+.home-template .site-nav-right {
+    justify-self: start;
 }
 
 .site-header {
@@ -2057,6 +2086,7 @@ body:before {
         overflow-y: hidden;
         white-space: nowrap;
         scrollbar-width: none;
+        justify-self: stretch;
     }
 
     .site-nav-left::-webkit-scrollbar {
@@ -2068,6 +2098,7 @@ body:before {
         width: 100%;
         height: auto;
         justify-content: space-between;
+        justify-self: stretch;
     }
 
     .nav {
