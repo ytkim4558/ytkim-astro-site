@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 
@@ -110,10 +110,10 @@ into the {body} of the default.hbs template -->
     <li class="nav-home" role="menuitem"><a href="/">Home</a></li>
     <li class="nav-about" role="menuitem"><a href="/about/">About</a></li>
     <li class="nav-portfolio" role="menuitem"><a href="/portfolio/">Portfolio</a></li>
-    <li class="nav-jekyll" role="menuitem"><a href="/tag/jekyll/">jekyll</a></li>
-    <li class="nav-mysql" role="menuitem"><a href="/tag/mysql/">mysql</a></li>
-    <li class="nav-git" role="menuitem"><a href="/tag/git">git</a></li>
-    <li class="nav-git" role="menuitem"><a href="/tag/android">android</a></li>
+    <li class="nav-cloud" role="menuitem"><a href="/portfolio/#경력요약">Cloud</a></li>
+    <li class="nav-ai-workflow" role="menuitem"><a href="/portfolio/#사이드프로젝트기술서">AI Workflow</a></li>
+    <li class="nav-resume-tools" role="menuitem"><a href="https://github.com/ytkim4558/claude-toolkit">Resume Tools</a></li>
+    <li class="nav-github" role="menuitem"><a href="https://github.com/ytkim4558">GitHub</a></li>
 </ul>
 
         
@@ -160,7 +160,7 @@ into the {body} of the default.hbs template -->
   <li><a href="#경력기술서">6. 경력기술서</a></li>
   <li><a href="#사이드프로젝트기술서">7. 사이드프로젝트 기술서</a>
     <ul>
-      <li>7.1 claude-resume (Claude Code 세션 피커 TUI)</li>
+      <li>7.1 claude-resume (LLM 요약 기반 Claude Code 세션 피커 TUI)</li>
       <li>7.2 claude-toolkit (Claude Code 워크플로 스킬 모음)</li>
       <li>7.3 codex-resume (OpenAI Codex CLI 세션 검색/재개 도구)</li>
       <li>7.4 초기 안드로이드 사이드 프로젝트 (2016~2017)</li>
@@ -244,7 +244,7 @@ into the {body} of the default.hbs template -->
 
 <ul>
   <li><strong>claude-toolkit</strong> : Claude Code 커스텀 스킬·도구 모음 (2026.05~)</li>
-  <li><strong>claude-resume</strong> : Claude Code 세션 피커 TUI (2026.05)</li>
+  <li><strong>claude-resume</strong> : LLM 요약 기반 Claude Code 세션 피커 TUI (2026.05)</li>
   <li><strong>codex-resume</strong> : OpenAI Codex CLI 세션 검색/재개 도구 (2026.05)</li>
   <li>초기 안드로이드 사이드 프로젝트 (2016~2017) : HotDealppom, BikeNavi, 그룹주소록 등</li>
 </ul>
@@ -609,14 +609,15 @@ into the {body} of the default.hbs template -->
 
 <h1 id="사이드프로젝트기술서">7. 사이드프로젝트 기술서</h1>
 
-<h2 id="71-claude-resume--claude-code-세션-피커-202605">7.1 claude-resume — Claude Code 세션 피커 (2026.05)</h2>
+<h2 id="71-claude-resume--llm-요약-기반-claude-code-세션-피커-202605">7.1 claude-resume — LLM 요약 기반 Claude Code 세션 피커 (2026.05)</h2>
 <h3 id="기간--20260516--20260517-2일">기간 : 2026.05.16 ~ 2026.05.17 (2일)</h3>
-<h3 id="claude-code-anthropic-의-이전-대화-세션을-빠르게-찾아-이어갈-수-있는-두-패널-인터랙티브-tui-도구">Claude Code (Anthropic) 의 이전 대화 세션을 빠르게 찾아 이어갈 수 있는 두-패널 인터랙티브 TUI 도구</h3>
+<h3 id="claude-code-anthropic-의-과거-대화-히스토리를-llm-요약으로-빠르게-찾고-이어갈-수-있는-두-패널-인터랙티브-tui-도구">Claude Code (Anthropic) 의 과거 대화 히스토리를 LLM 요약으로 빠르게 찾고 이어갈 수 있는 두-패널 인터랙티브 TUI 도구</h3>
 
 <h3 id="주요-기능">주요 기능</h3>
 <ul>
   <li>좌측 세션 리스트, 우측 전체 대화를 동시에 보여주는 두-패널 UI</li>
-  <li>백그라운드 스레드에서 <code class="highlighter-rouge">claude -p</code> subprocess 를 호출해 LLM 요약 비동기 생성, 결과 캐시</li>
+  <li>백그라운드 스레드에서 <code class="highlighter-rouge">claude -p</code> subprocess 를 호출해 과거 세션별 핵심 내용을 LLM 으로 요약하고 결과 캐시</li>
+  <li>긴 대화 파일을 직접 열지 않아도 "어떤 작업을 했던 세션인지" 요약만 보고 바로 찾을 수 있는 검색/탐색 UX 제공</li>
   <li>정렬·표시용 timestamp 가 파일 mtime 이 아닌 JSONL 내부 메시지 timestamp 기준 → 요약 생성이 정렬 순서에 영향 주지 않음</li>
   <li>자기 호출 세션 자동 필터 (요약 프롬프트에 마커 삽입으로 재귀 방지)</li>
   <li>Windows CMD / PowerShell 양쪽 호환, UTF-8 강제로 한글 인코딩 보존</li>
@@ -1051,3 +1052,4 @@ $(function() {
 </body>
 <script id="dsq-count-scr" src="//ytkim4558-github-io.disqus.com/count.js" async></script>
 </html>
+
