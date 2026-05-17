@@ -4,6 +4,22 @@
         xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
     <url>
+        <loc>https://ytkim4558.github.io/jekyll-dependabot-cleanup.html</loc>
+        
+        <lastmod>2026-05-17T16:10:00+00:00</lastmod>
+        
+
+        
+        <changefreq>weekly</changefreq>
+        
+
+        
+        <priority>0.5</priority>
+        
+
+    </url>
+    
+    <url>
         <loc>https://ytkim4558.github.io/codex-resume-tui-decision.html</loc>
         
         <lastmod>2026-05-17T14:30:00+00:00</lastmod>

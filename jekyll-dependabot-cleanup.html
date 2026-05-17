@@ -11,7 +11,7 @@
 
 
 
-    <title>codex-resume TUI를 만들면서 외부 TUI 라이브러리를 쓰기로 바꾼 이유</title>
+    <title>오래된 Jekyll 블로그의 Dependabot 취약점 33개를 정리한 기록</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
@@ -27,24 +27,24 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="Development & Technical Training" />
     <link rel="shortcut icon" href="https://ytkim4558.github.io/assets/images/favicon.png" type="image/png" />
-    <link rel="canonical" href="https://ytkim4558.github.io/codex-resume-tui-decision" />
+    <link rel="canonical" href="https://ytkim4558.github.io/jekyll-dependabot-cleanup" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="YongTak IT Blog" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="codex-resume TUI를 만들면서 외부 TUI 라이브러리를 쓰기로 바꾼 이유" />
-    <meta property="og:description" content="claude-resume를 만들 때 가장 중요했던 기능은 단순히 과거 세션 목록을 보여주는 것이 아니었다. 핵심은 예전 대화가 무슨 작업이었는지 LLM 요약으로 바로 알아보고, 필요한 세션으로 이어가는 것이었다. Claude Code의 기본 resume 화면은 세션 ID와 시간 중심이라 대화가 많아지면 찾기가 어렵다. 그래서 claude-resume에서는 Python Textual로 두 패널 TUI를 만들고, 백그라운드에서 claude -p를" />
-    <meta property="og:url" content="https://ytkim4558.github.io/codex-resume-tui-decision" />
+    <meta property="og:title" content="오래된 Jekyll 블로그의 Dependabot 취약점 33개를 정리한 기록" />
+    <meta property="og:description" content="codex-resume 작업을 포트폴리오와 블로그에 반영하는 과정에서 GitHub push 메시지에 Dependabot 경고가 같이 떴다. 처음에는 단순한 경고처럼 보였지만, 실제로 확인해 보니 오래된 Jekyll 블로그 의존성에서 열린 취약점 알림이 여러 개 쌓여 있었다. 이 글은 그 취약점을 무작정 최신화하지 않고, 사이트가 계속 빌드되는지 검증하면서 정리한 기록이다. 문제를 발견한 위치 블로그는 두 개의" />
+    <meta property="og:url" content="https://ytkim4558.github.io/jekyll-dependabot-cleanup" />
     <meta property="og:image" content="https://ytkim4558.github.io/assets/images/blog-cover.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2026-05-17T14:30:00+00:00" />
-    <meta property="article:modified_time" content="2026-05-17T14:30:00+00:00" />
+    <meta property="article:published_time" content="2026-05-17T16:10:00+00:00" />
+    <meta property="article:modified_time" content="2026-05-17T16:10:00+00:00" />
     <meta property="article:tag" content="Ai-workflow" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="codex-resume TUI를 만들면서 외부 TUI 라이브러리를 쓰기로 바꾼 이유" />
-    <meta name="twitter:description" content="claude-resume를 만들 때 가장 중요했던 기능은 단순히 과거 세션 목록을 보여주는 것이 아니었다. 핵심은 예전 대화가 무슨 작업이었는지 LLM 요약으로 바로 알아보고, 필요한 세션으로 이어가는 것이었다. Claude Code의 기본 resume 화면은 세션 ID와 시간 중심이라 대화가 많아지면 찾기가 어렵다. 그래서 claude-resume에서는 Python Textual로 두 패널 TUI를 만들고, 백그라운드에서 claude -p를" />
+    <meta name="twitter:title" content="오래된 Jekyll 블로그의 Dependabot 취약점 33개를 정리한 기록" />
+    <meta name="twitter:description" content="codex-resume 작업을 포트폴리오와 블로그에 반영하는 과정에서 GitHub push 메시지에 Dependabot 경고가 같이 떴다. 처음에는 단순한 경고처럼 보였지만, 실제로 확인해 보니 오래된 Jekyll 블로그 의존성에서 열린 취약점 알림이 여러 개 쌓여 있었다. 이 글은 그 취약점을 무작정 최신화하지 않고, 사이트가 계속 빌드되는지 검증하면서 정리한 기록이다. 문제를 발견한 위치 블로그는 두 개의" />
     <meta name="twitter:url" content="https://ytkim4558.github.io/" />
     <meta name="twitter:image" content="https://ytkim4558.github.io/assets/images/blog-cover.jpg" />
     <meta name="twitter:label1" content="Written by" />
@@ -65,7 +65,7 @@
         "name": "YongTak IT Blog",
         "logo": "https://ytkim4558.github.io/"
     },
-    "url": "https://ytkim4558.github.io/codex-resume-tui-decision",
+    "url": "https://ytkim4558.github.io/jekyll-dependabot-cleanup",
     "image": {
         "@type": "ImageObject",
         "url": "https://ytkim4558.github.io/assets/images/blog-cover.jpg",
@@ -74,9 +74,9 @@
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "https://ytkim4558.github.io/codex-resume-tui-decision"
+        "@id": "https://ytkim4558.github.io/jekyll-dependabot-cleanup"
     },
-    "description": "claude-resume를 만들 때 가장 중요했던 기능은 단순히 과거 세션 목록을 보여주는 것이 아니었다. 핵심은 예전 대화가 무슨 작업이었는지 LLM 요약으로 바로 알아보고, 필요한 세션으로 이어가는 것이었다. Claude Code의 기본 resume 화면은 세션 ID와 시간 중심이라 대화가 많아지면 찾기가 어렵다. 그래서 claude-resume에서는 Python Textual로 두 패널 TUI를 만들고, 백그라운드에서 claude -p를"
+    "description": "codex-resume 작업을 포트폴리오와 블로그에 반영하는 과정에서 GitHub push 메시지에 Dependabot 경고가 같이 떴다. 처음에는 단순한 경고처럼 보였지만, 실제로 확인해 보니 오래된 Jekyll 블로그 의존성에서 열린 취약점 알림이 여러 개 쌓여 있었다. 이 글은 그 취약점을 무작정 최신화하지 않고, 사이트가 계속 빌드되는지 검증하면서 정리한 기록이다. 문제를 발견한 위치 블로그는 두 개의"
 }
     </script>
 
@@ -89,7 +89,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="codex-resume TUI를 만들면서 외부 TUI 라이브러리를 쓰기로 바꾼 이유" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="오래된 Jekyll 블로그의 Dependabot 취약점 33개를 정리한 기록" href="/feed.xml" />
 
 
 </head>
@@ -158,7 +158,7 @@ into the {body} of the default.hbs template -->
                         
                     
                 </section>
-                <h1 class="post-full-title">codex-resume TUI를 만들면서 외부 TUI 라이브러리를 쓰기로 바꾼 이유</h1>
+                <h1 class="post-full-title">오래된 Jekyll 블로그의 Dependabot 취약점 33개를 정리한 기록</h1>
             </header>
 
             
@@ -168,104 +168,136 @@ into the {body} of the default.hbs template -->
 
             <section class="post-full-content">
                 <div class="kg-card-markdown">
-                    <p><code class="language-plaintext highlighter-rouge">claude-resume</code>를 만들 때 가장 중요했던 기능은 단순히 과거 세션 목록을 보여주는 것이 아니었다.
-핵심은 <strong>예전 대화가 무슨 작업이었는지 LLM 요약으로 바로 알아보고, 필요한 세션으로 이어가는 것</strong>이었다.</p>
+                    <p><code class="language-plaintext highlighter-rouge">codex-resume</code> 작업을 포트폴리오와 블로그에 반영하는 과정에서 GitHub push 메시지에 Dependabot 경고가 같이 떴다.
+처음에는 단순한 경고처럼 보였지만, 실제로 확인해 보니 오래된 Jekyll 블로그 의존성에서 열린 취약점 알림이 여러 개 쌓여 있었다.</p>
 
-<p>Claude Code의 기본 resume 화면은 세션 ID와 시간 중심이라 대화가 많아지면 찾기가 어렵다.
-그래서 <code class="language-plaintext highlighter-rouge">claude-resume</code>에서는 Python Textual로 두 패널 TUI를 만들고, 백그라운드에서 <code class="language-plaintext highlighter-rouge">claude -p</code>를 호출해 각 세션을 한 줄로 요약하게 했다.
-왼쪽에는 요약된 히스토리 목록을 두고, 오른쪽에는 선택한 세션의 전체 대화 내용을 보여주는 구조였다.</p>
+<p>이 글은 그 취약점을 무작정 최신화하지 않고, 사이트가 계속 빌드되는지 검증하면서 정리한 기록이다.</p>
 
-<p><img src="/assets/images/codex-resume/claude-resume-redacted.png" alt="claude-resume의 두 패널 TUI와 LLM 요약 화면" /></p>
+<h2 id="문제를-발견한-위치">문제를 발견한 위치</h2>
 
-<p>위 화면처럼 왼쪽 목록은 단순 파일명이 아니라 “무슨 작업이었는지”를 보여주고, 오른쪽은 선택한 세션의 실제 대화 흐름을 바로 확인할 수 있게 했다.
-민감한 세션명은 공개용 이미지에서 일반화했지만, 핵심은 <strong>요약된 목록과 상세 대화가 동시에 보이는 구조</strong>다.</p>
-
-<p>이 방식이 좋았던 이유는 명확했다.</p>
+<p>블로그는 두 개의 저장소로 나뉘어 있었다.</p>
 
 <ul>
-  <li>세션 ID가 아니라 “무슨 일을 하던 대화였는지”를 기준으로 찾을 수 있다.</li>
-  <li>긴 JSONL 로그를 직접 열어보지 않아도 된다.</li>
-  <li>요약은 캐시되므로 다음 실행부터 빠르게 볼 수 있다.</li>
-  <li>UI가 두 패널로 나뉘어 있어 목록과 상세 내용을 동시에 비교할 수 있다.</li>
+  <li><code class="language-plaintext highlighter-rouge">GitHubPageMaker</code>: Jekyll 소스 저장소</li>
+  <li><code class="language-plaintext highlighter-rouge">ytkim4558.github.io</code>: 실제 GitHub Pages에 올라가는 생성 결과물 저장소</li>
 </ul>
 
-<h2 id="codex-resume의-첫-구현">codex-resume의 첫 구현</h2>
+<p>처음에는 <code class="language-plaintext highlighter-rouge">ytkim4558.github.io</code>만 보면 되는 줄 알았지만, 실제 수정해야 할 곳은 Jekyll 소스가 있는 <code class="language-plaintext highlighter-rouge">GitHubPageMaker</code>였다.
+생성된 HTML만 직접 고치면 다음 빌드 때 다시 덮어써질 수 있기 때문이다.</p>
 
-<p>OpenAI Codex CLI용으로 비슷한 도구인 <code class="language-plaintext highlighter-rouge">codex-resume</code>를 만들 때는 처음에 반대로 접근했다.
-외부 의존성을 최소화하고 Node.js 기본 모듈만으로 동작하는 MVP를 먼저 만들었다.</p>
-
-<p>처음 구현한 기능은 다음과 같았다.</p>
+<p>그래서 작업 기준을 다음처럼 정했다.</p>
 
 <ul>
-  <li><code class="language-plaintext highlighter-rouge">%USERPROFILE%\.codex\sessions</code> 아래 JSONL 로그 스캔</li>
-  <li><code class="language-plaintext highlighter-rouge">session_meta</code>, <code class="language-plaintext highlighter-rouge">user_message</code>, <code class="language-plaintext highlighter-rouge">response_item</code>, <code class="language-plaintext highlighter-rouge">event_msg</code> 파싱</li>
-  <li>첫 사용자 메시지와 마지막 assistant 메시지로 preview 생성</li>
-  <li><code class="language-plaintext highlighter-rouge">codex resume &lt;session-id&gt;</code>로 handoff</li>
-  <li>PowerShell/CMD wrapper 제공</li>
+  <li>소스 변경은 <code class="language-plaintext highlighter-rouge">GitHubPageMaker</code>에서 한다.</li>
+  <li>Jekyll로 <code class="language-plaintext highlighter-rouge">output/</code>을 생성한다.</li>
+  <li>생성 결과를 <code class="language-plaintext highlighter-rouge">ytkim4558.github.io</code>에 반영한다.</li>
+  <li>공개 URL에서 실제 반영 여부를 확인한다.</li>
 </ul>
 
-<p>이 접근은 빠르게 동작하는 장점이 있었다.
-설치가 거의 필요 없고, 실제 Codex 세션을 읽어 <code class="language-plaintext highlighter-rouge">list</code>, <code class="language-plaintext highlighter-rouge">doctor</code>, <code class="language-plaintext highlighter-rouge">index</code>, <code class="language-plaintext highlighter-rouge">resume</code> 명령을 바로 검증할 수 있었다.</p>
+<h2 id="첫-번째-원인-jekyll-tasks">첫 번째 원인: jekyll-tasks</h2>
 
-<p>하지만 실제 화면을 캡처해서 보니 문제가 분명해졌다.</p>
+<p>Dependabot 알림 중 가장 먼저 정리한 것은 npm 패키지 <code class="language-plaintext highlighter-rouge">jekyll-tasks</code>였다.
+이 패키지는 특정 버전만 취약한 것이 아니라 패키지 자체가 malware로 표시되어 있었다.</p>
 
-<h2 id="실제-화면에서-보인-문제">실제 화면에서 보인 문제</h2>
-
-<p>PowerShell에서 직접 실행한 화면은 기능적으로는 동작했지만, 도구라고 부르기엔 부족했다.</p>
-
-<p><img src="/assets/images/codex-resume/codex-resume-raw-redacted.png" alt="초기 codex-resume의 dependency-free raw TUI 화면" /></p>
-
-<p>첫 번째 문제는 <strong>표시 폭 계산</strong>이었다.
-한글, 긴 경로, 이미지 파일명, 긴 사용자 요청이 섞이자 좌우 구분선과 텍스트가 겹쳤다.
-문자열 길이와 터미널 표시 폭이 다르기 때문에 단순 <code class="language-plaintext highlighter-rouge">length</code> 기준으로는 안정적인 레이아웃을 만들기 어렵다.</p>
-
-<p>두 번째 문제는 <strong>세션 의미 파악이 어렵다</strong>는 점이었다.
-첫 사용자 메시지와 마지막 응답을 그냥 잘라 보여주면, 결국 raw 로그를 조금 예쁘게 보여주는 정도에 그친다.
-<code class="language-plaintext highlighter-rouge">claude-resume</code>에서 좋았던 것은 raw preview가 아니라 LLM이 요약한 “이 세션의 의미”였다.</p>
-
-<p>세 번째 문제는 <strong>TUI 상호작용의 완성도</strong>였다.
-스크롤, 포커스, 선택 상태, 검색 입력, 상세 패널 표시 같은 요소는 직접 만들 수는 있지만, 계속 보수해야 한다.
-처음부터 도구의 핵심이 TUI라면 검증된 TUI 라이브러리를 쓰는 편이 맞다.</p>
-
-<h2 id="결론-외부-tui-라이브러리는-필요하다">결론: 외부 TUI 라이브러리는 필요하다</h2>
-
-<p>처음에는 dependency-free 구현이 더 단순하고 배포하기 쉽다고 봤다.
-하지만 실제 화면을 보고 판단이 바뀌었다.</p>
-
-<p><code class="language-plaintext highlighter-rouge">codex-resume</code>는 단순 CLI가 아니라 <strong>과거 AI 작업 히스토리를 찾는 브라우저</strong>다.
-그렇다면 화면 품질은 부가 기능이 아니라 핵심 기능이다.</p>
-
-<p>그래서 기본 UI는 Node.js TUI 라이브러리인 <code class="language-plaintext highlighter-rouge">blessed</code> 기반으로 바꾸고, 기존 의존성 없는 picker는 fallback으로 남기는 방향으로 수정했다.</p>
-
-<p>이 결정은 <code class="language-plaintext highlighter-rouge">claude-resume</code>에서 Textual을 사용한 이유와 같다.</p>
+<p>다행히 현재 블로그 빌드에는 이 패키지가 필요하지 않았다.</p>
 
 <ul>
-  <li>목록과 상세를 안정적으로 분리하기 위해</li>
-  <li>키보드 이동, 스크롤, 포커스 상태를 직접 유지보수하지 않기 위해</li>
-  <li>세션 요약을 중심에 둔 UI를 만들기 위해</li>
-  <li>Windows Terminal / PowerShell에서 실제로 보기 좋은 도구로 만들기 위해</li>
+  <li><code class="language-plaintext highlighter-rouge">package.json</code>에는 들어 있었다.</li>
+  <li>하지만 실제 Jekyll 빌드는 npm이 아니라 <code class="language-plaintext highlighter-rouge">bundle exec jekyll build</code>로 수행했다.</li>
+  <li><code class="language-plaintext highlighter-rouge">gulpfile.js</code>에서도 <code class="language-plaintext highlighter-rouge">require('jekyll-tasks')</code>로 사용하지 않았다.</li>
 </ul>
 
-<h2 id="다음-과제">다음 과제</h2>
+<p>그래서 이 패키지는 제거했다.</p>
 
-<p><code class="language-plaintext highlighter-rouge">codex-resume</code>의 다음 단계는 <code class="language-plaintext highlighter-rouge">claude-resume</code>처럼 LLM 요약 캐시를 붙이는 것이다.</p>
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"gulp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"github:gulpjs/gulp"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
 
-<p>Codex 세션 로그는 <code class="language-plaintext highlighter-rouge">~/.codex/sessions/YYYY/MM/DD/*.jsonl</code> 형태로 저장되어 있고, 실제 대화는 <code class="language-plaintext highlighter-rouge">user_message</code>, <code class="language-plaintext highlighter-rouge">response_item</code>, <code class="language-plaintext highlighter-rouge">event_msg</code> 안에 들어 있다.
-이 내용을 요약 provider에 넘기고, 결과를 <code class="language-plaintext highlighter-rouge">%USERPROFILE%\.codex\codex-resume\session-index.json</code> 또는 별도 summary cache에 저장하면 된다.</p>
+<p>제거 후 바로 배포하지 않고, Jekyll 빌드가 그대로 성공하는지 먼저 확인했다.</p>
 
-<p>요약 provider는 처음부터 하나로 고정하지 않는 편이 좋다.</p>
+<h2 id="두-번째-원인-오래된-github-pages-런타임">두 번째 원인: 오래된 GitHub Pages 런타임</h2>
+
+<p>Ruby 쪽 알림은 대부분 오래된 <code class="language-plaintext highlighter-rouge">github-pages</code> gem에서 시작됐다.
+기존 설정은 다음과 같았다.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gem</span> <span class="s2">"jekyll"</span><span class="p">,</span> <span class="s2">"~&gt; 3.6.2"</span>
+<span class="n">gem</span> <span class="s2">"github-pages"</span><span class="p">,</span> <span class="s2">"~&gt; 168"</span>
+<span class="n">gem</span> <span class="s2">"rake"</span><span class="p">,</span> <span class="s2">"~&gt; 12.3.0"</span>
+</code></pre></div></div>
+
+<p>이 조합은 <code class="language-plaintext highlighter-rouge">nokogiri</code>, <code class="language-plaintext highlighter-rouge">addressable</code>, <code class="language-plaintext highlighter-rouge">activesupport</code>, <code class="language-plaintext highlighter-rouge">tzinfo</code>, <code class="language-plaintext highlighter-rouge">faraday</code> 같은 오래된 하위 의존성을 끌고 왔다.
+Dependabot 알림도 대부분 이 하위 의존성에서 발생했다.</p>
+
+<p>처음에는 <code class="language-plaintext highlighter-rouge">github-pages</code>만 최신 계열로 올려도 충분할 것이라고 봤다.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gem</span> <span class="s2">"github-pages"</span><span class="p">,</span> <span class="s2">"~&gt; 232"</span>
+</code></pre></div></div>
+
+<p>하지만 이 상태에서는 <code class="language-plaintext highlighter-rouge">nokogiri 1.18.10</code>이 설치되어, 최신 <code class="language-plaintext highlighter-rouge">nokogiri &lt; 1.19.3</code> 알림이 남을 수 있었다.
+그래서 GitHub Pages 제약 범위 안에서 <code class="language-plaintext highlighter-rouge">nokogiri</code>를 명시적으로 올렸다.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gem</span> <span class="s2">"github-pages"</span><span class="p">,</span> <span class="s2">"~&gt; 232"</span>
+<span class="n">gem</span> <span class="s2">"nokogiri"</span><span class="p">,</span> <span class="s2">"&gt;= 1.19.3"</span>
+</code></pre></div></div>
+
+<h2 id="왜-docker로-검증했나">왜 Docker로 검증했나</h2>
+
+<p>Windows 로컬 환경에는 Ruby, Bundler, Jekyll이 설치되어 있지 않았다.
+새로 Ruby를 설치하는 대신 Docker로 빌드 환경을 고정했다.</p>
+
+<p>초기에는 <code class="language-plaintext highlighter-rouge">jekyll/jekyll:3.8</code> 이미지를 사용했지만, 최신 <code class="language-plaintext highlighter-rouge">nokogiri 1.19.3</code>은 Ruby 3.2 이상이 필요했다.
+그래서 최종 검증은 Ruby 3.2 컨테이너에서 진행했다.</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">docker</span><span class="w"> </span><span class="nx">run</span><span class="w"> </span><span class="nt">--rm</span><span class="w"> </span><span class="se">`
+</span><span class="w">  </span><span class="nt">-v</span><span class="w"> </span><span class="nx">jekyll_bundle_232_ruby32_bundler269:/usr/local/bundle</span><span class="w"> </span><span class="se">`
+</span><span class="w">  </span><span class="nt">-v</span><span class="w"> </span><span class="s2">"C:\Users\ytkim\projects\GitHubPageMaker:/srv/jekyll"</span><span class="w"> </span><span class="se">`
+</span><span class="w">  </span><span class="nt">-w</span><span class="w"> </span><span class="nx">/srv/jekyll</span><span class="w"> </span><span class="se">`
+</span><span class="w">  </span><span class="nx">ruby:3.2</span><span class="w"> </span><span class="se">`
+</span><span class="w">  </span><span class="nx">bash</span><span class="w"> </span><span class="nt">-lc</span><span class="w"> </span><span class="s2">"gem install bundler -v 2.6.9 &amp;&amp; bundle _2.6.9_ update github-pages nokogiri &amp;&amp; bundle _2.6.9_ exec jekyll build --future"</span><span class="w">
+</span></code></pre></div></div>
+
+<p>여기서 <code class="language-plaintext highlighter-rouge">--future</code>를 붙인 이유는 같은 날 작성한 글이 컨테이너 시간대 기준으로 future post로 판단되어 빌드에서 빠질 수 있었기 때문이다.</p>
+
+<h2 id="확인한-것">확인한 것</h2>
+
+<p>업데이트 후에는 다음을 확인했다.</p>
 
 <ul>
-  <li>OpenAI API를 쓰는 방식</li>
-  <li>Codex CLI가 제공하는 비대화형 호출을 쓰는 방식</li>
-  <li>사용자가 이미 가진 다른 LLM CLI를 쓰는 방식</li>
-  <li>요약 없이 heuristic summary만 쓰는 fallback</li>
+  <li>Jekyll 빌드 성공</li>
+  <li>포트폴리오 페이지 정상 생성</li>
+  <li><code class="language-plaintext highlighter-rouge">codex-resume</code> 글 정상 생성</li>
+  <li><code class="language-plaintext highlighter-rouge">AI Workflow</code> 태그 페이지 정상 생성</li>
+  <li>기존 상단 메뉴가 새 메뉴로 유지됨</li>
+  <li>GitHub Dependabot API 기준 open alert 0개</li>
+  <li>공개 URL 응답 200 OK</li>
 </ul>
 
-<p>중요한 것은 요약 자체보다도, 사용자가 “그때 무슨 작업을 하던 세션이지?”를 바로 알 수 있게 만드는 것이다.
-<code class="language-plaintext highlighter-rouge">claude-resume</code>에서 얻은 교훈은 결국 이거였다.</p>
+<p>최종적으로 확인한 핵심 URL은 다음과 같다.</p>
 
-<p>세션 복구 도구의 본질은 ID를 보여주는 것이 아니라, <strong>작업 기억을 다시 찾게 해주는 것</strong>이다.</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">https://ytkim4558.github.io/portfolio/</code></li>
+  <li><code class="language-plaintext highlighter-rouge">https://ytkim4558.github.io/codex-resume-tui-decision</code></li>
+  <li><code class="language-plaintext highlighter-rouge">https://ytkim4558.github.io/tag/ai-workflow/</code></li>
+</ul>
+
+<h2 id="정리">정리</h2>
+
+<p>이번 작업의 핵심은 단순히 <code class="language-plaintext highlighter-rouge">bundle update</code>를 실행한 것이 아니었다.
+오래된 블로그는 의존성만 올리면 깨질 수 있기 때문에, 다음 순서가 중요했다.</p>
+
+<ol>
+  <li>실제로 쓰지 않는 malware 패키지부터 제거</li>
+  <li>Jekyll 소스 저장소와 생성 결과물 저장소를 분리해서 확인</li>
+  <li>Docker로 빌드 환경 고정</li>
+  <li>GitHub Pages 런타임 업데이트</li>
+  <li>취약 하위 의존성인 <code class="language-plaintext highlighter-rouge">nokogiri</code>를 패치 버전으로 고정</li>
+  <li>생성 결과를 공개 페이지에서 검증</li>
+</ol>
+
+<p>결과적으로 오래된 Jekyll 블로그를 유지하면서도, GitHub Dependabot 경고를 0개로 줄일 수 있었다.</p>
+
+<p>이런 작업은 눈에 띄는 기능 개발은 아니지만, 운영 중인 개인 사이트를 계속 신뢰 가능한 상태로 유지하는 데 필요한 기본 작업이다.</p>
 
                 </div>
             </section>
@@ -404,14 +436,14 @@ into the {body} of the default.hbs template -->
                                 
                                   
                                     
-                                        
-                                        
-                                            <li><a href="/jekyll-dependabot-cleanup">오래된 Jekyll 블로그의 Dependabot 취약점 33개를 정리한 기록</a></li>
-                                        
-                                    
                                   
                                 
                                   
+                                    
+                                        
+                                        
+                                            <li><a href="/codex-resume-tui-decision">codex-resume TUI를 만들면서 외부 TUI 라이브러리를 쓰기로 바꾼 이유</a></li>
+                                        
                                     
                                   
                                 
@@ -438,15 +470,18 @@ into the {body} of the default.hbs template -->
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
             
+
+            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
+            
                 
     <article class="post-card post-template">
         
-            <a class="post-card-image-link" href="/jekyll-dependabot-cleanup">
+            <a class="post-card-image-link" href="/codex-resume-tui-decision">
                 <div class="post-card-image" style="background-image: url(/assets/images/blog-cover.jpg)"></div>
             </a>
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/jekyll-dependabot-cleanup">
+            <a class="post-card-content-link" href="/codex-resume-tui-decision">
                 <header class="post-card-header">
                     
                         
@@ -456,53 +491,10 @@ into the {body} of the default.hbs template -->
                         
                     
 
-                    <h2 class="post-card-title">오래된 Jekyll 블로그의 Dependabot 취약점 33개를 정리한 기록</h2>
+                    <h2 class="post-card-title">codex-resume TUI를 만들면서 외부 TUI 라이브러리를 쓰기로 바꾼 이유</h2>
                 </header>
                 <section class="post-card-excerpt">
-                    <p>`codex-resume` 작업을 포트폴리오와 블로그에 반영하는 과정에서 GitHub push 메시지에 Dependabot 경고가 같이 떴다. 처음에는 단순한 경고처럼 보였지만, 실제로 확인해 보니 오래된 Jekyll 블로그 의존성에서 열린 취약점 알림이 여러 개 쌓여 있었다. 이 글은</p>
-                </section>
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                        
-                        <img class="author-profile-image" src="/assets/images/ytkim4558.png" alt="김용탁" />
-                        
-                        <span class="post-card-author">
-                            <a href="/author/ytkim4558/">김용탁</a>
-                        </span>
-                    
-                
-            </footer>
-        </div>
-    </article>
-
-            
-
-            <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
-            
-                
-    <article class="post-card post-template">
-        
-            <a class="post-card-image-link" href="/android">
-                <div class="post-card-image" style="background-image: url(/assets/images/android.png)"></div>
-            </a>
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/android">
-                <header class="post-card-header">
-                    
-                        
-                            
-                                <span class="post-card-tags">Android</span>
-                            
-                        
-                    
-
-                    <h2 class="post-card-title">안드로이드 스튜디오 레이아웃 preview에서 각국언어 버전 보기</h2>
-                </header>
-                <section class="post-card-excerpt">
-                    <p>회사에서 개발하는 앱이 영어, 한국어 버전을 동시에 지원한다. 먼저 다국어버전을 만들려는 사람을 위해 설명하자면, strings.xml을 다국어버전으로 만들기 위해서는 다음의 절차를 거친다. app -&gt; res -&gt; values -&gt; strings.xml 에서 오른쪽 버튼을 눌러 나온</p>
+                    <p>claude-resume를 만들 때 가장 중요했던 기능은 단순히 과거 세션 목록을 보여주는 것이 아니었다. 핵심은 예전 대화가 무슨 작업이었는지 LLM 요약으로 바로 알아보고, 필요한 세션으로 이어가는 것이었다. Claude Code의 기본 resume 화면은 세션 ID와</p>
                 </section>
             </a>
             <footer class="post-card-meta">
@@ -535,18 +527,18 @@ into the {body} of the default.hbs template -->
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">codex-resume TUI를 만들면서 외부 TUI 라이브러리를 쓰기로 바꾼 이유</div>
+    <div class="floating-header-title">오래된 Jekyll 블로그의 Dependabot 취약점 33개를 정리한 기록</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=codex-resume+TUI%EB%A5%BC+%EB%A7%8C%EB%93%A4%EB%A9%B4%EC%84%9C+%EC%99%B8%EB%B6%80+TUI+%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC%EB%A5%BC+%EC%93%B0%EA%B8%B0%EB%A1%9C+%EB%B0%94%EA%BE%BC+%EC%9D%B4%EC%9C%A0&amp;url=https://ytkim4558.github.io/codex-resume-tui-decision"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%EC%98%A4%EB%9E%98%EB%90%9C+Jekyll+%EB%B8%94%EB%A1%9C%EA%B7%B8%EC%9D%98+Dependabot+%EC%B7%A8%EC%95%BD%EC%A0%90+33%EA%B0%9C%EB%A5%BC+%EC%A0%95%EB%A6%AC%ED%95%9C+%EA%B8%B0%EB%A1%9D&amp;url=https://ytkim4558.github.io/jekyll-dependabot-cleanup"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://ytkim4558.github.io/codex-resume-tui-decision"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://ytkim4558.github.io/jekyll-dependabot-cleanup"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
 

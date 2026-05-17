@@ -1,9 +1,143 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://ytkim4558.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ytkim4558.github.io/" rel="alternate" type="text/html" /><updated>2026-05-17T05:47:38+00:00</updated><id>https://ytkim4558.github.io/feed.xml</id><title type="html">YongTak IT Blog</title><subtitle>Development &amp; Technical Training</subtitle><entry><title type="html">codex-resume TUI를 만들면서 외부 TUI 라이브러리를 쓰기로 바꾼 이유</title><link href="https://ytkim4558.github.io/codex-resume-tui-decision" rel="alternate" type="text/html" title="codex-resume TUI를 만들면서 외부 TUI 라이브러리를 쓰기로 바꾼 이유" /><published>2026-05-17T14:30:00+00:00</published><updated>2026-05-17T14:30:00+00:00</updated><id>https://ytkim4558.github.io/codex-resume-tui-decision</id><content type="html" xml:base="https://ytkim4558.github.io/codex-resume-tui-decision"><![CDATA[<p><code class="language-plaintext highlighter-rouge">claude-resume</code>를 만들 때 가장 중요했던 기능은 단순히 과거 세션 목록을 보여주는 것이 아니었다.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://ytkim4558.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://ytkim4558.github.io/" rel="alternate" type="text/html" /><updated>2026-05-17T05:58:34+00:00</updated><id>https://ytkim4558.github.io/feed.xml</id><title type="html">YongTak IT Blog</title><subtitle>Development &amp; Technical Training</subtitle><entry><title type="html">오래된 Jekyll 블로그의 Dependabot 취약점 33개를 정리한 기록</title><link href="https://ytkim4558.github.io/jekyll-dependabot-cleanup" rel="alternate" type="text/html" title="오래된 Jekyll 블로그의 Dependabot 취약점 33개를 정리한 기록" /><published>2026-05-17T16:10:00+00:00</published><updated>2026-05-17T16:10:00+00:00</updated><id>https://ytkim4558.github.io/jekyll-dependabot-cleanup</id><content type="html" xml:base="https://ytkim4558.github.io/jekyll-dependabot-cleanup"><![CDATA[<p><code class="language-plaintext highlighter-rouge">codex-resume</code> 작업을 포트폴리오와 블로그에 반영하는 과정에서 GitHub push 메시지에 Dependabot 경고가 같이 떴다.
+처음에는 단순한 경고처럼 보였지만, 실제로 확인해 보니 오래된 Jekyll 블로그 의존성에서 열린 취약점 알림이 여러 개 쌓여 있었다.</p>
+
+<p>이 글은 그 취약점을 무작정 최신화하지 않고, 사이트가 계속 빌드되는지 검증하면서 정리한 기록이다.</p>
+
+<h2 id="문제를-발견한-위치">문제를 발견한 위치</h2>
+
+<p>블로그는 두 개의 저장소로 나뉘어 있었다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">GitHubPageMaker</code>: Jekyll 소스 저장소</li>
+  <li><code class="language-plaintext highlighter-rouge">ytkim4558.github.io</code>: 실제 GitHub Pages에 올라가는 생성 결과물 저장소</li>
+</ul>
+
+<p>처음에는 <code class="language-plaintext highlighter-rouge">ytkim4558.github.io</code>만 보면 되는 줄 알았지만, 실제 수정해야 할 곳은 Jekyll 소스가 있는 <code class="language-plaintext highlighter-rouge">GitHubPageMaker</code>였다.
+생성된 HTML만 직접 고치면 다음 빌드 때 다시 덮어써질 수 있기 때문이다.</p>
+
+<p>그래서 작업 기준을 다음처럼 정했다.</p>
+
+<ul>
+  <li>소스 변경은 <code class="language-plaintext highlighter-rouge">GitHubPageMaker</code>에서 한다.</li>
+  <li>Jekyll로 <code class="language-plaintext highlighter-rouge">output/</code>을 생성한다.</li>
+  <li>생성 결과를 <code class="language-plaintext highlighter-rouge">ytkim4558.github.io</code>에 반영한다.</li>
+  <li>공개 URL에서 실제 반영 여부를 확인한다.</li>
+</ul>
+
+<h2 id="첫-번째-원인-jekyll-tasks">첫 번째 원인: jekyll-tasks</h2>
+
+<p>Dependabot 알림 중 가장 먼저 정리한 것은 npm 패키지 <code class="language-plaintext highlighter-rouge">jekyll-tasks</code>였다.
+이 패키지는 특정 버전만 취약한 것이 아니라 패키지 자체가 malware로 표시되어 있었다.</p>
+
+<p>다행히 현재 블로그 빌드에는 이 패키지가 필요하지 않았다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">package.json</code>에는 들어 있었다.</li>
+  <li>하지만 실제 Jekyll 빌드는 npm이 아니라 <code class="language-plaintext highlighter-rouge">bundle exec jekyll build</code>로 수행했다.</li>
+  <li><code class="language-plaintext highlighter-rouge">gulpfile.js</code>에서도 <code class="language-plaintext highlighter-rouge">require('jekyll-tasks')</code>로 사용하지 않았다.</li>
+</ul>
+
+<p>그래서 이 패키지는 제거했다.</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"gulp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"github:gulpjs/gulp"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>제거 후 바로 배포하지 않고, Jekyll 빌드가 그대로 성공하는지 먼저 확인했다.</p>
+
+<h2 id="두-번째-원인-오래된-github-pages-런타임">두 번째 원인: 오래된 GitHub Pages 런타임</h2>
+
+<p>Ruby 쪽 알림은 대부분 오래된 <code class="language-plaintext highlighter-rouge">github-pages</code> gem에서 시작됐다.
+기존 설정은 다음과 같았다.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gem</span> <span class="s2">"jekyll"</span><span class="p">,</span> <span class="s2">"~&gt; 3.6.2"</span>
+<span class="n">gem</span> <span class="s2">"github-pages"</span><span class="p">,</span> <span class="s2">"~&gt; 168"</span>
+<span class="n">gem</span> <span class="s2">"rake"</span><span class="p">,</span> <span class="s2">"~&gt; 12.3.0"</span>
+</code></pre></div></div>
+
+<p>이 조합은 <code class="language-plaintext highlighter-rouge">nokogiri</code>, <code class="language-plaintext highlighter-rouge">addressable</code>, <code class="language-plaintext highlighter-rouge">activesupport</code>, <code class="language-plaintext highlighter-rouge">tzinfo</code>, <code class="language-plaintext highlighter-rouge">faraday</code> 같은 오래된 하위 의존성을 끌고 왔다.
+Dependabot 알림도 대부분 이 하위 의존성에서 발생했다.</p>
+
+<p>처음에는 <code class="language-plaintext highlighter-rouge">github-pages</code>만 최신 계열로 올려도 충분할 것이라고 봤다.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gem</span> <span class="s2">"github-pages"</span><span class="p">,</span> <span class="s2">"~&gt; 232"</span>
+</code></pre></div></div>
+
+<p>하지만 이 상태에서는 <code class="language-plaintext highlighter-rouge">nokogiri 1.18.10</code>이 설치되어, 최신 <code class="language-plaintext highlighter-rouge">nokogiri &lt; 1.19.3</code> 알림이 남을 수 있었다.
+그래서 GitHub Pages 제약 범위 안에서 <code class="language-plaintext highlighter-rouge">nokogiri</code>를 명시적으로 올렸다.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">gem</span> <span class="s2">"github-pages"</span><span class="p">,</span> <span class="s2">"~&gt; 232"</span>
+<span class="n">gem</span> <span class="s2">"nokogiri"</span><span class="p">,</span> <span class="s2">"&gt;= 1.19.3"</span>
+</code></pre></div></div>
+
+<h2 id="왜-docker로-검증했나">왜 Docker로 검증했나</h2>
+
+<p>Windows 로컬 환경에는 Ruby, Bundler, Jekyll이 설치되어 있지 않았다.
+새로 Ruby를 설치하는 대신 Docker로 빌드 환경을 고정했다.</p>
+
+<p>초기에는 <code class="language-plaintext highlighter-rouge">jekyll/jekyll:3.8</code> 이미지를 사용했지만, 최신 <code class="language-plaintext highlighter-rouge">nokogiri 1.19.3</code>은 Ruby 3.2 이상이 필요했다.
+그래서 최종 검증은 Ruby 3.2 컨테이너에서 진행했다.</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">docker</span><span class="w"> </span><span class="nx">run</span><span class="w"> </span><span class="nt">--rm</span><span class="w"> </span><span class="se">`
+</span><span class="w">  </span><span class="nt">-v</span><span class="w"> </span><span class="nx">jekyll_bundle_232_ruby32_bundler269:/usr/local/bundle</span><span class="w"> </span><span class="se">`
+</span><span class="w">  </span><span class="nt">-v</span><span class="w"> </span><span class="s2">"C:\Users\ytkim\projects\GitHubPageMaker:/srv/jekyll"</span><span class="w"> </span><span class="se">`
+</span><span class="w">  </span><span class="nt">-w</span><span class="w"> </span><span class="nx">/srv/jekyll</span><span class="w"> </span><span class="se">`
+</span><span class="w">  </span><span class="nx">ruby:3.2</span><span class="w"> </span><span class="se">`
+</span><span class="w">  </span><span class="nx">bash</span><span class="w"> </span><span class="nt">-lc</span><span class="w"> </span><span class="s2">"gem install bundler -v 2.6.9 &amp;&amp; bundle _2.6.9_ update github-pages nokogiri &amp;&amp; bundle _2.6.9_ exec jekyll build --future"</span><span class="w">
+</span></code></pre></div></div>
+
+<p>여기서 <code class="language-plaintext highlighter-rouge">--future</code>를 붙인 이유는 같은 날 작성한 글이 컨테이너 시간대 기준으로 future post로 판단되어 빌드에서 빠질 수 있었기 때문이다.</p>
+
+<h2 id="확인한-것">확인한 것</h2>
+
+<p>업데이트 후에는 다음을 확인했다.</p>
+
+<ul>
+  <li>Jekyll 빌드 성공</li>
+  <li>포트폴리오 페이지 정상 생성</li>
+  <li><code class="language-plaintext highlighter-rouge">codex-resume</code> 글 정상 생성</li>
+  <li><code class="language-plaintext highlighter-rouge">AI Workflow</code> 태그 페이지 정상 생성</li>
+  <li>기존 상단 메뉴가 새 메뉴로 유지됨</li>
+  <li>GitHub Dependabot API 기준 open alert 0개</li>
+  <li>공개 URL 응답 200 OK</li>
+</ul>
+
+<p>최종적으로 확인한 핵심 URL은 다음과 같다.</p>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">https://ytkim4558.github.io/portfolio/</code></li>
+  <li><code class="language-plaintext highlighter-rouge">https://ytkim4558.github.io/codex-resume-tui-decision</code></li>
+  <li><code class="language-plaintext highlighter-rouge">https://ytkim4558.github.io/tag/ai-workflow/</code></li>
+</ul>
+
+<h2 id="정리">정리</h2>
+
+<p>이번 작업의 핵심은 단순히 <code class="language-plaintext highlighter-rouge">bundle update</code>를 실행한 것이 아니었다.
+오래된 블로그는 의존성만 올리면 깨질 수 있기 때문에, 다음 순서가 중요했다.</p>
+
+<ol>
+  <li>실제로 쓰지 않는 malware 패키지부터 제거</li>
+  <li>Jekyll 소스 저장소와 생성 결과물 저장소를 분리해서 확인</li>
+  <li>Docker로 빌드 환경 고정</li>
+  <li>GitHub Pages 런타임 업데이트</li>
+  <li>취약 하위 의존성인 <code class="language-plaintext highlighter-rouge">nokogiri</code>를 패치 버전으로 고정</li>
+  <li>생성 결과를 공개 페이지에서 검증</li>
+</ol>
+
+<p>결과적으로 오래된 Jekyll 블로그를 유지하면서도, GitHub Dependabot 경고를 0개로 줄일 수 있었다.</p>
+
+<p>이런 작업은 눈에 띄는 기능 개발은 아니지만, 운영 중인 개인 사이트를 계속 신뢰 가능한 상태로 유지하는 데 필요한 기본 작업이다.</p>]]></content><author><name>김용탁</name></author><category term="ai-workflow" /><summary type="html"><![CDATA[codex-resume 작업을 포트폴리오와 블로그에 반영하는 과정에서 GitHub push 메시지에 Dependabot 경고가 같이 떴다. 처음에는 단순한 경고처럼 보였지만, 실제로 확인해 보니 오래된 Jekyll 블로그 의존성에서 열린 취약점 알림이 여러 개 쌓여 있었다.]]></summary></entry><entry><title type="html">codex-resume TUI를 만들면서 외부 TUI 라이브러리를 쓰기로 바꾼 이유</title><link href="https://ytkim4558.github.io/codex-resume-tui-decision" rel="alternate" type="text/html" title="codex-resume TUI를 만들면서 외부 TUI 라이브러리를 쓰기로 바꾼 이유" /><published>2026-05-17T14:30:00+00:00</published><updated>2026-05-17T14:30:00+00:00</updated><id>https://ytkim4558.github.io/codex-resume-tui-decision</id><content type="html" xml:base="https://ytkim4558.github.io/codex-resume-tui-decision"><![CDATA[<p><code class="language-plaintext highlighter-rouge">claude-resume</code>를 만들 때 가장 중요했던 기능은 단순히 과거 세션 목록을 보여주는 것이 아니었다.
 핵심은 <strong>예전 대화가 무슨 작업이었는지 LLM 요약으로 바로 알아보고, 필요한 세션으로 이어가는 것</strong>이었다.</p>
 
 <p>Claude Code의 기본 resume 화면은 세션 ID와 시간 중심이라 대화가 많아지면 찾기가 어렵다.
 그래서 <code class="language-plaintext highlighter-rouge">claude-resume</code>에서는 Python Textual로 두 패널 TUI를 만들고, 백그라운드에서 <code class="language-plaintext highlighter-rouge">claude -p</code>를 호출해 각 세션을 한 줄로 요약하게 했다.
 왼쪽에는 요약된 히스토리 목록을 두고, 오른쪽에는 선택한 세션의 전체 대화 내용을 보여주는 구조였다.</p>
+
+<p><img src="/assets/images/codex-resume/claude-resume-redacted.png" alt="claude-resume의 두 패널 TUI와 LLM 요약 화면" /></p>
+
+<p>위 화면처럼 왼쪽 목록은 단순 파일명이 아니라 “무슨 작업이었는지”를 보여주고, 오른쪽은 선택한 세션의 실제 대화 흐름을 바로 확인할 수 있게 했다.
+민감한 세션명은 공개용 이미지에서 일반화했지만, 핵심은 <strong>요약된 목록과 상세 대화가 동시에 보이는 구조</strong>다.</p>
 
 <p>이 방식이 좋았던 이유는 명확했다.</p>
 
@@ -37,6 +171,8 @@
 <h2 id="실제-화면에서-보인-문제">실제 화면에서 보인 문제</h2>
 
 <p>PowerShell에서 직접 실행한 화면은 기능적으로는 동작했지만, 도구라고 부르기엔 부족했다.</p>
+
+<p><img src="/assets/images/codex-resume/codex-resume-raw-redacted.png" alt="초기 codex-resume의 dependency-free raw TUI 화면" /></p>
 
 <p>첫 번째 문제는 <strong>표시 폭 계산</strong>이었다.
 한글, 긴 경로, 이미지 파일명, 긴 사용자 요청이 섞이자 좌우 구분선과 텍스트가 겹쳤다.
