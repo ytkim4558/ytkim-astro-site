@@ -89,6 +89,7 @@ Then commit and push both repositories.
 - Keep the root page `/` shareable as the easiest URL to remember. The first screen should summarize the profile before showing blog/navigation content.
 - Preserve the user's language choice across navigation with `localStorage` when matching English/Korean pages exist. Do not redirect content that has no translated counterpart.
 - Do not expose LLM API keys in GitHub Pages. Any "ask about me" feature on the static site must use local public-profile facts or require a separate backend before calling a real LLM.
+- If `profile_assistant_api` is configured, it must point to a backend such as `profile-ai-worker`; keep the OpenAI key as a backend secret and preserve the static fallback for local/offline site builds.
 - Avoid making the portfolio feel like a numbered resume by default. Lead with curated selected work; put long career history behind a detailed resume/archive interaction.
 
 ## AI Workflow Writing Rule

@@ -738,6 +738,7 @@ into the {body} of the default.hbs template -->
         var input = assistant.querySelector('#profile-question');
         var answer = assistant.querySelector('.profile-assistant-answer');
         var submit = assistant.querySelector('.profile-assistant-submit');
+        var profileAssistantApi = ''.trim().replace(/\/$/, '');
         var facts = {
           openSearch: '김용탁은 AWS Cloud Support Engineer이자 OpenSearch SME입니다. 고객의 OpenSearch 이슈, 분석 워크로드, 운영 문제, 에스컬레이션 흐름을 다루며 troubleshooting과 기술 커뮤니케이션을 중심으로 일합니다.',
           aiWorkflow: 'AI workflow 쪽에서는 MCP로 Slack, Outlook, wiki, ticket search, local tools를 연결하고, support-agent persona, 공식 URL 검증, 유사 문서/티켓 검색, 답변 검증, 이슈 재현, case aging triage, Slack bot follow-up 흐름을 설계했습니다.',
@@ -754,15 +755,41 @@ into the {body} of the default.hbs template -->
           return facts.profile;
         }
 
+        async function askProfile(question) {
+          var fallback = respond(question);
+          if (!profileAssistantApi) {
+            answer.textContent = fallback;
+            return;
+          }
+
+          answer.textContent = '공개 프로필 문맥을 기준으로 답변을 생성하는 중입니다...';
+          submit.disabled = true;
+
+          try {
+            var response = await fetch(profileAssistantApi + '/ask-profile', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ question: question })
+            });
+            var data = await response.json();
+            if (!response.ok || !data.answer) throw new Error(data.error || 'profile_assistant_error');
+            answer.textContent = data.answer;
+          } catch (error) {
+            answer.textContent = fallback + '\n\n현재 실시간 AI 답변 서버에 연결할 수 없어 정적 프로필 답변으로 표시했습니다.';
+          } finally {
+            submit.disabled = false;
+          }
+        }
+
         assistant.querySelectorAll('[data-profile-question]').forEach(function(button) {
           button.addEventListener('click', function() {
             input.value = button.getAttribute('data-profile-question') || '';
-            answer.textContent = respond(input.value);
+            askProfile(input.value);
           });
         });
 
         submit.addEventListener('click', function() {
-          answer.textContent = respond(input.value);
+          askProfile(input.value);
         });
       })();
     </script>
