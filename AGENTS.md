@@ -91,6 +91,7 @@ Then commit and push both repositories.
 - Preserve the user's language choice across navigation with `localStorage` when matching English/Korean pages exist. Do not redirect content that has no translated counterpart.
 - Do not expose LLM API keys in GitHub Pages. Any "ask about me" feature on the static site must use local public-profile facts or require a separate backend before calling a real LLM.
 - If `profile_assistant_api` is configured, it must point to a backend such as `profile-ai-worker`; keep the OpenAI key as a backend secret and preserve the static fallback for local/offline site builds.
+- Use a Korean-first webfont stack for public pages. Pretendard is the current default because it reads well for Korean UI/body text and pairs cleanly with English technical terms. Embed it as a webfont, not as a local OS-only dependency.
 - Avoid making the portfolio feel like a numbered resume by default. Lead with curated selected work; put long career history behind a detailed resume/archive interaction.
 
 ## AI Workflow Writing Rule

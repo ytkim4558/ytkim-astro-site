@@ -8,6 +8,46 @@ production stylesheet in assets/built/screen.css
 
 */
 
+:root {
+    --site-font-sans: "Pretendard", "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+html,
+body,
+button,
+input,
+textarea,
+select {
+    font-family: var(--site-font-sans);
+    font-feature-settings: "ss05";
+    word-break: keep-all;
+}
+
+body,
+.site-title,
+.site-description,
+.post-full-title,
+.post-card-title,
+.post-full-content,
+.post-full-content p,
+.post-full-content li,
+.post-full-content blockquote,
+.nav,
+.site-nav,
+.profile-assistant,
+.portfolio-page,
+.profile-page,
+.tags-page {
+    font-family: var(--site-font-sans);
+}
+
+code,
+pre,
+kbd,
+samp {
+    font-family: "Cascadia Code", "D2Coding", Consolas, monospace;
+}
+
 /* 12. Pagination - Tools to let you flick between pages
 /* ---------------------------------------------------------- */
 
@@ -17,7 +57,7 @@ production stylesheet in assets/built/screen.css
     width: 80%;
     max-width: 800px;
     margin: 4rem auto;
-    font-family: "Open Sans", sans-serif;
+    font-family: var(--site-font-sans);
     font-size: 1.3rem;
     color: #9EABB3;
     text-align: center;
