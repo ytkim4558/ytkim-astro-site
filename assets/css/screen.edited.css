@@ -725,6 +725,53 @@ td.code {
     letter-spacing: -0.04em;
 }
 
+.portfolio-page .company-heading {
+    display: grid;
+    grid-template-columns: 112px minmax(0, 1fr);
+    gap: 18px;
+    align-items: center;
+    margin: 34px 0 14px;
+    padding: 16px;
+    border: 1px solid rgba(15,23,42,0.10);
+    border-radius: 24px;
+    background: rgba(255,255,255,0.72);
+    box-shadow: 0 16px 42px rgba(15,23,42,0.07);
+}
+
+.portfolio-page .company-heading img {
+    display: block;
+    width: 112px;
+    height: 56px;
+    object-fit: contain;
+    border-radius: 16px;
+}
+
+.portfolio-page .company-heading h2 {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: clamp(2.15rem, 2.35vw, 3rem);
+    line-height: 1.05;
+}
+
+.portfolio-page .company-heading small {
+    display: block;
+    margin-top: 6px;
+    color: rgba(23,19,13,0.58);
+    font-size: 1.32rem;
+    font-weight: 750;
+    letter-spacing: -0.02em;
+}
+
+.english-page .portfolio-toc a[href="#profile"],
+.english-page .portfolio-floating-nav a[href="#profile"] {
+    display: none;
+}
+
+.english-page .language-option {
+    min-width: 38px;
+}
+
 .portfolio-page .post-full-content h3,
 .portfolio-page .post-full-content h4 {
     color: #1f2937;
@@ -1650,6 +1697,23 @@ td.code {
 
     .profile-page .post-full-content {
         padding-top: 8px;
+    }
+
+    .portfolio-page .company-heading {
+        grid-template-columns: 82px minmax(0, 1fr);
+        gap: 12px;
+        padding: 12px;
+        border-radius: 18px;
+    }
+
+    .portfolio-page .company-heading img {
+        width: 82px;
+        height: 48px;
+        border-radius: 12px;
+    }
+
+    .portfolio-page .company-heading small {
+        font-size: 1.12rem;
     }
 }
 

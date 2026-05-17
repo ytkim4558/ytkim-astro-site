@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 120" role="img" aria-label="DioTek">
+  <rect width="240" height="120" rx="28" fill="#eef2ff"/>
+  <rect x="38" y="30" width="70" height="60" rx="18" fill="#4338ca"/>
+  <path d="M60 73c16-25 35-26 55 0" fill="none" stroke="#a5b4fc" stroke-width="8" stroke-linecap="round"/>
+  <text x="124" y="60" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#111827">DioTek</text>
+  <text x="124" y="82" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="800" fill="#4b5563">OCR · Vision</text>
+</svg>

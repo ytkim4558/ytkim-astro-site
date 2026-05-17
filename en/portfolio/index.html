@@ -16,7 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
     <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
-    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css?v=20260517145108" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css?v=20260517150600" />
     <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
     <!-- highlight.js -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
@@ -102,10 +102,10 @@ into the {body} of the default.hbs template -->
     <div class="site-nav-left">
         
             <ul class="nav" role="menu">
-    <li class="nav-home" role="menuitem"><a href="/">Notes</a></li>
-    <li class="nav-profile" role="menuitem"><a href="/profile/">Profile</a></li>
-    <li class="nav-portfolio" role="menuitem"><a href="/portfolio/">Portfolio</a></li>
-    <li class="nav-ai-workflow" role="menuitem"><a href="/tag/ai-workflow/">AI Workflow</a></li>
+    <li class="nav-home" role="menuitem"><a href="/en/">Notes</a></li>
+    <li class="nav-profile" role="menuitem"><a href="/en/about/">Profile</a></li>
+    <li class="nav-portfolio" role="menuitem"><a href="/en/portfolio/">Portfolio</a></li>
+    <li class="nav-ai-workflow" role="menuitem"><a href="/tag/ai-workflow/">Workflow</a></li>
     <li class="nav-tags" role="menuitem"><a href="/tags/">Tags</a></li>
 </ul>
 
@@ -116,7 +116,7 @@ into the {body} of the default.hbs template -->
         
         
         <div class="language-switcher" aria-label="Language selector">
-            <a class="language-option " href="/portfolio/" data-language-switch data-target-lang="ko">한국어</a>
+            <a class="language-option " href="/portfolio/" data-language-switch data-target-lang="ko">KO</a>
             <a class="language-option is-active" href="/en/portfolio/" data-language-switch data-target-lang="en">EN</a>
         </div>
         <div class="social-links">
@@ -158,8 +158,9 @@ into the {body} of the default.hbs template -->
   <p class="portfolio-eyebrow">OpenSearch · Support Automation · AI Workflow</p>
   <h2>A support engineer who turns repeated troubleshooting patterns into reliable tools.</h2>
   <p>
-    AWS Cloud Support Engineer and OpenSearch SME with a background in mobile apps,
-    backend systems, data platforms, and AI-assisted support engineering workflows.
+    AWS Cloud Support Engineer and OpenSearch SME with experience across customer troubleshooting,
+    analytics workloads, enterprise data platforms, mobile apps, backend systems, and AI-assisted
+    support engineering workflows.
   </p>
   <div class="portfolio-actions">
     <a href="https://github.com/ytkim4558/">GitHub</a>
@@ -177,7 +178,7 @@ into the {body} of the default.hbs template -->
 <nav class="portfolio-toc">
   <a href="#profile">Profile</a>
   <a href="#experience">Experience</a>
-  <a href="#automation">Support Automation</a>
+  <a href="#automation">Automation</a>
   <a href="#tools">AI Tools</a>
   <a href="#background">Background</a>
 </nav>
@@ -203,66 +204,108 @@ into the {body} of the default.hbs template -->
 
 <h1 id="experience">Experience</h1>
 
-<h2 id="amazon-web-services">Amazon Web Services</h2>
+<div class="company-heading">
+  <img src="/assets/images/company/aws.svg" alt="AWS logo tile" loading="lazy" />
+  <h2>Amazon Web Services <small>Cloud Support Engineer II / Analytics · 2022-Present</small></h2>
+</div>
 
 <ul>
-  <li>Provide technical support for AWS analytics services, especially Amazon OpenSearch.</li>
-  <li>Troubleshoot customer issues involving distributed systems, analytics workloads, performance, and operational behavior.</li>
-  <li>Collaborate with service teams and internal engineers for issue escalation and long-term resolution.</li>
+  <li>Provide technical support for AWS Analytics services, especially Amazon OpenSearch Service.</li>
+  <li>Troubleshoot customer issues involving distributed systems, analytics workloads, performance, indexing, query behavior, and operational incidents.</li>
+  <li>Collaborate with AWS service teams and internal engineers for escalation, mitigation, and long-term resolution.</li>
   <li>Recognized as an AWS Certified OpenSearch Subject Matter Expert in 2023.</li>
 </ul>
 
-<h2 id="data-platform--backend--mobile-background">Data Platform / Backend / Mobile Background</h2>
+<div class="company-heading">
+  <img src="/assets/images/company/cj-olive.svg" alt="CJ OliveNetworks logo tile" loading="lazy" />
+  <h2>CJ OliveNetworks <small>Data Platform Senior Engineer · 2019-2022</small></h2>
+</div>
 
 <ul>
-  <li>Built and operated enterprise data platform components before joining AWS.</li>
-  <li>Worked on OpenShift migration, data pipeline operations, search systems, crawler development, and visualization systems.</li>
-  <li>Previously developed commercial Android/iOS apps, backend features, admin tools, and image-processing related systems.</li>
+  <li>Worked on enterprise data platform migration and operation.</li>
+  <li>Contributed to IBM Cloud Pak for Data and OpenShift migration work for a large media data platform.</li>
+  <li>Built and maintained data collection, search, visualization, and operational components involving Solr, MongoDB, Redis, Impala, Hive, MariaDB, OpenShift, and Kubernetes.</li>
 </ul>
 
-<h1 id="support-automation">Support Automation</h1>
-
-<p>Designed support-agent workflows that connect AI agents with internal knowledge and operational signals while keeping the human approval path explicit.</p>
+<div class="company-heading">
+  <img src="/assets/images/company/gbike.svg" alt="G.Bike logo tile" loading="lazy" />
+  <h2>G.Bike <small>Software Engineer · 2018-2019</small></h2>
+</div>
 
 <ul>
-  <li>MCP workflows connecting Slack, Outlook, wiki knowledge, ticket search, and local tools</li>
-  <li>Support-agent persona design for customer-response drafting and troubleshooting guidance</li>
-  <li>Source-grounding rules using official documentation, URL existence checks, similar-document search, and similar-ticket search</li>
-  <li>Answer verification logic to check whether a draft actually matches the customer context</li>
-  <li>Customer issue reproduction workflows</li>
-  <li>Case aging triage using LLM summaries, missing-step detection, internal-note review, and escalation-readiness checks</li>
-  <li>Slack bot workflow that periodically summarizes cases and guides engineer/manager follow-up</li>
+  <li>Developed Android/iOS app features, backend APIs, database changes, and admin tools for mobility services.</li>
+  <li>Built and maintained scooter rental/return flows, driver-license verification, payout workflows, and manager tools.</li>
 </ul>
 
-<h1 id="ai-tools">AI Tools</h1>
+<div class="company-heading">
+  <img src="/assets/images/company/teamnova.svg" alt="Teamnova logo tile" loading="lazy" />
+  <h2>Teamnova <small>Mobile Development Lead · 2017-2018</small></h2>
+</div>
+
+<ul>
+  <li>Led Android/iOS app development for Popiece, a travel utility app.</li>
+  <li>Worked on exchange-rate features, crash fixes, memory-leak analysis, iOS prototype work, calendar UI, widgets, and team coordination.</li>
+</ul>
+
+<div class="company-heading">
+  <img src="/assets/images/company/diotek.svg" alt="DioTek logo tile" loading="lazy" />
+  <h2>DioTek <small>Image Processing Engineer · 2013-2015</small></h2>
+</div>
+
+<ul>
+  <li>Researched and implemented OCR and image-processing algorithms for Korean, Japanese, and Chinese text images.</li>
+  <li>Worked on handwritten/printed text classification, ruled-line detection/removal, color enhancement, and dithering.</li>
+</ul>
+
+<div class="company-heading">
+  <img src="/assets/images/company/digitalaria.svg" alt="Digital Aria logo tile" loading="lazy" />
+  <h2>Digital Aria <small>Software Engineer · 2011-2013</small></h2>
+</div>
+
+<ul>
+  <li>Built rendering test automation and worked on context-aware smart 3D GUI research projects.</li>
+  <li>Managed a government-funded R&amp;D project and implemented motion/face/finger recognition related features.</li>
+</ul>
+
+<h1 id="automation">Support Automation</h1>
+
+<p>I design AI-assisted support workflows that connect customer context, official documentation,
+internal knowledge, ticket history, and operational signals while keeping human review explicit.</p>
+
+<ul>
+  <li>MCP workflows connecting Slack, Outlook, wiki knowledge, ticket search, and local tools.</li>
+  <li>Support-agent persona design for customer-response drafting and troubleshooting guidance.</li>
+  <li>Grounding rules using official documentation, URL existence checks, similar-document search, and similar-ticket search.</li>
+  <li>Verification logic to check whether a draft answer actually matches the customer context.</li>
+  <li>Customer issue reproduction workflows.</li>
+  <li>Case aging triage using LLM summaries, missing-step detection, internal-note review, and escalation-readiness checks.</li>
+  <li>Slack bot workflow that periodically summarizes cases and guides engineer or manager follow-up.</li>
+</ul>
+
+<h1 id="tools">AI Tools</h1>
 
 <h2 id="claude-resume"><a href="https://github.com/ytkim4558/claude-resume"><code class="language-plaintext highlighter-rouge">claude-resume</code></a></h2>
 
-<p>LLM-summary-based TUI for finding and resuming Claude Code sessions. It uses a
-two-panel interface and background summaries so past work can be found by
-meaning, not just by session ID.</p>
+<p>LLM-summary-based TUI for finding and resuming Claude Code sessions. It uses a two-panel interface
+and background summaries so past work can be found by meaning, not just by session ID.</p>
 
 <h2 id="codex-resume"><a href="https://github.com/ytkim4558/codex-resume"><code class="language-plaintext highlighter-rouge">codex-resume</code></a></h2>
 
-<p>Windows-friendly TUI for searching and resuming OpenAI Codex CLI sessions. It
-indexes local Codex JSONL sessions, shows previews, and hands off to native
-<code class="language-plaintext highlighter-rouge">codex resume</code>.</p>
+<p>Windows-friendly TUI for searching and resuming OpenAI Codex CLI sessions. It indexes local Codex
+JSONL sessions, shows previews, and hands off to native <code class="language-plaintext highlighter-rouge">codex resume</code>.</p>
 
 <h2 id="linkedin-posting-mcp"><a href="https://github.com/ytkim4558/linkedin-posting-mcp"><code class="language-plaintext highlighter-rouge">linkedin-posting-mcp</code></a></h2>
 
-<p>Unofficial local MCP server for user-approved LinkedIn posting workflows. It is
-intentionally limited to documented OAuth/profile/posting endpoints and avoids
-cookies, scraping, DMs, and connection automation.</p>
+<p>Unofficial local MCP server for user-approved LinkedIn posting workflows. It is intentionally limited
+to documented OAuth/profile/posting endpoints and avoids cookies, scraping, DMs, and connection automation.</p>
 
 <h1 id="background">Background</h1>
 
-<p>My career started in mobile app and backend product development, expanded into
-image processing and data platforms, and now focuses on AWS analytics support
-and AI-assisted support engineering workflows.</p>
+<p>My career started in mobile app and backend product development, expanded into image processing and
+data platforms, and now focuses on AWS analytics support and AI-assisted support engineering workflows.</p>
 
-<p>The common thread is practical engineering: understand the repeated failure
-pattern, turn it into a tool or operating rule, and leave enough documentation
-for the next human or AI agent to continue safely.</p>
+<p>The common thread is practical engineering: identify the repeated failure pattern, turn it into a tool
+or operating rule, and leave enough documentation for the next human or AI agent to continue safely.</p>
 
             </section>
 
@@ -376,10 +419,12 @@ $(function() {
 
     <script>
       (function() {
-        var languageSwitch = document.querySelector('[data-language-switch]');
-        if (languageSwitch) {
-          languageSwitch.addEventListener('click', function() {
-            localStorage.setItem('site-language', languageSwitch.getAttribute('data-target-lang') || 'ko');
+        var languageSwitches = document.querySelectorAll('[data-language-switch]');
+        if (languageSwitches.length) {
+          languageSwitches.forEach(function(languageSwitch) {
+            languageSwitch.addEventListener('click', function() {
+              localStorage.setItem('site-language', languageSwitch.getAttribute('data-target-lang') || 'ko');
+            });
           });
         }
 
@@ -388,6 +433,7 @@ $(function() {
           var map = {
             '/': '/en/',
             '/about/': '/en/about/',
+            '/profile/': '/en/about/',
             '/portfolio/': '/en/portfolio/'
           };
           document.querySelectorAll('.site-nav a, .home-profile-hero a, .profile-actions a').forEach(function(link) {

@@ -94,6 +94,7 @@ Then commit and push both repositories.
 - If `profile_assistant_api` is configured, it must point to a backend such as `profile-ai-worker`; keep the OpenAI key as a backend secret and preserve the static fallback for local/offline site builds.
 - Use a Korean-first webfont stack for public pages. Pretendard is the current default because it reads well for Korean UI/body text and pairs cleanly with English technical terms. Embed it as a webfont, not as a local OS-only dependency.
 - Avoid making the portfolio feel like a numbered resume by default. Lead with curated selected work; put long career history behind a detailed resume/archive interaction.
+- For company history in the portfolio, use compact company visual tiles under `assets/images/company/` instead of leaving plain text headings only. Prefer repo-native SVG tiles or properly licensed official assets; do not paste unverified trademark/logo files from search results.
 - Do not use auto-moving marquee UI for post discovery. Use a user-controlled horizontal scroll-snap rail with visible scrollbar/touch scrolling so readers can drag or flick through cards at their own pace.
 
 ## AI Workflow Writing Rule
