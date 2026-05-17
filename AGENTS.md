@@ -47,6 +47,18 @@ Then commit and push both repositories.
 - Public screenshot copies must be redacted before publishing. Avoid exposing VR-specific personal context, local file paths, private filenames, account tokens, or raw session IDs unless already intentionally public.
 - Dependabot alerts were resolved by removing `jekyll-tasks`, updating `github-pages` to `~> 232`, and pinning `nokogiri >= 1.19.3`.
 
+## Post Cover Rules
+
+- Do not leave new posts on the generic `assets/images/blog-cover.jpg` unless there is no better topic image.
+- Use a cover image that explains the post before the user reads it.
+- Prefer first-party assets: redacted screenshots, generated diagrams, or simple custom cover images created for the post.
+- For tool posts, prefer an actual redacted screenshot of the tool.
+- For Jekyll/site maintenance posts, prefer Jekyll or site-related imagery, or generate a custom cover that summarizes the maintenance result.
+- If using an external image, use only clearly license-free sources such as Openverse, Wikimedia Commons, Unsplash, or Pexels. Verify the license/source page before committing.
+- Record external image attribution near the post or in a nearby asset note when the license requires it.
+- If a screenshot includes private context, create a redacted copy under `assets/images/<topic>/` and use that copy as the cover.
+- After changing `cover:`, rebuild and verify the post page, home card, tag page, and Open Graph metadata.
+
 ## Verification Checklist
 
 Check these after publishing:
@@ -57,4 +69,3 @@ Invoke-WebRequest -Uri "https://ytkim4558.github.io/codex-resume-tui-decision" -
 Invoke-WebRequest -Uri "https://ytkim4558.github.io/jekyll-dependabot-cleanup" -UseBasicParsing
 Invoke-WebRequest -Uri "https://ytkim4558.github.io/tag/ai-workflow/" -UseBasicParsing
 ```
-
