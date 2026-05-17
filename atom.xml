@@ -43,8 +43,8 @@
       <item>
         <title>codex-resume TUI를 만들면서 외부 TUI 라이브러리를 쓰기로 바꾼 이유</title>
         
-          <description>&lt;p&gt;&lt;a href=&quot;https://github.com/ytkim4558/claude-resume&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;claude-resume&lt;/code&gt;&lt;/a&gt;를 만들 때 가장 중요했던 기능은 단순히 과거 세션 목록을 보여주는 것이 아니었다.
-핵심은 &lt;strong&gt;예전 대화가 무슨 작업이었는지 LLM 요약으로 바로 알아보고, 필요한 세션으로 이어가는 것&lt;/strong&gt;이었다.&lt;/p&gt;
+          <description>&lt;p&gt;&lt;a href=&quot;https://github.com/ytkim4558/codex-resume&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;codex-resume&lt;/code&gt;&lt;/a&gt;는 OpenAI Codex CLI의 로컬 세션 로그를 검색하고,
+필요한 세션을 골라 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;codex resume &amp;lt;session-id&amp;gt;&lt;/code&gt;로 이어가기 위한 Windows 친화형 TUI 도구다.&lt;/p&gt;
 
 </description>
         
