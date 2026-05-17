@@ -1593,6 +1593,22 @@ body:before {
     backdrop-filter: blur(18px);
 }
 
+.site-nav,
+.site-nav a,
+.site-nav-logo,
+.site-nav-logo:visited,
+.nav li a,
+.subscribe-button,
+.language-option {
+    color: var(--yt-ink) !important;
+    opacity: 1 !important;
+    text-shadow: none !important;
+}
+
+.site-nav-logo img {
+    filter: none;
+}
+
 .nav {
     gap: 6px;
 }
@@ -1617,6 +1633,12 @@ body:before {
 .subscribe-button:hover {
     color: #fff;
     background: var(--yt-ink);
+}
+
+.site-nav .nav a:hover,
+.site-nav .subscribe-button:hover,
+.site-nav .language-option.is-active {
+    color: #fff !important;
 }
 
 .language-switcher {
