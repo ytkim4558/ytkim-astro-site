@@ -734,34 +734,51 @@ td.code {
     font-weight: 700;
 }
 
-.language-switch {
+.language-switcher {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    min-width: 48px;
+    gap: 2px;
     margin-right: 10px;
-    padding: 6px 12px;
+    padding: 4px;
     border: 1px solid rgba(255,255,255,0.45);
     border-radius: 999px;
-    color: #fff;
     background: rgba(15,23,42,0.28);
-    box-shadow: none;
-    font-size: 1.2rem;
-    font-weight: 800;
-    letter-spacing: 0.02em;
     backdrop-filter: blur(12px);
 }
 
-.language-switch:hover {
+.language-option {
+    min-width: 46px;
+    padding: 5px 10px;
+    border-radius: 999px;
+    color: rgba(255,255,255,0.72);
+    box-shadow: none;
+    font-size: 1.15rem;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    text-align: center;
+}
+
+.language-option:hover,
+.language-option.is-active {
     color: #111827;
     background: rgba(255,255,255,0.9);
 }
 
-.site-nav-logo + .language-switch,
-.fixed-nav-active .language-switch {
+.site-nav-logo + .language-switcher,
+.fixed-nav-active .language-switcher {
     border-color: rgba(15,23,42,0.16);
-    color: #111827;
     background: rgba(255,255,255,0.86);
+}
+
+.site-nav-logo + .language-switcher .language-option,
+.fixed-nav-active .language-option {
+    color: rgba(17,24,39,0.58);
+}
+
+.site-nav-logo + .language-switcher .language-option.is-active,
+.fixed-nav-active .language-option.is-active {
+    color: #fff;
+    background: #111827;
 }
 
 .post-marquee {
@@ -801,18 +818,39 @@ td.code {
 
 .post-marquee-track {
     display: flex;
-    width: max-content;
     gap: 14px;
-    animation: postMarquee 42s linear infinite;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    padding: 4px 2px 14px;
+    cursor: grab;
+    scroll-padding-inline: 2px;
+    scroll-snap-type: x mandatory;
+    scrollbar-color: #0f766e rgba(15,23,42,0.08);
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
 }
 
-.post-marquee:hover .post-marquee-track {
-    animation-play-state: paused;
+.post-marquee-track:active {
+    cursor: grabbing;
+}
+
+.post-marquee-track::-webkit-scrollbar {
+    height: 10px;
+}
+
+.post-marquee-track::-webkit-scrollbar-track {
+    border-radius: 999px;
+    background: rgba(15,23,42,0.08);
+}
+
+.post-marquee-track::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: #0f766e;
 }
 
 .post-marquee-card {
+    flex: 0 0 min(320px, 72vw);
     display: grid;
-    width: min(320px, 72vw);
     min-height: 150px;
     align-content: space-between;
     padding: 18px;
@@ -821,6 +859,7 @@ td.code {
     color: #0f172a;
     background: rgba(255,255,255,0.92);
     box-shadow: none;
+    scroll-snap-align: start;
     transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
@@ -1331,7 +1370,6 @@ td.code {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .post-marquee-track,
     .portfolio-page .portfolio-hero,
     .portfolio-page .portfolio-actions a,
     .portfolio-page .portfolio-metrics div,
@@ -1391,11 +1429,15 @@ td.code {
         white-space: nowrap;
     }
 
-    .language-switch {
-        min-width: 44px;
+    .language-switcher {
         margin-right: 8px;
-        padding: 5px 10px;
-        font-size: 1.1rem;
+        padding: 3px;
+    }
+
+    .language-option {
+        min-width: 38px;
+        padding: 4px 8px;
+        font-size: 1.05rem;
     }
 
     .post-marquee {

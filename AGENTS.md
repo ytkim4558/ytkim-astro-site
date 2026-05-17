@@ -89,10 +89,12 @@ Then commit and push both repositories.
 - Keep `/profile/` as the one-link share page for people who need a quick summary. It should explain who Yongtak Kim is, what he works on, selected projects, and contact links without requiring readers to understand the blog structure first.
 - Keep the root page `/` shareable as the easiest URL to remember. The first screen should summarize the profile before showing blog/navigation content.
 - Preserve the user's language choice across navigation with `localStorage` when matching English/Korean pages exist. Do not redirect content that has no translated counterpart.
+- Show language selection in the top navigation as a two-state selector (`한국어 | EN`) with the current language visibly active. Do not duplicate language CTA buttons in the home hero unless there is a specific reason.
 - Do not expose LLM API keys in GitHub Pages. Any "ask about me" feature on the static site must use local public-profile facts or require a separate backend before calling a real LLM.
 - If `profile_assistant_api` is configured, it must point to a backend such as `profile-ai-worker`; keep the OpenAI key as a backend secret and preserve the static fallback for local/offline site builds.
 - Use a Korean-first webfont stack for public pages. Pretendard is the current default because it reads well for Korean UI/body text and pairs cleanly with English technical terms. Embed it as a webfont, not as a local OS-only dependency.
 - Avoid making the portfolio feel like a numbered resume by default. Lead with curated selected work; put long career history behind a detailed resume/archive interaction.
+- Do not use auto-moving marquee UI for post discovery. Use a user-controlled horizontal scroll-snap rail with visible scrollbar/touch scrolling so readers can drag or flick through cards at their own pace.
 
 ## AI Workflow Writing Rule
 
