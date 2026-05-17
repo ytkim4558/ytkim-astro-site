@@ -101,7 +101,7 @@ Then commit and push both repositories.
 
 - When an AI agent fixes a non-trivial bug, deployment issue, security alert, UI regression, build failure, or workflow problem, decide whether the process is worth documenting.
 - If the fix includes reusable reasoning, tradeoff decisions, tooling choices, or verification steps, create or update an `AI Workflow` post.
-- Good candidates: Dependabot cleanup, Jekyll build recovery, screenshot redaction, TUI library decision, portfolio navigation fixes, agent handoff rules.
+- Good candidates: Dependabot cleanup, Jekyll build recovery, screenshot redaction, TUI library decision, portfolio navigation fixes, LinkedIn API/OAuth permission checks, agent handoff rules.
 - Bad candidates: one-line typo fixes, purely cosmetic copy edits, or changes with no reusable lesson.
 - The post should explain the trigger, failed or rejected options, final decision, exact verification, and any rule added to `AGENTS.md`.
 - Prefer publishing the workflow note near the actual code change so future agents can follow the decision trail.

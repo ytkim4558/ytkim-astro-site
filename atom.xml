@@ -8,6 +8,22 @@
     
       
       <item>
+        <title>LinkedIn API로 기존 글을 읽어 톤을 맞추려다 확인한 것</title>
+        
+          <description>&lt;p&gt;LinkedIn에 새 글을 올리기 전에 기존에 내가 썼던 글의 톤을 보고 맞추고 싶었다.
+처음에는 GitHub API처럼 OAuth만 연결하면 내 게시글도 바로 읽을 수 있을 것이라고 생각했다.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Mon, 18 May 2026 00:45:00 +0000</pubDate>
+        <link>
+        https://ytkim4558.github.io/linkedin-api-permission-check</link>
+        <guid isPermaLink="true">https://ytkim4558.github.io/linkedin-api-permission-check</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>오래된 Jekyll 블로그의 Dependabot 취약점 33개를 정리한 기록</title>
         
           <description>&lt;p&gt;&lt;a href=&quot;https://github.com/ytkim4558/codex-resume&quot;&gt;&lt;code&gt;codex-resume&lt;/code&gt;&lt;/a&gt; 작업을 포트폴리오와 블로그에 반영하는 과정에서 GitHub push 메시지에 Dependabot 경고가 같이 떴다.
