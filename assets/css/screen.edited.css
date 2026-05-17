@@ -290,6 +290,39 @@ td.code {
     font-weight: 800;
 }
 
+.portfolio-page .portfolio-floating-nav {
+    position: fixed;
+    top: 28vh;
+    right: max(18px, calc((100vw - 1260px) / 2));
+    z-index: 80;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+    border: 1px solid rgba(15,23,42,0.08);
+    border-radius: 20px;
+    background: rgba(255,255,255,0.82);
+    box-shadow: 0 20px 50px rgba(15,23,42,0.16);
+    backdrop-filter: blur(16px);
+}
+
+.portfolio-page .portfolio-floating-nav a {
+    min-width: 92px;
+    padding: 9px 12px;
+    border-radius: 14px;
+    color: var(--portfolio-ink);
+    background: rgba(248,250,252,0.94);
+    box-shadow: none;
+    font-size: 1.18rem;
+    font-weight: 800;
+    text-align: center;
+}
+
+.portfolio-page .portfolio-floating-nav a:hover {
+    color: #fff;
+    background: var(--portfolio-accent);
+}
+
 .portfolio-page .post-full-content > h1 {
     margin-top: 52px;
     padding-top: 18px;
@@ -361,5 +394,21 @@ td.code {
 
     .portfolio-page .portfolio-toc {
         position: relative;
+    }
+
+    .portfolio-page .portfolio-floating-nav {
+        top: auto;
+        right: 12px;
+        bottom: 12px;
+        left: 12px;
+        flex-direction: row;
+        justify-content: center;
+        overflow-x: auto;
+        border-radius: 18px;
+    }
+
+    .portfolio-page .portfolio-floating-nav a {
+        min-width: auto;
+        white-space: nowrap;
     }
 }
