@@ -213,7 +213,50 @@ into the {body} of the default.hbs template -->
   <li>Provide technical support for AWS Analytics services, especially Amazon OpenSearch Service.</li>
   <li>Troubleshoot customer issues involving distributed systems, analytics workloads, performance, indexing, query behavior, and operational incidents.</li>
   <li>Collaborate with AWS service teams and internal engineers for escalation, mitigation, and long-term resolution.</li>
-  <li>Recognized as an AWS Certified OpenSearch Subject Matter Expert in 2023.</li>
+  <li>Recognized as <strong>AWS Certified OpenSearch Subject Matter Expert</strong> in May 2023 (first SME in the Korean Analytics domain).</li>
+  <li>Promoted to Cloud Support Engineer II in October 2023.</li>
+  <li>Earned <strong>AWS Certified Solutions Architect – Associate</strong> in February 2026.</li>
+</ul>
+
+<h3>Recognition Highlights</h3>
+
+<ul>
+  <li><strong>AWSome All-Star (December 2024)</strong> — Top-tier internal recognition, awarded for stabilizing a critical OpenSearch production cluster (one of the largest in Korea) over six days of intensive mitigation, custom red-index detection scripting, master node optimization, dynamic node management, and 24/7 follow-the-sun monitoring coordination.</li>
+  <li><strong>AWSome Builder × 3</strong> (June 2023, August 2024, September 2024) — recognitions for first Quality program champion + first SME milestone in the Analytics domain, cross-region (KR/JP/TPE) tooling transition guidance, and a 4-day OpenSearch upgrade red-status mitigation that earned consistent strong customer feedback.</li>
+  <li><strong>"AGS Area of the Year" (2025)</strong> — Korea AWS team won the APJ region's top award; received associated team-level recognition from APJ leadership.</li>
+</ul>
+
+<h3>Selected Customer Win Stories (anonymized)</h3>
+
+<ul>
+  <li><strong>Korean enterprise IoT/SmartHome service migration (May–June 2023)</strong> — Supported HBase → OpenSearch migration for a critical SmartHome production opening with significant active-user growth target. Reviewed and redesigned shard strategy (1:1 shard for indexes &lt; 5GB; 10–30 GiB per shard target), provided CloudWatch JVM/Threadpool guidance, and monitored production opening end-to-end with no service interruption.</li>
+  <li><strong>Critical OpenSearch cluster stabilization for a large Korean lifestyle/digital platform (September 2024, 6 days)</strong> — Coordinated multi-day follow-the-sun monitoring, wrote a red-index detection script, recommended master-node optimization and dynamic node management, and stabilized core service. Recognized with AWSome All-Star.</li>
+  <li><strong>OpenSearch upgrade nori-plugin issue for a Korean e-commerce platform (Oct–Nov 2024)</strong> — Service team's initial diagnosis (plugin version mismatch) was non-actionable for the customer. Drove root-cause investigation that revealed an internal logic change; applied temporary fix and pushed for a permanent fleet-wide patch.</li>
+  <li><strong>OpenSearch Ingestion Pipeline + third-party SaaS integration for an enterprise customer (September 2025)</strong> — Rejected an unverified internal recommendation, built a test environment, analyzed open-source ingestion source code on GitHub, and validated each authentication path. Discovered the OAuth2 endpoint had been removed and switched the customer to Basic Auth, restoring CTO trust.</li>
+  <li><strong>OpenSearch console "Packages" tab blank issue across 4+ Seoul-region enterprise customers (February 2026)</strong> — Cross-referenced incoming cases with an existing internal known-issue ticket, set up a dedicated Slack channel for PM and service-team coordination, reviewed the Cloudscape UI fix code, and independently verified that the first deployment did not actually resolve the issue — preventing premature case closure across all affected customers.</li>
+  <li><strong>Dual-root-cause diagnosis for a large Korean global brand company after OpenSearch 2.5 → 2.19 upgrade (December 2025)</strong> — Service team's initial S3-lifecycle hypothesis contradicted the fact that five sibling clusters with identical configuration ran fine. Conducted independent cross-cluster comparison and identified two interacting causes: master-node JVM heap exhaustion (2GB heap on 8GB nodes during 36 concurrent snapshot operations) and snapshot-repository corruption (S3 lifecycle deleting snapshot files without metadata update). Applied a strategic ticket-separation strategy (3 separate internal tickets for 3 specialized teams) so investigations could run in parallel rather than serially.</li>
+</ul>
+
+<h3>Process Improvement & Automation</h3>
+
+<ul>
+  <li><strong>Aging Ticket Escalation AI Agent — built from scratch (March 2026)</strong> — Custom AI agent designed and implemented on the Amazon Quick Suite Custom Chat Agent platform. Combines ① automated long-ticket and comment summarization via LLM, ② on-call screenshot OCR member extraction via File QA, ③ self-and-on-call manager-chain lookup via the People API, ④ Korean technical context → professional English escalation email generation, and ⑤ automatic inclusion of CBHP-mandatory components (To/CC, PhoneTool, SXO dashboard, escalation guideline links) — all packaged into a single workflow. Reduces a 15–20 minute manual workflow to 2–3 minutes (85% reduction); for complex cases with language-translation overhead the saving reaches 90–95% (30–50 min → 3–4 min). Removes the friction of Korean engineers drafting professional English escalation emails AND drives missing-checklist-item rate to zero.</li>
+  <li><strong>Cross-region OpenSearch tooling transition guidance (June 2024)</strong> — When the OpenSearch ELB log analysis tooling was deprecated (with a hard cutoff date), learned the new integrated workflow first and proactively shared a step-by-step migration guide with the Korean, Japanese, and Taipei AWS Support teams ahead of the EOL. Received an out-of-band recognition from the Japanese team.</li>
+  <li><strong>AWS Countdown Premium escalation runbook for the Korean SE team (November 2025)</strong> — Authored an internal wiki consolidating Countdown Premium engagement knowledge: EKO meeting flow, primary/secondary/standby engineer roles, standby engineer recruiting timing, pre-event / event-day / closure phase escalation channels, and the right ping point for Korean SE team participation. Became the single Countdown Premium reference for the Korean SE team.</li>
+  <li><strong>Analytics-domain onboarding training material refresh (2024.04 onward)</strong> — Cleaned up the Analytics-domain ramp-up plan wiki and produced 3–4 internal broadcast videos covering OpenSearch internal analysis tooling, CloudWatch JVMMemoryPressure / Threadpool metric interpretation, and ELB access log 4xx/5xx distribution analysis. Runs ILT sessions for new engineers in 2–3 person cohorts.</li>
+  <li><strong>Team Slack channel signal/noise cleanup</strong> — Identified that recurring auto-notifications (e.g., case-language-change alerts) were drowning real case signals in the shared Korean SE Slack channels. Filed an internal ticket to disable the offending notification, materially improving the channel signal-to-noise ratio.</li>
+</ul>
+
+<h3>Mentoring & Knowledge Sharing</h3>
+
+<ul>
+  <li><strong>OpenSearch L3 SME consultancy (May 2023–present)</strong> — Official member of the OpenSearch tier-3 (L3) internal escalation resolver group. Acts as SME approver and consultant for many escalated OpenSearch cases and tickets routed in from frontline engineers across the Korean, Japanese, and Taipei regions. Handled cases include sev2–sev5 production issues (post-upgrade high CPU, blue/green deployment stuck for 24h+, node drops, domain status stuck in processing) for multi-industry enterprises such as <strong>a global financial-market data and analytics platform (Bloomberg category)</strong>, <strong>a global academic and legal information analytics group</strong>, <strong>a global customer engagement / loyalty platform</strong>, and <strong>a global identity governance / IAM company</strong>. Activity pattern: ① pre-send peer review of customer-response drafts (peer help), ② rapid handling of SME-approval-gated internal tickets, ③ providing SME-level input directly into service-team escalation channels to steer root-cause investigations, ④ responding to OpenSearch technical advisory requests routed via TAMs.</li>
+  <li><strong>OpenSearch SME mentoring (2024–present)</strong> — Mentored 4+ candidate engineers with mock sessions, OpenSearch SME assessment study-material curation, real-case troubleshooting walkthroughs, and weak-point reading lists. One mentee successfully obtained SME accreditation.</li>
+  <li><strong>Profile onboarding ILT for new engineers</strong> — Conducted Instructor-Led Training for 2 new Analytics-domain engineers (May cohort): case handling best practice, internal analysis tooling, OpenSearch troubleshooting flow, and customer-response writing best practice — all step-by-step.</li>
+  <li><strong>Initiated weekly Analytics-domain knowledge sharing</strong> — Proposed and bootstrapped the first weekly knowledge-sharing session for the Analytics domain (none existed before). Delivered the inaugural session personally; the format became a recurring routine for the team.</li>
+  <li><strong>Authored and maintains the Analytics-domain case-handling best-practice wiki</strong> — Single reference covering troubleshooting kickoff procedure, service-team escalation flow, first-pass analysis recipes per case category, and customer-response best practice. Used as new-engineer onboarding material AND as a daily reference by existing team members.</li>
+  <li><strong>Long-aging case review program reviewer (2024–present)</strong> — Active Analytics-domain reviewer for the Korean SE team's case aging review program. In bi-weekly reviews, identifies the actual blocker on each long-aging case, recommends the next step, and triggers service-team escalation when warranted. Co-led with 17 fellow reviewers; the program reviewed 592 cases in phase 1 and contributed to a 21.3% improvement in average case-aging metric vs. team target.</li>
+  <li><strong>Interview panelist (2024–2026)</strong> — Conducted multiple PS / LP / Tech LOOP interviews and debriefs, including L5 candidate panels. Several recommended candidates were hired; some are now active teammates within the Korean SE team, and one was placed in the Dublin office to join the global cohort.</li>
 </ul>
 
 <div class="company-heading">
@@ -280,6 +323,7 @@ internal knowledge, ticket history, and operational signals while keeping human 
   <li>Customer issue reproduction workflows.</li>
   <li>Case aging triage using LLM summaries, missing-step detection, internal-note review, and escalation-readiness checks.</li>
   <li>Slack bot workflow that periodically summarizes cases and guides engineer or manager follow-up.</li>
+  <li><strong>Aging Ticket Escalation AI Agent</strong> — A custom AI agent I built on Amazon Quick Suite's Custom Chat Agent platform. Combines automated ticket-API lookup with LLM summarization, on-call OCR extraction from screenshots, manager-chain lookup via the People API, and bilingual professional-email generation. Reduces 15–20 minute manual escalation workflows to 2–3 minutes (and 30–50 minute complex bilingual cases to 3–4 minutes), while making CBHP-mandatory components (To/CC, PhoneTool, SXO dashboard, links) automatic.</li>
 </ul>
 
 <h1 id="tools">AI Tools</h1>
