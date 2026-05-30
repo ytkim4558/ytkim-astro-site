@@ -2,7 +2,16 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
-const posts = await getCollection('posts', ({ data }) => !data.draft && data.tags.includes('AI Workflow'));
+const posts = (await getCollection('posts', ({ data }) => (
+  !data.draft && data.tags.some((tag) => tag.toLowerCase().replace(/\s+/g, '-') === 'ai-workflow')
+)))
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
+const formatDate = (date: Date) => new Intl.DateTimeFormat('ko-KR', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+}).format(date);
 ---
 
 <BaseLayout title="AI Workflow | Yongtak Kim">
@@ -10,18 +19,20 @@ const posts = await getCollection('posts', ({ data }) => !data.draft && data.tag
     <div class="hero-inner">
       <p class="eyebrow">AI Workflow</p>
       <h1>에이전트 작업을 재현 가능한 워크플로로 남기는 기록</h1>
+      <p class="hero-description">
+        Codex, Claude, Jekyll, GitHub Pages, LinkedIn 자동화처럼 실제 작업 중 생긴 판단과 복구 과정을 모읍니다.
+      </p>
     </div>
   </section>
-  <main class="content">
-    <h2>Notes</h2>
+  <main class="post-list">
     {posts.map((post) => (
-      <p>
-        <a href={`/posts/${post.id.replace(/\.(md|mdx)$/, '')}/`}>
+      <article class="post-list-item">
+        <a href={`/${post.id.replace(/\.(md|mdx)$/, '')}/`}>
+          <span>{formatDate(post.data.pubDate)}</span>
           <strong>{post.data.title}</strong>
+          {post.data.description && <p>{post.data.description}</p>}
         </a>
-        <br />
-        {post.data.description}
-      </p>
+      </article>
     ))}
   </main>
 </BaseLayout>

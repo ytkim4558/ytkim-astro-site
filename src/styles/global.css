@@ -153,6 +153,49 @@ h1 {
   color: #2f3740;
 }
 
+.post-list {
+  display: grid;
+  gap: 14px;
+  width: min(920px, calc(100vw - 32px));
+  margin: 48px auto 96px;
+}
+
+.post-list-item a {
+  display: block;
+  padding: 22px 0;
+  border-top: 1px solid rgba(11, 75, 71, 0.16);
+}
+
+.post-list-item:last-child a {
+  border-bottom: 1px solid rgba(11, 75, 71, 0.16);
+}
+
+.post-list-item span {
+  display: block;
+  color: #0b6f68;
+  font-size: 0.82rem;
+  font-weight: 900;
+}
+
+.post-list-item strong {
+  display: block;
+  margin-top: 6px;
+  font-size: clamp(1.35rem, 2.4vw, 2rem);
+  line-height: 1.25;
+  letter-spacing: -0.035em;
+}
+
+.post-list-item p {
+  margin: 10px 0 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.post-list-item a:hover strong,
+.post-list-item a:focus-visible strong {
+  color: #0b6f68;
+}
+
 .card-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
