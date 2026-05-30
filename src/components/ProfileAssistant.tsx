@@ -3,8 +3,7 @@ import { useMemo, useState } from 'react';
 const MAX_INPUT_CHARS = Number(import.meta.env.PUBLIC_PROFILE_CHAT_MAX_INPUT_CHARS ?? 420);
 const MAX_HISTORY_TURNS = Number(import.meta.env.PUBLIC_PROFILE_CHAT_MAX_HISTORY_TURNS ?? 4);
 const MAX_OUTPUT_TOKENS = Number(import.meta.env.PUBLIC_PROFILE_CHAT_MAX_OUTPUT_TOKENS ?? 220);
-const LOCAL_ENDPOINT = 'http://127.0.0.1:8787/profile-chat';
-const CONFIGURED_ENDPOINT = import.meta.env.PUBLIC_PROFILE_CHAT_ENDPOINT ?? '';
+const ENDPOINT = import.meta.env.PUBLIC_PROFILE_CHAT_ENDPOINT ?? '/api/profile-chat';
 
 const facts = {
   openSearch:
@@ -37,12 +36,6 @@ function respond(question: string) {
 
 function trimQuestion(value: string) {
   return value.trim().slice(0, MAX_INPUT_CHARS);
-}
-
-function getChatEndpoint() {
-  if (CONFIGURED_ENDPOINT) return CONFIGURED_ENDPOINT;
-  if (typeof window === 'undefined') return '';
-  return ['localhost', '127.0.0.1'].includes(window.location.hostname) ? LOCAL_ENDPOINT : '';
 }
 
 export default function ProfileAssistant() {
@@ -83,10 +76,7 @@ export default function ProfileAssistant() {
     setIsLoading(true);
 
     try {
-      const endpoint = getChatEndpoint();
-      if (!endpoint) throw new Error('Profile chat endpoint is not configured');
-
-      const response = await fetch(endpoint, {
+      const response = await fetch(ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

@@ -1,6 +1,6 @@
 # ytkim-astro-site
 
-Astro prototype for `ytkim4558.github.io`.
+Astro site source for `ytkim4558.github.io`.
 
 The migration keeps the current public site alive while this project rebuilds the core pages with:
 
@@ -8,6 +8,7 @@ The migration keeps the current public site alive while this project rebuilds th
 - MDX-ready content structure
 - React island only where interactivity is needed
 - DeKu-inspired readable post layout: stable nav, large hero, narrow article width
+- Cloudflare Pages Functions for server-only profile chat calls
 
 ## Commands
 
@@ -15,4 +16,23 @@ The migration keeps the current public site alive while this project rebuilds th
 npm install
 npm run dev
 npm run build
+npm run cf:preview
+npm run cf:deploy
 ```
+
+## Cloudflare Pages
+
+Use Cloudflare Pages, not Vercel, for the next deployment target.
+
+- Build command: `npm run build`
+- Build output directory: `dist`
+- Functions directory: `functions`
+- Function route: `/api/profile-chat`
+- Function invocation routes: `public/_routes.json` includes only `/api/*`
+
+Set these Cloudflare Pages variables/secrets:
+
+- `OPENAI_API_KEY`: Secret, required for live LLM answers.
+- `PROFILE_CHAT_MODEL`: optional plain variable, defaults to `gpt-5-mini`.
+
+Do not put API keys in `PUBLIC_*` variables or commit `.dev.vars`.
