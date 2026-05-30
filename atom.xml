@@ -8,6 +8,36 @@
     
       
       <item>
+        <title>Windows Terminal이 열리자마자 죽을 때 — DCOM 10010 에러와 재설치로 해결</title>
+        
+          <description>&lt;p&gt;Windows 11에서 Windows Terminal이 실행 직후 조용히 종료되는 문제를 겪었다. 마우스 포인터에 로딩 원이 잠깐 돌다가 사라지고, 창은 열리지 않는다. PowerShell도 기본 터미널이 WT로 설정돼 있어서 같이 안 열렸다.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sat, 30 May 2026 09:00:00 +0000</pubDate>
+        <link>
+        https://ytkim4558.github.io/windows-terminal-crash-fix</link>
+        <guid isPermaLink="true">https://ytkim4558.github.io/windows-terminal-crash-fix</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>GitHub Pages 포트폴리오 모바일 레이아웃을 적응형으로 정리한 이유</title>
+        
+          <description>&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ytkim4558.github.io&lt;/code&gt;의 포트폴리오와 AI Workflow 글 상세 페이지를 보다가 상단 레이아웃이 서로 맞지 않는 문제가 드러났다.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sat, 30 May 2026 00:00:00 +0000</pubDate>
+        <link>
+        https://ytkim4558.github.io/adaptive-mobile-layout-handoff</link>
+        <guid isPermaLink="true">https://ytkim4558.github.io/adaptive-mobile-layout-handoff</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>LinkedIn API로 기존 글을 읽어 톤을 맞추려다 확인한 것</title>
         
           <description>&lt;p&gt;LinkedIn에 새 글을 올리기 전에 기존에 내가 썼던 글의 톤을 보고 맞추고 싶었다.

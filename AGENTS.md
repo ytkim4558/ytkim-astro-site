@@ -76,6 +76,22 @@ Then commit and push both repositories.
 - Use `.portfolio-gallery-wide` for landscape desktop or web screenshots and the default `.portfolio-gallery` for phone-shaped screenshots.
 - Keep the gallery CSS in both `assets/css/screen.edited.css` and `assets/built/screen.edited.css` unless the CSS build pipeline is restored.
 
+## Responsive / Adaptive Layout Decision
+
+- Current decision: use a hybrid approach. Keep fluid responsive behavior for ordinary article text, images, and card grids, but treat the mobile breakpoint as an adaptive layout for the site entry points that repeatedly broke: post detail headers, tag headers, and portfolio hero sections.
+- Why this was chosen: this Jasper2-derived Jekyll site already has desktop-oriented hero/card styles layered on top of the original theme. Trying to scale those desktop blocks down with only fluid widths caused mobile overflow, clipped Korean/English mixed titles, and inconsistent top spacing. A mobile-specific adaptive layer is lower risk than replacing the whole theme and more robust than continuing small one-off responsive fixes.
+- Research basis checked on 2026-05-30:
+  - `web.dev` responsive basics says device-friendly pages need `meta viewport`, viewport-based media queries, and content sized to the viewport; horizontal scrolling from content wider than the viewport is a poor user experience.
+  - `web.dev` Learn Design describes adaptive layouts as a combination of media queries and fixed-width layouts, while responsive design combines media queries with liquid layouts. This supports using fixed viewport-bounded mobile sections where the desktop composition does not scale cleanly.
+  - MDN CSS media query docs describe viewport-size media queries as the standard way to set different layouts for different screen sizes, such as changing from multi-column to single-column.
+- Implementation rule: for `@media (max-width: 600px)`, do not inherit desktop content widths for `.post-full-header`, `.post-full-image`, `.post-full-content`, `.portfolio-hero`, `.portfolio-metrics`, or `.portfolio-toc`. Anchor these blocks to the viewport width, cap them with `calc(100vw - ...)`, and avoid horizontal scrolling.
+- Keep the canonical viewport meta tag in `_layouts/default.html`: `<meta name="viewport" content="width=device-width, initial-scale=1.0" />`.
+- Verification rule: after changing mobile layout, capture at least these local pages at desktop and mobile widths before publishing:
+  - `http://127.0.0.1:8008/linkedin-api-permission-check.html`
+  - `http://127.0.0.1:8008/en/portfolio/`
+  - `http://127.0.0.1:8008/tag/ai-workflow/`
+- Build history note: Docker Desktop is installed but may be stopped. If `docker run` fails with `dockerDesktopLinuxEngine` missing, start `C:\Program Files\Docker\Docker\Docker Desktop.exe`, wait for `docker info`, then run the documented Ruby 3.2 build command.
+
 ## Bilingual Site Rules
 
 - Keep Korean pages as the primary archive and add English counterparts under `/en/` incrementally.
@@ -111,12 +127,30 @@ Then commit and push both repositories.
 - When work may be resumed by another AI agent, another account, another session, another device, or another tool, leave a concrete handoff note instead of relying on chat memory.
 - "Another agent" can mean Claude, ChatGPT, Codex, GitHub Copilot, the same agent in a later session, the same agent under another account, or a human using one of them.
 - Use `AGENTS.md` for repo-level handoff rules and local Codex skills for reusable behavior across sessions.
+- Do not assume this rule is limited to the current GitHub account. Apply the same habit across all user repos unless a repo explicitly overrides it.
+- Before adding a new handoff format, search existing repo files and git history for established patterns:
+  - `rg -n "인수인계|handoff|다른 AI 에이전트|Cross-Agent|AI Workflow" .`
+  - `git log --all --grep=handoff --grep=인수인계 --grep=agent --oneline --decorate --max-count=30`
 - Record source repo, generated/live repo, exact build command, publish command, verification command, and any CDN/cache delay.
 - Distinguish what is already committed/pushed from what is only local.
 - Include sensitive-data handling rules, especially for screenshots, local paths, tokens, private filenames, or raw session IDs.
 - If the handoff is intended for Claude, ChatGPT, another account, or a later session, provide a compact copy-paste block that does not assume access to prior chat history.
 - If the handoff process itself becomes useful or repeatable, document it as an `AI Workflow` post.
 - Local reusable skill: `C:\Users\ytkim\.codex\skills\agent-handoff\SKILL.md`.
+
+## Missed Rule Correction
+
+- If the user has to point out that an agent missed a handoff/documentation/build rule, treat that as a workflow bug, not just a chat correction.
+- Immediately identify why it was missed, search repo files and git history for the relevant existing rule, and update a durable rule location such as `AGENTS.md`, a local Codex skill, or an AI Workflow post.
+- For non-trivial UI, build, deploy, account-auth, or source/generated-repo decisions, proactively suggest whether to write an AI Workflow note or handoff block before the user has to ask.
+- This rule was reinforced on 2026-05-30 after the mobile layout work initially recorded the adaptive-layout decision only in `AGENTS.md` and did not first search existing AI Workflow handoff patterns.
+
+## Interrupted Work Recovery
+
+- If the user gives a correction, question, or new constraint while a build, verification, cleanup, copy, commit, or publish flow is in progress, do not drop the interrupted steps.
+- Treat the new instruction as an insertion into the work queue, then resume the pending steps unless the user explicitly says to stop or abandon them.
+- Before final response, check that all interrupted steps were either completed or explicitly reported as blocked.
+- This applies to both source repo work and generated/live repo work.
 
 ## New Agent Onboarding Response
 
