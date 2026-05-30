@@ -382,6 +382,33 @@ export const enPosts: Record<string, LocalizedPost> = {
       },
     ],
   },
+  'content-reachability-validation': {
+    title: 'Turning a Missed Portfolio Detail into Content Reachability Validation',
+    description: 'A note on replacing a narrow AI-proposed heuristic with a deploy-time check that every public post and portfolio detail has a reachable path.',
+    sections: [
+      {
+        heading: 'Trigger',
+        paragraphs: [
+          'During the Astro portfolio migration, a project card looked fine but opened only a one-line summary. The detailed HotDealppom content still existed, but users could not reach the video, screenshots, and technical record from the card.',
+        ],
+      },
+      {
+        heading: 'User Correction',
+        paragraphs: [
+          'The first AI fix checked whether a modal target was a list item. That solved one symptom but not the real rule. The better requirement was that every non-intentionally-hidden content item must have a public reachable path.',
+        ],
+      },
+      {
+        heading: 'Fix',
+        bullets: [
+          'Replaced the portfolio-only heuristic with `validate:content`.',
+          'Validated built post routes, tag/index reachability, and localized portfolio detail reachability.',
+          'Kept intentionally hidden records in an explicit declaration list.',
+          'Added the work back to the portfolio as an AI collaboration quality-gate example.',
+        ],
+      },
+    ],
+  },
 };
 
 export const jaPosts: Record<string, LocalizedPost> = {
@@ -623,6 +650,33 @@ export const jaPosts: Record<string, LocalizedPost> = {
         heading: '教訓',
         paragraphs: [
           'Windows Terminalの設定値は無効な値でも静かに失敗する場合がある。起動直後に落ちる場合は設定ファイルとアプリ登録状態の両方を見る必要がある。',
+        ],
+      },
+    ],
+  },
+  'content-reachability-validation': {
+    title: '見落としたポートフォリオ詳細をContent Reachability検証へ変えた記録',
+    description: 'AIが提案した狭いheuristicを、公開contentが到達可能な経路を持つか確認するdeploy-time validationへ置き換えた記録。',
+    sections: [
+      {
+        heading: 'きっかけ',
+        paragraphs: [
+          'Astro移行後のportfolio cardは見た目上は動いていたが、HotDealppomのcardは詳細ではなく一行summaryを開いていた。video、screenshots、technical recordは残っていたが、ユーザーがそこへ到達できなかった。',
+        ],
+      },
+      {
+        heading: 'ユーザーからの修正',
+        paragraphs: [
+          '最初のAI修正はmodal targetがlist itemかどうかを見るものだった。しかし本質はDOM shapeではなく、意図的に隠したcontentでない限り公開到達経路があるかどうかだった。',
+        ],
+      },
+      {
+        heading: '対応',
+        bullets: [
+          'Portfolio専用heuristicを`validate:content`へ置き換えた。',
+          'post route、index/tag listing、localized portfolio detail reachabilityを検証した。',
+          '意図的に隠すrecordは明示的なリストで管理した。',
+          'AI協業のquality gate事例としてportfolioにも反映した。',
         ],
       },
     ],

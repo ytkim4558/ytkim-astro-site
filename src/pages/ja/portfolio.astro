@@ -210,6 +210,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       <li><strong>画像処理・OCR研究開発</strong> — 手書き/印刷体分類、ノート罫線検出・除去、色補正、レンダリング自動テスト、3D GUI研究開発を担当。</li>
       <li><strong>データ基盤エンジニアリング</strong> — CJ ENMビッグデータ基盤、OpenShift/Cloud Pak for Data移行、Solr/MongoDB/Redis/Impala/Hive運用を経験。</li>
       <li><strong>MCPベースのsupport-agent / Slack botワークフロー</strong> — Slack、Outlook、wiki、ticket search、local toolsをつなぎ、顧客返信草案、公式URL確認、類似文書検索、case aging triage、escalation readiness checkを自動化。</li>
+      <li><strong>AI協業の品質ゲート化</strong> — AIが提案した狭いheuristicをユーザー指摘で見直し、posts、tag listing、portfolio detail contentが公開到達経路を持つかを`validate:content`でdeploy前に検証。</li>
       <li><strong>AI Session Recovery</strong> — claude-resumeとcodex-resumeを一つのtool familyとしてまとめ、Claude CodeとOpenAI Codex CLIのwork historyを検索、要約、preview、再開できるようにしたもの。</li>
       <li><strong>linkedin-posting-mcp</strong> — ユーザー承認型LinkedIn posting workflow向けのローカルMCPサーバー。スクレイピングやDM自動化は扱わない設計。</li>
       <li><strong>Aging Ticket Escalation AI Agent</strong> — 長期未解決チケットの要約、オンコールOCR、manager chain lookup、英語エスカレーションメール作成を一つの流れにまとめた社内AIエージェント。</li>
@@ -308,6 +309,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <ul>
       <li>LinkedIn API権限制約を前提に、自動投稿ではなく承認型draft/checklist workflowとして設計。</li>
       <li>AI agent handoff、session recovery、public/private repository boundary、adaptive layout decisionをAI Workflow noteとして整理。</li>
+      <li>Portfolio detail regressionをきっかけに、node形状に依存するcheckをやめ、content reachability manifestをGitHub Actionsで強制する運用へ変更。</li>
     </ul>
     <h3>初期Androidプロジェクト</h3>
     <ul>

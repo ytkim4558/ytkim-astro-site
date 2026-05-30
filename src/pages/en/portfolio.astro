@@ -210,6 +210,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       <li><strong>Image processing and OCR R&D</strong> — Implemented handwriting/printed-text classification, notebook-line detection and removal, color correction, rendering automation tests, and 3D GUI research work.</li>
       <li><strong>Data platform engineering</strong> — Worked on CJ ENM data-platform migration, OpenShift and IBM Cloud Pak for Data integration, and operations involving Solr, MongoDB, Redis, Impala, Hive, and RabbitMQ.</li>
       <li><strong>MCP-based support-agent workflows</strong> — Designed internal workflows connecting Slack, Outlook, wiki, ticket search, and local tools for response drafting, official URL checks, related-case search, aging-case triage, and escalation readiness checks.</li>
+      <li><strong>AI collaboration quality gates</strong> — Turned user feedback on a narrow AI-proposed heuristic into `validate:content`, which checks that posts, tag listings, and portfolio detail content have public reachable paths before deployment.</li>
       <li><strong>AI Session Recovery</strong> — grouped claude-resume and codex-resume as one tool family for searching, summarizing, previewing, and resuming Claude Code and OpenAI Codex CLI work history.</li>
       <li><strong>linkedin-posting-mcp</strong> — A local MCP server focused on approval-based LinkedIn posting workflow, intentionally avoiding scraping and DM automation.</li>
       <li><strong>Aging Ticket Escalation AI Agent</strong> — An internal agent workflow combining long-ticket summaries, on-call screenshot OCR, manager-chain lookup, and professional escalation-email drafting.</li>
@@ -308,6 +309,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <ul>
       <li>Designed around LinkedIn API permission constraints, using approval-based drafts and posting checklists instead of automatic posting.</li>
       <li>Documented agent handoff, session recovery, public/private repository boundaries, and adaptive-layout decisions as AI Workflow notes.</li>
+      <li>After a portfolio-detail regression, replaced brittle node-shape checks with an explicit content-reachability manifest enforced by GitHub Actions.</li>
     </ul>
     <h3>Early Android Projects</h3>
     <ul>

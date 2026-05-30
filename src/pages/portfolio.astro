@@ -217,6 +217,7 @@ const { Content } = await render(details);
       <li><strong>영상처리·OCR 연구개발</strong> — 단어 이미지 필기체/인쇄체 분류, 공책 라인 검출·제거, 컬러 보정, 렌더링 자동 테스트, 3D GUI 국책과제 PM 경험.</li>
       <li><strong>데이터 플랫폼 엔지니어링</strong> — CJ ENM 빅데이터 플랫폼, OpenShift/Cloud Pak for Data 마이그레이션, Solr/MongoDB/Redis/Impala/Hive 운영 경험.</li>
       <li><strong>MCP 기반 support-agent / Slack bot 워크플로</strong> — Slack, Outlook, wiki, ticket search, local tools를 연결해 고객 응답 초안, 공식 URL 검증, 유사 문서/티켓 검색, case aging triage, escalation readiness check를 자동화한 내부 워크플로 설계.</li>
+      <li><strong>AI 협업 품질 기준화</strong> — AI가 제안한 좁은 휴리스틱 검증을 사용자 피드백으로 재설계해, 모든 글·태그·포트폴리오 상세 콘텐츠가 공개 접근 경로를 갖는지 `validate:content`로 자동 검증하도록 전환.</li>
       <li><strong>AI Session Recovery</strong> — claude-resume와 codex-resume를 한 묶음으로 설계해 Claude Code와 OpenAI Codex CLI의 과거 작업 기억을 검색, 요약, 미리보기, 재개 흐름으로 복구.</li>
       <li><strong>linkedin-posting-mcp</strong> — 사용자 승인 기반 LinkedIn posting workflow를 위한 비공식 로컬 MCP 서버. 스크래핑/DM 자동화 없이 게시 워크플로만 좁게 다룸.</li>
       <li><strong>Aging Ticket Escalation AI Agent</strong> — 장기 미해결 티켓 에스컬레이션 흐름을 자동화한 사내 AI 에이전트 설계. 티켓 요약, 온콜 OCR 추출, 매니저 체인 lookup, 전문 영문 이메일 생성을 단일 흐름으로 묶음.</li>
@@ -316,6 +317,7 @@ const { Content } = await render(details);
     <ul>
       <li>LinkedIn API 권한 제약을 고려해 자동 게시 대신 승인 기반 초안·체크리스트 흐름으로 설계.</li>
       <li>AI agent handoff, session recovery, public/private repository boundary, adaptive layout decision을 AI Workflow 글감으로 정리.</li>
+      <li>포트폴리오 상세 누락 지적을 계기로 `li` 여부 같은 임시 휴리스틱을 버리고, 콘텐츠별 공개 도달성 매니페스트와 GitHub Actions 검증으로 운영 기준을 강화.</li>
     </ul>
     <h3>초기 Android 프로젝트</h3>
     <ul>
