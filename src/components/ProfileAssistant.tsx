@@ -1,4 +1,10 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
+
+const MAX_INPUT_CHARS = Number(import.meta.env.PUBLIC_PROFILE_CHAT_MAX_INPUT_CHARS ?? 420);
+const MAX_HISTORY_TURNS = Number(import.meta.env.PUBLIC_PROFILE_CHAT_MAX_HISTORY_TURNS ?? 4);
+const MAX_OUTPUT_TOKENS = Number(import.meta.env.PUBLIC_PROFILE_CHAT_MAX_OUTPUT_TOKENS ?? 220);
+const LOCAL_ENDPOINT = 'http://127.0.0.1:8787/profile-chat';
+const CONFIGURED_ENDPOINT = import.meta.env.PUBLIC_PROFILE_CHAT_ENDPOINT ?? '';
 
 const facts = {
   openSearch:
@@ -13,6 +19,12 @@ const facts = {
     '김용탁은 모바일 앱과 백엔드 개발에서 시작해 데이터 플랫폼과 AWS Analytics Support로 확장했고, 현재는 OpenSearch SME 경험과 AI 지원 자동화 워크플로를 결합해 반복되는 문제를 도구화하는 데 집중합니다.',
 };
 
+type ChatMessage = {
+  role: 'user' | 'assistant';
+  content: string;
+  source?: 'local' | 'llm';
+};
+
 function respond(question: string) {
   const q = question.toLowerCase();
   if (!q.trim()) return '질문을 입력해 주세요.';
@@ -23,9 +35,33 @@ function respond(question: string) {
   return facts.profile;
 }
 
+function trimQuestion(value: string) {
+  return value.trim().slice(0, MAX_INPUT_CHARS);
+}
+
+function getChatEndpoint() {
+  if (CONFIGURED_ENDPOINT) return CONFIGURED_ENDPOINT;
+  if (typeof window === 'undefined') return '';
+  return ['localhost', '127.0.0.1'].includes(window.location.hostname) ? LOCAL_ENDPOINT : '';
+}
+
 export default function ProfileAssistant() {
   const [question, setQuestion] = useState('');
-  const [answer, setAnswer] = useState('질문을 입력하면 정적 프로필 문맥으로 답변합니다.');
+  const [messages, setMessages] = useState<ChatMessage[]>([
+    {
+      role: 'assistant',
+      content: '질문을 입력하면 로컬 프로필 문맥으로 즉시 답변합니다. 로컬 LLM 프록시가 켜져 있으면 같은 UI에서 LLM 답변으로 전환됩니다.',
+      source: 'local',
+    },
+  ]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [mode, setMode] = useState<'local' | 'llm'>('local');
+
+  const remainingChars = useMemo(
+    () => Math.max(0, MAX_INPUT_CHARS - question.length),
+    [question],
+  );
+
   const prompts = [
     ['OpenSearch 경험', 'OpenSearch와 AWS Support 경험을 요약해줘'],
     ['AI workflow', 'AI workflow와 MCP 자동화 경험이 뭐야?'],
@@ -33,30 +69,91 @@ export default function ProfileAssistant() {
     ['학력', '대학과 학력을 알려줘'],
   ];
 
-  const ask = (value = question) => {
-    setQuestion(value);
-    setAnswer(respond(value));
+  const ask = async (value = question) => {
+    const nextQuestion = trimQuestion(value);
+    setQuestion(nextQuestion);
+    if (!nextQuestion) {
+      setMessages((current) => [...current, { role: 'assistant', content: '질문을 입력해 주세요.', source: 'local' }]);
+      return;
+    }
+
+    const userMessage: ChatMessage = { role: 'user', content: nextQuestion };
+    const nextMessages = [...messages, userMessage].slice(-(MAX_HISTORY_TURNS * 2 + 1));
+    setMessages((current) => [...current, userMessage]);
+    setIsLoading(true);
+
+    try {
+      const endpoint = getChatEndpoint();
+      if (!endpoint) throw new Error('Profile chat endpoint is not configured');
+
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          question: nextQuestion,
+          history: nextMessages,
+          limits: {
+            maxInputChars: MAX_INPUT_CHARS,
+            maxHistoryTurns: MAX_HISTORY_TURNS,
+            maxOutputTokens: MAX_OUTPUT_TOKENS,
+          },
+        }),
+      });
+
+      if (!response.ok) throw new Error(`Profile chat returned ${response.status}`);
+      const data = await response.json();
+      const answer = typeof data.answer === 'string' ? data.answer : respond(nextQuestion);
+      setMode('llm');
+      setMessages((current) => [...current, { role: 'assistant', content: answer, source: 'llm' }]);
+    } catch {
+      setMode('local');
+      setMessages((current) => [...current, { role: 'assistant', content: respond(nextQuestion), source: 'local' }]);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
-    <section className="feature-card" aria-label="Ask about Yongtak Kim">
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '16px' }}>
+    <section className="profile-assistant" aria-label="Ask about Yongtak Kim">
+      <div className="assistant-header">
+        <div>
+          <span>Ask Profile</span>
+          <strong>{mode === 'llm' ? 'LLM answer' : 'Local profile answer'}</strong>
+        </div>
+        <small>{MAX_OUTPUT_TOKENS} output tokens · {remainingChars} chars left</small>
+      </div>
+
+      <div className="assistant-prompts">
         {prompts.map(([label, value]) => (
-          <button key={label} type="button" onClick={() => ask(value)}>
+          <button key={label} type="button" onClick={() => ask(value)} disabled={isLoading}>
             {label}
           </button>
         ))}
       </div>
+
+      <div className="assistant-messages" aria-live="polite">
+        {messages.map((message, index) => (
+          <p key={`${message.role}-${index}`} className={`assistant-message ${message.role}`}>
+            <span>{message.source === 'llm' ? 'LLM' : message.role === 'user' ? 'YOU' : 'PROFILE'}</span>
+            {message.content}
+          </p>
+        ))}
+        {isLoading && <p className="assistant-message assistant"><span>PROFILE</span>답변을 가져오는 중입니다.</p>}
+      </div>
+
       <label htmlFor="profile-question">Question</label>
       <textarea
         id="profile-question"
         rows={3}
+        maxLength={MAX_INPUT_CHARS}
         value={question}
         placeholder="예: 대학은?"
         onChange={(event) => setQuestion(event.currentTarget.value)}
       />
-      <button type="button" onClick={() => ask()}>Ask</button>
-      <p style={{ marginTop: '18px' }}>{answer}</p>
+      <div className="assistant-actions">
+        <button type="button" onClick={() => ask()} disabled={isLoading}>Ask</button>
+        <button type="button" className="secondary-button" onClick={() => setMessages([])} disabled={isLoading}>Reset</button>
+      </div>
     </section>
   );
 }

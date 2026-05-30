@@ -424,6 +424,92 @@ textarea {
   resize: vertical;
 }
 
+.profile-assistant {
+  margin-top: 18px;
+  padding: 24px;
+  border: 1px solid rgba(11, 75, 71, 0.18);
+  border-radius: 12px;
+  background:
+    radial-gradient(circle at 90% 10%, rgba(242, 184, 75, 0.22), transparent 30%),
+    #fff;
+  box-shadow: 0 16px 40px rgba(32, 36, 42, 0.07);
+}
+
+.assistant-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.assistant-header span,
+.assistant-message span {
+  display: block;
+  color: #0b6f68;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.assistant-header strong {
+  display: block;
+  margin-top: 4px;
+  font-size: 1.45rem;
+  line-height: 1.2;
+}
+
+.assistant-header small {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-align: right;
+}
+
+.assistant-prompts,
+.assistant-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.assistant-messages {
+  display: grid;
+  gap: 10px;
+  max-height: 360px;
+  margin: 18px 0;
+  overflow-y: auto;
+}
+
+.assistant-message {
+  width: fit-content;
+  max-width: min(88%, 620px);
+  margin: 0;
+  padding: 12px 14px;
+  border: 1px solid rgba(11, 75, 71, 0.14);
+  border-radius: 12px;
+  color: #26343b;
+  background: #f5faf7;
+  line-height: 1.6;
+}
+
+.assistant-message.user {
+  justify-self: end;
+  border-color: rgba(242, 184, 75, 0.48);
+  background: #fff3d6;
+}
+
+.secondary-button {
+  color: #0b4b47;
+  background: #fff;
+}
+
+.secondary-button:hover {
+  color: #142126;
+  background: var(--calm);
+}
+
 .search-label {
   display: block;
   margin-bottom: 8px;
@@ -494,5 +580,15 @@ textarea {
 
   .card-grid {
     grid-template-columns: 1fr;
+  }
+
+  .assistant-header {
+    display: block;
+  }
+
+  .assistant-header small {
+    display: block;
+    margin-top: 8px;
+    text-align: left;
   }
 }

@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "astro dev --host 0.0.0.0",
     "build": "astro build",
-    "preview": "astro preview --host 0.0.0.0"
+    "preview": "astro preview --host 0.0.0.0",
+    "profile-chat": "node scripts/profile-chat-server.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "^6.0.1",
