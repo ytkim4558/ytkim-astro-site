@@ -1560,6 +1560,116 @@ td.code {
     }
 }
 
+/* English home should feel like the main site, not a generic "English" page. */
+.english-home-template .site-nav {
+    width: min(1160px, calc(100vw - 32px));
+    grid-template-columns: minmax(460px, 1fr) auto;
+}
+
+.english-home-template .site-nav-left {
+    justify-self: start;
+}
+
+.english-home-template .site-nav-right {
+    justify-self: end;
+}
+
+.english-home-template .nav {
+    min-width: 0;
+    width: max-content;
+}
+
+.english-home-hero h2 {
+    max-width: 900px;
+    font-size: clamp(4.8rem, 5.5vw, 7.2rem);
+    line-height: 0.98;
+}
+
+.english-entry-points .post-marquee-card {
+    min-width: min(330px, 72vw);
+}
+
+.english-entry-points .post-marquee-card small {
+    display: block;
+    margin-top: 16px;
+    color: rgba(23, 19, 13, 0.62);
+    font-size: 1.25rem;
+    font-weight: 750;
+    line-height: 1.45;
+}
+
+@media (min-width: 761px) {
+    .english-home-template .site-nav {
+        justify-content: stretch;
+    }
+}
+
+@media (max-width: 760px) {
+    .english-home-template .site-nav {
+        grid-template-columns: 1fr;
+    }
+
+    .english-home-hero h2 {
+        font-size: clamp(3.2rem, 11vw, 5.2rem);
+    }
+}
+
+@media (max-width: 430px) {
+    .english-home-template .site-nav,
+    .home-template .site-nav {
+        grid-template-columns: 1fr;
+    }
+
+    .english-home-template .nav,
+    .home-template .nav {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 4px;
+        width: 100%;
+    }
+
+    .english-home-template .nav a,
+    .home-template .nav a {
+        display: block;
+        min-width: 0;
+        padding: 7px 5px;
+        overflow: hidden;
+        font-size: 0.82rem;
+        text-align: center;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .english-home-template .site-nav-right,
+    .home-template .site-nav-right {
+        display: grid;
+        grid-template-columns: auto auto;
+        gap: 8px;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .english-home-template .language-switcher,
+    .home-template .language-switcher {
+        width: auto;
+    }
+
+    .english-home-template .language-option,
+    .home-template .language-option {
+        min-width: 34px;
+        padding: 7px 8px;
+        font-size: 0.82rem;
+    }
+
+    .english-home-template .search-button,
+    .english-home-template .subscribe-button,
+    .home-template .search-button,
+    .home-template .subscribe-button {
+        padding: 7px 10px;
+        font-size: 0.82rem;
+    }
+}
+
 /* Visual QA stabilization, 2026-05-17.
    Keep the site useful on first load: compact nav, no duplicate page hero,
    and restrained Korean headline sizing. */
