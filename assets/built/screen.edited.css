@@ -2824,3 +2824,211 @@ body:before {
         line-height: 1.55 !important;
     }
 }
+
+/* Professional polish pass: keep the portfolio senior, not toy-like. */
+.site-nav,
+.language-switcher,
+.search-button,
+.subscribe-button,
+.nav a,
+.site-nav-logo,
+.profile-actions a,
+.portfolio-page .portfolio-actions a,
+.portfolio-page .portfolio-floating-nav,
+.portfolio-page .portfolio-floating-nav a,
+.portfolio-toc a,
+.post-card,
+.post-marquee-card,
+.work-card,
+.portfolio-metrics div,
+.tag-card {
+    border-radius: 14px;
+}
+
+.site-nav {
+    border-color: rgba(17, 24, 39, 0.12);
+    background: rgba(255, 253, 247, 0.92);
+    box-shadow: 0 10px 32px rgba(47, 37, 22, 0.12);
+}
+
+.site-nav .nav a:hover,
+.site-nav .subscribe-button:hover,
+.site-nav .language-option.is-active,
+.profile-actions a:hover,
+.portfolio-page .portfolio-actions a:hover,
+.portfolio-page .portfolio-floating-nav a:hover,
+.portfolio-page .portfolio-toc a:hover {
+    color: #fff !important;
+    background: #17130d;
+    box-shadow: 0 10px 24px rgba(23, 19, 13, 0.18);
+    transform: translateY(-1px);
+}
+
+.profile-actions a:first-child:hover,
+.portfolio-page .portfolio-actions a:first-child:hover {
+    color: #17130d !important;
+    background: #f7f2e8;
+}
+
+.post-card:hover,
+.post-marquee-card:hover,
+.work-card:hover,
+.portfolio-metrics div:hover {
+    transform: translateY(-3px);
+    border-color: rgba(15, 118, 110, 0.24);
+    box-shadow: 0 18px 42px rgba(47, 37, 22, 0.13) !important;
+}
+
+.tag-template .site-header {
+    min-height: 320px;
+    background:
+        radial-gradient(circle at 72% 10%, rgba(200, 241, 105, 0.24), transparent 30%),
+        linear-gradient(135deg, #fffdf7 0%, #eef7f4 100%) !important;
+}
+
+.tag-template .site-header:before,
+.tag-template .site-header:after {
+    display: none;
+}
+
+.tag-template .site-header-content {
+    min-height: 260px;
+    padding-top: 126px;
+    padding-bottom: 46px;
+}
+
+.tag-template .site-title {
+    color: #17130d;
+    text-shadow: none;
+}
+
+.tag-template .site-description {
+    color: rgba(23, 19, 13, 0.68);
+    font-weight: 750;
+    text-shadow: none;
+}
+
+.tag-template .post-feed {
+    margin-top: -18px;
+}
+
+.portfolio-page .portfolio-hero {
+    padding: clamp(40px, 4.4vw, 62px);
+}
+
+.portfolio-page .portfolio-eyebrow {
+    color: rgba(23, 19, 13, 0.62);
+    font-size: 1.14rem;
+    letter-spacing: 0.15em;
+}
+
+.portfolio-page .portfolio-hero h2,
+.english-page .portfolio-hero h2 {
+    max-width: 780px;
+    font-size: clamp(4.8rem, 5vw, 6.2rem);
+    line-height: 1.03;
+}
+
+.portfolio-page .portfolio-hero p {
+    max-width: 760px;
+    font-size: clamp(1.55rem, 1.45vw, 1.86rem);
+}
+
+.portfolio-page .portfolio-floating-nav {
+    border-radius: 16px;
+    box-shadow: 0 14px 36px rgba(47, 37, 22, 0.12);
+}
+
+.portfolio-page .portfolio-floating-nav a {
+    min-width: 86px;
+    font-size: 1.08rem;
+}
+
+.portfolio-metrics div {
+    padding: 20px 22px;
+}
+
+.portfolio-metrics strong {
+    font-size: 2.8rem;
+}
+
+@media (max-width: 760px) {
+    .site-nav {
+        top: 10px;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 7px;
+        padding: 8px;
+        border-radius: 18px;
+    }
+
+    .site-nav-left {
+        overflow: visible;
+    }
+
+    .nav {
+        display: flex;
+        width: 100%;
+        min-width: 0;
+        gap: 4px;
+        justify-content: space-between;
+        white-space: normal;
+    }
+
+    .nav li {
+        flex: 0 1 auto;
+    }
+
+    .nav a,
+    .subscribe-button,
+    .language-option {
+        padding: 7px 8px;
+        font-size: 0.94rem;
+        line-height: 1;
+        letter-spacing: 0;
+    }
+
+    .site-nav-right {
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .language-switcher {
+        gap: 2px;
+        margin-right: 0;
+        padding: 3px;
+    }
+
+    .search-button {
+        min-width: 0;
+        padding: 7px 10px;
+    }
+
+    .tag-template .site-header {
+        min-height: 300px;
+    }
+
+    .tag-template .site-header-content {
+        min-height: 220px;
+        padding-top: 124px;
+        padding-bottom: 32px;
+    }
+
+    .tag-template .site-title {
+        font-size: 3.6rem;
+        line-height: 1;
+    }
+
+    .tag-template .site-description {
+        max-width: 310px;
+        font-size: 1.35rem;
+        line-height: 1.45;
+    }
+
+    .post-card,
+    .post-marquee-card,
+    .work-card,
+    .portfolio-metrics div {
+        border-radius: 18px;
+    }
+}
