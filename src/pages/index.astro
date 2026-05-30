@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Yongtak Kim Engineering Notes">
+  <section class="page-hero">
+    <div class="hero-inner">
+      <p class="eyebrow">Cloud Analytics · AI Workflow · Portfolio</p>
+      <h1>반복되는 엔지니어링 문제를 기록하고 도구로 바꾸는 노트</h1>
+      <p class="hero-description">
+        OpenSearch, AWS Support, 데이터 플랫폼, AI workflow 실험을 정리하는 개인 기술 사이트입니다.
+      </p>
+    </div>
+  </section>
+
+  <section class="card-grid" aria-label="Primary sections">
+    <a class="feature-card" href="/profile/">
+      <span>Profile</span>
+      <strong>지원 엔지니어링과 OpenSearch SME 경험</strong>
+      <p>경력 요약, 핵심 기술, 프로필 Q&A를 정리합니다.</p>
+    </a>
+    <a class="feature-card" href="/portfolio/">
+      <span>Portfolio</span>
+      <strong>10년 이상의 개발·데이터 플랫폼 이력</strong>
+      <p>프로젝트, 고객 지원 사례, 자동화 흐름을 한 페이지에 모읍니다.</p>
+    </a>
+    <a class="feature-card" href="/tag/ai-workflow/">
+      <span>AI Workflow</span>
+      <strong>AI 에이전트와 운영 자동화 기록</strong>
+      <p>Codex, Claude, MCP, handoff 규칙을 재사용 가능한 글로 남깁니다.</p>
+    </a>
+    <a class="feature-card" href="/posts/linkedin-api-permission-check/">
+      <span>Latest Note</span>
+      <strong>LinkedIn API 권한 경계 확인</strong>
+      <p>공식 API, 초안 큐, 승인 기반 게시 흐름을 Astro 이전 이후에도 유지합니다.</p>
+    </a>
+  </section>
+</BaseLayout>

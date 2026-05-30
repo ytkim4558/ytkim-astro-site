@@ -1,0 +1,25 @@
+---
+title: "LinkedIn API로 기존 글을 읽어 톤을 맞추려다 확인한 것"
+description: "LinkedIn API 권한과 개인 자동화의 현실적인 경계를 확인한 기록"
+pubDate: 2026-05-18
+tags:
+  - AI Workflow
+  - LinkedIn
+lang: ko
+---
+
+LinkedIn에 새 글을 올리기 전에 기존에 썼던 글의 톤을 보고 맞추고 싶었다.
+
+이미 `linkedin-posting-mcp`라는 로컬 MCP 서버를 만들어둔 상태였기 때문에, 처음에는 공식 API를 통해 기존 포스트를 읽고 새 초안을 생성하는 흐름을 생각했다.
+
+## 확인한 점
+
+- OAuth 로그인과 기본 프로필 조회는 가능하다.
+- 글 작성은 `w_member_social` 권한을 통해 접근할 수 있다.
+- 기존 개인 게시글 읽기는 `r_member_social` 같은 제한 권한이 필요해서 개인 개발자 앱에서는 바로 열리지 않을 수 있다.
+
+## 현재 결론
+
+LinkedIn 자동화는 브라우저 조작이나 scraping이 아니라, 공개 가능한 초안을 만들고 사람이 승인한 뒤 게시하는 흐름으로 두는 편이 안전하다.
+
+Astro 이전 후에는 RSS나 content collection에서 새 글을 감지하고, LinkedIn 초안 큐로 넘기는 구조를 붙일 수 있다.

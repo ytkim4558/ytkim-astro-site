@@ -1,0 +1,32 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  pubDate: Date;
+  tags?: string[];
+}
+
+const { title, description, pubDate, tags = [] } = Astro.props;
+const formattedDate = new Intl.DateTimeFormat('ko-KR', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+}).format(pubDate);
+---
+
+<BaseLayout title={`${title} | Yongtak Kim Engineering Notes`} description={description}>
+  <header class="post-hero">
+    <div class="hero-inner">
+      <p class="eyebrow">{tags.join(' · ') || 'Engineering Notes'}</p>
+      <h1>{title}</h1>
+      {description && <p class="hero-description">{description}</p>}
+      <p class="hero-description">{formattedDate}</p>
+    </div>
+  </header>
+
+  <article class="content">
+    <slot />
+  </article>
+</BaseLayout>
