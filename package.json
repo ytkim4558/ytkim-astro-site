@@ -8,8 +8,8 @@
     "build": "astro build",
     "validate:locales": "node scripts/validate-locales.mjs",
     "validate:links": "node scripts/validate-links.mjs",
-    "validate:portfolio": "node scripts/validate-portfolio.mjs",
-    "validate": "npm run validate:locales && npm run validate:links && npm run validate:portfolio",
+    "validate:content": "node scripts/validate-content-reachability.mjs",
+    "validate": "npm run validate:locales && npm run validate:links && npm run validate:content",
     "preview": "astro preview --host 0.0.0.0",
     "cf:preview": "npm run build && wrangler pages dev dist",
     "cf:deploy": "npm run build && wrangler pages deploy dist --project-name ytkim4558"
