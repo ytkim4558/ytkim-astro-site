@@ -32,7 +32,7 @@ Use Cloudflare Pages, not Vercel, for the next deployment target.
 
 Set these Cloudflare Pages variables/secrets:
 
-- `OPENAI_API_KEY`: Secret, required for live LLM answers.
-- `PROFILE_CHAT_MODEL`: optional plain variable, defaults to `gpt-5-mini`.
+- `GEMINI_PROFILE_API_KEY`: Secret, required for live LLM answers. Use a dedicated Google AI Studio key for this site; do not reuse a general `GEMINI_API_KEY`.
+- `PROFILE_CHAT_MODEL`: optional plain variable, defaults to `gemini-2.5-flash`.
 
 Do not put API keys in `PUBLIC_*` variables or commit `.dev.vars`.

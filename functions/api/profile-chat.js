@@ -1,4 +1,4 @@
-const DEFAULT_MODEL = 'gpt-5-mini';
+const DEFAULT_MODEL = 'gemini-2.5-flash';
 const MAX_INPUT_CHARS = 420;
 const MAX_HISTORY_TURNS = 4;
 const MAX_OUTPUT_TOKENS = 220;
@@ -36,14 +36,25 @@ function compactHistory(history) {
 }
 
 function extractResponseText(payload) {
-  if (typeof payload.output_text === 'string') return payload.output_text.trim();
   const chunks = [];
-  for (const item of payload.output ?? []) {
-    for (const content of item.content ?? []) {
-      if (typeof content.text === 'string') chunks.push(content.text);
+  for (const candidate of payload.candidates ?? []) {
+    for (const part of candidate.content?.parts ?? []) {
+      if (typeof part.text === 'string') chunks.push(part.text);
     }
   }
   return chunks.join('\n').trim();
+}
+
+function toGeminiContents(history, question) {
+  const contents = history.map((message) => ({
+    role: message.role === 'user' ? 'user' : 'model',
+    parts: [{ text: message.content }],
+  }));
+  contents.push({
+    role: 'user',
+    parts: [{ text: question }],
+  });
+  return contents;
 }
 
 export async function onRequestPost(context) {
@@ -59,35 +70,32 @@ export async function onRequestPost(context) {
     return json(400, { error: 'question is required' });
   }
 
-  const apiKey = context.env.OPENAI_API_KEY;
+  const apiKey = context.env.GEMINI_PROFILE_API_KEY;
   if (!apiKey) {
-    return json(503, { error: 'OPENAI_API_KEY is not configured' });
+    return json(503, { error: 'GEMINI_PROFILE_API_KEY is not configured' });
   }
 
   const history = compactHistory(body.history);
-  const response = await fetch('https://api.openai.com/v1/responses', {
+  const model = context.env.PROFILE_CHAT_MODEL ?? DEFAULT_MODEL;
+  const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
     method: 'POST',
     headers: {
-      Authorization: `Bearer ${apiKey}`,
+      'x-goog-api-key': apiKey,
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      model: context.env.PROFILE_CHAT_MODEL ?? DEFAULT_MODEL,
-      instructions:
-        'You answer as a concise Korean profile assistant for Yongtak Kim. Use only the supplied profile context and conversation. If the context is insufficient, say that the public profile does not include enough detail. Do not invent employers, dates, schools, awards, or private facts.',
-      input: [
-        {
-          role: 'user',
-          content: [
-            {
-              type: 'input_text',
-              text: `${profileContext}\n\nRecent conversation:\n${JSON.stringify(history)}\n\nQuestion: ${question}`,
-            },
-          ],
-        },
-      ],
-      max_output_tokens: MAX_OUTPUT_TOKENS,
-      store: false,
+      systemInstruction: {
+        parts: [{
+          text:
+            'You answer as a concise Korean profile assistant for Yongtak Kim. Use only the supplied profile context and conversation. If the context is insufficient, say that the public profile does not include enough detail. Do not invent employers, dates, schools, awards, or private facts.\n\n' +
+            profileContext,
+        }],
+      },
+      contents: toGeminiContents(history, question),
+      generationConfig: {
+        maxOutputTokens: MAX_OUTPUT_TOKENS,
+        temperature: 0.4,
+      },
     }),
   });
 
@@ -104,7 +112,7 @@ export async function onRequestPost(context) {
 
   return json(200, {
     answer,
-    source: 'openai-responses',
+    source: 'gemini-generate-content',
     limits: {
       maxInputChars: MAX_INPUT_CHARS,
       maxHistoryTurns: MAX_HISTORY_TURNS,

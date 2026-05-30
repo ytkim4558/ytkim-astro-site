@@ -36,11 +36,13 @@ Reasoning:
 
 Required Cloudflare Pages secret:
 
-- `OPENAI_API_KEY`
+- `GEMINI_PROFILE_API_KEY`
+
+Do not read or reuse a generic `GEMINI_API_KEY` for this site. The user explicitly wants a dedicated Gemini key for the profile assistant, separate from any existing paid/personal Gemini API key.
 
 Optional Cloudflare Pages variable:
 
-- `PROFILE_CHAT_MODEL`, defaults to `gpt-5-mini`
+- `PROFILE_CHAT_MODEL`, defaults to `gemini-2.5-flash`
 
 Never commit `.dev.vars`, `.env`, API keys, OAuth tokens, or other credentials.
 
@@ -50,10 +52,10 @@ Recent checks:
 
 - `npm run build` succeeds.
 - `wrangler pages dev dist --port 8788 --ip 127.0.0.1` serves `/profile/` with `Ask Profile`.
-- `POST /api/profile-chat` reaches the Pages Function and returns `503` when `OPENAI_API_KEY` is not configured, which is expected. The React UI falls back to local profile answers.
+- `POST /api/profile-chat` reaches the Pages Function and returns `503` when `GEMINI_PROFILE_API_KEY` is not configured, which is expected. The React UI falls back to local profile answers.
 - `npm run cf:deploy` succeeded after loading `CLOUDFLARE_API_TOKEN` from the Windows user environment.
 - `https://ytkim4558.pages.dev/profile/` returns 200 and contains `Ask Profile`.
-- `https://ytkim4558.pages.dev/api/profile-chat` returns 503 until `OPENAI_API_KEY` is configured in Cloudflare Pages.
+- `https://ytkim4558.pages.dev/api/profile-chat` returns 503 until `GEMINI_PROFILE_API_KEY` is configured in Cloudflare Pages.
 
 ## Safety Rules
 
@@ -71,5 +73,5 @@ Use the actual forbidden string from prior user instructions when running locall
 1. Commit the Cloudflare Pages setup in the source repo.
 2. Push the source repo if/when a remote is configured.
 3. In Cloudflare dashboard, create/import the Pages project from the source repo.
-4. Set `OPENAI_API_KEY` as a Secret.
+4. Set `GEMINI_PROFILE_API_KEY` as a Secret.
 5. Verify the preview domain, then decide whether to move `ytkim4558.github.io` traffic or keep GitHub Pages as the primary public domain.
