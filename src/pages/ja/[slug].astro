@@ -1,0 +1,42 @@
+---
+import { getCollection } from 'astro:content';
+import PostLayout from '../../layouts/PostLayout.astro';
+import { jaPosts } from '../../i18n-posts';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.id.replace(/\.(md|mdx)$/, '').toLowerCase() },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const slug = post.id.replace(/\.(md|mdx)$/, '').toLowerCase();
+const localized = jaPosts[slug];
+---
+
+<PostLayout
+  title={localized?.title ?? post.data.title}
+  description={localized?.description ?? post.data.description}
+  pubDate={post.data.pubDate}
+  tags={post.data.tags}
+>
+  {localized ? (
+    <div class="localized-article">
+      {localized.sections.map((section) => (
+        <section>
+          <h2>{section.heading}</h2>
+          {section.paragraphs?.map((paragraph) => <p>{paragraph}</p>)}
+          {section.bullets && (
+            <ul>
+              {section.bullets.map((item) => <li>{item}</li>)}
+            </ul>
+          )}
+        </section>
+      ))}
+    </div>
+  ) : (
+    <p>このページの日本語本文は準備中です。</p>
+  )}
+</PostLayout>

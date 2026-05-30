@@ -1,16 +1,15 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-
+import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
 const toSlug = (value: string) => value.toLowerCase().replace(/\s+/g, '-');
 const descriptions: Record<string, string> = {
-  'ai-workflow': 'AI 코딩 에이전트와 함께 만든 도구, 워크플로, 설계 결정 기록',
-  troubleshooting: '문제 분석과 복구 기록',
-  jekyll: 'Jekyll 기반 정적 HTML 블로그 유지보수',
-  mysql: 'MySQL 사용 중 확인한 기록',
-  git: 'Git 운영과 배포 정리',
-  android: 'Android 앱 개발 기록',
+  'ai-workflow': 'AIコーディングエージェントと作ったツール、ワークフロー、設計判断の記録。',
+  troubleshooting: '問題調査と復旧の記録。',
+  jekyll: '旧Jekyll静的サイトの保守記録。',
+  mysql: 'MySQLに関するメモ。',
+  git: 'Git運用とデプロイの整理。',
+  android: 'Androidアプリ開発の記録。',
 };
 
 const posts = await getCollection('posts', ({ data }) => !data.draft);
@@ -31,16 +30,16 @@ const tags = [...tagMap.entries()].sort((a, b) => b[1].count - a[1].count || a[1
   <section class="page-hero">
     <div class="hero-inner">
       <p class="eyebrow">Tags</p>
-      <h1>주제별 노트 탐색</h1>
-      <p class="hero-description">OpenSearch, AI Workflow, Git, Android 등 관심 주제별로 기술 노트를 모아 봅니다.</p>
+      <h1>トピック別ノート</h1>
+      <p class="hero-description">OpenSearch、AI Workflow、Git、Android、トラブルシューティングなどの技術ノートをトピック別に整理しています。</p>
     </div>
   </section>
   <section class="card-grid">
     {tags.map(([slug, tag]) => (
-      <a class="feature-card" href={`/tag/${slug}/`}>
+      <a class="feature-card" href={`/ja/tag/${slug}/`}>
         <span>{tag.count} posts</span>
         <strong>#{slug}</strong>
-        <p>{descriptions[slug] ?? `${tag.label} 관련 글 모음`}</p>
+        <p>{descriptions[slug] ?? `${tag.label} 関連ノート`}</p>
       </a>
     ))}
   </section>

@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { jaPosts } from '../../../i18n-posts';
+
+export async function getStaticPaths() {
+  const toSlug = (value: string) => value.toLowerCase().replace(/\s+/g, '-');
+  const posts = await getCollection('posts', ({ data }) => !data.draft);
+  const tags = [...new Set(posts.flatMap((post) => post.data.tags.map(toSlug)))].sort();
+  return tags.map((tag) => ({ params: { tag }, props: { tag, posts } }));
+}
+
+const toSlug = (value: string) => value.toLowerCase().replace(/\s+/g, '-');
+const formatTitle = (value: string) => value.split('-').map((part) => part.charAt(0).toUpperCase() + part.slice(1)).join(' ');
+const { tag, posts } = Astro.props;
+const filteredPosts = posts
+  .filter((post) => post.data.tags.some((item) => toSlug(item) === tag))
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
+const label = filteredPosts[0]?.data.tags.find((item) => toSlug(item) === tag) ?? formatTitle(tag);
+const tagCopy: Record<string, { eyebrow: string; title: string; description: string }> = {
+  'ai-workflow': {
+    eyebrow: 'AI Workflow Notes',
+    title: 'AI協業ワークフロー',
+    description: 'Codex、Claude、MCP、デプロイ復旧、セッション引き継ぎなど、AIエージェントと再利用できる作業ルールを実例で整理します。',
+  },
+};
+const copy = tagCopy[tag] ?? {
+  eyebrow: 'Topic Notes',
+  title: label,
+  description: 'テーマごとに関連するエンジニアリングノートを整理しています。',
+};
+const formatDate = (date: Date) => new Intl.DateTimeFormat('ja-JP', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+}).format(date);
+
+---
+
+<BaseLayout title={`${label} | Yongtak Kim`}>
+  <section class="page-hero localized-hero">
+    <div class="hero-inner">
+      <p class="eyebrow">{copy.eyebrow}</p>
+      <h1>{copy.title}</h1>
+      <p class="hero-description">
+        {copy.description}
+      </p>
+    </div>
+  </section>
+  <main class="post-list">
+    {filteredPosts.map((post) => {
+      const translated = jaPosts[post.id.toLowerCase()];
+      return (
+        <article class="post-list-item localized-list-item">
+          <a href={`/ja/${post.id.replace(/\.(md|mdx)$/, '').toLowerCase()}/`}>
+            <span>{formatDate(post.data.pubDate)}</span>
+            <strong>{translated?.title ?? post.data.title}</strong>
+            {(translated?.description || post.data.description) && <p>{translated?.description ?? post.data.description}</p>}
+          </a>
+        </article>
+      );
+    })}
+  </main>
+</BaseLayout>

@@ -5,76 +5,473 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 <BaseLayout title="Portfolio | Yongtak Kim">
   <section class="page-hero">
     <div class="hero-inner">
-      <p class="eyebrow">OpenSearch · Support Automation · AI Workflow</p>
-      <h1>A support engineer who turns repeated troubleshooting patterns into reliable tools</h1>
+      <p class="eyebrow">Yongtak Kim</p>
+      <h1>Product, data, and cloud support engineer</h1>
       <p class="hero-description">
-        AWS Cloud Support Engineer and OpenSearch SME with experience across analytics workloads, enterprise data platforms, mobile apps, backend systems, and AI-assisted workflows.
+        This portfolio collects the evidence behind a career that started with Android/iOS and backend implementation, expanded through OCR and image-processing R&D, enterprise data platforms, and Amazon OpenSearch support.
       </p>
+      <div class="hero-credentials" aria-label="Education highlights">
+        <span>M.S. in Computer Science</span>
+        <span>B.S. in Computer Science</span>
+        <span>Computer Vision / Pattern Recognition</span>
+      </div>
     </div>
   </section>
 
+  <section class="card-grid">
+    <article class="feature-card">
+      <span>10+ yrs</span>
+      <strong>Software / Data Platform</strong>
+      <p>Hands-on experience across apps, servers, databases, search, analytics platforms, and production operations.</p>
+    </article>
+    <article class="feature-card">
+      <span>4+ yrs</span>
+      <strong>AWS Analytics Support</strong>
+      <p>Customer troubleshooting and escalation work for OpenSearch, Kinesis, QuickSight, and related analytics workloads.</p>
+    </article>
+    <article class="feature-card">
+      <span>2026</span>
+      <strong>AI Workflow Tooling</strong>
+      <p>Experiments with agent handoff, session recovery, document validation, and support-case workflow automation.</p>
+    </article>
+    <article class="feature-card">
+      <span>CS M.S.</span>
+      <strong>Computer Science Graduate Background</strong>
+      <p>B.S. and M.S. in Computer Science with research experience in computer vision, pattern recognition, and image processing.</p>
+    </article>
+  </section>
+
+  <section class="career-showcase" aria-label="Career timeline">
+    <div class="showcase-heading">
+      <p class="eyebrow">Career Timeline</p>
+      <h2>From product teams to data platforms and cloud operations</h2>
+      <p>The logos make the career path scannable first; the detailed sections below provide the evidence behind each role.</p>
+    </div>
+    <div class="company-rail">
+      <a class="company-card featured" href="#detail-aws" data-portfolio-modal data-modal-title="Amazon Web Services" data-modal-meta="2022 - Present · OpenSearch SME / Analytics Support" data-modal-body="A global cloud-services company. I support OpenSearch, Kinesis, and QuickSight customers, diagnose production cluster issues, coordinate service-team escalations, and build AI-assisted support workflows.">
+        <img src="/assets/images/company/aws.svg" alt="AWS logo">
+        <span>2022 - Present</span>
+        <strong>Amazon Web Services</strong>
+        <p>
+          <span class="company-intro">Global cloud-services company</span>
+          <span class="company-work">I handle OpenSearch, Kinesis, and QuickSight customer issues, production-cluster stabilization, and escalation workflows.</span>
+        </p>
+      </a>
+      <a class="company-card" href="#detail-cj" data-portfolio-modal data-modal-title="CJ OliveNetworks" data-modal-meta="2019 - 2022 · Data Platform Senior Engineer" data-modal-body="CJ Group's ICT company. I worked on CJ ENM data-platform migration to OpenShift and IBM Cloud Pak for Data, CP4D API changes, Kubernetes project flows, and analytics platform operations.">
+        <img src="/assets/images/company/cj-olive.svg" alt="CJ OliveNetworks logo">
+        <span>2019 - 2022</span>
+        <strong>CJ OliveNetworks</strong>
+        <p>
+          <span class="company-intro">CJ Group ICT company</span>
+          <span class="company-work">I migrated and operated CJ ENM's big-data platform with OpenShift, IBM Cloud Pak for Data, Solr, MongoDB, Redis, Impala, and Hive.</span>
+        </p>
+      </a>
+      <a class="company-card" href="#detail-gbike" data-portfolio-modal data-modal-title="G.Bike" data-modal-meta="2018 - 2019 · Android / iOS / Backend" data-modal-body="A Korean mobility-service company. I built Android/iOS app features, PHP backend APIs, MySQL tables, admin tools, rental/return flows, driver-license verification, and long-term rental features.">
+        <img src="/assets/images/company/gbike.svg" alt="G.Bike logo">
+        <span>2018 - 2019</span>
+        <strong>G.Bike</strong>
+        <p>
+          <span class="company-intro">Mobility service company</span>
+          <span class="company-work">I built Android/iOS apps, PHP APIs, MySQL schemas, admin tools, rental/return flows, and license-verification features.</span>
+        </p>
+      </a>
+      <a class="company-card" href="#detail-teamnova" data-portfolio-modal data-modal-title="Teamnova" data-modal-meta="2017 - 2018 · Mobile App Lead" data-modal-body="A startup building travel utility apps. I worked on Popiece Android operations and led the iOS prototype, including exchange-rate, widget, travel-expense, and calendar flows.">
+        <img src="/assets/images/company/teamnova.svg" alt="Teamnova logo">
+        <span>2017 - 2018</span>
+        <strong>Teamnova</strong>
+        <p>
+          <span class="company-intro">Travel-app startup</span>
+          <span class="company-work">I maintained Popiece Android and led the iOS prototype for exchange rates, travel-expense UI, widgets, and calendar flows.</span>
+        </p>
+      </a>
+      <a class="company-card" href="#detail-diotek" data-portfolio-modal data-modal-title="DioTek" data-modal-meta="2013 - 2015 · OCR / Image Processing" data-modal-body="A software company known for handwriting recognition, dictionaries, and mobile OCR. I implemented OCR-related algorithms, handwriting/printed-text classification, notebook-line removal, and color correction.">
+        <img src="/assets/images/company/diotek.svg" alt="DioTek logo">
+        <span>2013 - 2015</span>
+        <strong>DioTek</strong>
+        <p>
+          <span class="company-intro">Handwriting-recognition and mobile OCR company</span>
+          <span class="company-work">I implemented OCR, handwriting/printed-text classification, notebook-line removal, and color correction.</span>
+        </p>
+      </a>
+      <a class="company-card" href="#detail-digitalaria" data-portfolio-modal data-modal-title="Digital Aria" data-modal-meta="2011 - 2013 · 3D GUI / R&D PM" data-modal-body="An embedded GUI framework company. I worked on rendering automation tests, context-aware 3D GUI, face/finger recognition, Android modules, and national R&D project management.">
+        <img src="/assets/images/company/digitalaria.svg" alt="Digital Aria logo">
+        <span>2011 - 2013</span>
+        <strong>Digital Aria</strong>
+        <p>
+          <span class="company-intro">Embedded GUI framework company</span>
+          <span class="company-work">I built rendering automation tests, 3D GUI features, face/finger recognition work, and handled R&D project coordination.</span>
+        </p>
+      </a>
+    </div>
+  </section>
+
+  <section class="portfolio-spotlight" aria-label="Portfolio highlights">
+    <article class="spotlight-main">
+      <p class="eyebrow">Selected Impact</p>
+      <h2>I reduce large operational problems into repeatable procedures and tools</h2>
+      <p>The common thread across OpenSearch production support, data-platform migration, mobile service operations, and AI workflow automation is the same: make problems observable, split decisions into smaller units, and turn repeated work into documentation or tooling.</p>
+      <div class="impact-tags" aria-label="Impact areas">
+        <span>OpenSearch SME</span>
+        <span>Data Platform</span>
+        <span>Mobile Products</span>
+        <span>AI Workflow</span>
+      </div>
+    </article>
+    <div class="project-teasers">
+      <a href="#side-projects" data-portfolio-modal data-modal-title="AI Session Recovery" data-modal-meta="claude-resume · codex-resume · 2026" data-modal-body="Tools for searching and resuming Claude Code and OpenAI Codex CLI work history through summaries, previews, and stable session handoff flows.">
+        <img src="/assets/images/codex-resume/codex-resume-raw-redacted.png" alt="codex-resume TUI screenshot">
+        <strong>AI Session Recovery</strong>
+        <p>Tools for searching and resuming Claude/Codex agent work history.</p>
+      </a>
+      <a href="#project-hotdealppom" data-portfolio-modal data-modal-title="Mobile Experiments" data-modal-meta="HotDealppom · BikeNavi · Android side projects" data-modal-body="Early product experiments using Android, PHP, MariaDB, Hadoop, Flume, KoNLPy, Google Maps, and Tmap APIs for recommendation, navigation, and contact-management UX.">
+        <img src="/assets/portfolio/image025.png" alt="HotDealppom app screenshot">
+        <strong>Mobile Experiments</strong>
+        <p>Early product experiments with Android, PHP, MariaDB, Hadoop, and recommendation flows.</p>
+      </a>
+    </div>
+  </section>
+
+  <dialog class="portfolio-modal" id="portfolio-modal" aria-labelledby="portfolio-modal-title">
+    <form method="dialog" class="portfolio-modal-shell">
+      <button class="modal-close" value="close" aria-label="Close">×</button>
+      <p class="eyebrow" id="portfolio-modal-meta"></p>
+      <h2 id="portfolio-modal-title"></h2>
+      <p id="portfolio-modal-body"></p>
+      <div id="portfolio-modal-content" class="portfolio-modal-content"></div>
+    </form>
+  </dialog>
+
+  <script>
+    const modal = document.querySelector('#portfolio-modal');
+    const modalTitle = document.querySelector('#portfolio-modal-title');
+    const modalMeta = document.querySelector('#portfolio-modal-meta');
+    const modalBody = document.querySelector('#portfolio-modal-body');
+    const modalContent = document.querySelector('#portfolio-modal-content');
+
+    function cloneDetailContent(selector) {
+      const target = document.querySelector(selector);
+      if (!target || !modalContent) return;
+
+      modalContent.replaceChildren();
+
+      if (target.matches('section')) {
+        modalContent.append(...Array.from(target.children).map((child) => child.cloneNode(true)));
+        return;
+      }
+
+      const root = target.closest('.company-heading, h2, h3, li') || target;
+      const boundary = root.matches('.company-heading')
+        ? '.company-heading, h1'
+        : root.matches('h2')
+          ? 'h1, h2, .company-heading'
+          : root.matches('h3')
+            ? 'h2, h3, .company-heading'
+            : 'h1, h2, h3, .company-heading';
+      modalContent.append(root.cloneNode(true));
+
+      let next = root.nextElementSibling;
+      while (next && !next.matches(boundary)) {
+        modalContent.append(next.cloneNode(true));
+        next = next.nextElementSibling;
+      }
+    }
+
+    document.querySelectorAll('[data-portfolio-modal]').forEach((card) => {
+      card.addEventListener('click', (event) => {
+        if (!modal || typeof modal.showModal !== 'function') return;
+        event.preventDefault();
+        modalTitle.textContent = card.dataset.modalTitle || '';
+        modalMeta.textContent = card.dataset.modalMeta || '';
+        modalBody.textContent = card.dataset.modalBody || '';
+        cloneDetailContent(card.getAttribute('href') || '#selected-work');
+        modal.showModal();
+      });
+    });
+
+    modal?.addEventListener('click', (event) => {
+      if (event.target === modal) modal.close();
+    });
+  </script>
+
   <nav class="section-links" aria-label="Portfolio sections">
-    <a href="#profile">Profile</a>
-    <a href="#experience">Experience</a>
-    <a href="#automation">Automation</a>
-    <a href="#tools">AI Tools</a>
-    <a href="#background">Background</a>
+    <a href="#selected-work">Selected Work</a>
+    <a href="#aws-impact">AWS Impact</a>
+    <a href="#side-projects">Side Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#education">Education</a>
   </nav>
 
-  <section id="profile" class="section-panel">
-    <p class="eyebrow">Profile</p>
-    <h2>Yongtak Kim</h2>
+  <section id="selected-work" class="section-panel">
+    <p class="eyebrow">Selected Work</p>
+    <h2>Turning repeated support and development problems into tools and workflows</h2>
     <ul>
-      <li>Role: AWS Cloud Support Engineer / OpenSearch SME</li>
-      <li>GitHub: <a href="https://github.com/ytkim4558/">ytkim4558</a></li>
-      <li>LinkedIn: <a href="https://www.linkedin.com/in/yongtak-kim-b7553727/">Yongtak Kim</a></li>
-      <li>Korean full portfolio: <a href="/portfolio/">Portfolio</a></li>
+      <li><strong>Mobile product development foundation</strong> — Built Android/iOS apps, REST APIs, database schemas, admin tools, map/location features, and product flows at G.Bike, Teamnova, and side projects.</li>
+      <li><strong>Computer Science foundation</strong> — B.S. and M.S. in Computer Science, with research experience in computer vision, pattern recognition, image processing, and distributed-system problem analysis.</li>
+      <li><strong>Image processing and OCR R&D</strong> — Implemented handwriting/printed-text classification, notebook-line detection and removal, color correction, rendering automation tests, and 3D GUI research work.</li>
+      <li><strong>Data platform engineering</strong> — Worked on CJ ENM data-platform migration, OpenShift and IBM Cloud Pak for Data integration, and operations involving Solr, MongoDB, Redis, Impala, Hive, and RabbitMQ.</li>
+      <li><strong>MCP-based support-agent workflows</strong> — Designed internal workflows connecting Slack, Outlook, wiki, ticket search, and local tools for response drafting, official URL checks, related-case search, aging-case triage, and escalation readiness checks.</li>
+      <li><strong>AI Session Recovery</strong> — grouped claude-resume and codex-resume as one tool family for searching, summarizing, previewing, and resuming Claude Code and OpenAI Codex CLI work history.</li>
+      <li><strong>linkedin-posting-mcp</strong> — A local MCP server focused on approval-based LinkedIn posting workflow, intentionally avoiding scraping and DM automation.</li>
+      <li><strong>Aging Ticket Escalation AI Agent</strong> — An internal agent workflow combining long-ticket summaries, on-call screenshot OCR, manager-chain lookup, and professional escalation-email drafting.</li>
     </ul>
   </section>
 
-  <section id="experience" class="section-panel">
-    <p class="eyebrow">Experience</p>
-    <h2>Career Summary</h2>
-    <h3>Amazon Web Services <small>Cloud Support Engineer II / Analytics · 2022-Present</small></h3>
+  <section id="aws-impact" class="section-panel">
+    <p class="eyebrow">AWS / OpenSearch</p>
+    <h2>AWS Analytics Support and OpenSearch SME work</h2>
+    <h3>Recognition and Growth</h3>
     <ul>
-      <li>Provide technical support for AWS Analytics services, especially Amazon OpenSearch Service.</li>
-      <li>Troubleshoot customer issues involving distributed systems, analytics workloads, indexing, query behavior, and operational incidents.</li>
-      <li>Collaborate with AWS service teams and internal engineers for escalation, mitigation, and long-term resolution.</li>
+      <li>2023.05: Recognized as an <strong>AWS Certified OpenSearch Subject Matter Expert</strong>.</li>
+      <li>2023.10: Promoted to Cloud Support Engineer II.</li>
+      <li>2024.12: <strong>AWSome All-Star</strong> recognition for stabilizing a large OpenSearch production cluster.</li>
+      <li>2026.02: Earned <strong>AWS Certified Solutions Architect - Associate</strong>.</li>
     </ul>
-    <h3>CJ OliveNetworks <small>Data Platform Senior Engineer · 2019-2022</small></h3>
+    <h3>Representative Customer Wins</h3>
     <ul>
-      <li>Worked on enterprise data platform migration and operation.</li>
-      <li>Contributed to IBM Cloud Pak for Data and OpenShift migration work for a large media data platform.</li>
+      <li>Helped stabilize a large OpenSearch cluster affected by master-node resource pressure and unassigned shards through service-team escalation, monitoring, red-index diagnostics, and node-optimization guidance.</li>
+      <li>Supported a production launch migrating from HBase to OpenSearch by reviewing shard strategy, CloudWatch metrics, and replica-placement principles.</li>
+      <li>Investigated OpenSearch Ingestion Pipeline integration failures with an external SaaS by reproducing the issue and reviewing open-source code to isolate the authentication root cause.</li>
+      <li>Independently verified an OpenSearch Console Packages tab blank issue and prevented premature case closure caused by an incorrect deployment assumption.</li>
     </ul>
-    <h3>G.Bike / Teamnova / DioTek / Digital Aria</h3>
+    <h3>Process Improvement and Automation</h3>
     <ul>
-      <li>Developed Android/iOS app features, backend APIs, database changes, admin tools, OCR and image-processing algorithms, and rendering test automation.</li>
+      <li><strong>Aging-ticket escalation AI agent</strong> — Combined long-form ticket summarization, on-call screenshot OCR, manager-chain lookup, and escalation-email generation into a single workflow.</li>
+      <li><strong>OpenSearch ELB log-analysis transition</strong> — Documented the new integrated environment and shared adoption guidance with Korea, Japan, and TPE teams.</li>
+      <li><strong>AWS Countdown Premium Korea escalation runbook</strong> — Consolidated pre-event, event-day, and post-event roles and escalation contacts into a single reference.</li>
+      <li><strong>Analytics onboarding material</strong> — Maintained wiki and broadcast-style materials for OpenSearch internal tools, CloudWatch metrics, and ELB access-log analysis.</li>
     </ul>
-  </section>
-
-  <section id="automation" class="section-panel">
-    <p class="eyebrow">Automation</p>
-    <h2>Support Automation</h2>
+    <h3>Mentoring and Knowledge Sharing</h3>
     <ul>
-      <li>MCP workflows connecting Slack, Outlook, wiki knowledge, ticket search, and local tools.</li>
-      <li>Support-agent persona design for customer-response drafting and troubleshooting guidance.</li>
-      <li>Case aging triage using LLM summaries, missing-step detection, internal-note review, and escalation-readiness checks.</li>
-    </ul>
-  </section>
-
-  <section id="tools" class="section-panel">
-    <p class="eyebrow">AI Tools</p>
-    <h2>Selected Tools</h2>
-    <ul>
-      <li><a href="https://github.com/ytkim4558/claude-resume">claude-resume</a>: LLM-summary-based TUI for finding and resuming Claude Code sessions.</li>
-      <li><a href="https://github.com/ytkim4558/codex-resume">codex-resume</a>: Windows-friendly TUI for searching and resuming OpenAI Codex CLI sessions.</li>
-      <li><a href="https://github.com/ytkim4558/linkedin-posting-mcp">linkedin-posting-mcp</a>: user-approved LinkedIn posting workflow tooling.</li>
+      <li>Provided OpenSearch L3 SME consultancy, peer review, and escalation-direction guidance.</li>
+      <li>Mentored OpenSearch SME candidates through mock sessions, material curation, and case-based analysis practice.</li>
+      <li>Shared Analytics case studies and maintained internal best-practice wiki content.</li>
+      <li>Participated as an aging-case reviewer and PS / LP / Tech LOOP interviewer.</li>
     </ul>
   </section>
 
-  <section id="background" class="section-panel">
-    <p class="eyebrow">Background</p>
-    <h2>Common Thread</h2>
-    <p>My career started in mobile app and backend product development, expanded into image processing and data platforms, and now focuses on AWS analytics support and AI-assisted support engineering workflows.</p>
+  <section id="detailed-resume" class="section-panel" hidden aria-hidden="true">
+    <p class="eyebrow">Detailed Resume</p>
+    <h2>Career Record</h2>
+    <h3 id="career-aws">Amazon Web Services <small>2022.04-Present · Cloud Support Engineer II / Analytics</small></h3>
+    <ul>
+      <li>Provide technical support for Amazon OpenSearch Service, Kinesis, and QuickSight.</li>
+      <li>Diagnose OpenSearch indexing, query performance, cluster scaling, ingestion, and real-time analytics architecture issues.</li>
+      <li>Collaborate with AWS service teams on escalation, long-term resolution, and customer communication quality.</li>
+      <li>Recognized as an OpenSearch SME, AWSome All-Star, and AWSome Builder.</li>
+    </ul>
+    <h3 id="career-cj">CJ OliveNetworks <small>2019.07-2022.04 · Data Platform Senior Engineer</small></h3>
+    <ul>
+      <li>Led work on the CJ ENM big-data platform migration to IBM Cloud Pak for Data and OpenShift.</li>
+      <li>Analyzed the existing portal, adapted CP4D APIs, rebuilt Kubernetes project-creation APIs, and designed MariaDB changes.</li>
+      <li>Worked on CGV social-data service channel expansion, Solr storage issues, related-keyword jobs, used-car price prediction crawling, visualization solutions, and AI Competitor operations.</li>
+    </ul>
+    <h3 id="career-gbike">G.Bike <small>2018.06-2019.06 · Software Engineer</small></h3>
+    <ul>
+      <li>Developed electric-scooter rental and return flows, driver-license verification, bounty and payout flows, and long-term rental features.</li>
+      <li>Built Android/iOS app features, backend APIs, admin pages, and database tables.</li>
+      <li>Designed REST APIs, app scenarios, UI flows, and admin-page structures for Gmany and G-Bility services.</li>
+    </ul>
+    <h3 id="career-teamnova">Teamnova <small>2017.07-2018.03 · Mobile App Lead</small></h3>
+    <ul>
+      <li>Maintained and fixed the Popiece Android travel-helper app while preparing it for Play Store release.</li>
+      <li>Led the newly formed iOS team and directly built the Popiece iOS prototype.</li>
+      <li>Implemented exchange-rate retrieval, travel-country data, popular-country flows, travel-expense UI, widgets, and calendar interactions.</li>
+      <li>Helped organize team development flow and product priorities for a mobile-app launch environment.</li>
+    </ul>
+    <h3 id="career-diotek">DioTek <small>2013.05-2015.05 · Image Processing Developer</small></h3>
+    <ul>
+      <li>Worked on image-processing development at a software company known for handwriting recognition, dictionaries, and mobile OCR.</li>
+      <li>Researched and implemented OCR algorithms applicable to Chinese, Japanese, and Korean text.</li>
+      <li>Built a handwriting-versus-printed-text classifier using eleven word-image features and a genetic algorithm for feature selection.</li>
+      <li>Implemented OCR preprocessing and quality-improvement work including notebook-line detection/removal, color correction, and dithering.</li>
+    </ul>
+    <h3 id="career-digitalaria">Digital Aria <small>2011.12-2013.04 · Research Engineer / R&D PM</small></h3>
+    <ul>
+      <li>Implemented rendering-test automation at an embedded GUI framework and 3D UI technology company.</li>
+      <li>Worked on context-aware 3D GUI, face/finger recognition, Android modules, and related R&D tasks.</li>
+      <li>Coordinated external vendors, partner institutions, schedules, and deliverables as a KOCCA national R&D project PM.</li>
+      <li>Handled implementation, testing, documentation, and collaboration before research outputs moved toward productization.</li>
+    </ul>
   </section>
+
+  <section id="side-projects" class="section-panel">
+    <p class="eyebrow">Side Projects</p>
+    <h2>Side Project Record</h2>
+    <h3>AI Session Recovery <small>claude-resume / codex-resume</small></h3>
+    <ul>
+      <li><strong>Shared problem</strong> — recover useful work memory from long local JSONL session logs without manually opening every conversation.</li>
+      <li><strong>claude-resume</strong> — Python/Textual two-panel TUI that finds Claude Code sessions through LLM-generated summaries and resumes the selected conversation.</li>
+      <li><strong>codex-resume</strong> — Windows-friendly Node.js tool for searching OpenAI Codex CLI session logs and resuming a selected session reliably.</li>
+      <li><strong>Implementation points</strong> — timestamp-based sorting, recursive self-invocation filtering, Windows CMD/PowerShell UTF-8 handling, and dependency-light picker/doctor/list/index/resume flows.</li>
+    </ul>
+    <h3>linkedin-posting-mcp / AI Workflow</h3>
+    <ul>
+      <li>Designed around LinkedIn API permission constraints, using approval-based drafts and posting checklists instead of automatic posting.</li>
+      <li>Documented agent handoff, session recovery, public/private repository boundaries, and adaptive-layout decisions as AI Workflow notes.</li>
+    </ul>
+    <h3>Early Android Projects</h3>
+    <ul>
+      <li id="project-hotdealppom"><strong>HotDealppom</strong> — Android/PHP/MariaDB recommendation experiment collecting product data from 11st, Coupang, and ppomppu, then testing Hadoop, Flume, MapReduce, and KoNLPy-based word statistics.</li>
+      <li><strong>BikeNavi</strong> — Bicycle navigation project covering planning, LAMP server, database, Android app, Google Maps, Tmap, and social API integration.</li>
+      <li><strong>Group Contacts</strong> — Early Android contact-management project focused on animation and address-book UX learning.</li>
+    </ul>
+  </section>
+
+  <section id="skills" class="section-panel">
+    <p class="eyebrow">Skills</p>
+    <h2>Core Capabilities</h2>
+    <ul>
+      <li>AWS Analytics operations and troubleshooting: OpenSearch, Kinesis, QuickSight, CloudWatch, S3, EC2, IAM.</li>
+      <li>Distributed-system and data-pipeline troubleshooting, query optimization, ingestion design, and enterprise migration.</li>
+      <li>AI-assisted engineering workflows using Claude Code, Claude API, OpenAI Codex CLI, MCP, and local automation tools.</li>
+      <li>Android, iOS, Python, Kotlin, PHP, C++, MySQL/MariaDB, Hadoop, Solr, Elasticsearch/OpenSearch, Redis, MongoDB, Impala, Hive.</li>
+    </ul>
+  </section>
+
+  <section id="education" class="section-panel">
+    <p class="eyebrow">Education / Research</p>
+    <h2>Education, Certifications, Research</h2>
+    <ul>
+      <li><strong>Hanyang University, M.S. in Computer Science</strong> (2010.03-2012.02, 4.14/4.50)</li>
+      <li><strong>Korea Polytechnic University, B.S. in Computer Science</strong> (2006.03-2010.02, 4.25/4.50)</li>
+      <li>Dongbuk High School (2002.03-2005.02)</li>
+      <li>AWS Certified Solutions Architect - Associate, Amazon OpenSearch Service Subject Matter Expert, OCP 10g, Engineer Information Processing.</li>
+      <li>Research experience in computer vision, pattern recognition, image processing, infrared-image segmentation, and stereo-image feature matching.</li>
+      <li>Military service: Technical Research Personnel program (2012.02.21-2015.02.20).</li>
+    </ul>
+  </section>
+
+  <details id="full-records" class="resume-details portfolio-archive" hidden aria-hidden="true">
+    <summary>Full Records · Open full career, project, academic, and statement archive</summary>
+    <p class="eyebrow">Full Records</p>
+    <h2>Full Career, Project, Academic, and Personal Statement Record</h2>
+
+    <h1>Career Details</h1>
+    <h2 id="detail-aws">Amazon Web Services (AWS) <small>2022.04-Present · Remote · Analytics</small></h2>
+    <ul>
+      <li>Company: global public cloud service provider.</li>
+      <li>Role: Cloud Support Engineer II (2023.10-Present), Cloud Support Engineer (2022.04-2023.10).</li>
+      <li>Work: technical support for OpenSearch, Kinesis, and QuickSight; distributed-system diagnosis; customer architecture guidance; service-team escalation.</li>
+      <li>Technologies: Amazon OpenSearch Service, Kinesis, QuickSight, CloudWatch, S3, EC2, IAM, query optimization, ingestion pipelines, English technical communication.</li>
+    </ul>
+
+    <h2 id="detail-cj">CJ OliveNetworks <small>2019.07-2022.04 · Data Platform Senior Engineer</small></h2>
+    <ul>
+      <li>Led enterprise big-data platform build and operation work.</li>
+      <li>IBM Cloud Pak for Data migration for the CJ ENM big-data platform: portal analysis, CP4D API changes, Kubernetes project-creation API rebuild, MariaDB schema work, and IBM/InfraSoft/OpenShift collaboration.</li>
+      <li>Additional work: CJ CheilJedang BDP HR DB and Active Directory integration, used-car price-prediction crawler, CGV social-data channel expansion, CJ ENM visualization solution, and CGV AI Competitor operations.</li>
+      <li>Technologies: Python, Java, Linux, MongoDB, Solr, Redis, Impala, Hive, MariaDB, Spring, OpenShift, Kubernetes, IBM Cloud Pak for Data, RabbitMQ, Oozie, Hue.</li>
+    </ul>
+
+    <h2 id="detail-gbike">G.Bike <small>2018.06-2019.06 · Software Engineer</small></h2>
+    <ul>
+      <li>Added long-term rental, bounty, payout, driver-license verification, rental/return, service-area, no-parking-zone, manager-app, and weekly release workflows.</li>
+      <li>Built Android/iOS apps, PHP backend APIs, MySQL tables, admin pages, and product UI scenarios.</li>
+      <li>Technologies: Swift, Objective-C, Java, Android, iOS, PHP, Firebase, MySQL, React Native, Google Maps.</li>
+    </ul>
+
+    <h2 id="detail-teamnova">Teamnova <small>2017.07-2018.03</small></h2>
+    <ul>
+      <li>Developed and operated the Popiece Android app, including exchange-rate fixes, crash/memory-leak analysis, and code review.</li>
+      <li>Led the Popiece iOS prototype, including travel-period calendar UI, calculator widget, country data flow, tab data transfer, and JIRA-based collaboration.</li>
+      <li>Technologies: RealmDB, Java, Swift, Today Widget, JTAppleCalendar, XLPagerTabStrip, Swifty JSON, Git, SVN.</li>
+    </ul>
+    <div class="portfolio-gallery" aria-label="Popiece iOS prototype screenshots">
+      <a href="/assets/portfolio/image010.jpg"><img src="/assets/portfolio/image010.jpg" alt="Popiece iOS screen 1"></a>
+      <a href="/assets/portfolio/image011.jpg"><img src="/assets/portfolio/image011.jpg" alt="Popiece iOS screen 2"></a>
+      <a href="/assets/portfolio/image012.jpg"><img src="/assets/portfolio/image012.jpg" alt="Popiece iOS screen 3"></a>
+      <a href="/assets/portfolio/image013.png"><img src="/assets/portfolio/image013.png" alt="Popiece iOS screen 4"></a>
+      <a href="/assets/portfolio/image014.png"><img src="/assets/portfolio/image014.png" alt="Popiece iOS screen 5"></a>
+      <a href="/assets/portfolio/image015.png"><img src="/assets/portfolio/image015.png" alt="Popiece iOS screen 6"></a>
+    </div>
+
+    <h2 id="detail-diotek">DioTek <small>2013.05-2015.05 · Image Processing Developer</small></h2>
+    <ul>
+      <li>Researched and implemented OCR algorithms applicable to Chinese, Japanese, and Korean text.</li>
+      <li>Implemented handwriting/printed-text classification, notebook-line detection/removal and character restoration, color-boost correction, and dithering algorithm tuning.</li>
+      <li>Technologies: Python, C++, Android Java, SVN.</li>
+    </ul>
+
+    <h2 id="detail-digitalaria">Digital Aria <small>2011.12-2013.04 · Research Engineer</small></h2>
+    <ul>
+      <li>Built version-based rendering automation tests and context-aware smart 3D GUI technology.</li>
+      <li>Managed a KOCCA national R&D project and coordinated vendors and partner institutions.</li>
+      <li>Worked on Kinect motion recognition, single-camera face/finger recognition, Android voice-recognition modules, and keyword extraction.</li>
+      <li>Technologies: C++ MFC, Android Java, Ruby, SVN, Jira, Confluence, Fisheye.</li>
+    </ul>
+    <div class="portfolio-gallery portfolio-gallery-wide" aria-label="Digital Aria project screenshots">
+      <a href="/assets/portfolio/image016.jpg"><img src="/assets/portfolio/image016.jpg" alt="Digital Aria project screen 1"></a>
+      <a href="/assets/portfolio/image017.png"><img src="/assets/portfolio/image017.png" alt="Digital Aria project screen 2"></a>
+      <a href="/assets/portfolio/image018.png"><img src="/assets/portfolio/image018.png" alt="Digital Aria project screen 3"></a>
+    </div>
+
+    <h1>Side Project Details</h1>
+    <h2>claude-resume <small>2026.05</small></h2>
+    <ul>
+      <li>Interactive two-panel TUI that summarizes Claude Code history with LLM calls and resumes the chosen session.</li>
+      <li>Key decisions: no separate LLM API key, Textual-based modern TUI, JSONL timestamp sorting, recursive-session filtering, and temporary-file handoff.</li>
+      <li><a href="https://github.com/ytkim4558/claude-resume">Repository</a></li>
+    </ul>
+
+    <h2>claude-toolkit <small>2026.05-Present</small></h2>
+    <ul>
+      <li>Reusable Claude Code skills including LinkedIn draft generation and Adobe Firefly prompt conversion.</li>
+      <li>Uses a realistic "high-quality draft plus checklist" pattern where public APIs or posting permissions are constrained.</li>
+      <li><a href="https://github.com/ytkim4558/claude-toolkit">Repository and wiki</a></li>
+    </ul>
+
+    <h2>codex-resume <small>2026.05</small></h2>
+    <ul>
+      <li>Scans local Codex JSONL logs, extracts session metadata and previews, and resumes a selected session through Codex CLI.</li>
+      <li>Uses only Node.js built-in modules and provides `doctor`, `list`, `list --json`, `index`, and `resume` commands.</li>
+      <li><a href="https://github.com/ytkim4558/codex-resume">Repository</a></li>
+    </ul>
+
+    <h2>Early Android Side Projects <small>2016-2017</small></h2>
+    <h3>HotDealppom</h3>
+    <ul>
+      <li>Product recommendation app using user-interest signals from 11st, Coupang, and ppomppu data.</li>
+      <li>Technologies: Scrapy, Android, Volley, Google API, Firebase API, PHP, Nginx, Glide, MariaDB, Hadoop, Flume, KoNLPy.</li>
+    </ul>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/VqLyBLSEtoQ" frameborder="0" allowfullscreen></iframe>
+    <div class="portfolio-gallery" aria-label="HotDealppom screenshots">
+      <a href="/assets/portfolio/image025.png"><img src="/assets/portfolio/image025.png" alt="HotDealppom screen 1"></a>
+      <a href="/assets/portfolio/image026.png"><img src="/assets/portfolio/image026.png" alt="HotDealppom screen 2"></a>
+      <a href="/assets/portfolio/image027.png"><img src="/assets/portfolio/image027.png" alt="HotDealppom screen 3"></a>
+      <a href="/assets/portfolio/image028.png"><img src="/assets/portfolio/image028.png" alt="HotDealppom screen 4"></a>
+    </div>
+
+    <h3>BikeNavi</h3>
+    <ul>
+      <li>Android bicycle navigation project using Android, Volley, Google Maps, Tmap, Facebook API, Kakao service API, Glide, PHP, and MySQL.</li>
+    </ul>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/twEFkv44Kwk" frameborder="0" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/LR_fLXNpb2Y" frameborder="0" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/NqDWp3VmwBI" frameborder="0" allowfullscreen></iframe>
+    <div class="portfolio-gallery" aria-label="BikeNavi screenshots">
+      <a href="/assets/portfolio/image019.jpg"><img src="/assets/portfolio/image019.jpg" alt="BikeNavi screen 1"></a>
+      <a href="/assets/portfolio/image020.png"><img src="/assets/portfolio/image020.png" alt="BikeNavi screen 2"></a>
+      <a href="/assets/portfolio/image021.png"><img src="/assets/portfolio/image021.png" alt="BikeNavi screen 3"></a>
+      <a href="/assets/portfolio/image022.png"><img src="/assets/portfolio/image022.png" alt="BikeNavi screen 4"></a>
+      <a href="/assets/portfolio/image023.png"><img src="/assets/portfolio/image023.png" alt="BikeNavi screen 5"></a>
+    </div>
+
+    <h1>Certifications, Language, Awards, and Research</h1>
+    <ul>
+      <li>AWS Certified Solutions Architect - Associate (2026.02-2029.02).</li>
+      <li>Amazon OpenSearch Service Subject Matter Expert (2023.05).</li>
+      <li>OCP 10g, Engineer Information Processing, Word Processor Level 2.</li>
+      <li>Languages: Korean native, English professional working level, Japanese elementary.</li>
+      <li>Award: encouragement prize for algorithm implementation, Korea Polytechnic University, 2008.11.20.</li>
+    </ul>
+    <h2>Academic and Research Activities</h2>
+    <ul>
+      <li>Research projects on cluttered-target tracking, multi-target tracking, and infrared clutter separation/tracking.</li>
+      <li>Publications on infrared-image segmentation, stereo-image feature matching, triangle-similarity-based matching, and image-resolution enhancement.</li>
+      <li>Patents and software registrations related to matching-pair classification, character recognition, stereo matching, and triangle-similarity-based feature matching.</li>
+    </ul>
+    <h2>Personal Statement</h2>
+    <p>As an AWS Cloud Support Engineer II, I bring more than ten years of engineering experience across cloud analytics, data platforms, mobile applications, computer vision, backend APIs, and database design.</p>
+    <p>My strength is diagnosing complex distributed-system issues, improving data workflows, and turning repeated operational problems into reusable tools and workflows. I have worked with developers, infrastructure engineers, service teams, and business stakeholders to deliver scalable, reliable systems and practical customer outcomes.</p>
+  </details>
 </BaseLayout>

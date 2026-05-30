@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { getLocale, localeLabels, locales, localizePath, navLabels } from '../i18n';
 
 interface Props {
   title: string;
@@ -7,18 +8,20 @@ interface Props {
 }
 
 const { title, description = 'Cloud Analytics, Data Platform, and AI Workflow' } = Astro.props;
-const isEnglish = Astro.url.pathname.startsWith('/en/');
+const locale = getLocale(Astro.url.pathname);
+const labels = navLabels[locale];
 const navItems = [
-  [isEnglish ? '/en/' : '/', 'Notes'],
-  [isEnglish ? '/en/about/' : '/profile/', 'Profile'],
-  [isEnglish ? '/en/portfolio/' : '/portfolio/', 'Portfolio'],
-  ['/tag/ai-workflow/', isEnglish ? 'Workflow' : 'AI Workflow'],
-  ['/tags/', 'Tags'],
+  [localizePath('/', locale), labels.notes],
+  [localizePath('/profile/', locale), labels.profile],
+  [localizePath('/portfolio/', locale), labels.portfolio],
+  [localizePath('/tag/ai-workflow/', locale), labels.workflow],
+  [localizePath('/tags/', locale), labels.tags],
 ];
+const htmlLang = locale === 'ja' ? 'ja' : locale === 'en' ? 'en' : 'ko';
 ---
 
 <!doctype html>
-<html lang="ko">
+<html lang={htmlLang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -32,15 +35,18 @@ const navItems = [
     <div class="site-shell">
       <header class="site-header">
         <nav class="site-nav" aria-label="Primary navigation">
-          <a class="brand" href="/">Yongtak Notes</a>
+          <a class="brand" href={localizePath('/', locale)}>Yongtak Notes</a>
           <div class="nav-links">
             {navItems.map(([href, label]) => (
               <a href={href} aria-current={Astro.url.pathname === href ? 'page' : undefined}>{label}</a>
             ))}
           </div>
           <div class="language-links" aria-label="Language">
-            <a href="/">KO</a>
-            <a href="/en/">EN</a>
+            {locales.map((item) => (
+              <a href={localizePath(Astro.url.pathname, item)} aria-current={locale === item ? 'page' : undefined}>
+                {localeLabels[item]}
+              </a>
+            ))}
           </div>
         </nav>
       </header>

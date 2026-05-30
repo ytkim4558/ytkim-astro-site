@@ -1,23 +1,28 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import { jaPosts } from '../../i18n-posts';
 
 const posts = (await getCollection('posts', ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
-  .map((post) => ({
-    title: post.data.title,
-    description: post.data.description ?? '',
-    tags: post.data.tags,
-    url: `/${post.id.replace(/\.(md|mdx)$/, '').toLowerCase()}/`,
-  }));
+  .map((post) => {
+    const slug = post.id.replace(/\.(md|mdx)$/, '').toLowerCase();
+    const localized = jaPosts[slug];
+    return {
+      title: localized?.title ?? post.data.title,
+      description: localized?.description ?? post.data.description ?? '',
+      tags: post.data.tags,
+      url: `/ja/${slug}/`,
+    };
+  });
 ---
 
 <BaseLayout title="Search | Yongtak Kim">
-  <section class="page-hero">
+  <section class="page-hero localized-hero">
     <div class="hero-inner">
       <p class="eyebrow">Search</p>
-      <h1>노트 검색</h1>
-      <p class="hero-description">제목, 설명, 태그 기준으로 로컬 검색합니다.</p>
+      <h1>ノート検索</h1>
+      <p class="hero-description">タイトル、説明、タグを対象にローカル検索します。</p>
     </div>
   </section>
   <main class="content">

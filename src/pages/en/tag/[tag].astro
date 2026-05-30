@@ -1,6 +1,7 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import { enPosts } from '../../../i18n-posts';
 
 export async function getStaticPaths() {
   const toSlug = (value: string) => value.toLowerCase().replace(/\s+/g, '-');
@@ -10,30 +11,26 @@ export async function getStaticPaths() {
 }
 
 const toSlug = (value: string) => value.toLowerCase().replace(/\s+/g, '-');
+const formatTitle = (value: string) => value.split('-').map((part) => part.charAt(0).toUpperCase() + part.slice(1)).join(' ');
 const { tag, posts } = Astro.props;
 const filteredPosts = posts
   .filter((post) => post.data.tags.some((item) => toSlug(item) === tag))
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 
-const label = filteredPosts[0]?.data.tags.find((item) => toSlug(item) === tag) ?? tag;
+const label = filteredPosts[0]?.data.tags.find((item) => toSlug(item) === tag) ?? formatTitle(tag);
 const tagCopy: Record<string, { eyebrow: string; title: string; description: string }> = {
   'ai-workflow': {
     eyebrow: 'AI Workflow Notes',
-    title: 'AI 에이전트를 실제 작업 흐름에 붙이며 남긴 판단 기록',
-    description: 'Codex, Claude, MCP를 쓰면서 겪은 배포, 세션 복구, 인수인계, 권한 경계 문제를 결과와 교훈 중심으로 남깁니다.',
-  },
-  troubleshooting: {
-    eyebrow: 'Troubleshooting',
-    title: '문제 분석과 복구 기록',
-    description: '원인 파악, 재현, 복구, 재발 방지까지 이어진 기술 문제 해결 과정을 남깁니다.',
+    title: 'Reusable workflows built with AI coding agents',
+    description: 'Notes on Codex, Claude, MCP, deployment recovery, session handoff, and practical rules for collaborating with AI agents.',
   },
 };
 const copy = tagCopy[tag] ?? {
   eyebrow: 'Topic Notes',
   title: label,
-  description: `${label} 주제에서 실제로 겪은 문제, 선택지, 해결 과정을 모은 글입니다.`,
+  description: 'A focused collection of engineering notes grouped by topic.',
 };
-const formatDate = (date: Date) => new Intl.DateTimeFormat('ko-KR', {
+const formatDate = (date: Date) => new Intl.DateTimeFormat('en-US', {
   year: 'numeric',
   month: 'long',
   day: 'numeric',
@@ -53,10 +50,10 @@ const formatDate = (date: Date) => new Intl.DateTimeFormat('ko-KR', {
   <main class="post-list">
     {filteredPosts.map((post) => (
       <article class="post-list-item">
-        <a href={`/${post.id.replace(/\.(md|mdx)$/, '').toLowerCase()}/`}>
+        <a href={`/en/${post.id.replace(/\.(md|mdx)$/, '').toLowerCase()}/`}>
           <span>{formatDate(post.data.pubDate)}</span>
-          <strong>{post.data.title}</strong>
-          {post.data.description && <p>{post.data.description}</p>}
+          <strong>{enPosts[post.id.toLowerCase()]?.title ?? post.data.title}</strong>
+          {(enPosts[post.id.toLowerCase()]?.description || post.data.description) && <p>{enPosts[post.id.toLowerCase()]?.description ?? post.data.description}</p>}
         </a>
       </article>
     ))}

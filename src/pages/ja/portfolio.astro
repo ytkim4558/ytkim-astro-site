@@ -1,0 +1,477 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Portfolio | Yongtak Kim">
+  <section class="page-hero">
+    <div class="hero-inner">
+      <p class="eyebrow">Yongtak Kim</p>
+      <h1>製品・データ・クラウドをつなぐエンジニア</h1>
+      <p class="hero-description">
+        Android/iOSとバックエンド実装から始まり、OCR・画像処理、企業向けデータ基盤、Amazon OpenSearch運用支援へ広がった経験を、根拠と成果が見える形で整理しています。
+      </p>
+      <div class="hero-credentials" aria-label="Education highlights">
+        <span>Computer Science M.S.</span>
+        <span>Computer Science B.S.</span>
+        <span>Computer Vision / Pattern Recognition</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="card-grid">
+    <article class="feature-card">
+      <span>10+ yrs</span>
+      <strong>Software / Data Platform</strong>
+      <p>アプリ、サーバー、DB、検索・分析基盤、運用課題まで、製品開発と運用の両側を扱ってきました。</p>
+    </article>
+    <article class="feature-card">
+      <span>4+ yrs</span>
+      <strong>AWS Analytics Support</strong>
+      <p>OpenSearch、Kinesis、QuickSightの顧客課題を診断し、サービスチームとのエスカレーションを担当しました。</p>
+    </article>
+    <article class="feature-card">
+      <span>2026</span>
+      <strong>AI Workflow Tooling</strong>
+      <p>セッション復旧、サポートケース整理、文書検証をAIエージェントとMCPベースの流れで実験しています。</p>
+    </article>
+    <article class="feature-card">
+      <span>CS M.S.</span>
+      <strong>コンピュータ工学修士</strong>
+      <p>コンピュータ工学の学士・修士を基盤に、computer vision、pattern recognition、image processingの研究経験を持ちます。</p>
+    </article>
+  </section>
+
+  <section class="career-showcase" aria-label="Career timeline">
+    <div class="showcase-heading">
+      <p class="eyebrow">Career Timeline</p>
+      <h2>製品チームからデータ基盤、クラウド運用まで</h2>
+      <p>会社ロゴで経歴の流れを先に把握し、下の詳細セクションで各役割の根拠を確認できる構成にしました。</p>
+    </div>
+    <div class="company-rail">
+      <a class="company-card featured" href="#detail-aws" data-portfolio-modal data-modal-title="Amazon Web Services" data-modal-meta="2022 - Present · OpenSearch SME / Analytics Support" data-modal-body="グローバルなcloud service企業。OpenSearch、Kinesis、QuickSightの顧客課題を分析し、production cluster安定化、service-team escalation、AI支援workflowを担当しました。">
+        <img src="/assets/images/company/aws.svg" alt="AWS logo">
+        <span>2022 - Present</span>
+        <strong>Amazon Web Services</strong>
+        <p>
+          <span class="company-intro">グローバルcloud service企業</span>
+          <span class="company-work">OpenSearch、Kinesis、QuickSightの顧客課題、production cluster安定化、escalation workflowを担当。</span>
+        </p>
+      </a>
+      <a class="company-card" href="#detail-cj" data-portfolio-modal data-modal-title="CJ OliveNetworks" data-modal-meta="2019 - 2022 · Data Platform Senior Engineer" data-modal-body="CJ GroupのICT企業。CJ ENM data platformをOpenShiftとIBM Cloud Pak for Dataへ移行し、CP4D API、Kubernetes project flow、分析基盤運用を担当しました。">
+        <img src="/assets/images/company/cj-olive.svg" alt="CJ OliveNetworks logo">
+        <span>2019 - 2022</span>
+        <strong>CJ OliveNetworks</strong>
+        <p>
+          <span class="company-intro">CJ GroupのICT企業</span>
+          <span class="company-work">CJ ENM big-data platformをOpenShift、IBM Cloud Pak for Data、Solr、MongoDB、Redis、Impala、Hiveで移行・運用。</span>
+        </p>
+      </a>
+      <a class="company-card" href="#detail-gbike" data-portfolio-modal data-modal-title="G.Bike" data-modal-meta="2018 - 2019 · Android / iOS / Backend" data-modal-body="韓国のmobility service企業。Android/iOS app、PHP backend API、MySQL table、admin tool、rental/return、driver license verification、long-term rentalを実装しました。">
+        <img src="/assets/images/company/gbike.svg" alt="G.Bike logo">
+        <span>2018 - 2019</span>
+        <strong>G.Bike</strong>
+        <p>
+          <span class="company-intro">Mobility service企業</span>
+          <span class="company-work">Android/iOS app、PHP API、MySQL schema、admin tool、rental/return、license verificationを実装。</span>
+        </p>
+      </a>
+      <a class="company-card" href="#detail-teamnova" data-portfolio-modal data-modal-title="Teamnova" data-modal-meta="2017 - 2018 · Mobile App Lead" data-modal-body="旅行便利appを作るstartup。Popiece Android運用とiOS prototypeを担当し、exchange rate、widget、travel expense、calendar flowを実装しました。">
+        <img src="/assets/images/company/teamnova.svg" alt="Teamnova logo">
+        <span>2017 - 2018</span>
+        <strong>Teamnova</strong>
+        <p>
+          <span class="company-intro">旅行app startup</span>
+          <span class="company-work">Popiece Android運用とiOS prototypeでexchange rate、travel expense UI、widget、calendar flowを担当。</span>
+        </p>
+      </a>
+      <a class="company-card" href="#detail-diotek" data-portfolio-modal data-modal-title="DioTek" data-modal-meta="2013 - 2015 · OCR / Image Processing" data-modal-body="手書き認識、電子辞書、mobile OCR software企業。OCR、handwriting/printed-text classification、notebook-line removal、color correctionを実装しました。">
+        <img src="/assets/images/company/diotek.svg" alt="DioTek logo">
+        <span>2013 - 2015</span>
+        <strong>DioTek</strong>
+        <p>
+          <span class="company-intro">手書き認識・mobile OCR企業</span>
+          <span class="company-work">OCR、手書き/印刷体分類、notebook line removal、color correction algorithmを実装。</span>
+        </p>
+      </a>
+      <a class="company-card" href="#detail-digitalaria" data-portfolio-modal data-modal-title="Digital Aria" data-modal-meta="2011 - 2013 · 3D GUI / R&D PM" data-modal-body="Embedded GUI framework企業。rendering automation test、context-aware 3D GUI、face/finger recognition、Android module、national R&D project managementを担当しました。">
+        <img src="/assets/images/company/digitalaria.svg" alt="Digital Aria logo">
+        <span>2011 - 2013</span>
+        <strong>Digital Aria</strong>
+        <p>
+          <span class="company-intro">Embedded GUI framework企業</span>
+          <span class="company-work">Rendering automation test、3D GUI、face/finger recognition、R&D project coordinationを担当。</span>
+        </p>
+      </a>
+    </div>
+  </section>
+
+  <section class="portfolio-spotlight" aria-label="Portfolio highlights">
+    <article class="spotlight-main">
+      <p class="eyebrow">Selected Impact</p>
+      <h2>大きな運用課題を、再利用できる手順とツールへ落とし込みます</h2>
+      <p>OpenSearch production support、data-platform migration、mobile service operation、AI workflow automationに共通する軸は、問題を観測可能に分け、繰り返す判断を文書とtoolへ固定することです。</p>
+      <div class="impact-tags" aria-label="Impact areas">
+        <span>OpenSearch SME</span>
+        <span>Data Platform</span>
+        <span>Mobile Products</span>
+        <span>AI Workflow</span>
+      </div>
+    </article>
+    <div class="project-teasers">
+      <a href="#side-projects" data-portfolio-modal data-modal-title="AI Session Recovery" data-modal-meta="claude-resume · codex-resume · 2026" data-modal-body="Claude CodeとOpenAI Codex CLIのwork historyをsummary、preview、session handoffで検索・再開するtoolingです。">
+        <img src="/assets/images/codex-resume/codex-resume-raw-redacted.png" alt="codex-resume TUI screenshot">
+        <strong>AI Session Recovery</strong>
+        <p>Claude/Codex agent work historyを検索・再開するtooling。</p>
+      </a>
+      <a href="#project-hotdealppom" data-portfolio-modal data-modal-title="Mobile Experiments" data-modal-meta="HotDealppom · BikeNavi · Android side projects" data-modal-body="Android、PHP、MariaDB、Hadoop、Flume、KoNLPy、Google Maps、Tmap APIを使い、recommendation、navigation、contact-management UXを実験した初期product workです。">
+        <img src="/assets/portfolio/image025.png" alt="HotDealppom app screenshot">
+        <strong>Mobile Experiments</strong>
+        <p>Android、PHP、MariaDB、Hadoopを使った初期product experiment。</p>
+      </a>
+    </div>
+  </section>
+
+  <dialog class="portfolio-modal" id="portfolio-modal" aria-labelledby="portfolio-modal-title">
+    <form method="dialog" class="portfolio-modal-shell">
+      <button class="modal-close" value="close" aria-label="Close">×</button>
+      <p class="eyebrow" id="portfolio-modal-meta"></p>
+      <h2 id="portfolio-modal-title"></h2>
+      <p id="portfolio-modal-body"></p>
+      <div id="portfolio-modal-content" class="portfolio-modal-content"></div>
+    </form>
+  </dialog>
+
+  <script>
+    const modal = document.querySelector('#portfolio-modal');
+    const modalTitle = document.querySelector('#portfolio-modal-title');
+    const modalMeta = document.querySelector('#portfolio-modal-meta');
+    const modalBody = document.querySelector('#portfolio-modal-body');
+    const modalContent = document.querySelector('#portfolio-modal-content');
+
+    function cloneDetailContent(selector) {
+      const target = document.querySelector(selector);
+      if (!target || !modalContent) return;
+
+      modalContent.replaceChildren();
+
+      if (target.matches('section')) {
+        modalContent.append(...Array.from(target.children).map((child) => child.cloneNode(true)));
+        return;
+      }
+
+      const root = target.closest('.company-heading, h2, h3, li') || target;
+      const boundary = root.matches('.company-heading')
+        ? '.company-heading, h1'
+        : root.matches('h2')
+          ? 'h1, h2, .company-heading'
+          : root.matches('h3')
+            ? 'h2, h3, .company-heading'
+            : 'h1, h2, h3, .company-heading';
+      modalContent.append(root.cloneNode(true));
+
+      let next = root.nextElementSibling;
+      while (next && !next.matches(boundary)) {
+        modalContent.append(next.cloneNode(true));
+        next = next.nextElementSibling;
+      }
+    }
+
+    document.querySelectorAll('[data-portfolio-modal]').forEach((card) => {
+      card.addEventListener('click', (event) => {
+        if (!modal || typeof modal.showModal !== 'function') return;
+        event.preventDefault();
+        modalTitle.textContent = card.dataset.modalTitle || '';
+        modalMeta.textContent = card.dataset.modalMeta || '';
+        modalBody.textContent = card.dataset.modalBody || '';
+        cloneDetailContent(card.getAttribute('href') || '#selected-work');
+        modal.showModal();
+      });
+    });
+
+    modal?.addEventListener('click', (event) => {
+      if (event.target === modal) modal.close();
+    });
+  </script>
+
+  <nav class="section-links" aria-label="Portfolio sections">
+    <a href="#selected-work">Selected Work</a>
+    <a href="#aws-impact">AWS Impact</a>
+    <a href="#side-projects">Side Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#education">Education</a>
+  </nav>
+
+  <section id="selected-work" class="section-panel">
+    <p class="eyebrow">Selected Work</p>
+    <h2>繰り返されるサポート・開発課題をツールとワークフローへ変える仕事</h2>
+    <ul>
+      <li><strong>モバイル製品開発の基盤</strong> — G.Bike、Teamnova、個人プロジェクトでAndroid/iOS、REST API、DB設計、管理機能、地図・位置情報機能を実装。</li>
+      <li><strong>Computer Science foundation</strong> — コンピュータ工学の学士・修士と、computer vision、pattern recognition、image processing、distributed-system problem analysisの経験。</li>
+      <li><strong>画像処理・OCR研究開発</strong> — 手書き/印刷体分類、ノート罫線検出・除去、色補正、レンダリング自動テスト、3D GUI研究開発を担当。</li>
+      <li><strong>データ基盤エンジニアリング</strong> — CJ ENMビッグデータ基盤、OpenShift/Cloud Pak for Data移行、Solr/MongoDB/Redis/Impala/Hive運用を経験。</li>
+      <li><strong>MCPベースのsupport-agent / Slack botワークフロー</strong> — Slack、Outlook、wiki、ticket search、local toolsをつなぎ、顧客返信草案、公式URL確認、類似文書検索、case aging triage、escalation readiness checkを自動化。</li>
+      <li><strong>AI Session Recovery</strong> — claude-resumeとcodex-resumeを一つのtool familyとしてまとめ、Claude CodeとOpenAI Codex CLIのwork historyを検索、要約、preview、再開できるようにしたもの。</li>
+      <li><strong>linkedin-posting-mcp</strong> — ユーザー承認型LinkedIn posting workflow向けのローカルMCPサーバー。スクレイピングやDM自動化は扱わない設計。</li>
+      <li><strong>Aging Ticket Escalation AI Agent</strong> — 長期未解決チケットの要約、オンコールOCR、manager chain lookup、英語エスカレーションメール作成を一つの流れにまとめた社内AIエージェント。</li>
+    </ul>
+  </section>
+
+  <section id="aws-impact" class="section-panel">
+    <p class="eyebrow">AWS / OpenSearch</p>
+    <h2>AWS Analytics SupportとOpenSearch SME活動</h2>
+    <h3>主な認定・昇格</h3>
+    <ul>
+      <li>2023.05 <strong>AWS Certified OpenSearch Subject Matter Expert</strong>認定。</li>
+      <li>2023.10 Cloud Support Engineer IIへ昇格。</li>
+      <li>2024.12 <strong>AWSome All-Star</strong> — 大規模OpenSearch production cluster安定化に対する社内認定。</li>
+      <li>2026.02 <strong>AWS Certified Solutions Architect - Associate</strong>取得。</li>
+    </ul>
+    <h3>代表的なCustomer Win</h3>
+    <ul>
+      <li>大規模OpenSearch clusterのmaster node resource pressureとunassigned shard問題を、service-team escalation、monitoring、red index診断、node最適化提案で安定化。</li>
+      <li>HBaseからOpenSearchへ移行するproduction launchで、shard strategy、CloudWatch metrics、replica配置原則をレビュー。</li>
+      <li>OpenSearch Ingestion Pipelineと外部SaaS連携失敗を、テスト環境とopen-source code分析で再現し、認証root causeを確認。</li>
+      <li>OpenSearch Console Packages tab blank issueで、deployment failureを独立検証し、誤ったcase closureを防止。</li>
+    </ul>
+    <h3>Process Improvement & Automation</h3>
+    <ul>
+      <li><strong>長期未解決チケットエスカレーションAI Agent</strong> — 長文ticket summary、on-call screenshot OCR、manager chain lookup、英語escalation email生成を統合。</li>
+      <li><strong>OpenSearch ELB log analysis tool transition</strong> — 新しい統合環境の使い方をguide化し、Korea、Japan、TPE teamへ共有。</li>
+      <li><strong>AWS Countdown Premium Korea team escalation runbook</strong> — event前、当日、終了後の役割とcontactを単一referenceに整理。</li>
+      <li><strong>Analytics onboarding material</strong> — OpenSearch internal tool、CloudWatch metrics、ELB access log analysisをwikiとbroadcast形式で整備。</li>
+    </ul>
+    <h3>Mentoring & Knowledge Sharing</h3>
+    <ul>
+      <li>OpenSearch L3 SME consultancy、peer review、service-team escalation方針の提示。</li>
+      <li>OpenSearch SME候補者のmentoring、mock session、試験資料curation、実caseベースの分析guide提供。</li>
+      <li>Analytics domain case sharing sessionとbest-practice wiki運営。</li>
+      <li>長期未解決case review program reviewer、PS / LP / Tech LOOP interviewer活動。</li>
+    </ul>
+  </section>
+
+  <section id="detailed-resume" class="section-panel" hidden aria-hidden="true">
+    <p class="eyebrow">Detailed Resume</p>
+    <h2>職務経歴</h2>
+    <h3 id="career-aws">Amazon Web Services <small>2022.04-現在 · Cloud Support Engineer II / Analytics</small></h3>
+    <ul>
+      <li>Amazon OpenSearch Service、Kinesis、QuickSightの顧客技術支援。</li>
+      <li>OpenSearch indexing、query performance、cluster scaling、real-time analytics architectureの問題診断。</li>
+      <li>AWS service teamと連携し、長期解決策、escalation flow、顧客communication品質を管理。</li>
+      <li>AWS Certified OpenSearch SME、AWSome All-Star、AWSome Builder認定。</li>
+    </ul>
+    <h3 id="career-cj">CJ OliveNetworks <small>2019.07-2022.04 · Data Platform Senior Engineer</small></h3>
+    <ul>
+      <li>CJ ENMビッグデータ基盤のIBM Cloud Pak for Data / OpenShift migrationを主導。</li>
+      <li>既存portal分析、CP4D API変更、Kubernetes project creation API再構成、MariaDB設計・実装。</li>
+      <li>CGV social data service channel expansion、Solr storage issue解消、used-car price prediction crawler、visualization solution、AI Competitor operationを担当。</li>
+    </ul>
+    <h3 id="career-gbike">G.Bike <small>2018.06-2019.06 · Software Engineer</small></h3>
+    <ul>
+      <li>電動kickboard rental/return、driver license verification、bounty/payout、long-term rental機能を開発。</li>
+      <li>Android/iOS app、backend、admin web、DB table設計と保守を担当。</li>
+      <li>Gmany AOS/iOS新規開発、REST API設計、app scenario、admin page構成を担当。</li>
+    </ul>
+    <h3 id="career-teamnova">Teamnova <small>2017.07-2018.03 · Mobile App Lead</small></h3>
+    <ul>
+      <li>旅行支援app Popiece Androidの不具合修正と運用を担当し、Play Store公開準備の品質を整理。</li>
+      <li>新設されたiOS teamをリードし、Popiece iOS prototypeを直接開発。</li>
+      <li>為替取得、旅行国/人気国情報、旅行家計簿UI、widget、calendar interactionを実装。</li>
+      <li>mobile app launchに向けたteam開発フローと機能優先順位の整理を経験。</li>
+    </ul>
+    <h3 id="career-diotek">DioTek <small>2013.05-2015.05 · Image Processing Developer</small></h3>
+    <ul>
+      <li>手書き認識、電子辞書、mobile OCRで知られるsoftware企業で画像処理開発を担当。</li>
+      <li>中国語・日本語・韓国語textへ適用可能なOCR algorithmを調査・実装。</li>
+      <li>単語画像の11種類featureとgenetic algorithmを使い、手書き/印刷体分類algorithmを実装。</li>
+      <li>notebook line detection/removal、color correction、ditheringなどOCR前処理と認識品質改善を実施。</li>
+    </ul>
+    <h3 id="career-digitalaria">Digital Aria <small>2011.12-2013.04 · Research Engineer / R&D PM</small></h3>
+    <ul>
+      <li>Embedded GUI frameworkと3D UI技術を扱う会社でrendering test automation systemを実装。</li>
+      <li>context-aware 3D GUI、face/finger recognition、Android moduleなどのR&D taskを担当。</li>
+      <li>KOCCA national R&D project PMとして外注・協力機関・schedule・deliverableを調整。</li>
+      <li>研究成果のproduct化前段階で、実装、test、documentation、collaborationを経験。</li>
+    </ul>
+  </section>
+
+  <section id="side-projects" class="section-panel">
+    <p class="eyebrow">Side Projects</p>
+    <h2>サイドプロジェクト</h2>
+    <h3>AI Session Recovery <small>claude-resume / codex-resume</small></h3>
+    <ul>
+      <li><strong>共通課題</strong> — 長いlocal JSONL session logを直接開かず、どの作業をしていた会話かをすばやく探して再開するためのwork memory recovery tool群。</li>
+      <li><strong>claude-resume</strong> — Claude Code過去セッションをLLM要約で検索し、2ペインTUIから再開するPython/Textual tool。</li>
+      <li><strong>codex-resume</strong> — OpenAI Codex CLIのlocal JSONL session logを検索し、選択したsessionへresumeするWindows-friendly Node.js tool。</li>
+      <li><strong>実装ポイント</strong> — timestamp sorting、recursive self-invocation filtering、Windows CMD/PowerShell UTF-8 handling、dependency-light picker/doctor/list/index/resume flow。</li>
+    </ul>
+    <h3>linkedin-posting-mcp / AI Workflow</h3>
+    <ul>
+      <li>LinkedIn API権限制約を前提に、自動投稿ではなく承認型draft/checklist workflowとして設計。</li>
+      <li>AI agent handoff、session recovery、public/private repository boundary、adaptive layout decisionをAI Workflow noteとして整理。</li>
+    </ul>
+    <h3>初期Androidプロジェクト</h3>
+    <ul>
+      <li id="project-hotdealppom"><strong>HotDealppom</strong> — 11st、Coupang、ppomppuの商品dataを収集し、Hadoop、Flume、MapReduce、KoNLPyベースのword statisticsとinterest recommendationを試したAndroid/PHP/MariaDB project。</li>
+      <li><strong>BikeNavi</strong> — 自転車navigationを企画し、LAMP server、DB、Android app、Google Maps、Tmap、social API連携まで構成。</li>
+      <li><strong>Group Contacts</strong> — Android animationとaddress-book UXを学習するために作成した初期side project。</li>
+    </ul>
+  </section>
+
+  <section id="skills" class="section-panel">
+    <p class="eyebrow">Skills</p>
+    <h2>主要スキル</h2>
+    <ul>
+      <li>AWS Analytics operation and troubleshooting: OpenSearch、Kinesis、QuickSight、CloudWatch、S3、EC2、IAM。</li>
+      <li>Distributed system、data pipeline performance optimization、enterprise migration。</li>
+      <li>Claude Code、Claude API、OpenAI Codex CLI、MCPを利用したAI collaboration workflow設計。</li>
+      <li>Android、iOS、Python、Kotlin、PHP、C++、MySQL/MariaDB、Hadoop、Solr、Elasticsearch/OpenSearch、Redis、MongoDB、Impala、Hive。</li>
+    </ul>
+  </section>
+
+  <section id="education" class="section-panel">
+    <p class="eyebrow">Education / Research</p>
+    <h2>学歴・資格・研究</h2>
+    <ul>
+      <li><strong>Hanyang University, M.S. in Computer Science</strong> (2010.03-2012.02, 4.14/4.50)</li>
+      <li><strong>Korea Polytechnic University, B.S. in Computer Science</strong> (2006.03-2010.02, 4.25/4.50)</li>
+      <li>Dongbuk High School (2002.03-2005.02)</li>
+      <li>AWS Certified Solutions Architect - Associate、Amazon OpenSearch Service SME、OCP 10g、Engineer Information Processing。</li>
+      <li>Computer vision、pattern recognition、image processing、infrared-image segmentation、stereo-image feature matchingの研究経験。</li>
+      <li>Military service: Technical Research Personnel program (2012.02.21-2015.02.20)。</li>
+    </ul>
+  </section>
+
+  <details id="full-records" class="resume-details portfolio-archive" hidden aria-hidden="true">
+    <summary>Full Records · 職務・プロジェクト・学術記録を開く</summary>
+    <p class="eyebrow">Full Records</p>
+    <h2>職務・プロジェクト・学術・自己紹介の詳細記録</h2>
+
+    <h1>職務経歴書</h1>
+    <h2 id="detail-aws">Amazon Web Services (AWS) <small>2022.04-現在 · Remote · Analytics</small></h2>
+    <ul>
+      <li>会社概要: global public cloud service provider。</li>
+      <li>役職: Cloud Support Engineer II (2023.10-現在) / Cloud Support Engineer (2022.04-2023.10)。</li>
+      <li>担当: OpenSearch、Kinesis、QuickSight技術支援、distributed system diagnosis、customer architecture guidance、service-team escalation。</li>
+      <li>技術: Amazon OpenSearch Service、Kinesis、QuickSight、CloudWatch、S3、EC2、IAM、query optimization、ingestion pipeline、English technical communication。</li>
+    </ul>
+
+    <h2 id="detail-cj">CJ OliveNetworks <small>2019.07-2022.04 · Data Platform Senior Engineer</small></h2>
+    <ul>
+      <li>Enterprise big-data platform build and operationを担当。</li>
+      <li>CJ ENM big-data platformのIBM Cloud Pak for Data migration: portal analysis、CP4D API change、Kubernetes project-creation API rebuild、MariaDB schema work、IBM/InfraSoft/OpenShift collaboration。</li>
+      <li>その他: CJ CheilJedang BDP HR DB and Active Directory integration、used-car price prediction crawler、CGV social-data channel expansion、CJ ENM visualization solution、CGV AI Competitor operation。</li>
+      <li>技術: Python、Java、Linux、MongoDB、Solr、Redis、Impala、Hive、MariaDB、Spring、OpenShift、Kubernetes、IBM Cloud Pak for Data、RabbitMQ、Oozie、Hue。</li>
+    </ul>
+
+    <h2 id="detail-gbike">G.Bike <small>2018.06-2019.06 · Software Engineer</small></h2>
+    <ul>
+      <li>Long-term rental、bounty、payout、driver-license verification、rental/return、service-area、no-parking-zone、manager app、weekly release workflowを開発。</li>
+      <li>Android/iOS app、PHP backend API、MySQL table、admin page、product UI scenarioを実装。</li>
+      <li>技術: Swift、Objective-C、Java、Android、iOS、PHP、Firebase、MySQL、React Native、Google Maps。</li>
+    </ul>
+
+    <h2 id="detail-teamnova">Teamnova <small>2017.07-2018.03</small></h2>
+    <ul>
+      <li>Popiece Android appのexchange-rate fix、crash/memory-leak analysis、code reviewを担当。</li>
+      <li>Popiece iOS prototypeでtravel-period calendar UI、calculator widget、country data flow、tab data transfer、JIRA-based collaborationをリード。</li>
+      <li>技術: RealmDB、Java、Swift、Today Widget、JTAppleCalendar、XLPagerTabStrip、Swifty JSON、Git、SVN。</li>
+    </ul>
+    <div class="portfolio-gallery" aria-label="Popiece iOS prototype screenshots">
+      <a href="/assets/portfolio/image010.jpg"><img src="/assets/portfolio/image010.jpg" alt="Popiece iOS screen 1"></a>
+      <a href="/assets/portfolio/image011.jpg"><img src="/assets/portfolio/image011.jpg" alt="Popiece iOS screen 2"></a>
+      <a href="/assets/portfolio/image012.jpg"><img src="/assets/portfolio/image012.jpg" alt="Popiece iOS screen 3"></a>
+      <a href="/assets/portfolio/image013.png"><img src="/assets/portfolio/image013.png" alt="Popiece iOS screen 4"></a>
+      <a href="/assets/portfolio/image014.png"><img src="/assets/portfolio/image014.png" alt="Popiece iOS screen 5"></a>
+      <a href="/assets/portfolio/image015.png"><img src="/assets/portfolio/image015.png" alt="Popiece iOS screen 6"></a>
+    </div>
+
+    <h2 id="detail-diotek">DioTek <small>2013.05-2015.05 · Image Processing Developer</small></h2>
+    <ul>
+      <li>Chinese、Japanese、Korean textへ適用可能なOCR algorithmを研究・実装。</li>
+      <li>Handwriting/printed-text classification、notebook-line detection/removal and character restoration、color-boost correction、dithering tuningを実装。</li>
+      <li>技術: Python、C++、Android Java、SVN。</li>
+    </ul>
+
+    <h2 id="detail-digitalaria">Digital Aria <small>2011.12-2013.04 · Research Engineer</small></h2>
+    <ul>
+      <li>Version-based rendering automation testとcontext-aware smart 3D GUI technologyを実装。</li>
+      <li>KOCCA national R&D project PMとしてvendorとpartner institutionを調整。</li>
+      <li>Kinect motion recognition、single-camera face/finger recognition、Android voice-recognition module、keyword extractionを担当。</li>
+      <li>技術: C++ MFC、Android Java、Ruby、SVN、Jira、Confluence、Fisheye。</li>
+    </ul>
+    <div class="portfolio-gallery portfolio-gallery-wide" aria-label="Digital Aria project screenshots">
+      <a href="/assets/portfolio/image016.jpg"><img src="/assets/portfolio/image016.jpg" alt="Digital Aria project screen 1"></a>
+      <a href="/assets/portfolio/image017.png"><img src="/assets/portfolio/image017.png" alt="Digital Aria project screen 2"></a>
+      <a href="/assets/portfolio/image018.png"><img src="/assets/portfolio/image018.png" alt="Digital Aria project screen 3"></a>
+    </div>
+
+    <h1>サイドプロジェクト詳細</h1>
+    <h2>claude-resume <small>2026.05</small></h2>
+    <ul>
+      <li>Claude Code historyをLLM summaryで探し、選択したsessionを再開するinteractive two-panel TUI。</li>
+      <li>設計: separate LLM API key不要、Textual-based TUI、JSONL timestamp sorting、recursive-session filtering、temporary-file handoff。</li>
+      <li><a href="https://github.com/ytkim4558/claude-resume">Repository</a></li>
+    </ul>
+
+    <h2>claude-toolkit <small>2026.05-現在</small></h2>
+    <ul>
+      <li>LinkedIn draft generationとAdobe Firefly prompt conversionなどを含むReusable Claude Code skills。</li>
+      <li>Public APIやposting permissionに制約がある領域では、高品質draftとchecklistを渡すworkflowとして設計。</li>
+      <li><a href="https://github.com/ytkim4558/claude-toolkit">Repository and wiki</a></li>
+    </ul>
+
+    <h2>codex-resume <small>2026.05</small></h2>
+    <ul>
+      <li>Local Codex JSONL logsをscanし、session metadataとpreviewを抽出し、選択したsessionをCodex CLIでresume。</li>
+      <li>Node.js built-in moduleのみで`doctor`、`list`、`list --json`、`index`、`resume`を提供。</li>
+      <li><a href="https://github.com/ytkim4558/codex-resume">Repository</a></li>
+    </ul>
+
+    <h2>初期Androidサイドプロジェクト <small>2016-2017</small></h2>
+    <h3>HotDealppom</h3>
+    <ul>
+      <li>11st、Coupang、ppomppu dataからuser-interest based product recommendationを試したAndroid app。</li>
+      <li>技術: Scrapy、Android、Volley、Google API、Firebase API、PHP、Nginx、Glide、MariaDB、Hadoop、Flume、KoNLPy。</li>
+    </ul>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/VqLyBLSEtoQ" frameborder="0" allowfullscreen></iframe>
+    <div class="portfolio-gallery" aria-label="HotDealppom screenshots">
+      <a href="/assets/portfolio/image025.png"><img src="/assets/portfolio/image025.png" alt="HotDealppom screen 1"></a>
+      <a href="/assets/portfolio/image026.png"><img src="/assets/portfolio/image026.png" alt="HotDealppom screen 2"></a>
+      <a href="/assets/portfolio/image027.png"><img src="/assets/portfolio/image027.png" alt="HotDealppom screen 3"></a>
+      <a href="/assets/portfolio/image028.png"><img src="/assets/portfolio/image028.png" alt="HotDealppom screen 4"></a>
+    </div>
+
+    <h3>BikeNavi</h3>
+    <ul>
+      <li>Android、Volley、Google Maps、Tmap、Facebook API、Kakao service API、Glide、PHP、MySQLを使った自転車navigation project。</li>
+    </ul>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/twEFkv44Kwk" frameborder="0" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/LR_fLXNpb2Y" frameborder="0" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/NqDWp3VmwBI" frameborder="0" allowfullscreen></iframe>
+    <div class="portfolio-gallery" aria-label="BikeNavi screenshots">
+      <a href="/assets/portfolio/image019.jpg"><img src="/assets/portfolio/image019.jpg" alt="BikeNavi screen 1"></a>
+      <a href="/assets/portfolio/image020.png"><img src="/assets/portfolio/image020.png" alt="BikeNavi screen 2"></a>
+      <a href="/assets/portfolio/image021.png"><img src="/assets/portfolio/image021.png" alt="BikeNavi screen 3"></a>
+      <a href="/assets/portfolio/image022.png"><img src="/assets/portfolio/image022.png" alt="BikeNavi screen 4"></a>
+      <a href="/assets/portfolio/image023.png"><img src="/assets/portfolio/image023.png" alt="BikeNavi screen 5"></a>
+    </div>
+
+    <h1>資格・言語・受賞・研究</h1>
+    <ul>
+      <li>AWS Certified Solutions Architect - Associate (2026.02-2029.02)。</li>
+      <li>Amazon OpenSearch Service Subject Matter Expert (2023.05)。</li>
+      <li>OCP 10g、Engineer Information Processing、Word Processor Level 2。</li>
+      <li>Languages: Korean native、English professional working level、Japanese elementary。</li>
+      <li>Award: algorithm implementation encouragement prize, Korea Polytechnic University, 2008.11.20。</li>
+    </ul>
+    <h2>学術・研究活動</h2>
+    <ul>
+      <li>Cluttered-target tracking、multi-target tracking、infrared clutter separation/trackingに関する研究project。</li>
+      <li>Infrared image segmentation、stereo-image feature matching、triangle-similarity-based matching、image-resolution enhancementに関するpublication。</li>
+      <li>Matching-pair classification、character recognition、stereo matching、triangle-similarity-based feature matchingに関するpatent/software registration。</li>
+    </ul>
+    <h2>自己紹介</h2>
+    <p>AWS Cloud Support Engineer IIとして、cloud analyticsとcustomer solutionを中心に、10年以上の開発・data platform経験を持っています。</p>
+    <p>OpenSearch、Kinesis、QuickSightなどのAWS service expertiseをもとに、大規模distributed systemの問題解決、data workflow optimization、backend/API、mobile app、computer visionの経験を組み合わせて、繰り返される課題を再利用可能なtoolとworkflowに変えることを重視しています。</p>
+  </details>
+</BaseLayout>

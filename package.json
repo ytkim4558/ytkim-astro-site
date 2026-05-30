@@ -6,6 +6,9 @@
   "scripts": {
     "dev": "astro dev --host 0.0.0.0",
     "build": "astro build",
+    "validate:locales": "node scripts/validate-locales.mjs",
+    "validate:links": "node scripts/validate-links.mjs",
+    "validate": "npm run validate:locales && npm run validate:links",
     "preview": "astro preview --host 0.0.0.0",
     "cf:preview": "npm run build && wrangler pages dev dist",
     "cf:deploy": "npm run build && wrangler pages deploy dist --project-name ytkim4558"

@@ -1,16 +1,15 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-
+import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
 const toSlug = (value: string) => value.toLowerCase().replace(/\s+/g, '-');
 const descriptions: Record<string, string> = {
-  'ai-workflow': 'AI 코딩 에이전트와 함께 만든 도구, 워크플로, 설계 결정 기록',
-  troubleshooting: '문제 분석과 복구 기록',
-  jekyll: 'Jekyll 기반 정적 HTML 블로그 유지보수',
-  mysql: 'MySQL 사용 중 확인한 기록',
-  git: 'Git 운영과 배포 정리',
-  android: 'Android 앱 개발 기록',
+  'ai-workflow': 'Tools, workflows, and design decisions made with AI coding agents.',
+  troubleshooting: 'Troubleshooting and recovery notes.',
+  jekyll: 'Maintenance notes from the former Jekyll static site.',
+  mysql: 'MySQL usage notes.',
+  git: 'Git operations and deployment notes.',
+  android: 'Android app development notes.',
 };
 
 const posts = await getCollection('posts', ({ data }) => !data.draft);
@@ -31,16 +30,16 @@ const tags = [...tagMap.entries()].sort((a, b) => b[1].count - a[1].count || a[1
   <section class="page-hero">
     <div class="hero-inner">
       <p class="eyebrow">Tags</p>
-      <h1>주제별 노트 탐색</h1>
-      <p class="hero-description">OpenSearch, AI Workflow, Git, Android 등 관심 주제별로 기술 노트를 모아 봅니다.</p>
+      <h1>Browse Notes by Topic</h1>
+      <p class="hero-description">A topic index for OpenSearch, AI workflows, Git, Android, troubleshooting, and site maintenance notes.</p>
     </div>
   </section>
   <section class="card-grid">
     {tags.map(([slug, tag]) => (
-      <a class="feature-card" href={`/tag/${slug}/`}>
+      <a class="feature-card" href={`/en/tag/${slug}/`}>
         <span>{tag.count} posts</span>
         <strong>#{slug}</strong>
-        <p>{descriptions[slug] ?? `${tag.label} 관련 글 모음`}</p>
+        <p>{descriptions[slug] ?? `${tag.label} notes`}</p>
       </a>
     ))}
   </section>

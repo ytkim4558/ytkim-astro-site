@@ -1,5 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import { getLocale } from '../i18n';
 
 interface Props {
   title: string;
@@ -9,7 +10,9 @@ interface Props {
 }
 
 const { title, description, pubDate, tags = [] } = Astro.props;
-const formattedDate = new Intl.DateTimeFormat('ko-KR', {
+const locale = getLocale(Astro.url.pathname);
+const dateLocale = locale === 'ja' ? 'ja-JP' : locale === 'en' ? 'en-US' : 'ko-KR';
+const formattedDate = new Intl.DateTimeFormat(dateLocale, {
   year: 'numeric',
   month: 'long',
   day: 'numeric',

@@ -17,9 +17,9 @@ const formatDate = (date: Date) => new Intl.DateTimeFormat('ko-KR', {
   <section class="page-hero">
     <div class="hero-inner">
       <p class="eyebrow">Cloud Analytics · AI Workflow · Portfolio</p>
-      <h1>반복되는 엔지니어링 문제를 기록하고 도구로 바꾸는 노트</h1>
+      <h1>운영 현장에서 얻은 문제 해결 패턴을 도구와 기록으로 남깁니다</h1>
       <p class="hero-description">
-        OpenSearch, AWS Support, 데이터 플랫폼, AI workflow 실험을 정리하는 개인 기술 사이트입니다.
+        Amazon OpenSearch 지원 경험, 데이터 플랫폼 구축 이력, AI 에이전트 기반 자동화 실험을 실제 작업 사례 중심으로 정리한 기술 포트폴리오입니다.
       </p>
     </div>
   </section>
@@ -28,17 +28,17 @@ const formatDate = (date: Date) => new Intl.DateTimeFormat('ko-KR', {
     <a class="feature-card" href="/profile/">
       <span>Profile</span>
       <strong>지원 엔지니어링과 OpenSearch SME 경험</strong>
-      <p>경력 요약, 핵심 기술, 프로필 Q&A를 정리합니다.</p>
+      <p>현재 역할, 전문 영역, 학력과 핵심 배경을 빠르게 확인할 수 있습니다.</p>
     </a>
     <a class="feature-card" href="/portfolio/">
       <span>Portfolio</span>
       <strong>10년 이상의 개발·데이터 플랫폼 이력</strong>
-      <p>프로젝트, 고객 지원 사례, 자동화 흐름을 한 페이지에 모읍니다.</p>
+      <p>모바일 앱, 영상처리, 데이터 플랫폼, AWS Analytics 지원까지 이어진 경력을 프로젝트 단위로 봅니다.</p>
     </a>
     <a class="feature-card" href="/tag/ai-workflow/">
       <span>AI Workflow</span>
       <strong>AI 에이전트와 운영 자동화 기록</strong>
-      <p>Codex, Claude, MCP, handoff 규칙을 재사용 가능한 글로 남깁니다.</p>
+      <p>Codex, Claude, MCP를 실제 업무 흐름에 붙이며 남긴 판단과 복구 기록을 모았습니다.</p>
     </a>
     <a class="feature-card" href={`/${posts[0].id.replace(/\.(md|mdx)$/, '')}/`}>
       <span>Latest Note</span>
@@ -50,7 +50,7 @@ const formatDate = (date: Date) => new Intl.DateTimeFormat('ko-KR', {
   <main class="post-list">
     {posts.map((post) => (
       <article class="post-list-item">
-        <a href={`/${post.id.replace(/\.(md|mdx)$/, '')}/`}>
+        <a href={`/${post.id.replace(/\.(md|mdx)$/, '').toLowerCase()}/`}>
           <span>{formatDate(post.data.pubDate)} · {post.data.tags.join(' · ')}</span>
           <strong>{post.data.title}</strong>
           {post.data.description && <p>{post.data.description}</p>}

@@ -4,7 +4,7 @@ title: "전체 경력·프로젝트·학술 기록"
 
 <h1 id="경력기술서">경력 기술서</h1>
 
-<div class="company-heading">
+<div id="detail-aws" class="company-heading">
   <img src="/assets/images/company/aws.svg" alt="AWS logo tile" loading="lazy">
   <h2>Amazon Web Services (AWS) <small>2022.04~재직중 · 재택근무 · 4년 2개월</small></h2>
 </div>
@@ -30,7 +30,7 @@ title: "전체 경력·프로젝트·학술 기록"
 - 분산 시스템 트러블슈팅, 쿼리 최적화, 데이터 인제스천 파이프라인 설계
 - 영문 기술 커뮤니케이션 및 글로벌 서비스 팀 협업
 
-<div class="company-heading">
+<div id="detail-cj" class="company-heading">
   <img src="/assets/images/company/cj-olive.svg" alt="CJ OliveNetworks logo tile" loading="lazy">
   <h2>CJ 올리브 네트웍스 <small>2019.07.01~2022.04.30 · 하이브리드 · 2년 10개월</small></h2>
 </div>
@@ -82,7 +82,7 @@ title: "전체 경력·프로젝트·학술 기록"
 ### 이직 사유
 - 글로벌 클라우드 서비스 회사(AWS)로의 커리어 전환
 
-<div class="company-heading">
+<div id="detail-gbike" class="company-heading">
   <img src="/assets/images/company/gbike.svg" alt="G.Bike logo tile" loading="lazy">
   <h2>G.Bike <small>2018.06~2019.06</small></h2>
 </div>
@@ -176,7 +176,7 @@ title: "전체 경력·프로젝트·학술 기록"
   <a href="/assets/portfolio/주차금지구역2.png"><img src="/assets/portfolio/주차금지구역2.png" alt="지빌리티 주차 금지 구역 화면 2"></a>
 </div>
 
-<div class="company-heading">
+<div id="detail-teamnova" class="company-heading">
   <img src="/assets/images/company/teamnova.svg" alt="Teamnova logo tile" loading="lazy">
   <h2>팀노바 <small>2017.07~2018.03 · 9개월</small></h2>
 </div>
@@ -222,7 +222,7 @@ title: "전체 경력·프로젝트·학술 기록"
   <a href="/assets/portfolio/image015.png"><img src="/assets/portfolio/image015.png" alt="포피스 iOS 화면 6"></a>
 </div>
 
-<div class="company-heading">
+<div id="detail-diotek" class="company-heading">
   <img src="/assets/images/company/diotek.svg" alt="DioTek logo tile" loading="lazy">
   <h2>㈜디오텍 <small>2013.05~2015.05 · 2년 1개월</small></h2>
 </div>
@@ -239,7 +239,7 @@ title: "전체 경력·프로젝트·학술 기록"
 
 - 이직 또는 퇴직 사유 : 전문연구요원 군 복무 만료 이후 자기 역량 계발
 
-<div class="company-heading">
+<div id="detail-digitalaria" class="company-heading">
   <img src="/assets/images/company/digitalaria.svg" alt="Digital Aria logo tile" loading="lazy">
   <h2>㈜디지탈아리아 <small>2011.12~2013.04 · 1년 5개월</small></h2>
 </div>
@@ -336,10 +336,6 @@ title: "전체 경력·프로젝트·학술 기록"
 ## 초기 안드로이드 사이드 프로젝트 (2016 ~ 2017)
 
 
-
-<div class="lazy-target"></div>
-
-<template>
 <p>모바일 개발 입문기에 만든 Android 사이드 프로젝트들.</p>
 
 <h3>HotDealppom (핫딜뽐) — 사용자 관심사 기반 상품 추천 (2016.12 ~ 2017.06)</h3>
@@ -378,24 +374,6 @@ title: "전체 경력·프로젝트·학술 기록"
 
 <h3>그룹주소록 — 그룹 단위로 관리할 수 있는 안드로이드 연락처 어플</h3>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/60rDdIGMNBw" frameborder="0" allowfullscreen></iframe>
-</template>
-
-
-<script>
-(function(){
-  document.querySelectorAll('details.lazy-details').forEach(function(d){
-    var tpl = d.querySelector('template');
-    var target = d.querySelector('.lazy-target');
-    if (!tpl || !target) return;
-    d.addEventListener('toggle', function(){
-      if (d.open && !target.hasChildNodes()) {
-        target.appendChild(tpl.content.cloneNode(true));
-      }
-    });
-  });
-})();
-</script>
-
 ----------
 
 <h1 id="자격사항">자격 사항</h1>
