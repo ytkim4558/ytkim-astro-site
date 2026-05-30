@@ -16,7 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
     <link rel="stylesheet" type="text/css" href="/assets/built/screen.css" />
-    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css?v=20260530122530" />
+    <link rel="stylesheet" type="text/css" href="/assets/built/screen.edited.css?v=20260530134500" />
     <link rel="stylesheet" type="text/css" href="/assets/built/syntax.css" />
     <!-- highlight.js -->
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
@@ -91,7 +91,7 @@
 
 
 </head>
-<body class="home-template">
+<body class="post-template">
 
     <div class="site-wrapper">
         <!-- All the main content gets inserted here, index.hbs, post.hbs, etc -->
@@ -104,12 +104,21 @@ into the {body} of the default.hbs template -->
     <div class="inner">
         <nav class="site-nav">
     <div class="site-nav-left">
-        
+
+            <ul class="nav" role="menu">
+    <li class="nav-home" role="menuitem"><a href="/">Notes</a></li>
+    <li class="nav-profile" role="menuitem"><a href="/profile/">Profile</a></li>
+    <li class="nav-portfolio" role="menuitem"><a href="/portfolio/">Portfolio</a></li>
+    <li class="nav-ai-workflow" role="menuitem"><a href="/tag/ai-workflow/">AI Workflow</a></li>
+    <li class="nav-tags" role="menuitem"><a href="/tags/">Tags</a></li>
+</ul>
+
+
     </div>
     <div class="site-nav-right">
-        
-        
-        
+
+
+
         <div class="language-switcher" aria-label="Language selector">
             <a class="language-option is-active" href="/" data-language-switch data-target-lang="ko">한국어</a>
             <a class="language-option " href="/en/" data-language-switch data-target-lang="en">EN</a>
