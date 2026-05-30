@@ -30,6 +30,9 @@ Reasoning:
 - Build command: `npm run build`
 - Local Pages preview: `npm run cf:preview`
 - Deploy command: `npm run cf:deploy`
+- Cloudflare Pages project: `ytkim4558`
+- Current Cloudflare Pages URL: `https://ytkim4558.pages.dev/`
+- First verified deployment URL: `https://53373cfb.ytkim4558.pages.dev/`
 
 Required Cloudflare Pages secret:
 
@@ -48,7 +51,9 @@ Recent checks:
 - `npm run build` succeeds.
 - `wrangler pages dev dist --port 8788 --ip 127.0.0.1` serves `/profile/` with `Ask Profile`.
 - `POST /api/profile-chat` reaches the Pages Function and returns `503` when `OPENAI_API_KEY` is not configured, which is expected. The React UI falls back to local profile answers.
-- `npm run cf:deploy` builds successfully but cannot deploy in this session because Wrangler requires `CLOUDFLARE_API_TOKEN` in non-interactive mode.
+- `npm run cf:deploy` succeeded after loading `CLOUDFLARE_API_TOKEN` from the Windows user environment.
+- `https://ytkim4558.pages.dev/profile/` returns 200 and contains `Ask Profile`.
+- `https://ytkim4558.pages.dev/api/profile-chat` returns 503 until `OPENAI_API_KEY` is configured in Cloudflare Pages.
 
 ## Safety Rules
 
