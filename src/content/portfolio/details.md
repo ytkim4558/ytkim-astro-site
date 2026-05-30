@@ -2,7 +2,7 @@
 title: "전체 경력·프로젝트·학술 기록"
 ---
 
-<h1 id="경력기술서">경력 기술서</h1> 
+<h1 id="경력기술서">경력 기술서</h1>
 
 <div class="company-heading">
   <img src="/assets/images/company/aws.svg" alt="AWS logo tile" loading="lazy">
@@ -86,7 +86,7 @@ title: "전체 경력·프로젝트·학술 기록"
   <img src="/assets/images/company/gbike.svg" alt="G.Bike logo tile" loading="lazy">
   <h2>G.Bike <small>2018.06~2019.06</small></h2>
 </div>
-- 회사소개 : 현재 자동차 중심의 환경인 한국에서 녹색 도시 이동성을 혁신하는 이동 공유 기업이다. 
+- 회사소개 : 현재 자동차 중심의 환경인 한국에서 녹색 도시 이동성을 혁신하는 이동 공유 기업이다.
 - 개발팀, SW Engineer, Manager
 
 ### 담당 업무
@@ -180,7 +180,7 @@ title: "전체 경력·프로젝트·학술 기록"
   <img src="/assets/images/company/teamnova.svg" alt="Teamnova logo tile" loading="lazy">
   <h2>팀노바 <small>2017.07~2018.03 · 9개월</small></h2>
 </div>
-- 회사소개 : 여행 플랫폼을 개발중인 벤처회사. 
+- 회사소개 : 여행 플랫폼을 개발중인 벤처회사.
 - 개발팀, 개발파트장
 
 ### 담당 업무
@@ -267,7 +267,7 @@ title: "전체 경력·프로젝트·학술 기록"
 
 ----------
 
-<h1 id="사이드프로젝트기술서">사이드프로젝트 기술서</h1> 
+<h1 id="사이드프로젝트기술서">사이드프로젝트 기술서</h1>
 
 ## [claude-resume](https://github.com/ytkim4558/claude-resume) — LLM 요약 기반 Claude Code 세션 피커 (2026.05)
 ### 기간 : 2026.05.16 ~ 2026.05.17 (2일)
