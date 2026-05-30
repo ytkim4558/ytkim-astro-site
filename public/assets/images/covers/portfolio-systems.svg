@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2000" height="666" viewBox="0 0 2000 666" role="img" aria-label="Portfolio systems abstract cover">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#111827"/>
+      <stop offset="0.46" stop-color="#1e3a8a"/>
+      <stop offset="1" stop-color="#ecfeff"/>
+    </linearGradient>
+    <pattern id="dots" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="2" fill="#ffffff" fill-opacity="0.16"/>
+    </pattern>
+  </defs>
+  <rect width="2000" height="666" fill="url(#bg)"/>
+  <rect width="2000" height="666" fill="url(#dots)"/>
+  <g fill="none" stroke="#ffffff" stroke-opacity="0.78" stroke-width="4">
+    <rect x="190" y="118" width="360" height="220" rx="34"/>
+    <rect x="770" y="82" width="430" height="292" rx="40"/>
+    <rect x="1410" y="170" width="360" height="250" rx="36"/>
+    <path d="M550 226h220M1200 228h210M370 338v104h1220v-22"/>
+  </g>
+  <g fill="#67e8f9">
+    <circle cx="370" cy="226" r="14"/>
+    <circle cx="986" cy="228" r="14"/>
+    <circle cx="1590" cy="294" r="14"/>
+  </g>
+  <g fill="#ffffff" fill-opacity="0.9">
+    <path d="M260 202h210v20H260zM260 254h150v20H260z"/>
+    <path d="M850 166h270v22H850zM850 226h198v22H850zM850 286h242v22H850z"/>
+    <path d="M1490 250h200v20h-200zM1490 306h132v20h-132z"/>
+  </g>
+  <path d="M92 560c390-70 616-28 918-96 300-68 504-154 904-68" fill="none" stroke="#0f172a" stroke-opacity="0.22" stroke-width="84"/>
+</svg>

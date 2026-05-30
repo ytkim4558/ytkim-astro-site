@@ -7,11 +7,12 @@ interface Props {
 }
 
 const { title, description = 'Cloud Analytics, Data Platform, and AI Workflow' } = Astro.props;
+const isEnglish = Astro.url.pathname.startsWith('/en/');
 const navItems = [
-  ['/', 'Notes'],
-  ['/profile/', 'Profile'],
-  ['/portfolio/', 'Portfolio'],
-  ['/tag/ai-workflow/', 'AI Workflow'],
+  [isEnglish ? '/en/' : '/', 'Notes'],
+  [isEnglish ? '/en/about/' : '/profile/', 'Profile'],
+  [isEnglish ? '/en/portfolio/' : '/portfolio/', 'Portfolio'],
+  ['/tag/ai-workflow/', isEnglish ? 'Workflow' : 'AI Workflow'],
   ['/tags/', 'Tags'],
 ];
 ---

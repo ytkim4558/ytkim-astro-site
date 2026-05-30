@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2000" height="666" viewBox="0 0 2000 666" role="img" aria-label="Profile AI support abstract cover">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1220"/>
+      <stop offset="0.52" stop-color="#0f766e"/>
+      <stop offset="1" stop-color="#fff7ed"/>
+    </linearGradient>
+    <filter id="blur">
+      <feGaussianBlur stdDeviation="34"/>
+    </filter>
+  </defs>
+  <rect width="2000" height="666" fill="url(#bg)"/>
+  <g filter="url(#blur)" opacity="0.72">
+    <circle cx="360" cy="210" r="150" fill="#38bdf8"/>
+    <circle cx="1500" cy="260" r="210" fill="#f59e0b"/>
+    <circle cx="1040" cy="470" r="190" fill="#14b8a6"/>
+  </g>
+  <g fill="none" stroke="#ffffff" stroke-opacity="0.44" stroke-width="3">
+    <rect x="220" y="152" width="410" height="232" rx="38"/>
+    <rect x="910" y="116" width="520" height="312" rx="46"/>
+    <rect x="1460" y="292" width="310" height="166" rx="34"/>
+    <path d="M630 250h280M1430 286h30"/>
+  </g>
+  <g fill="#ffffff" fill-opacity="0.9">
+    <circle cx="322" cy="234" r="38"/>
+    <path d="M254 332c20-56 116-56 136 0"/>
+    <circle cx="1014" cy="216" r="12"/>
+    <circle cx="1070" cy="216" r="12"/>
+    <circle cx="1126" cy="216" r="12"/>
+  </g>
+  <g stroke="#ffffff" stroke-opacity="0.62" stroke-width="8" stroke-linecap="round">
+    <path d="M1000 310h320M1000 362h242"/>
+    <path d="M1524 354h160M1524 406h100"/>
+  </g>
+</svg>
