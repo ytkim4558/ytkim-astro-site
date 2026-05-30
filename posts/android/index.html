@@ -1,0 +1,19 @@
+<!DOCTYPE html><html lang="ko"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="회사에서 개발하는 앱이 영어, 한국어 버전을 동시에 지원한다."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700;800;900&family=Noto+Sans+KR:wght@400;700;800;900&display=swap" rel="stylesheet"><title>안드로이드 스튜디오 레이아웃 preview에서 각국언어 버전 보기 | Yongtak Kim Engineering Notes</title><link rel="stylesheet" href="/_astro/BaseLayout.CautBalw.css"></head> <body> <div class="site-shell"> <header class="site-header"> <nav class="site-nav" aria-label="Primary navigation"> <a class="brand" href="/">Yongtak Notes</a> <div class="nav-links"> <a href="/">Notes</a><a href="/profile/">Profile</a><a href="/portfolio/">Portfolio</a><a href="/tag/ai-workflow/">AI Workflow</a><a href="/tags/">Tags</a> </div> <div class="language-links" aria-label="Language"> <a href="/">KO</a> <a href="/en/">EN</a> </div> </nav> </header>  <header class="post-hero"> <div class="hero-inner"> <p class="eyebrow">Android</p> <h1>안드로이드 스튜디오 레이아웃 preview에서 각국언어 버전 보기</h1> <p class="hero-description">회사에서 개발하는 앱이 영어, 한국어 버전을 동시에 지원한다.</p> <p class="hero-description">2018년 6월 30일</p> </div> </header> <article class="content">  <p>회사에서 개발하는 앱이 영어, 한국어 버전을 동시에 지원한다.</p>
+<p>먼저 다국어버전을 만들려는 사람을 위해 설명하자면, strings.xml을 다국어버전으로 만들기 위해서는 다음의 절차를 거친다.</p>
+<ol>
+<li>
+<p>app -> res -> values -> strings.xml 에서 오른쪽 버튼을 눌러 나온 메뉴에서 Open Translators Editor 항목을 클릭한다</p>
+</li>
+<li>
+<p>좌측 위 지구본 모양을 클릭하여 원하는 언어를 추가한다.</p>
+</li>
+</ol>
+<p>회사에서는 이미 ko 버전도 영어버전과 같이 있었다.</p>
+<p>다만, 레이아웃에서 preview로 볼 때 각국 버전을 어떻게 보는지에 대해 검색하기가 매우 까다로웠다.</p>
+<p>직접 삽질한 결과</p>
+<p>해당 액티비티의 레이아웃에 가서 상단위의 기기명, 블루프린트 등이 보이는 부분중 AppTheme에 커서를 갖다대면 랭귀지 변경하는 창이 나온다.</p>
+<p>해당 탭 순서가 블루프린트, 기기, 안드로이드 버전, AppTheme, 언어변경탭 순으로 되어있어서 모니터가 작거나 하면 잘 보이지가 않는다.</p>
+<p><img __ASTRO_IMAGE_="{&#x22;src&#x22;:&#x22;{{\&#x22;/assets/images/language_selection.PNG\&#x22;}}&#x22;,&#x22;alt&#x22;:&#x22;언어변경위치&#x22;,&#x22;index&#x22;:0}"></p>
+<p>붉은색으로 표시한 부분 참고!</p>  </article>  <footer class="site-footer">
+Yongtak Kim Engineering Notes
+</footer> </div> </body></html>

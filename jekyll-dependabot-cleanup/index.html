@@ -1,0 +1,101 @@
+<!DOCTYPE html><html lang="ko"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="처음에는 단순한 경고처럼 보였지만, 실제로 확인해 보니 오래된 Jekyll 블로그 의존성에서 열린 취약점 알림이 여러 개 쌓여 있었다."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700;800;900&family=Noto+Sans+KR:wght@400;700;800;900&display=swap" rel="stylesheet"><title>오래된 Jekyll 블로그의 Dependabot 취약점 33개를 정리한 기록 | Yongtak Kim Engineering Notes</title><link rel="stylesheet" href="/_astro/BaseLayout.CautBalw.css"></head> <body> <div class="site-shell"> <header class="site-header"> <nav class="site-nav" aria-label="Primary navigation"> <a class="brand" href="/">Yongtak Notes</a> <div class="nav-links"> <a href="/">Notes</a><a href="/profile/">Profile</a><a href="/portfolio/">Portfolio</a><a href="/tag/ai-workflow/">AI Workflow</a><a href="/tags/">Tags</a> </div> <div class="language-links" aria-label="Language"> <a href="/">KO</a> <a href="/en/">EN</a> </div> </nav> </header>  <header class="post-hero"> <div class="hero-inner"> <p class="eyebrow">AI Workflow</p> <h1>오래된 Jekyll 블로그의 Dependabot 취약점 33개를 정리한 기록</h1> <p class="hero-description">처음에는 단순한 경고처럼 보였지만, 실제로 확인해 보니 오래된 Jekyll 블로그 의존성에서 열린 취약점 알림이 여러 개 쌓여 있었다.</p> <p class="hero-description">2026년 5월 17일</p> </div> </header> <article class="content">  <p><a href="https://github.com/ytkim4558/codex-resume"><code>codex-resume</code></a> 작업을 포트폴리오와 블로그에 반영하는 과정에서 GitHub push 메시지에 Dependabot 경고가 같이 떴다.
+처음에는 단순한 경고처럼 보였지만, 실제로 확인해 보니 오래된 Jekyll 블로그 의존성에서 열린 취약점 알림이 여러 개 쌓여 있었다.</p>
+<p>이 글은 그 취약점을 무작정 최신화하지 않고, 사이트가 계속 빌드되는지 검증하면서 정리한 기록이다.</p>
+<h2 id="문제를-발견한-위치">문제를 발견한 위치</h2>
+<p>블로그는 두 개의 저장소로 나뉘어 있었다.</p>
+<ul>
+<li><code>GitHubPageMaker</code>: Jekyll 소스 저장소</li>
+<li><code>ytkim4558.github.io</code>: 실제 GitHub Pages에 올라가는 생성 결과물 저장소</li>
+</ul>
+<p>처음에는 <code>ytkim4558.github.io</code>만 보면 되는 줄 알았지만, 실제 수정해야 할 곳은 Jekyll 소스가 있는 <code>GitHubPageMaker</code>였다.
+생성된 HTML만 직접 고치면 다음 빌드 때 다시 덮어써질 수 있기 때문이다.</p>
+<p>그래서 작업 기준을 다음처럼 정했다.</p>
+<ul>
+<li>소스 변경은 <code>GitHubPageMaker</code>에서 한다.</li>
+<li>Jekyll로 <code>output/</code>을 생성한다.</li>
+<li>생성 결과를 <code>ytkim4558.github.io</code>에 반영한다.</li>
+<li>공개 URL에서 실제 반영 여부를 확인한다.</li>
+</ul>
+<h2 id="첫-번째-원인-jekyll-tasks">첫 번째 원인: jekyll-tasks</h2>
+<p>Dependabot 알림 중 가장 먼저 정리한 것은 npm 패키지 <code>jekyll-tasks</code>였다.
+이 패키지는 특정 버전만 취약한 것이 아니라 패키지 자체가 malware로 표시되어 있었다.</p>
+<p>다행히 현재 블로그 빌드에는 이 패키지가 필요하지 않았다.</p>
+<ul>
+<li><code>package.json</code>에는 들어 있었다.</li>
+<li>하지만 실제 Jekyll 빌드는 npm이 아니라 <code>bundle exec jekyll build</code>로 수행했다.</li>
+<li><code>gulpfile.js</code>에서도 <code>require('jekyll-tasks')</code>로 사용하지 않았다.</li>
+</ul>
+<p>그래서 이 패키지는 제거했다.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#9ECBFF">"dependencies"</span><span style="color:#E1E4E8">: {</span></span>
+<span class="line"><span style="color:#79B8FF">  "gulp"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"github:gulpjs/gulp"</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span></code></pre>
+<p>제거 후 바로 배포하지 않고, Jekyll 빌드가 그대로 성공하는지 먼저 확인했다.</p>
+<h2 id="두-번째-원인-오래된-github-pages-런타임">두 번째 원인: 오래된 GitHub Pages 런타임</h2>
+<p>Ruby 쪽 알림은 대부분 오래된 <code>github-pages</code> gem에서 시작됐다.
+기존 설정은 다음과 같았다.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ruby"><code><span class="line"><span style="color:#E1E4E8">gem </span><span style="color:#9ECBFF">"jekyll"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"~> 3.6.2"</span></span>
+<span class="line"><span style="color:#E1E4E8">gem </span><span style="color:#9ECBFF">"github-pages"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"~> 168"</span></span>
+<span class="line"><span style="color:#E1E4E8">gem </span><span style="color:#9ECBFF">"rake"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"~> 12.3.0"</span></span></code></pre>
+<p>이 조합은 <code>nokogiri</code>, <code>addressable</code>, <code>activesupport</code>, <code>tzinfo</code>, <code>faraday</code> 같은 오래된 하위 의존성을 끌고 왔다.
+Dependabot 알림도 대부분 이 하위 의존성에서 발생했다.</p>
+<p>처음에는 <code>github-pages</code>만 최신 계열로 올려도 충분할 것이라고 봤다.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ruby"><code><span class="line"><span style="color:#E1E4E8">gem </span><span style="color:#9ECBFF">"github-pages"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"~> 232"</span></span></code></pre>
+<p>하지만 이 상태에서는 <code>nokogiri 1.18.10</code>이 설치되어, 최신 <code>nokogiri &#x3C; 1.19.3</code> 알림이 남을 수 있었다.
+그래서 GitHub Pages 제약 범위 안에서 <code>nokogiri</code>를 명시적으로 올렸다.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="ruby"><code><span class="line"><span style="color:#E1E4E8">gem </span><span style="color:#9ECBFF">"github-pages"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"~> 232"</span></span>
+<span class="line"><span style="color:#E1E4E8">gem </span><span style="color:#9ECBFF">"nokogiri"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">">= 1.19.3"</span></span></code></pre>
+<h2 id="왜-docker로-검증했나">왜 Docker로 검증했나</h2>
+<p>Windows 로컬 환경에는 Ruby, Bundler, Jekyll이 설치되어 있지 않았다.
+새로 Ruby를 설치하는 대신 Docker로 빌드 환경을 고정했다.</p>
+<p>초기에는 <code>jekyll/jekyll:3.8</code> 이미지를 사용했지만, 최신 <code>nokogiri 1.19.3</code>은 Ruby 3.2 이상이 필요했다.
+그래서 최종 검증은 Ruby 3.2 컨테이너에서 진행했다.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="powershell"><code><span class="line"><span style="color:#E1E4E8">docker run </span><span style="color:#F97583">--</span><span style="color:#E1E4E8">rm </span><span style="color:#F97583">`</span></span>
+<span class="line"><span style="color:#F97583">  -</span><span style="color:#E1E4E8">v jekyll_bundle_232_ruby32_bundler269:</span><span style="color:#F97583">/</span><span style="color:#E1E4E8">usr</span><span style="color:#F97583">/</span><span style="color:#E1E4E8">local</span><span style="color:#F97583">/</span><span style="color:#E1E4E8">bundle </span><span style="color:#F97583">`</span></span>
+<span class="line"><span style="color:#F97583">  -</span><span style="color:#E1E4E8">v </span><span style="color:#9ECBFF">"C:\Users\ytkim\projects\GitHubPageMaker:/srv/jekyll"</span><span style="color:#F97583"> `</span></span>
+<span class="line"><span style="color:#F97583">  -</span><span style="color:#E1E4E8">w </span><span style="color:#F97583">/</span><span style="color:#E1E4E8">srv</span><span style="color:#F97583">/</span><span style="color:#E1E4E8">jekyll </span><span style="color:#F97583">`</span></span>
+<span class="line"><span style="color:#E1E4E8">  ruby:</span><span style="color:#79B8FF">3.2</span><span style="color:#F97583"> `</span></span>
+<span class="line"><span style="color:#E1E4E8">  bash </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">lc </span><span style="color:#9ECBFF">"gem install bundler -v 2.6.9 &#x26;&#x26; bundle _2.6.9_ update github-pages nokogiri &#x26;&#x26; bundle _2.6.9_ exec jekyll build --future"</span></span></code></pre>
+<p>여기서 <code>--future</code>를 붙인 이유는 같은 날 작성한 글이 컨테이너 시간대 기준으로 future post로 판단되어 빌드에서 빠질 수 있었기 때문이다.</p>
+<h2 id="확인한-것">확인한 것</h2>
+<p>업데이트 후에는 다음을 확인했다.</p>
+<ul>
+<li>Jekyll 빌드 성공</li>
+<li>포트폴리오 페이지 정상 생성</li>
+<li><code>codex-resume</code> 글 정상 생성</li>
+<li><code>AI Workflow</code> 태그 페이지 정상 생성</li>
+<li>기존 상단 메뉴가 새 메뉴로 유지됨</li>
+<li>GitHub Dependabot API 기준 open alert 0개</li>
+<li>공개 URL 응답 200 OK</li>
+</ul>
+<p>최종적으로 확인한 핵심 URL은 다음과 같다.</p>
+<ul>
+<li><code>https://ytkim4558.github.io/portfolio/</code></li>
+<li><code>https://ytkim4558.github.io/codex-resume-tui-decision</code></li>
+<li><code>https://ytkim4558.github.io/tag/ai-workflow/</code></li>
+</ul>
+<h2 id="정리">정리</h2>
+<p>이번 작업의 핵심은 단순히 <code>bundle update</code>를 실행한 것이 아니었다.
+오래된 블로그는 의존성만 올리면 깨질 수 있기 때문에, 다음 순서가 중요했다.</p>
+<ol>
+<li>실제로 쓰지 않는 malware 패키지부터 제거</li>
+<li>Jekyll 소스 저장소와 생성 결과물 저장소를 분리해서 확인</li>
+<li>Docker로 빌드 환경 고정</li>
+<li>GitHub Pages 런타임 업데이트</li>
+<li>취약 하위 의존성인 <code>nokogiri</code>를 패치 버전으로 고정</li>
+<li>생성 결과를 공개 페이지에서 검증</li>
+</ol>
+<p>결과적으로 오래된 Jekyll 블로그를 유지하면서도, GitHub Dependabot 경고를 0개로 줄일 수 있었다.</p>
+<p>이런 작업은 눈에 띄는 기능 개발은 아니지만, 운영 중인 개인 사이트를 계속 신뢰 가능한 상태로 유지하는 데 필요한 기본 작업이다.</p>
+<h2 id="다른-ai-에이전트에게-남기는-메모">다른 AI 에이전트에게 남기는 메모</h2>
+<p>이 블로그를 다음에 수정하는 AI 에이전트는 <code>ytkim4558.github.io</code>의 HTML을 바로 고치는 대신, 먼저 <code>GitHubPageMaker</code> 소스를 수정해야 한다.</p>
+<ul>
+<li>소스 repo: <code>C:\Users\ytkim\projects\GitHubPageMaker</code></li>
+<li>배포 repo: <code>C:\Users\ytkim\projects\ytkim4558.github.io</code></li>
+<li>빌드는 Ruby 3.2 Docker 컨테이너와 Bundler 2.6.9 기준으로 한다.</li>
+<li>같은 날 작성한 글이 빠지지 않도록 <code>jekyll build --future</code>를 사용한다.</li>
+<li><code>jekyll-tasks</code>는 malware 알림 원인이므로 다시 추가하지 않는다.</li>
+<li><code>github-pages ~> 232</code>, <code>nokogiri >= 1.19.3</code> 제약을 유지한다.</li>
+</ul>
+<p>자세한 절차는 저장소 루트의 <code>AGENTS.md</code>에 남겨두는 것이 좋다.</p>  </article>  <footer class="site-footer">
+Yongtak Kim Engineering Notes
+</footer> </div> </body></html>

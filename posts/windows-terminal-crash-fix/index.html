@@ -1,0 +1,71 @@
+<!DOCTYPE html><html lang="ko"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Windows 11에서 Windows Terminal이 실행 직후 조용히 종료되는 문제를 겪었다. 마우스 포인터에 로딩 원이 잠깐 돌다가 사라지고, 창은 열리지 않는다. PowerShell도 기본 터미널이 WT로 설정돼 있어서 같이 안 열렸다."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700;800;900&family=Noto+Sans+KR:wght@400;700;800;900&display=swap" rel="stylesheet"><title>Windows Terminal이 열리자마자 죽을 때 — DCOM 10010 에러와 재설치로 해결 | Yongtak Kim Engineering Notes</title><link rel="stylesheet" href="/_astro/BaseLayout.CautBalw.css"></head> <body> <div class="site-shell"> <header class="site-header"> <nav class="site-nav" aria-label="Primary navigation"> <a class="brand" href="/">Yongtak Notes</a> <div class="nav-links"> <a href="/">Notes</a><a href="/profile/">Profile</a><a href="/portfolio/">Portfolio</a><a href="/tag/ai-workflow/">AI Workflow</a><a href="/tags/">Tags</a> </div> <div class="language-links" aria-label="Language"> <a href="/">KO</a> <a href="/en/">EN</a> </div> </nav> </header>  <header class="post-hero"> <div class="hero-inner"> <p class="eyebrow">Troubleshooting</p> <h1>Windows Terminal이 열리자마자 죽을 때 — DCOM 10010 에러와 재설치로 해결</h1> <p class="hero-description">Windows 11에서 Windows Terminal이 실행 직후 조용히 종료되는 문제를 겪었다. 마우스 포인터에 로딩 원이 잠깐 돌다가 사라지고, 창은 열리지 않는다. PowerShell도 기본 터미널이 WT로 설정돼 있어서 같이 안 열렸다.</p> <p class="hero-description">2026년 5월 30일</p> </div> </header> <article class="content">  <p>Windows 11에서 Windows Terminal이 실행 직후 조용히 종료되는 문제를 겪었다. 마우스 포인터에 로딩 원이 잠깐 돌다가 사라지고, 창은 열리지 않는다. PowerShell도 기본 터미널이 WT로 설정돼 있어서 같이 안 열렸다.</p>
+<h2 id="증상">증상</h2>
+<ul>
+<li>시작 메뉴에서 PowerShell / Terminal 클릭 → 로딩 커서만 잠깐 뜨고 사라짐</li>
+<li><code>Win+R</code> → <code>wt</code> → 동일 증상</li>
+<li>이벤트 뷰어 System 로그에 <strong>Event ID 10010</strong> 반복:
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>The server {E12CFF52-A866-4C77-9A90-F570A7AA2C6B} did not register with DCOM within the required timeout.</span></span></code></pre>
+</li>
+<li><code>Start-Process wt -PassThru</code> 실행 시 프로세스가 exit code 0으로 즉시 종료 (크래시가 아닌 정상 종료 코드)</li>
+</ul>
+<h2 id="원인">원인</h2>
+<p><code>{E12CFF52-A866-4C77-9A90-F570A7AA2C6B}</code>는 Windows Terminal의 DelegationTerminal CLSID다. WT가 DCOM에 제대로 등록되지 못해 시스템이 타임아웃을 발생시킨 것.</p>
+<p>직접적 원인은 <code>settings.json</code>에 유효하지 않은 값이 들어간 것이었다:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="color:#9ECBFF">"rendering.graphicsAPI"</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">"software"</span></span></code></pre>
+<p>WT가 허용하는 값은 <code>automatic | direct2d | direct3d11</code>뿐이다. 잘못된 값이 들어가면 WT는 설정 파싱 단계에서 실패하고 조용히 종료한다.</p>
+<h2 id="시도한-것들-효과-없음">시도한 것들 (효과 없음)</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>시도</th><th>결과</th></tr></thead><tbody><tr><td><code>chcp 65001</code></td><td>폰트 깨짐과 무관</td></tr><tr><td>settings.json에서 잘못된 키 제거</td><td>여전히 안 열림</td></tr><tr><td><code>Reset-AppxPackage</code></td><td>여전히 안 열림</td></tr><tr><td>state.json 삭제</td><td>여전히 안 열림</td></tr></tbody></table>
+<h2 id="해결-완전-재설치">해결: 완전 재설치</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="powershell"><code><span class="line"><span style="color:#6A737D"># 1. 제거</span></span>
+<span class="line"><span style="color:#79B8FF">Get-AppxPackage</span><span style="color:#E1E4E8"> Microsoft.WindowsTerminal </span><span style="color:#F97583">|</span><span style="color:#79B8FF"> Remove-AppxPackage</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># 2. 재등록</span></span>
+<span class="line"><span style="color:#79B8FF">Add-AppxPackage</span><span style="color:#F97583"> -</span><span style="color:#E1E4E8">RegisterByFamilyName </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">MainPackage Microsoft.WindowsTerminal_8wekyb3d8bbwe</span></span></code></pre>
+<p>재설치 후 정상 실행 확인.</p>
+<h2 id="임시-우회-기본-터미널을-conhost로-변경">임시 우회: 기본 터미널을 conhost로 변경</h2>
+<p>WT가 안 열리는 동안 PowerShell을 쓰려면 기본 터미널을 Windows Console Host로 변경한다:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="powershell"><code><span class="line"><span style="color:#E1E4E8">$reg </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced"</span></span>
+<span class="line"><span style="color:#79B8FF">Set-ItemProperty</span><span style="color:#E1E4E8"> $reg </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">Name </span><span style="color:#9ECBFF">'DelegationConsole'</span><span style="color:#F97583"> -</span><span style="color:#E1E4E8">Value </span><span style="color:#9ECBFF">'{2EACA947-7F5F-4CFA-BA87-8F7FBEEFBE69}'</span></span>
+<span class="line"><span style="color:#79B8FF">Set-ItemProperty</span><span style="color:#E1E4E8"> $reg </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">Name </span><span style="color:#9ECBFF">'DelegationTerminal'</span><span style="color:#F97583"> -</span><span style="color:#E1E4E8">Value </span><span style="color:#9ECBFF">'{2EACA947-7F5F-4CFA-BA87-8F7FBEEFBE69}'</span></span></code></pre>
+<p>복원할 때:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="powershell"><code><span class="line"><span style="color:#79B8FF">Set-ItemProperty</span><span style="color:#E1E4E8"> $reg </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">Name </span><span style="color:#9ECBFF">'DelegationConsole'</span><span style="color:#F97583"> -</span><span style="color:#E1E4E8">Value </span><span style="color:#9ECBFF">'{2EACA947-7F5F-4CFA-BA87-8F7FBEEFBE69}'</span></span>
+<span class="line"><span style="color:#79B8FF">Set-ItemProperty</span><span style="color:#E1E4E8"> $reg </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">Name </span><span style="color:#9ECBFF">'DelegationTerminal'</span><span style="color:#F97583"> -</span><span style="color:#E1E4E8">Value </span><span style="color:#9ECBFF">'{E12CFF52-A866-4C77-9A90-F570A7AA2C6B}'</span></span></code></pre>
+<h2 id="교훈">교훈</h2>
+<ul>
+<li>WT의 <code>settings.json</code>에 유효하지 않은 값을 넣으면 <strong>에러 팝업 한 번 보여주고 기본 설정으로 폴백</strong>하는 게 아니라, 상황에 따라 <strong>아예 실행이 안 될 수 있다</strong>.</li>
+<li><code>Reset-AppxPackage</code>로 부족하면 <code>Remove</code> → <code>Add</code>로 완전 재설치해야 한다.</li>
+<li>DCOM 10010 에러에서 CLSID가 <code>{E12CFF52-...}</code>이면 Windows Terminal 문제를 의심할 것.</li>
+</ul>
+<h2 id="환경">환경</h2>
+<ul>
+<li>Windows 11 Pro 25H2</li>
+<li>Windows Terminal 1.24.11321.0</li>
+<li>NVIDIA RTX 5090, 드라이버 596.49</li>
+</ul>  </article>  <footer class="site-footer">
+Yongtak Kim Engineering Notes
+</footer> </div> </body></html>

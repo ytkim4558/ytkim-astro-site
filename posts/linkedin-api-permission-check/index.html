@@ -1,0 +1,176 @@
+<!DOCTYPE html><html lang="ko"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="LinkedIn에 새 글을 올리기 전에 기존에 내가 썼던 글의 톤을 보고 맞추고 싶었다."><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700;800;900&family=Noto+Sans+KR:wght@400;700;800;900&display=swap" rel="stylesheet"><title>LinkedIn API로 기존 글을 읽어 톤을 맞추려다 확인한 것 | Yongtak Kim Engineering Notes</title><link rel="stylesheet" href="/_astro/BaseLayout.CautBalw.css"></head> <body> <div class="site-shell"> <header class="site-header"> <nav class="site-nav" aria-label="Primary navigation"> <a class="brand" href="/">Yongtak Notes</a> <div class="nav-links"> <a href="/">Notes</a><a href="/profile/">Profile</a><a href="/portfolio/">Portfolio</a><a href="/tag/ai-workflow/">AI Workflow</a><a href="/tags/">Tags</a> </div> <div class="language-links" aria-label="Language"> <a href="/">KO</a> <a href="/en/">EN</a> </div> </nav> </header>  <header class="post-hero"> <div class="hero-inner"> <p class="eyebrow">AI Workflow</p> <h1>LinkedIn API로 기존 글을 읽어 톤을 맞추려다 확인한 것</h1> <p class="hero-description">LinkedIn에 새 글을 올리기 전에 기존에 내가 썼던 글의 톤을 보고 맞추고 싶었다.</p> <p class="hero-description">2026년 5월 18일</p> </div> </header> <article class="content">  <p>LinkedIn에 새 글을 올리기 전에 기존에 내가 썼던 글의 톤을 보고 맞추고 싶었다.
+처음에는 GitHub API처럼 OAuth만 연결하면 내 게시글도 바로 읽을 수 있을 것이라고 생각했다.</p>
+<p>하지만 직접 LinkedIn Developer 앱을 만들고 OAuth를 붙여보니, 결론은 조금 달랐다.</p>
+<h2 id="목표">목표</h2>
+<p>목표는 단순했다.</p>
+<ul>
+<li>LinkedIn Developer 앱 생성</li>
+<li>OAuth로 본인 계정 인증</li>
+<li>기존 게시글 조회</li>
+<li>기존 글의 문장 길이, 말투, 한영 병기 방식, 해시태그 사용 방식을 분석</li>
+<li>새 LinkedIn 포스트 초안을 그 톤에 맞게 작성</li>
+</ul>
+<p>이미 <a href="https://github.com/ytkim4558/linkedin-posting-mcp"><code>linkedin-posting-mcp</code></a>라는 로컬 MCP 서버를 만들어둔 상태였기 때문에,
+여기에 게시글 조회 도구를 추가해 실제로 가능한지 확인했다.</p>
+<h2 id="구현한-것">구현한 것</h2>
+<p><code>linkedin-posting-mcp</code>에 다음 기능을 추가했다.</p>
+<ul>
+<li><code>linkedin_get_my_posts</code> MCP tool</li>
+<li><code>auth:url:signin</code>: <code>openid profile email</code>만 요청하는 최소 로그인 테스트</li>
+<li><code>auth:url</code>: <code>openid profile email w_member_social</code> 요청</li>
+<li><code>auth:url:read</code>: <code>r_member_social</code>까지 포함해 기존 게시글 조회 가능성 테스트</li>
+<li><code>posts:me</code>: 인증된 사용자의 최근 게시글 조회 테스트</li>
+</ul>
+<p>조회 요청은 LinkedIn Posts API의 author finder 형태로 구성했다.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>GET /rest/posts?author=urn:li:person:{member_id}&#x26;q=author</span></span></code></pre>
+<h2 id="실제로-확인한-흐름">실제로 확인한 흐름</h2>
+<p>먼저 LinkedIn Developer 앱을 만들었다.
+앱 생성에는 연결할 LinkedIn Page가 필요했고, 개인 기술 노트용으로 <code>Yongtak Engineering Notes</code> 페이지를 만들었다.</p>
+<p>이 과정에서 생각보다 많은 작은 판단이 필요했다.</p>
+<h2 id="중간에-헷갈렸던-지점들">중간에 헷갈렸던 지점들</h2>
+<p>첫 번째는 <strong>LinkedIn Page 종류</strong>였다.</p>
+<p>처음에는 앱 생성 화면에서 <code>Create a new LinkedIn Page</code>를 눌렀고, <code>linkedin.com/showcase/</code> 형태의 페이지 생성 화면으로 들어갔다.
+하지만 Showcase page는 기존 회사 페이지의 하위 페이지라서 <code>연결된 단체 페이지</code>가 필수였다.
+개인 개발자 앱 연결용으로는 맞지 않았다.</p>
+<p>결국 <code>LinkedIn 페이지 만들기</code> 화면에서 <code>회사</code> 유형을 골라 일반 Company Page를 만들었다.
+판단 기준은 단순했다.</p>
+<ul>
+<li><code>linkedin.com/showcase/</code>가 보이면 하위 브랜드/쇼케이스 페이지라서 이번 목적과 맞지 않다.</li>
+<li><code>linkedin.com/company/</code>가 보이면 Developer App에 연결할 일반 페이지로 쓸 수 있다.</li>
+</ul>
+<p>두 번째는 <strong>앱 이름</strong>이었다.</p>
+<p>처음 생각한 이름은 <code>Yongtak LinkedIn Workflow</code>였지만, LinkedIn Developer 앱 이름에는 <code>LinkedIn</code>이라는 단어를 넣을 수 없었다.
+그래서 앱 이름은 <code>Yongtak AI Workflow</code>처럼 바꿔야 했다.</p>
+<p>세 번째는 <strong>회사 페이지 약관 체크</strong>였다.</p>
+<p>화면에는 “회사 페이지의 공식 담당자로서 회사를 대표해서 회사 페이지를 관리할 권리가 있음을 확인한다”는 문구가 나온다.
+실제 회사나 이전 회사 이름으로 만들면 애매하지만, <code>Yongtak Engineering Notes</code>처럼 본인이 직접 만든 개인 기술 노트 페이지라면 본인이 관리 주체이므로 진행할 수 있다고 판단했다.</p>
+<p>네 번째는 <strong>앱 로고 조건</strong>이었다.</p>
+<p>LinkedIn Developer 앱은 유효한 app logo를 요구했다.
+기존 이미지가 조건에 안 맞을 수 있어서 300x300 PNG를 별도로 만들었다.
+이런 로고는 기능에는 중요하지 않지만, OAuth 동의 화면에 노출되므로 최소한 구분 가능한 형태가 필요했다.</p>
+<p>다섯 번째는 <strong>PowerShell 환경변수 입력</strong>이었다.</p>
+<p>처음에는 <code>SetEnvironmentVariable</code>에 값을 직접 넣으려다 쉼표 누락과 특수문자 때문에 문법 오류가 났다.
+그래서 테스트 단계에서는 사용자 환경변수에 저장하지 않고, 현재 PowerShell 세션에만 넣는 방식으로 바꿨다.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="powershell"><code><span class="line"><span style="color:#E1E4E8">$</span><span style="color:#79B8FF">env:</span><span style="color:#E1E4E8">LINKEDIN_CLIENT_ID </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> Read-Host</span><span style="color:#9ECBFF"> "LinkedIn Client ID"</span></span>
+<span class="line"><span style="color:#E1E4E8">$</span><span style="color:#79B8FF">env:</span><span style="color:#E1E4E8">LINKEDIN_CLIENT_SECRET </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> Read-Host</span><span style="color:#9ECBFF"> "LinkedIn Client Secret"</span></span>
+<span class="line"><span style="color:#E1E4E8">$</span><span style="color:#79B8FF">env:</span><span style="color:#E1E4E8">LINKEDIN_REDIRECT_URI </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "http://localhost:3000/callback"</span></span></code></pre>
+<p>이 방식은 창을 닫으면 사라지므로 테스트에 적합하고, <code>Client Secret</code>을 평문 사용자 환경변수에 남기지 않아도 된다.</p>
+<p>여섯 번째는 <strong>authorization code 복사 방식</strong>이었다.</p>
+<p>callback URL 전체를 넣거나 <code>code=</code>까지 같이 넣으면 token exchange가 실패한다.
+실행해야 하는 값은 오직 <code>code</code> 값 자체다.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>http://localhost:3000/callback?code=AQ...&#x26;state=...</span></span></code></pre>
+<p>위 URL이라면 실행은 이렇게 해야 한다.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="powershell"><code><span class="line"><span style="color:#E1E4E8">npm run auth:exchange </span><span style="color:#F97583">--</span><span style="color:#9ECBFF"> "AQ..."</span></span></code></pre>
+<p><code>code=</code>나 <code>&#x26;state=...</code>는 넣지 않는다.</p>
+<p>일곱 번째는 <strong>Client Secret 노출 대응</strong>이었다.</p>
+<p>테스트 중 secret이 채팅에 노출될 수 있다는 점도 확인했다.
+이 경우 LinkedIn Developer 앱의 <code>Generate a new Client Secret</code>으로 새 secret을 만들고, 기존 노출 값을 폐기해야 한다.</p>
+<h2 id="오류-메시지별-대응">오류 메시지별 대응</h2>
+<p>이번 작업에서 실제로 마주친 오류와 대응은 다음과 같다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>오류/증상</th><th>발생한 이유</th><th>대응</th></tr></thead><tbody><tr><td><code>Missing LinkedIn config: LINKEDIN_CLIENT_ID, LINKEDIN_CLIENT_SECRET</code></td><td>현재 PowerShell 세션에 LinkedIn 앱 설정이 없다. <code>$env:</code>로 넣은 값은 새 창에서 유지되지 않는다.</td><td>같은 PowerShell 창에서 <code>Read-Host</code>로 다시 입력하거나, User 환경변수로 저장한 뒤 새 창을 연다.</td></tr><tr><td><code>Missing ')' in method call</code> / <code>Unexpected token 'User'</code></td><td>PowerShell <code>SetEnvironmentVariable()</code> 호출에서 쉼표가 빠졌거나 따옴표가 깨졌다.</td><td>테스트 단계에서는 <code>SetEnvironmentVariable</code> 대신 <code>$env:LINKEDIN_CLIENT_ID = Read-Host ...</code> 방식을 쓴다.</td></tr><tr><td><code>Bummer, something went wrong. In five seconds, you will be redirected to: localhost</code></td><td>LinkedIn이 <code>localhost</code> callback으로 redirect하려는데 받을 로컬 서버가 없어서 브라우저가 실패처럼 보인다.</td><td><code>node -e "http=require('http');http.createServer((q,s)=>{console.log(q.url);s.end('OK')}).listen(3000)"</code>로 임시 callback 서버를 띄운다.</td></tr><tr><td><code>SyntaxError: Invalid or unexpected token</code></td><td><code>node -e</code> 명령을 PowerShell에 여러 줄로 붙여넣어 JavaScript 문자열이 중간에서 끊겼다.</td><td>짧은 한 줄 명령으로 실행한다. PowerShell 프롬프트가 <code>>></code>로 바뀌면 줄이 깨진 것이다.</td></tr><tr><td><code>Unable to retrieve access token: authorization code not found</code></td><td><code>code</code> 값을 잘못 복사했거나, 이미 사용한 authorization code를 다시 썼거나, 시간이 지나 만료됐다.</td><td>OAuth URL을 다시 생성하고 새 code를 즉시 교환한다. <code>code=</code>와 <code>&#x26;state=</code>는 빼고 값만 넣는다.</td></tr><tr><td><code>ACCESS_DENIED: Not enough permissions to access: partnerApiPostsExternal.FINDER-author</code></td><td>OAuth 로그인과 토큰 발급은 성공했지만, 앱에 Posts Finder API 조회 권한이 없다.</td><td><code>r_member_social</code>을 포함해 다시 인증해본다. 그래도 같으면 LinkedIn 앱 권한/심사 영역이라 수동 샘플 기반으로 톤 분석한다.</td></tr><tr><td><code>Please upload a valid app logo</code></td><td>앱 로고 파일이 LinkedIn 조건에 맞지 않거나 미리보기 가능한 이미지가 아니다.</td><td>300x300 PNG/JPG를 새로 만들어 업로드한다.</td></tr><tr><td>앱 이름에 <code>LinkedIn</code>을 넣을 수 없음</td><td>LinkedIn Developer 앱 이름에 <code>LinkedIn</code> 브랜드 단어 사용이 제한된다.</td><td><code>Yongtak AI Workflow</code>, <code>Yongtak Workflow Tools</code>처럼 바꾼다.</td></tr><tr><td><code>연결된 단체 페이지</code>가 필수로 나옴</td><td>Showcase page 생성 화면에 들어간 경우다. Showcase는 기존 회사 페이지의 하위 페이지다.</td><td>뒤로 가서 <code>회사</code> 유형의 일반 Company Page를 만든다. URL이 <code>linkedin.com/company/...</code>인지 확인한다.</td></tr></tbody></table>
+<p>이 표를 남기는 이유는 간단하다.
+OAuth 문제는 대부분 “권한이 없다”로 뭉뚱그려 보이지만, 실제로는 설정 누락, redirect 서버 부재, code 복사 실수, API 권한 부족이 전부 다른 문제다.
+각 단계의 오류를 분리해서 봐야 시간을 덜 버린다.</p>
+<p>이후 OAuth redirect URL을 아래처럼 등록했다.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>http://localhost:3000/callback</span></span></code></pre>
+<p>초기에는 callback을 받을 로컬 서버가 없어서 브라우저에 <code>Bummer, something went wrong.</code> 메시지가 보였다.
+하지만 이것은 OAuth가 완전히 실패했다기보다, LinkedIn이 <code>localhost</code>로 redirect하려는데 받을 서버가 없어서 생긴 혼란이었다.</p>
+<p>간단한 Node HTTP 서버를 띄우고 다시 시도하니 callback code를 받을 수 있었다.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="powershell"><code><span class="line"><span style="color:#E1E4E8">node </span><span style="color:#F97583">-</span><span style="color:#E1E4E8">e </span><span style="color:#9ECBFF">"http=require('http');http.createServer((q,s)=>{console.log(q.url);s.end('OK')}).listen(3000)"</span></span></code></pre>
+<p>그 다음 authorization code를 access token으로 교환하는 것까지는 성공했다.</p>
+<h2 id="막힌-지점">막힌 지점</h2>
+<p>문제는 기존 게시글 조회였다.</p>
+<p><code>posts:me</code>를 실행하면 다음 에러가 반환됐다.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>LinkedIn API 403:</span></span>
+<span class="line"><span>ACCESS_DENIED</span></span>
+<span class="line"><span>Not enough permissions to access: partnerApiPostsExternal.FINDER-author</span></span></code></pre>
+<p>즉 OAuth 인증 자체는 성공했지만, 이 앱이 Posts Finder API로 본인 게시글을 읽을 권한은 없었다.
+<code>r_member_social</code>을 scope에 포함해 다시 인증해도 결과는 같았다.</p>
+<p>이후 공식 FAQ를 다시 확인하니 결론은 더 명확했다.
+LinkedIn Marketing API FAQ는 <code>r_member_social</code>을 closed permission으로 설명하고, 현재 resource constraint 때문에 access request를 받지 않는다고 안내한다.</p>
+<p>즉 이 문제는 구현 문법이나 OAuth callback 처리가 아니라, 현재 앱에 발급 가능한 권한의 경계였다.</p>
+<ul>
+<li><code>Sign In with LinkedIn using OpenID Connect</code>: 로그인과 기본 프로필 확인</li>
+<li><code>Share on LinkedIn</code>: <code>w_member_social</code>, 글 작성 권한</li>
+<li><code>Community Management API / Posts API</code>: 게시글 조회와 관리 영역</li>
+<li><code>r_member_social</code>: 개인 게시글 조회에 필요한 권한이지만 closed/restricted</li>
+</ul>
+<h2 id="결론">결론</h2>
+<p>LinkedIn API는 존재하지만, 개인 개발자 앱에서 기존 게시글 조회가 GitHub처럼 바로 열리는 구조는 아니었다.</p>
+<p>이번 확인으로 나눈 결론은 다음과 같다.</p>
+<ul>
+<li>로그인/OIDC 인증은 가능하다.</li>
+<li>토큰 발급도 가능하다.</li>
+<li>향후 승인된 범위 안에서 게시 워크플로를 만드는 것은 가능하다.</li>
+<li>하지만 기존 게시글 조회는 별도 권한 승인 없이 바로 되지 않았다.</li>
+<li>공식 FAQ 기준으로 <code>r_member_social</code>은 closed permission이므로, 개인 개발자 앱에서 기존 개인 글을 바로 읽는 경로로 기대하면 안 된다.</li>
+<li>따라서 “기존 LinkedIn 글을 읽어 톤을 분석”하는 작업은 당장은 수동 샘플 기반이 현실적이다.</li>
+</ul>
+<h2 id="앞으로의-규칙">앞으로의 규칙</h2>
+<p>LinkedIn 자동화는 다음 기준으로 다룬다.</p>
+<ul>
+<li>브라우저 쿠키, 내부 API, 스크래핑, DM 자동화는 사용하지 않는다.</li>
+<li>공식 OAuth와 문서화된 API만 사용한다.</li>
+<li>기존 글 조회가 필요하면 <code>r_member_social</code> 또는 Posts Finder 권한이 실제로 승인됐는지 먼저 확인한다.</li>
+<li>권한이 없으면 사용자가 기존 글 2~3개를 직접 제공하고, 그 샘플을 기반으로 톤을 맞춘다.</li>
+<li>Client Secret, authorization code, access token은 채팅과 저장소에 남기지 않는다.</li>
+</ul>
+<p>이번 삽질의 핵심은 이것이었다.</p>
+<p>API가 있다는 것과, 내가 원하는 작업을 지금 내 앱 권한으로 할 수 있다는 것은 다르다.</p>  </article>  <footer class="site-footer">
+Yongtak Kim Engineering Notes
+</footer> </div> </body></html>

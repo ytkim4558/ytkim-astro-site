@@ -1,166 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
-        xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    
-    <url>
-        <loc>https://ytkim4558.github.io/windows-terminal-crash-fix.html</loc>
-        
-        <lastmod>2026-05-30T09:00:00+00:00</lastmod>
-        
-
-        
-        <changefreq>weekly</changefreq>
-        
-
-        
-        <priority>0.5</priority>
-        
-
-    </url>
-    
-    <url>
-        <loc>https://ytkim4558.github.io/adaptive-mobile-layout-handoff.html</loc>
-        
-        <lastmod>2026-05-30T00:00:00+00:00</lastmod>
-        
-
-        
-        <changefreq>weekly</changefreq>
-        
-
-        
-        <priority>0.5</priority>
-        
-
-    </url>
-    
-    <url>
-        <loc>https://ytkim4558.github.io/linkedin-api-permission-check.html</loc>
-        
-        <lastmod>2026-05-18T00:45:00+00:00</lastmod>
-        
-
-        
-        <changefreq>weekly</changefreq>
-        
-
-        
-        <priority>0.5</priority>
-        
-
-    </url>
-    
-    <url>
-        <loc>https://ytkim4558.github.io/jekyll-dependabot-cleanup.html</loc>
-        
-        <lastmod>2026-05-17T16:10:00+00:00</lastmod>
-        
-
-        
-        <changefreq>weekly</changefreq>
-        
-
-        
-        <priority>0.5</priority>
-        
-
-    </url>
-    
-    <url>
-        <loc>https://ytkim4558.github.io/claude-resume-troubleshooting.html</loc>
-        
-        <lastmod>2026-05-17T16:00:00+00:00</lastmod>
-        
-
-        
-        <changefreq>weekly</changefreq>
-        
-
-        
-        <priority>0.5</priority>
-        
-
-    </url>
-    
-    <url>
-        <loc>https://ytkim4558.github.io/codex-resume-tui-decision.html</loc>
-        
-        <lastmod>2026-05-17T14:30:00+00:00</lastmod>
-        
-
-        
-        <changefreq>weekly</changefreq>
-        
-
-        
-        <priority>0.5</priority>
-        
-
-    </url>
-    
-    <url>
-        <loc>https://ytkim4558.github.io/android.html</loc>
-        
-        <lastmod>2018-06-30T21:23:23+00:00</lastmod>
-        
-
-        
-        <changefreq>weekly</changefreq>
-        
-
-        
-        <priority>0.5</priority>
-        
-
-    </url>
-    
-    <url>
-        <loc>https://ytkim4558.github.io/mysql.html</loc>
-        
-        <lastmod>2018-06-30T21:12:00+00:00</lastmod>
-        
-
-        
-        <changefreq>weekly</changefreq>
-        
-
-        
-        <priority>0.5</priority>
-        
-
-    </url>
-    
-    <url>
-        <loc>https://ytkim4558.github.io/git.html</loc>
-        
-        <lastmod>2018-06-28T21:16:23+00:00</lastmod>
-        
-
-        
-        <changefreq>weekly</changefreq>
-        
-
-        
-        <priority>0.5</priority>
-        
-
-    </url>
-    
-    <url>
-        <loc>https://ytkim4558.github.io/Jekyll.html</loc>
-        
-        <lastmod>2018-05-11T16:40:00+00:00</lastmod>
-        
-
-        
-        <changefreq>weekly</changefreq>
-        
-
-        
-        <priority>0.5</priority>
-        
-
-    </url>
-    
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://ytkim4558.github.io/</loc></url>
+  <url><loc>https://ytkim4558.github.io/about/</loc></url>
+  <url><loc>https://ytkim4558.github.io/profile/</loc></url>
+  <url><loc>https://ytkim4558.github.io/portfolio/</loc></url>
+  <url><loc>https://ytkim4558.github.io/en/</loc></url>
+  <url><loc>https://ytkim4558.github.io/en/about/</loc></url>
+  <url><loc>https://ytkim4558.github.io/en/portfolio/</loc></url>
+  <url><loc>https://ytkim4558.github.io/tags/</loc></url>
+  <url><loc>https://ytkim4558.github.io/search/</loc></url>
+  <url><loc>https://ytkim4558.github.io/tag/ai-workflow/</loc></url>
+  <url><loc>https://ytkim4558.github.io/tag/android/</loc></url>
+  <url><loc>https://ytkim4558.github.io/tag/git/</loc></url>
+  <url><loc>https://ytkim4558.github.io/tag/jekyll/</loc></url>
+  <url><loc>https://ytkim4558.github.io/tag/mysql/</loc></url>
+  <url><loc>https://ytkim4558.github.io/tag/troubleshooting/</loc></url>
+  <url><loc>https://ytkim4558.github.io/adaptive-mobile-layout-handoff/</loc></url>
+  <url><loc>https://ytkim4558.github.io/android/</loc></url>
+  <url><loc>https://ytkim4558.github.io/claude-resume-troubleshooting/</loc></url>
+  <url><loc>https://ytkim4558.github.io/codex-resume-tui-decision/</loc></url>
+  <url><loc>https://ytkim4558.github.io/git/</loc></url>
+  <url><loc>https://ytkim4558.github.io/jekyll/</loc></url>
+  <url><loc>https://ytkim4558.github.io/jekyll-dependabot-cleanup/</loc></url>
+  <url><loc>https://ytkim4558.github.io/linkedin-api-permission-check/</loc></url>
+  <url><loc>https://ytkim4558.github.io/mysql/</loc></url>
+  <url><loc>https://ytkim4558.github.io/windows-terminal-crash-fix/</loc></url>
 </urlset>
