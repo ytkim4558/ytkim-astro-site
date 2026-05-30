@@ -161,6 +161,87 @@ h1 {
   margin: 44px auto 0;
 }
 
+.section-panel {
+  width: min(1000px, calc(100vw - 32px));
+  margin: 56px auto 0;
+  padding: 34px 0 0;
+  border-top: 1px solid rgba(11, 75, 71, 0.18);
+}
+
+.section-panel h2,
+.section-panel h3 {
+  margin: 0 0 16px;
+  line-height: 1.25;
+  letter-spacing: -0.035em;
+}
+
+.section-panel h2 {
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+}
+
+.section-panel h3 {
+  margin-top: 28px;
+  color: #0b4b47;
+  font-size: 1.35rem;
+}
+
+.section-panel ul {
+  margin: 0 0 16px;
+  padding-left: 1.2rem;
+}
+
+.section-panel li {
+  margin: 8px 0;
+}
+
+.section-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  width: min(1000px, calc(100vw - 32px));
+  margin: 28px auto 0;
+}
+
+.section-links a {
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: #0b4b47;
+  background: #fff;
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.section-links a:hover,
+.section-links a:focus-visible {
+  border-color: rgba(11, 75, 71, 0.35);
+  color: #142126;
+  background: #f2b84b;
+  outline: none;
+}
+
+.resume-details {
+  width: min(1000px, calc(100vw - 32px));
+  margin: 44px auto 92px;
+}
+
+.resume-details summary {
+  padding: 22px 24px;
+  border-radius: 8px;
+  color: #fff;
+  background:
+    radial-gradient(circle at 88% 10%, rgba(242, 184, 75, 0.28), transparent 30%),
+    var(--brand-dark);
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 900;
+}
+
+.resume-note {
+  padding: 20px 0 0;
+  color: var(--muted);
+}
+
 .feature-card {
   min-height: 170px;
   padding: 24px;
