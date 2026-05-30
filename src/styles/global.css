@@ -285,6 +285,73 @@ h1 {
   color: var(--muted);
 }
 
+.portfolio-archive h1 {
+  margin: 48px 0 18px;
+  font-size: clamp(1.9rem, 3vw, 2.7rem);
+  line-height: 1.2;
+}
+
+.portfolio-archive h2 {
+  margin-top: 36px;
+}
+
+.portfolio-archive h4 {
+  margin: 28px 0 10px;
+  color: #0b4b47;
+  font-size: 1.08rem;
+}
+
+.company-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 32px 0 14px;
+}
+
+.company-heading img {
+  width: 46px;
+  height: 46px;
+  border-radius: 8px;
+}
+
+.company-heading h2 {
+  margin: 0;
+}
+
+.company-heading small {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.portfolio-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 10px;
+  margin: 18px 0 30px;
+}
+
+.portfolio-gallery a {
+  display: block;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.portfolio-gallery img {
+  display: block;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.portfolio-gallery-wide img {
+  height: 220px;
+}
+
 .feature-card {
   min-height: 170px;
   padding: 24px;

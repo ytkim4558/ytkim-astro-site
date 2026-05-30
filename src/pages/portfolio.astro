@@ -1,5 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getEntry, render } from 'astro:content';
+
+const details = await getEntry('portfolio', 'details');
+if (!details) {
+  throw new Error('Missing portfolio details content');
+}
+const { Content } = await render(details);
 ---
 
 <BaseLayout title="Portfolio | Yongtak Kim">
@@ -38,6 +45,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <a href="#side-projects">Side Projects</a>
     <a href="#skills">Skills</a>
     <a href="#education">Education</a>
+    <a href="#full-records">Full Records</a>
   </nav>
 
   <section id="selected-work" class="section-panel">
@@ -164,13 +172,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </ul>
   </section>
 
-  <details class="resume-details">
-    <summary>기존 포트폴리오의 스크린샷 갤러리와 자기소개서 본문은 다음 단계에서 별도 콘텐츠 파일로 분리합니다.</summary>
-    <div class="resume-note">
-      <p>
-        현재 Astro 프로토타입에는 기존 포트폴리오의 핵심 섹션을 먼저 복구했습니다.
-        다음 단계에서 회사별 상세 프로젝트, 사이드 프로젝트 스크린샷, 자기소개서, 학술/특허/프로그램 기록을 content collection으로 분리해 옮깁니다.
-      </p>
-    </div>
-  </details>
+  <section id="full-records" class="section-panel portfolio-archive">
+    <p class="eyebrow">Full Records</p>
+    <h2>{details.data.title}</h2>
+    <Content />
+  </section>
 </BaseLayout>
