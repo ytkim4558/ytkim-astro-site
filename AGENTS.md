@@ -120,6 +120,23 @@ If a future agent handles UI migration, deployment, Cloudflare Pages Functions, 
 - add a validation script when the issue can recur as a build, route, locale, content reachability, or browser interaction regression;
 - add a compact handoff block when work is paused, deployed, or depends on external state such as Cloudflare, GitHub Actions, DNS, or secrets.
 
+If the user points out a repeated process failure, first check existing durable rules before adding new ones. In this session, the interruption-handling rule already existed in the local `agent-handoff` skill under `Interruption Recovery`; the miss happened because the agent did not apply that skill when the user interrupted mid-task.
+
+When this happens again:
+
+- search the repo, local skills, and git history for the existing rule;
+- state whether the rule was missing or merely not followed;
+- update the durable rule only if it adds enforcement or removes ambiguity;
+- resume unfinished build, validation, cleanup, commit, deploy, or live verification after the rule audit;
+- report completed work, deferred work, and remaining verification at the end of the turn.
+
+For non-trivial UI/site tasks, start by decomposing the work into reviewer perspectives before editing:
+
+- user-screen perspective: desktop/mobile pages are clickable, readable, and visually usable;
+- content perspective: detailed source material, screenshots, videos, and localized versions are not lost;
+- operations perspective: build, validation, CI, deploy, and live URL checks prevent recurrence;
+- handoff perspective: the next agent can understand the state without reading the chat history.
+
 Recent workshop/reference material reviewed:
 
 - Claude Code workshop material: useful as a public curated reference for hooks, settings, GitHub Actions, MCP, SDK usage, caching, retry, rate limiting, circuit breaker, structured logging, tracing, and multi-agent patterns. Do not copy slide or snippet content verbatim into this repo. Use official Anthropic documentation and original wording when writing public posts.
@@ -145,8 +162,8 @@ npm.cmd run validate
 
 ## Next Recommended Work
 
-1. Verify the HotDealppom portfolio card in a real browser: take a screenshot before/after clicking the card and confirm the modal exposes the detailed text, YouTube embed, and screenshot gallery.
-2. Add a browser-level validation script for modal/content visibility if the static content reachability check misses the issue.
-3. Re-run `npm.cmd run build`, `npm.cmd run validate`, and the forbidden-string scan before commit.
-4. Commit, push `master`, wait for GitHub Actions, and verify the Cloudflare Pages production URL.
-5. Turn the validation lesson into an AI Workflow post or update an existing one when the fix is complete.
+1. Continue visual/design refinement of the portfolio beyond the validation baseline.
+2. For any new portfolio modal, screenshot gallery, or localized content, update both `validate-content-reachability.mjs` and `validate-ui.mjs`.
+3. Keep AI Workflow posts in sync when a user correction changes the operating rule, especially around validation, handoff, or deployment.
+4. Before commit/deploy, run `npm.cmd run build`, `npm.cmd run validate`, and the forbidden-string scan.
+5. After push, wait for GitHub Actions and verify the Cloudflare Pages production URL.
