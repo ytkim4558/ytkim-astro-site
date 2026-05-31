@@ -2,14 +2,14 @@
 
 ## Current Goal
 
-Maintain the Astro migration of `ytkim4558.github.io` and move the deploy target from GitHub Pages-only static hosting toward Cloudflare Pages so Profile Ask can use a server-side LLM endpoint without exposing API keys.
+Maintain the Astro migration of `ytkim4558.github.io` with Cloudflare Pages as the active deploy target, while keeping the public portfolio content complete, reachable, localized, visually credible, and safe for a public repository.
 
 ## Repositories
 
 - Source repo: `C:\Users\ytkim\projects\ytkim-astro-site`
 - Existing generated GitHub Pages repo: `C:\Users\ytkim\projects\ytkim4558.github.io`
 
-The source repo is the canonical place for Astro code. The generated GitHub Pages repo is still useful for the current live `https://ytkim4558.github.io/` site until Cloudflare Pages and custom domain routing are fully cut over.
+The Astro source repo is now the canonical repo. The former GitHub Pages static output is preserved only for history/reference. GitHub Actions on `master` should build the Astro site, run validation, and deploy `dist` to Cloudflare Pages.
 
 ## Deployment Decision
 
@@ -33,6 +33,7 @@ Reasoning:
 - Cloudflare Pages project: `ytkim4558`
 - Current Cloudflare Pages URL: `https://ytkim4558.pages.dev/`
 - First verified deployment URL: `https://53373cfb.ytkim4558.pages.dev/`
+- GitHub Actions workflow: `.github/workflows/cloudflare-pages.yml`
 
 Required Cloudflare Pages secret:
 
@@ -51,11 +52,12 @@ Never commit `.dev.vars`, `.env`, API keys, OAuth tokens, or other credentials.
 Recent checks:
 
 - `npm run build` succeeds.
+- `npm run validate` succeeds and includes locale, internal link, and content reachability checks.
 - `wrangler pages dev dist --port 8788 --ip 127.0.0.1` serves `/profile/` with `Ask Profile`.
 - `POST /api/profile-chat` reaches the Pages Function and returns `503` when `GEMINI_PROFILE_API_KEY` is not configured, which is expected. The React UI falls back to local profile answers.
 - `npm run cf:deploy` succeeded after loading `CLOUDFLARE_API_TOKEN` from the Windows user environment.
 - `https://ytkim4558.pages.dev/profile/` returns 200 and contains `Ask Profile`.
-- `https://ytkim4558.pages.dev/api/profile-chat` returns 503 until `GEMINI_PROFILE_API_KEY` is configured in Cloudflare Pages.
+- `GEMINI_PROFILE_API_KEY` was later uploaded as a Cloudflare Pages secret. If the live profile chat fails, verify the secret in Cloudflare first, then test `/api/profile-chat`.
 
 ## Safety Rules
 
@@ -68,10 +70,44 @@ rg -n -i "<forbidden-string>" . -g "!node_modules/**" -g "!dist/**" -g "!.astro/
 
 Use the actual forbidden string from prior user instructions when running locally, but avoid writing it into public repo files.
 
+## Cross-Agent Workflow Rules
+
+This repo should preserve AI workflow lessons in durable files, not only in chat history.
+
+If a future agent handles UI migration, deployment, Cloudflare Pages Functions, profile chat, portfolio content, screenshots, or validation work, it should proactively propose one of the following before the user has to ask:
+
+- update this `AGENTS.md` when the lesson affects future agent behavior;
+- add or update an `AI Workflow` post when the lesson is useful as public reasoning or portfolio evidence;
+- add a validation script when the issue can recur as a build, route, locale, content reachability, or browser interaction regression;
+- add a compact handoff block when work is paused, deployed, or depends on external state such as Cloudflare, GitHub Actions, DNS, or secrets.
+
+Recent workshop/reference material reviewed:
+
+- Claude Code workshop material: useful as a public curated reference for hooks, settings, GitHub Actions, MCP, SDK usage, caching, retry, rate limiting, circuit breaker, structured logging, tracing, and multi-agent patterns. Do not copy slide or snippet content verbatim into this repo. Use official Anthropic documentation and original wording when writing public posts.
+- Kiro CLI workshop material: useful for mapping the same ideas into Kiro terms such as steering, custom agents, skills, MCP integration, lifecycle hooks, headless mode, terminal UI, session/context management, and `KIRO_HOME` isolation. Use official Kiro documentation as the technical source when publishing public notes.
+
+Practical rule from both references:
+
+- Steering/agent rules are not enough by themselves. For recurring mistakes, create executable checks.
+- Hooks/headless CI should be treated as guardrails for things agents repeatedly miss: forbidden public strings, leaked secrets, broken links, inaccessible content, locale route drift, and modal/browser regressions.
+- Context/session tools are portfolio-worthy only when paired with a recovery story: what was hard to find, what metadata was added, how recursion or stale context was avoided, and how another agent can resume without reading raw logs.
+- When using third-party workshop repos or slides, treat them as references, not source material. Summarize the learning in original words and cite official docs or the public repo link where appropriate.
+
+## Current Validation Expectations
+
+Before committing or deploying site work, run:
+
+```powershell
+npm.cmd run build
+npm.cmd run validate
+```
+
+`npm run validate` currently covers locale routes, internal links, and content reachability. If a regression requires actual clicking or visual inspection, add a browser-level validation script instead of relying only on static HTML checks.
+
 ## Next Recommended Work
 
-1. Commit the Cloudflare Pages setup in the source repo.
-2. Push the source repo if/when a remote is configured.
-3. In Cloudflare dashboard, create/import the Pages project from the source repo.
-4. Set `GEMINI_PROFILE_API_KEY` as a Secret.
-5. Verify the preview domain, then decide whether to move `ytkim4558.github.io` traffic or keep GitHub Pages as the primary public domain.
+1. Verify the HotDealppom portfolio card in a real browser: take a screenshot before/after clicking the card and confirm the modal exposes the detailed text, YouTube embed, and screenshot gallery.
+2. Add a browser-level validation script for modal/content visibility if the static content reachability check misses the issue.
+3. Re-run `npm.cmd run build`, `npm.cmd run validate`, and the forbidden-string scan before commit.
+4. Commit, push `master`, wait for GitHub Actions, and verify the Cloudflare Pages production URL.
+5. Turn the validation lesson into an AI Workflow post or update an existing one when the fix is complete.
