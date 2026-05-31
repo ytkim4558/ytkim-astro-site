@@ -35,6 +35,43 @@ Reasoning:
 - First verified deployment URL: `https://53373cfb.ytkim4558.pages.dev/`
 - GitHub Actions workflow: `.github/workflows/cloudflare-pages.yml`
 
+## Site Changes Already Made
+
+The site is no longer the old Jekyll-style GitHub Pages site. It has been migrated into an Astro source tree and should be maintained from this repo.
+
+Major changes already made:
+
+- Rebuilt the public site with Astro pages instead of the former Jekyll output.
+- Switched the production deployment path toward Cloudflare Pages while keeping the GitHub repo as the source of truth.
+- Added GitHub Actions deployment from `master` to Cloudflare Pages after build and validation.
+- Added static Astro routes for Korean, English, and Japanese versions.
+- Reworked the top navigation and page hero treatment so portfolio, profile, tag, and post pages share a more consistent layout.
+- Added localized tag and post routes, including `/en/...` and `/ja/...` variants.
+- Fixed route casing problems such as the `Jekyll.md` slug causing lowercase `/jekyll/` links to 404 on Cloudflare.
+- Rebuilt the portfolio as a card-and-modal experience instead of a long wiki-like page.
+- Added company/project cards with modal detail behavior for career sections and side projects.
+- Restored hidden long-form portfolio records into `src/content/portfolio/details.md` so agents can preserve and reuse detailed resume/project source material.
+- Added HotDealppom detail content, including its YouTube embed and screenshot gallery markers, but this still needs real browser click verification because the user reported it was not visibly reachable.
+- Added `ProfileAssistant` UI on `/profile/` with local profile fallback answers.
+- Added Cloudflare Pages Function `/api/profile-chat` for profile chat LLM responses using the dedicated `GEMINI_PROFILE_API_KEY` secret.
+- Added locale, internal link, and content reachability validation scripts under `scripts/`.
+- Added AI Workflow posts documenting adaptive layout handoff, content reachability validation, Jekyll/deploy cleanup, session recovery, and related tooling decisions.
+
+Important files for these changes:
+
+- `src/pages/portfolio.astro`
+- `src/pages/en/portfolio.astro`
+- `src/pages/ja/portfolio.astro`
+- `src/content/portfolio/details.md`
+- `src/components/ProfileAssistant.tsx`
+- `functions/api/profile-chat.js`
+- `scripts/validate-locales.mjs`
+- `scripts/validate-links.mjs`
+- `scripts/validate-content-reachability.mjs`
+- `.github/workflows/cloudflare-pages.yml`
+
+Do not remove detailed content just because it is not immediately visible in the summary UI. If content is intentionally hidden from the first screen, it still needs a reachable route, modal target, or explicitly documented hidden-record reason.
+
 Required Cloudflare Pages secret:
 
 - `GEMINI_PROFILE_API_KEY`
