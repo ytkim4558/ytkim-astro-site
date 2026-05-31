@@ -109,6 +109,33 @@ export const enPosts: Record<string, LocalizedPost> = {
       },
     ],
   },
+  'canonical-source-migration-guard': {
+    title: 'Turning a Legacy Jekyll Posting Mistake into Canonical Source Guardrails',
+    description: 'How a post pushed to the old GitHubPageMaker repository failed to appear on the live Astro site, and how the workflow was guarded against repeating it.',
+    sections: [
+      {
+        heading: 'Root Cause',
+        paragraphs: [
+          'The post was committed and pushed successfully, but it was written to the legacy Jekyll repository. The live site is now built from the Astro repository and deployed through GitHub Actions to Cloudflare Pages.',
+        ],
+      },
+      {
+        heading: 'Fix',
+        bullets: [
+          'Moved the post into the Astro content collection with the correct frontmatter.',
+          'Updated localized post summaries and locale validation for the new slug.',
+          'Removed the mistaken Jekyll post from the legacy repository.',
+          'Added a deprecated-source notice and pre-commit guard to the old repository so new `_posts` edits are blocked by default.',
+        ],
+      },
+      {
+        heading: 'Rule',
+        paragraphs: [
+          'A successful push is not a deployment proof after a migration. Future agents must verify the canonical source repository, run build and validation, then check the Cloudflare Pages URL and tag listing.',
+        ],
+      },
+    ],
+  },
   'claude-resume-troubleshooting': {
     title: 'Troubleshooting the claude-resume TUI',
     description: 'How I built a TUI for finding and resuming Claude Code sessions, then fixed encoding, key conflicts, recursive calls, and screenshot handling.',
@@ -559,6 +586,33 @@ export const jaPosts: Record<string, LocalizedPost> = {
         heading: 'Rule',
         paragraphs: [
           'AI-native developmentはprompt designだけではない。CLI ergonomics、session recovery、verification script、deployment guardrailが一緒に動くことで成立する。',
+        ],
+      },
+    ],
+  },
+  'canonical-source-migration-guard': {
+    title: 'Legacy Jekyll投稿ミスをcanonical source guardrailに変えた記録',
+    description: 'Old GitHubPageMaker repositoryにpushした記事がlive Astro siteに出なかった原因と、再発を防ぐguardrailを整理した記録。',
+    sections: [
+      {
+        heading: 'Root Cause',
+        paragraphs: [
+          'Postのcommitとpushは成功していたが、書き込んだ先はlegacy Jekyll repositoryだった。現在のlive siteはAstro repositoryからGitHub Actions経由でCloudflare Pagesへdeployされる。',
+        ],
+      },
+      {
+        heading: 'Fix',
+        bullets: [
+          'PostをAstro content collectionへ移し、正しいfrontmatterに変更。',
+          'New slug用にlocalized post summaryとlocale validationを更新。',
+          'Legacy repositoryから誤って追加されたJekyll postを削除。',
+          'Old repositoryにdeprecated-source noticeとpre-commit guardを追加し、新しい`_posts`編集をdefaultでblock。',
+        ],
+      },
+      {
+        heading: 'Rule',
+        paragraphs: [
+          'Migration後はpush成功だけではdeploy成功を意味しない。次のagentはcanonical source repositoryを確認し、build/validationを通し、Cloudflare Pages URLとtag listingまで確認する。',
         ],
       },
     ],
