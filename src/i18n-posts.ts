@@ -136,6 +136,60 @@ export const enPosts: Record<string, LocalizedPost> = {
       },
     ],
   },
+  'github-pages-cloudflare-canonical': {
+    title: 'Making Cloudflare Pages the Canonical Site After Retiring the GitHub Pages Root',
+    description: 'A deployment log for disabling the old GitHub Pages root URL, recovering from a repository archive mistake, and making pages.dev the canonical site URL.',
+    sections: [
+      {
+        heading: 'Trigger',
+        paragraphs: [
+          'The old github.io URL was still visible even though the current site is built from Astro and deployed to Cloudflare Pages. Keeping both URLs active made it easier for people and AI agents to confuse the source repository, generated output, and live deployment target.',
+        ],
+      },
+      {
+        heading: 'Fix',
+        bullets: [
+          'Renamed the source repository to ytkim-astro-site and kept GitHub Pages disabled.',
+          'Recovered from an accidental archived=true state that made the source repository read-only.',
+          'Changed Astro site config, robots.txt, sitemap.xml, and README to use https://ytkim4558.pages.dev/.',
+          'Verified the Cloudflare Pages deployment and confirmed the github.io root was no longer serving the real site.',
+        ],
+      },
+      {
+        heading: 'Rule',
+        paragraphs: [
+          'When retiring a legacy deployment URL, first identify whether it shares the same repository as the live source. Do not archive a repository that still needs to receive source commits.',
+        ],
+      },
+    ],
+  },
+  'github-pages-redirect-shim': {
+    title: 'Building a Redirect-Only GitHub Pages Shim for Old Links',
+    description: 'Why the old github.io URL was restored as a thin redirect shim instead of a real site, and how deep links are forwarded to Cloudflare Pages.',
+    sections: [
+      {
+        heading: 'Decision',
+        paragraphs: [
+          'After the old GitHub Pages URL was disabled, old links returned a 404. Keeping the 404 was clean but unfriendly, so the better practical option was to recreate the github.io repository as a redirect-only shim.',
+        ],
+      },
+      {
+        heading: 'Implementation',
+        bullets: [
+          'Created a public ytkim4558.github.io repository with only README, index.html, 404.html, robots.txt, and .nojekyll.',
+          'Used meta refresh and JavaScript location.replace to forward users to the same path on https://ytkim4558.pages.dev/.',
+          'Kept noindex,follow and canonical metadata pointing to the Cloudflare Pages URL.',
+          'Recorded the distinction in agent-ops so future agents do not put real content in the redirect repository.',
+        ],
+      },
+      {
+        heading: 'Constraint',
+        paragraphs: [
+          'GitHub Pages does not provide a custom server-level 301 rule for this static user-site setup. Deep links use the custom 404 page, so browsers redirect correctly but the HTTP status remains 404.',
+        ],
+      },
+    ],
+  },
   'claude-resume-troubleshooting': {
     title: 'Troubleshooting the claude-resume TUI',
     description: 'How I built a TUI for finding and resuming Claude Code sessions, then fixed encoding, key conflicts, recursive calls, and screenshot handling.',
@@ -613,6 +667,60 @@ export const jaPosts: Record<string, LocalizedPost> = {
         heading: 'Rule',
         paragraphs: [
           'Migration後はpush成功だけではdeploy成功を意味しない。次のagentはcanonical source repositoryを確認し、build/validationを通し、Cloudflare Pages URLとtag listingまで確認する。',
+        ],
+      },
+    ],
+  },
+  'github-pages-cloudflare-canonical': {
+    title: 'GitHub Pages rootを退役させ、Cloudflare Pagesをcanonicalにした記録',
+    description: '旧github.io URLを実サイトとして使うのをやめ、repository archiveミスを復旧し、pages.devをcanonical URLにしたdeployment記録。',
+    sections: [
+      {
+        heading: 'きっかけ',
+        paragraphs: [
+          '現在のサイトはAstro sourceからCloudflare Pagesへdeployされているが、旧github.io URLが残っていた。複数URLがあると、人間もAI agentもsource repository、generated output、live deployment targetを混同しやすい。',
+        ],
+      },
+      {
+        heading: '対応',
+        bullets: [
+          'Source repositoryをytkim-astro-siteへrenameし、GitHub Pagesは無効のまま維持した。',
+          '途中で誤ってarchived=trueにしてsource repositoryがread-onlyになったため、すぐに復旧した。',
+          'Astro config、robots.txt、sitemap.xml、READMEをhttps://ytkim4558.pages.dev/基準へ変更した。',
+          'Cloudflare Pages deploymentを確認し、github.io rootが実サイトをserveしていないことを確認した。',
+        ],
+      },
+      {
+        heading: '次回ルール',
+        paragraphs: [
+          'Legacy deployment URLを退役させる時は、まずlive sourceと同じrepositoryかどうかを確認する。今後commitが必要なsource repositoryをarchiveしてはいけない。',
+        ],
+      },
+    ],
+  },
+  'github-pages-redirect-shim': {
+    title: '旧リンク用のredirect-only GitHub Pages shimを作った記録',
+    description: '旧github.io URLを実サイトではなく薄いredirect shimとして復活させ、deep linkをCloudflare Pagesへ送るようにした記録。',
+    sections: [
+      {
+        heading: '判断',
+        paragraphs: [
+          'GitHub Pages URLを無効にした後、旧リンクは404になった。canonical整理としては明確だが、既存リンク利用者には不親切なので、github.io repositoryをredirect-only shimとして再作成する方針にした。',
+        ],
+      },
+      {
+        heading: '実装',
+        bullets: [
+          'README、index.html、404.html、robots.txt、.nojekyllだけを含むpublic ytkim4558.github.io repositoryを作成した。',
+          'meta refreshとJavaScript location.replaceで同じpathをhttps://ytkim4558.pages.dev/へ転送する。',
+          'noindex,followとcanonical metadataはCloudflare Pages URLを指すようにした。',
+          'Future agentがredirect repositoryへ実コンテンツを入れないよう、agent-opsにも役割を記録した。',
+        ],
+      },
+      {
+        heading: '制約',
+        paragraphs: [
+          'この静的user-site構成ではGitHub Pages側に任意のserver-level 301 ruleを置けない。Deep linkはcustom 404 pageでredirectするため、browserでは遷移するがHTTP statusは404のままになる。',
         ],
       },
     ],
