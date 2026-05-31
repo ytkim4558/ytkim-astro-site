@@ -3,17 +3,19 @@
 FILE_AGENTS="AGENTS.md"
 FILE_STEERING=".kiro/steering.md"
 
-if [ -f "$FILE_AGENTS" ] && [ -f "$FILE_STEERING" ]; then
-    # Windows CRLF vs LF 차이를 무시하고 실제 텍스트 내용만 비교
-    if ! diff -q --strip-trailing-cr "$FILE_AGENTS" "$FILE_STEERING" > /dev/null 2>&1; then
-        echo "============================================================"
-        echo "ERROR: AGENTS.md and .kiro/steering.md are out of sync!"
-        echo "Please synchronize them manually before committing."
-        echo "You can copy one to the other, e.g.:"
-        echo "  cp $FILE_AGENTS $FILE_STEERING"
-        echo "============================================================"
-        exit 1
-    fi
+# 스테이징된 파일이 무엇인지 감지
+STAGED_AGENTS=$(git diff --cached --name-only | grep -x "$FILE_AGENTS")
+STAGED_STEERING=$(git diff --cached --name-only | grep -x "$FILE_STEERING")
+
+# AGENTS.md만 커밋하려는 경우 -> steering.md에 덮어쓰고 같이 커밋
+if [ -n "$STAGED_AGENTS" ] && [ -z "$STAGED_STEERING" ]; then
+    mkdir -p .kiro
+    cp "$FILE_AGENTS" "$FILE_STEERING"
+    git add "$FILE_STEERING"
+# steering.md만 커밋하려는 경우 -> AGENTS.md에 덮어쓰고 같이 커밋
+elif [ -z "$STAGED_AGENTS" ] && [ -n "$STAGED_STEERING" ]; then
+    cp "$FILE_STEERING" "$FILE_AGENTS"
+    git add "$FILE_AGENTS"
 fi
 
 exit 0

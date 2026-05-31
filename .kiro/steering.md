@@ -1,178 +1,49 @@
-# Agent Handoff Notes
+# Global Rules & AI Steering — ytkim
 
-## Current Goal
+> Kiro, Claude, Codex 등 기존 에이전트들과의 855개+ 세션 프롬프트 분석 기반 통합 규칙.
+> **AI는 아래 규칙을 0순위로 준수하며 절대 자의적으로 어기거나 다르게 해석하지 않는다.**
 
-Maintain the Astro migration of `ytkim4558.github.io` with Cloudflare Pages as the active deploy target, while keeping the public portfolio content complete, reachable, localized, visually credible, and safe for a public repository.
+## 1. 대화 및 실행 규칙
+- 한국어, 반말 OK. 짧고 직접적으로 답변. 장황한 설명 절대 금지.
+- **"해줘" = 즉시 실행. (위험을 핑계로 확인을 묻거나 수동으로 하라고 떠넘기지 말고 즉시 실행할 것!)**
+- "확인해봐" = 파일/로그/상태 직접 읽어서 결과 보고
+- "검색해봐" = web_search/web_fetch 필수. 추정 답변 절대 금지
+- 모르면 "모른다" 하고 검색 후 답변
+- 에러 붙여넣기 = 원인 분석 + 해결책 즉시 제시
+- 스크린샷 언급 시 = 바탕화면(`C:\Users\ytkim\OneDrive\Desktop`) 최신 이미지 파일 직접 확인
 
-## Repositories
+## 2. 계정 분리 원칙 (필수 — 절대 규칙)
+**yougif 영역** (개인/VR/취미):
+- VTuber, VRChat, 방송, Relay Vanguard, 숏츠, 스트리밍, OBS, 치지직, 씨미, PC 트러블슈팅, 게임
+- Commit author: `yougif <noreply>`
+- GitHub Token: `GITHUB_TOKEN_YOUGIF` (SSH Host: `github.com-yougif`)
+- 절대 금지: 본명, 회사 이메일 언급 금지
 
-- Source repo: `C:\Users\ytkim\projects\ytkim-astro-site`
-- Existing generated GitHub Pages repo: `C:\Users\ytkim\projects\ytkim4558.github.io`
+**ytkim4558 영역** (전문/비즈니스):
+- AWS, Bedrock, 포트폴리오, LinkedIn, 업무 도구, 기술 블로그 (GitHubPageMaker), 일반 프로그래밍
+- Commit author: `ytkim <noreply>` (또는 ytkim4558 계정 정보)
+- GitHub Token: `GITHUB_TOKEN_YTKIM` (SSH Host: `github.com-ytkim`)
+- 절대 금지: VRChat, 방송, 스트리밍, 아바타 등 취미 요소 절대 언급 금지
 
-The Astro source repo is now the canonical repo. The former GitHub Pages static output is preserved only for history/reference. GitHub Actions on `master` should build the Astro site, run validation, and deploy `dist` to Cloudflare Pages.
+**전문 콘텐츠에서 용어 일반화 (Tier 시스템):**
+- Tier 1 (기술 블로그): VRChat→VR, OBS→비디오 인코딩
+- Tier 2 (포트폴리오): VR→그래픽 집약 워크로드, BSOD→Windows 커널 메모리 오류
+- **완전 회피**: 방송/스트리밍/OBS/트위치/유튜브 라이브 → ytkim4558 전문 채널에서 절대 언급 금지!
 
-## Deployment Decision
+## 3. 작업 패턴 및 디버깅
+- OBS 프로파일: vrcboxing3 (VR복싱), 치지직프로 (배그) - 변경 후 `AppData\Roaming\obs-studio` 반드시 git commit
+- 녹화: Fragmented MP4, 15분 분할. 경로: `G:\RelayVanguard녹화본`, `G:\배틀그라운드녹화본`
+- BSOD 발생 시: 이벤트 뷰어 → Bugcheck → 드라이버 매칭 순서로 분석
+- 토큰/키/AWS 자격증명은 절대 코드나 채팅에 노출 금지 (Windows 사용자 환경변수/레지스트리 이용)
+- 시스템 환경변수 읽기: `[System.Environment]::GetEnvironmentVariable("KEY", "User")`
 
-The user explicitly prefers Cloudflare Pages over Vercel.
+## 4. Cross-Agent Handoff (타 AI로 작업 넘기기)
+- **다른 AI로 이어질 작업은 채팅 기억에 의존하지 말 것!**
+- 각 프로젝트의 `AGENTS.md` (혹은 `.kiro/steering.md`)에 "무엇이 committed/pushed 됐고, 무엇이 로컬에만 있는지, 남은 작업은 무엇인지" 구체적으로 메모할 것.
+- AI가 이 handoff 규칙을 놓치면 **"워크플로우 버그"**로 간주하고 즉시 원인을 파악해 수정할 것.
 
-Reasoning:
-
-- GitHub Pages cannot run server code, so browser-side Ask UI must not call OpenAI directly.
-- Vercel would work, but Cloudflare Pages keeps the site close to static hosting while adding `/functions` for the small Profile Ask API.
-- Latest Astro 6 Cloudflare adapter documentation says adapter-based deployment targets Cloudflare Workers and no longer supports Cloudflare Pages. Therefore this repo should use Astro static output plus Cloudflare Pages Functions, not `@astrojs/cloudflare`.
-
-## Current Cloudflare Pages Setup
-
-- Astro output: static `dist`
-- Pages Functions directory: `functions`
-- Profile Ask endpoint: `functions/api/profile-chat.js` -> `/api/profile-chat`
-- Function route limiting: `public/_routes.json` includes only `/api/*`
-- Build command: `npm run build`
-- Local Pages preview: `npm run cf:preview`
-- Deploy command: `npm run cf:deploy`
-- Cloudflare Pages project: `ytkim4558`
-- Current Cloudflare Pages URL: `https://ytkim4558.pages.dev/`
-- First verified deployment URL: `https://53373cfb.ytkim4558.pages.dev/`
-- GitHub Actions workflow: `.github/workflows/cloudflare-pages.yml`
-
-## Site Changes Already Made
-
-The site is no longer the old Jekyll-style GitHub Pages site. It has been migrated into an Astro source tree and should be maintained from this repo.
-
-Major changes already made:
-
-- Rebuilt the public site with Astro pages instead of the former Jekyll output.
-- Switched the production deployment path toward Cloudflare Pages while keeping the GitHub repo as the source of truth.
-- Added GitHub Actions deployment from `master` to Cloudflare Pages after build and validation.
-- Added static Astro routes for Korean, English, and Japanese versions.
-- Reworked the top navigation and page hero treatment so portfolio, profile, tag, and post pages share a more consistent layout.
-- Added localized tag and post routes, including `/en/...` and `/ja/...` variants.
-- Fixed route casing problems such as the `Jekyll.md` slug causing lowercase `/jekyll/` links to 404 on Cloudflare.
-- Rebuilt the portfolio as a card-and-modal experience instead of a long wiki-like page.
-- Added company/project cards with modal detail behavior for career sections and side projects.
-- Restored hidden long-form portfolio records into `src/content/portfolio/details.md` so agents can preserve and reuse detailed resume/project source material.
-- Added HotDealppom detail content, including its YouTube embed and screenshot gallery markers, but this still needs real browser click verification because the user reported it was not visibly reachable.
-- Added `ProfileAssistant` UI on `/profile/` with local profile fallback answers.
-- Added Cloudflare Pages Function `/api/profile-chat` for profile chat LLM responses using the dedicated `GEMINI_PROFILE_API_KEY` secret.
-- Added locale, internal link, and content reachability validation scripts under `scripts/`.
-- Added Playwright browser UI validation under `scripts/validate-ui.mjs`; `npm run validate` now opens built pages in desktop/mobile viewports and clicks portfolio modals for side projects, HotDealppom, and BikeNavi.
-- Added AI Workflow posts documenting adaptive layout handoff, content reachability validation, Jekyll/deploy cleanup, session recovery, and related tooling decisions.
-
-Important files for these changes:
-
-- `src/pages/portfolio.astro`
-- `src/pages/en/portfolio.astro`
-- `src/pages/ja/portfolio.astro`
-- `src/content/portfolio/details.md`
-- `src/components/ProfileAssistant.tsx`
-- `functions/api/profile-chat.js`
-- `scripts/validate-locales.mjs`
-- `scripts/validate-links.mjs`
-- `scripts/validate-content-reachability.mjs`
-- `scripts/validate-ui.mjs`
-- `.github/workflows/cloudflare-pages.yml`
-
-Do not remove detailed content just because it is not immediately visible in the summary UI. If content is intentionally hidden from the first screen, it still needs a reachable route, modal target, or explicitly documented hidden-record reason.
-
-Required Cloudflare Pages secret:
-
-- `GEMINI_PROFILE_API_KEY`
-
-Do not read or reuse a generic `GEMINI_API_KEY` for this site. The user explicitly wants a dedicated Gemini key for the profile assistant, separate from any existing paid/personal Gemini API key.
-
-Optional Cloudflare Pages variable:
-
-- `PROFILE_CHAT_MODEL`, defaults to `gemini-2.5-flash`
-
-Never commit `.dev.vars`, `.env`, API keys, OAuth tokens, or other credentials.
-
-## Verification
-
-Recent checks:
-
-- `npm run build` succeeds.
-- `npm run validate` succeeds and includes locale, internal link, and content reachability checks.
-- `wrangler pages dev dist --port 8788 --ip 127.0.0.1` serves `/profile/` with `Ask Profile`.
-- `POST /api/profile-chat` reaches the Pages Function and returns `503` when `GEMINI_PROFILE_API_KEY` is not configured, which is expected. The React UI falls back to local profile answers.
-- `npm run cf:deploy` succeeded after loading `CLOUDFLARE_API_TOKEN` from the Windows user environment.
-- `https://ytkim4558.pages.dev/profile/` returns 200 and contains `Ask Profile`.
-- `GEMINI_PROFILE_API_KEY` was later uploaded as a Cloudflare Pages secret. If the live profile chat fails, verify the secret in Cloudflare first, then test `/api/profile-chat`.
-
-## Safety Rules
-
-- In public `ytkim4558` repos, do not introduce the previously flagged forbidden cross-repo string in code, docs, logs, or history.
-- Before commit or deploy, run:
-
-```powershell
-rg -n -i "<forbidden-string>" . -g "!node_modules/**" -g "!dist/**" -g "!.astro/**" -g "!.wrangler/**"
-```
-
-Use the actual forbidden string from prior user instructions when running locally, but avoid writing it into public repo files.
-
-## Cross-Agent Workflow Rules
-
-This repo should preserve AI workflow lessons in durable files, not only in chat history.
-
-If a future agent handles UI migration, deployment, Cloudflare Pages Functions, profile chat, portfolio content, screenshots, or validation work, it should proactively propose one of the following before the user has to ask:
-
-- update this `AGENTS.md` when the lesson affects future agent behavior;
-- add or update an `AI Workflow` post when the lesson is useful as public reasoning or portfolio evidence;
-- add a validation script when the issue can recur as a build, route, locale, content reachability, or browser interaction regression;
-- add a compact handoff block when work is paused, deployed, or depends on external state such as Cloudflare, GitHub Actions, DNS, or secrets.
-
-If the user points out a repeated process failure, first check existing durable rules before adding new ones. In this session, the interruption-handling rule already existed in the local `agent-handoff` skill under `Interruption Recovery`; the miss happened because the agent did not apply that skill when the user interrupted mid-task.
-
-When this happens again:
-
-- search the repo, local skills, and git history for the existing rule;
-- state whether the rule was missing or merely not followed;
-- update the durable rule only if it adds enforcement or removes ambiguity;
-- resume unfinished build, validation, cleanup, commit, deploy, or live verification after the rule audit;
-- report completed work, deferred work, and remaining verification at the end of the turn.
-
-For non-trivial UI/site tasks, start by decomposing the work into reviewer perspectives before editing:
-
-- user-screen perspective: desktop/mobile pages are clickable, readable, and visually usable;
-- content perspective: detailed source material, screenshots, videos, and localized versions are not lost;
-- operations perspective: build, validation, CI, deploy, and live URL checks prevent recurrence;
-- handoff perspective: the next agent can understand the state without reading the chat history.
-
-Recent workshop/reference material reviewed:
-
-- Claude Code workshop material: useful as a public curated reference for hooks, settings, GitHub Actions, MCP, SDK usage, caching, retry, rate limiting, circuit breaker, structured logging, tracing, and multi-agent patterns. Do not copy slide or snippet content verbatim into this repo. Use official Anthropic documentation and original wording when writing public posts.
-- Kiro CLI workshop material: useful for mapping the same ideas into Kiro terms such as steering, custom agents, skills, MCP integration, lifecycle hooks, headless mode, terminal UI, session/context management, and `KIRO_HOME` isolation. Use official Kiro documentation as the technical source when publishing public notes.
-
-Practical rule from both references:
-
-- Steering/agent rules are not enough by themselves. For recurring mistakes, create executable checks.
-- Hooks/headless CI should be treated as guardrails for things agents repeatedly miss: forbidden public strings, leaked secrets, broken links, inaccessible content, locale route drift, and modal/browser regressions.
-- Context/session tools are portfolio-worthy only when paired with a recovery story: what was hard to find, what metadata was added, how recursion or stale context was avoided, and how another agent can resume without reading raw logs.
-- When using third-party workshop repos or slides, treat them as references, not source material. Summarize the learning in original words and cite official docs or the public repo link where appropriate.
-
-## Current Validation Expectations
-
-Before committing or deploying site work, run:
-
-```powershell
-npm.cmd run build
-npm.cmd run validate
-```
-
-`npm run validate` currently covers locale routes, internal links, content reachability, and Playwright browser UI checks. The UI check serves `dist`, opens built pages in desktop and mobile viewports, verifies broken images and horizontal overflow, and clicks portfolio modals for side project detail visibility.
-
-## Next Recommended Work
-
-1. Continue visual/design refinement of the portfolio beyond the validation baseline.
-2. For any new portfolio modal, screenshot gallery, or localized content, update both `validate-content-reachability.mjs` and `validate-ui.mjs`.
-3. Keep AI Workflow posts in sync when a user correction changes the operating rule, especially around validation, handoff, or deployment.
-4. Before commit/deploy, run `npm.cmd run build`, `npm.cmd run validate`, and the forbidden-string scan.
-5. After push, wait for GitHub Actions and verify the Cloudflare Pages production URL.
-
-## 글로벌 공통 규칙 (Global Rules)
-*이 규칙은 전역 설정 파일(~/.gemini/GEMINI.md)에 기반합니다.*
-- **파일 수정 전 반드시 현재 내용 확인 후 진행한다**
-- 터미널 명령 실행 전 목적을 한 줄로 설명한다
-- 추측으로 판단하지 말고, 모르면 검색하거나 확인 후 답변한다
-- 작업 완료 후 결과를 요약하여 답변한다
-- 작업 난이도가 높거나 모델 에러 발생 시 알맞은 모델(예: Claude Sonnet 등)로 변경을 사용자에게 제안한다
-
+## 5. 자주 하는 실수 방지
+- 모델 쿼터 초과(에러)나 난이도가 너무 높은 작업 발생 시, 즉시 알맞은 모델(Claude Sonnet 등)로 변경할 것을 사용자에게 제안할 것.
+- 작업 전 반드시 현재 파일 내용을 읽고(확인 후) 진행할 것. 터미널 명령 전 목적을 한 줄로 설명.
+- "바탕화면 봐봐" = 최신 캡처 파일 읽기.
+- PowerShell 안 열릴 때 = Windows Search 인덱스 문제 가능성.
