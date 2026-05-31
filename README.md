@@ -1,8 +1,8 @@
 # ytkim-astro-site
 
-Astro site source for `ytkim4558.github.io`.
+Astro site source for `https://ytkim4558.pages.dev/`.
 
-The migration keeps the current public site alive while this project rebuilds the core pages with:
+The former GitHub Pages user site at `https://ytkim4558.github.io/` has been disabled. Cloudflare Pages is now the canonical public site.
 
 - Astro static output
 - MDX-ready content structure
