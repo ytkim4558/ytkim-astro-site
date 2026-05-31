@@ -55,6 +55,7 @@ Major changes already made:
 - Added `ProfileAssistant` UI on `/profile/` with local profile fallback answers.
 - Added Cloudflare Pages Function `/api/profile-chat` for profile chat LLM responses using the dedicated `GEMINI_PROFILE_API_KEY` secret.
 - Added locale, internal link, and content reachability validation scripts under `scripts/`.
+- Added Playwright browser UI validation under `scripts/validate-ui.mjs`; `npm run validate` now opens built pages in desktop/mobile viewports and clicks portfolio modals for side projects, HotDealppom, and BikeNavi.
 - Added AI Workflow posts documenting adaptive layout handoff, content reachability validation, Jekyll/deploy cleanup, session recovery, and related tooling decisions.
 
 Important files for these changes:
@@ -68,6 +69,7 @@ Important files for these changes:
 - `scripts/validate-locales.mjs`
 - `scripts/validate-links.mjs`
 - `scripts/validate-content-reachability.mjs`
+- `scripts/validate-ui.mjs`
 - `.github/workflows/cloudflare-pages.yml`
 
 Do not remove detailed content just because it is not immediately visible in the summary UI. If content is intentionally hidden from the first screen, it still needs a reachable route, modal target, or explicitly documented hidden-record reason.
@@ -139,7 +141,7 @@ npm.cmd run build
 npm.cmd run validate
 ```
 
-`npm run validate` currently covers locale routes, internal links, and content reachability. If a regression requires actual clicking or visual inspection, add a browser-level validation script instead of relying only on static HTML checks.
+`npm run validate` currently covers locale routes, internal links, content reachability, and Playwright browser UI checks. The UI check serves `dist`, opens built pages in desktop and mobile viewports, verifies broken images and horizontal overflow, and clicks portfolio modals for side project detail visibility.
 
 ## Next Recommended Work
 

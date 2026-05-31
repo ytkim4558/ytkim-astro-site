@@ -353,7 +353,7 @@ title: "전체 경력·프로젝트·학술 기록"
   <a href="/assets/portfolio/image028.png"><img src="/assets/portfolio/image028.png" alt="HotDealppom 화면 4"></a>
 </div>
 
-<h3>BikeNavi — Android 자전거 네비게이션 (2016.09 ~ 2016.11, 10주)</h3>
+<h3 id="detail-bikenavi">BikeNavi — Android 자전거 네비게이션 (2016.09 ~ 2016.11, 10주)</h3>
 <ul>
 <li><b>사용 기술</b>: Android, Volley, Google API, Google Maps API, Tmap API, Facebook API, 카카오 서비스 API, Glide API, PHP, MySQL</li>
 </ul>

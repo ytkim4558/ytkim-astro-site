@@ -9,7 +9,8 @@
     "validate:locales": "node scripts/validate-locales.mjs",
     "validate:links": "node scripts/validate-links.mjs",
     "validate:content": "node scripts/validate-content-reachability.mjs",
-    "validate": "npm run validate:locales && npm run validate:links && npm run validate:content",
+    "validate:ui": "node scripts/validate-ui.mjs",
+    "validate": "npm run validate:locales && npm run validate:links && npm run validate:content && npm run validate:ui",
     "preview": "astro preview --host 0.0.0.0",
     "cf:preview": "npm run build && wrangler pages dev dist",
     "cf:deploy": "npm run build && wrangler pages deploy dist --project-name ytkim4558"
@@ -22,6 +23,7 @@
     "react-dom": "^19.1.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.60.0",
     "typescript": "^5.8.3",
     "wrangler": "^4.95.0"
   }

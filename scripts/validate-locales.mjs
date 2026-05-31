@@ -6,6 +6,7 @@ const hangul = /[\u3131-\u318e\uac00-\ud7a3]/;
 const postSlugs = [
   'adaptive-mobile-layout-handoff',
   'android',
+  'browser-ui-validation-guardrails',
   'claude-resume-troubleshooting',
   'codex-resume-tui-decision',
   'git',
@@ -99,7 +100,7 @@ for (const file of checks) {
       fail(`Localized post is missing Korean locale switch for ${slug}`, file);
     }
   } else {
-    const badRootPostLink = html.match(/href="\/(adaptive-mobile-layout-handoff|android|claude-resume-troubleshooting|codex-resume-tui-decision|git|jekyll|jekyll-dependabot-cleanup|linkedin-api-permission-check|mysql|windows-terminal-crash-fix)\//);
+    const badRootPostLink = html.match(/href="\/(adaptive-mobile-layout-handoff|android|browser-ui-validation-guardrails|claude-resume-troubleshooting|codex-resume-tui-decision|git|jekyll|jekyll-dependabot-cleanup|linkedin-api-permission-check|mysql|windows-terminal-crash-fix)\//);
     if (badRootPostLink) {
       fail(`Localized page links to Korean post path ${badRootPostLink[0]}`, file);
     }

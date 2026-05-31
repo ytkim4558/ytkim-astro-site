@@ -366,28 +366,31 @@ h1 {
 
 .portfolio-gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-  gap: 10px;
-  margin: 18px 0 30px;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin: 20px 0 34px;
 }
 
 .portfolio-gallery a {
-  display: block;
+  display: flex;
+  min-height: 220px;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: #fff;
+  background: #f8fbf8;
 }
 
 .portfolio-gallery img {
   display: block;
   width: 100%;
-  height: 180px;
-  object-fit: cover;
+  height: clamp(220px, 30vw, 360px);
+  object-fit: contain;
 }
 
 .portfolio-gallery-wide img {
-  height: 220px;
+  height: clamp(240px, 32vw, 400px);
 }
 
 .feature-card {
@@ -671,8 +674,8 @@ h1 {
 }
 
 .portfolio-modal {
-  width: min(720px, calc(100vw - 32px));
-  max-height: min(84vh, 900px);
+  width: min(1040px, calc(100vw - 32px));
+  max-height: min(88vh, 940px);
   padding: 0;
   border: 0;
   border-radius: 18px;
@@ -687,7 +690,7 @@ h1 {
 
 .portfolio-modal-shell {
   position: relative;
-  max-height: min(84vh, 900px);
+  max-height: min(88vh, 940px);
   overflow: auto;
   padding: clamp(26px, 4vw, 42px);
   border: 1px solid rgba(11, 75, 71, 0.18);
@@ -716,6 +719,7 @@ h1 {
   margin-top: 24px;
   padding-top: 22px;
   border-top: 1px solid rgba(11, 75, 71, 0.14);
+  overflow-wrap: anywhere;
 }
 
 .portfolio-modal-content h3,
@@ -746,6 +750,30 @@ h1 {
 
 .portfolio-modal-content .eyebrow {
   display: none;
+}
+
+.portfolio-modal-content iframe {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  margin: 18px 0 26px;
+  border: 1px solid rgba(11, 75, 71, 0.14);
+  border-radius: 12px;
+  background: #f8fbf8;
+}
+
+.portfolio-modal-content .portfolio-gallery {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 18px;
+  margin-top: 20px;
+}
+
+.portfolio-modal-content .portfolio-gallery a {
+  min-height: 260px;
+}
+
+.portfolio-modal-content .portfolio-gallery img {
+  height: clamp(260px, 38vw, 520px);
 }
 
 .modal-close {
@@ -988,6 +1016,41 @@ textarea {
 
   .project-teasers {
     grid-template-columns: 1fr;
+  }
+
+  .portfolio-modal {
+    width: calc(100vw - 18px);
+    max-height: 92dvh;
+  }
+
+  .portfolio-modal-shell {
+    max-height: 92dvh;
+    padding: 22px 14px 24px;
+    border-radius: 14px;
+  }
+
+  .portfolio-modal h2 {
+    padding-right: 44px;
+    font-size: 1.75rem;
+  }
+
+  .portfolio-modal-content {
+    margin-top: 18px;
+    padding-top: 18px;
+  }
+
+  .portfolio-modal-content .portfolio-gallery {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .portfolio-modal-content .portfolio-gallery a {
+    min-height: 0;
+  }
+
+  .portfolio-modal-content .portfolio-gallery img {
+    height: auto;
+    max-height: none;
   }
 
   .assistant-header {

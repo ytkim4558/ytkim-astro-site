@@ -128,6 +128,11 @@ function validatePortfolio() {
       access: 'modal',
       contains: ['HotDealppom', 'youtube.com/embed/VqLyBLSEtoQ', 'image025.png'],
     },
+    {
+      id: 'detail-bikenavi',
+      access: 'modal',
+      contains: ['BikeNavi', 'youtube.com/embed/twEFkv44Kwk', 'image019.jpg'],
+    },
   ];
   const intentionallyHiddenContent = new Set(['detailed-resume', 'full-records']);
 

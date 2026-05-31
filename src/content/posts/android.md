@@ -25,6 +25,6 @@ lang: ko
 
 해당 탭 순서가 블루프린트, 기기, 안드로이드 버전, AppTheme, 언어변경탭 순으로 되어있어서 모니터가 작거나 하면 잘 보이지가 않는다.
 
-![언어변경위치]({{"/assets/images/language_selection.PNG"}})
+![언어변경위치](/assets/images/language_selection.PNG)
 
 붉은색으로 표시한 부분 참고!

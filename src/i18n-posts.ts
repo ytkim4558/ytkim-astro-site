@@ -56,6 +56,33 @@ export const enPosts: Record<string, LocalizedPost> = {
       },
     ],
   },
+  'browser-ui-validation-guardrails': {
+    title: 'Turning Portfolio Modal and Mobile Readability Issues into Browser Checks',
+    description: 'How portfolio screenshots, side-project modals, and mobile readability problems became Playwright-based UI validation instead of one-off fixes.',
+    sections: [
+      {
+        heading: 'Trigger',
+        paragraphs: [
+          'Static link and content checks passed, but the migrated portfolio still had real usability problems. Screenshot galleries were cramped inside modals, side-project details were hard to discover, and mobile layout issues were not being caught automatically.',
+        ],
+      },
+      {
+        heading: 'Fix',
+        bullets: [
+          'Added a Playwright-based validation script that serves the built dist output and opens pages in desktop and mobile viewports.',
+          'Checked generated pages for readable content, heading structure, broken images, and horizontal overflow.',
+          'Clicked portfolio modal cards for side projects, HotDealppom, and BikeNavi, then verified text length, markers, images, iframes, and mobile gallery width.',
+          'Improved modal gallery CSS so screenshots use readable spacing and one-column mobile layout.',
+        ],
+      },
+      {
+        heading: 'Rule',
+        paragraphs: [
+          'For UI migration work, content existence is not enough. Future agents must verify that a person can click, read, and inspect the content in both desktop and mobile browsers.',
+        ],
+      },
+    ],
+  },
   'claude-resume-troubleshooting': {
     title: 'Troubleshooting the claude-resume TUI',
     description: 'How I built a TUI for finding and resuming Claude Code sessions, then fixed encoding, key conflicts, recursive calls, and screenshot handling.',
@@ -453,6 +480,33 @@ export const jaPosts: Record<string, LocalizedPost> = {
         heading: '位置づけ',
         paragraphs: [
           '現在のポートフォリオでは、HotDealppom、BikeNavi、グループ連絡先などの初期Androidプロジェクトと合わせて、モバイル開発の基礎経験を示す記録として扱う。',
+        ],
+      },
+    ],
+  },
+  'browser-ui-validation-guardrails': {
+    title: 'Portfolio modalとmobile readabilityをbrowser検証に変えた記録',
+    description: 'Screenshot gallery、side-project modal、mobile readabilityの問題を、一回きりの修正ではなくPlaywrightベースのUI検証にした記録。',
+    sections: [
+      {
+        heading: 'Trigger',
+        paragraphs: [
+          'Static link checkとcontent reachability checkは通っていたが、移行後のportfolioには実際の使いにくさが残っていた。Modal内のscreenshot galleryが詰まり、side-project detailが見つけにくく、mobile layoutの問題も自動では検出できていなかった。',
+        ],
+      },
+      {
+        heading: 'Fix',
+        bullets: [
+          'Built distをlocal serverで配信し、desktop/mobile viewportで開くPlaywright検証scriptを追加。',
+          'Generated pagesのcontent length、heading structure、broken image、horizontal overflowを検査。',
+          'Portfolio modal cardを実際にclickし、side projects、HotDealppom、BikeNaviのtext length、marker、image、iframe、mobile gallery widthを確認。',
+          'Modal gallery CSSを調整し、screenshotが読みやすいspacingとmobile one-column layoutになるよう修正。',
+        ],
+      },
+      {
+        heading: 'Rule',
+        paragraphs: [
+          'UI migrationではcontentが存在するだけでは不十分。次のagentは、人がdesktop/mobile browserでclickし、読み、画像や動画を確認できることまで検証する。',
         ],
       },
     ],
