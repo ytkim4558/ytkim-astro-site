@@ -80,7 +80,7 @@ async function assertNoHorizontalOverflow(page, label, selector = 'html') {
 
 async function validatePageBasics(page, baseUrl, route, viewportName) {
   const label = `${viewportName} ${route}`;
-  await page.goto(`${baseUrl}${route}`, { waitUntil: 'networkidle' });
+  await page.goto(`${baseUrl}${route}`, { waitUntil: 'domcontentloaded' });
 
   const bodyTextLength = await page.locator('body').innerText().then((text) => text.trim().length);
   if (bodyTextLength < 120) failures.push(`${label}: page text is unexpectedly short (${bodyTextLength} chars)`);
@@ -101,7 +101,7 @@ async function validatePageBasics(page, baseUrl, route, viewportName) {
 
 async function validatePortfolioModal(page, baseUrl, viewportName, route, modalSpec) {
   const label = `${viewportName} ${route} ${modalSpec.target}`;
-  await page.goto(`${baseUrl}${route}`, { waitUntil: 'networkidle' });
+  await page.goto(`${baseUrl}${route}`, { waitUntil: 'domcontentloaded' });
 
   const trigger = page.locator(`[data-portfolio-modal][href="${modalSpec.target}"]`).first();
   if ((await trigger.count()) === 0) {
