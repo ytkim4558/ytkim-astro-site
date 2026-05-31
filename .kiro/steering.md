@@ -12,27 +12,23 @@
 - 에러 붙여넣기 = 원인 분석 + 해결책 즉시 제시
 - 스크린샷 언급 시 = 바탕화면(`C:\Users\ytkim\OneDrive\Desktop`) 최신 이미지 파일 직접 확인
 
-## 2. 계정 분리 원칙 (필수 — 절대 규칙)
-**yougif 영역** (개인/VR/취미):
-- VTuber, VRChat, 방송, Relay Vanguard, 숏츠, 스트리밍, OBS, 치지직, 씨미, PC 트러블슈팅, 게임
-- Commit author: `yougif <noreply>`
-- GitHub Token: `GITHUB_TOKEN_YOUGIF` (SSH Host: `github.com-yougif`)
-- 절대 금지: 본명, 회사 이메일 언급 금지
+## 2. 공개 전문 채널 원칙 (필수 — 절대 규칙)
+이 저장소는 공개 전문 채널용이다. 개인/취미/별도 계정 운영 세부사항을 코드, 문서, 커밋 메시지, 로그, 블로그 글에 넣지 않는다.
 
-**ytkim4558 영역** (전문/비즈니스):
-- AWS, Bedrock, 포트폴리오, LinkedIn, 업무 도구, 기술 블로그 (GitHubPageMaker), 일반 프로그래밍
+**ytkim4558 영역**:
+- AWS, Bedrock, 포트폴리오, LinkedIn, 업무 도구, 기술 블로그, 일반 프로그래밍
 - Commit author: `ytkim <noreply>` (또는 ytkim4558 계정 정보)
 - GitHub Token: `GITHUB_TOKEN_YTKIM` (SSH Host: `github.com-ytkim`)
-- 절대 금지: VRChat, 방송, 스트리밍, 아바타 등 취미 요소 절대 언급 금지
+- 절대 금지: 개인/취미 채널명, 별도 계정명, 비전문 운영 세부, 회사 비공개 정보, 토큰/키
 
 **전문 콘텐츠에서 용어 일반화 (Tier 시스템):**
-- Tier 1 (기술 블로그): VRChat→VR, OBS→비디오 인코딩
-- Tier 2 (포트폴리오): VR→그래픽 집약 워크로드, BSOD→Windows 커널 메모리 오류
-- **완전 회피**: 방송/스트리밍/OBS/트위치/유튜브 라이브 → ytkim4558 전문 채널에서 절대 언급 금지!
+- Tier 1 (기술 블로그): 개인 프로젝트 맥락은 일반 기술 개념으로 추상화
+- Tier 2 (포트폴리오): 취미성 맥락은 그래픽 집약 워크로드, 자동화, Windows 커널 오류처럼 전문 용어로 일반화
+- 완전 회피: 공개 전문 채널과 무관한 개인/취미 플랫폼명, 계정명, 운영명
 
 ## 3. 작업 패턴 및 디버깅
-- OBS 프로파일: vrcboxing3 (VR복싱), 치지직프로 (배그) - 변경 후 `AppData\Roaming\obs-studio` 반드시 git commit
-- 녹화: Fragmented MP4, 15분 분할. 경로: `G:\RelayVanguard녹화본`, `G:\배틀그라운드녹화본`
+- 이 저장소에서는 공개 전문 사이트, 포트폴리오, AI Workflow, Cloudflare Pages, Astro 빌드/검증만 다룬다.
+- 별도 개인/취미 채널 운영 규칙은 이 공개 저장소에 기록하지 않는다.
 - BSOD 발생 시: 이벤트 뷰어 → Bugcheck → 드라이버 매칭 순서로 분석
 - 토큰/키/AWS 자격증명은 절대 코드나 채팅에 노출 금지 (Windows 사용자 환경변수/레지스트리 이용)
 - 시스템 환경변수 읽기: `[System.Environment]::GetEnvironmentVariable("KEY", "User")`

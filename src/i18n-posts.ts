@@ -83,6 +83,32 @@ export const enPosts: Record<string, LocalizedPost> = {
       },
     ],
   },
+  'building-ai-native-cli-workflow': {
+    title: 'Building an AI-Native CLI Workflow',
+    description: 'A note on reducing repeated approvals, restoring agent session context, and stabilizing terminal rendering for practical AI-assisted development.',
+    sections: [
+      {
+        heading: 'Context',
+        paragraphs: [
+          'AI coding agents are most useful when they can keep working across file edits, terminal commands, verification, and deployment. The default CLI experience can still be slowed down by repeated permission prompts, lost session context, and terminal rendering issues.',
+        ],
+      },
+      {
+        heading: 'Changes',
+        bullets: [
+          'Reduced repeated permission interruptions in trusted local development environments while keeping validation and CI guardrails in place.',
+          'Built TUI-based session browsers so past Claude Code and Codex work can be found by summary instead of raw session IDs.',
+          'Stabilized Windows terminal encoding and font behavior so Korean and English output can be reviewed without misleading rendering errors.',
+        ],
+      },
+      {
+        heading: 'Rule',
+        paragraphs: [
+          'AI-native development is not only prompt design. It depends on CLI ergonomics, reliable session recovery, verification scripts, and deployment guardrails working together.',
+        ],
+      },
+    ],
+  },
   'claude-resume-troubleshooting': {
     title: 'Troubleshooting the claude-resume TUI',
     description: 'How I built a TUI for finding and resuming Claude Code sessions, then fixed encoding, key conflicts, recursive calls, and screenshot handling.',
@@ -507,6 +533,32 @@ export const jaPosts: Record<string, LocalizedPost> = {
         heading: 'Rule',
         paragraphs: [
           'UI migrationではcontentが存在するだけでは不十分。次のagentは、人がdesktop/mobile browserでclickし、読み、画像や動画を確認できることまで検証する。',
+        ],
+      },
+    ],
+  },
+  'building-ai-native-cli-workflow': {
+    title: 'AI-Native CLI Workflowを作る',
+    description: 'Repeated approval、agent session recovery、terminal renderingを整え、AI-assisted developmentを実用的にするための記録。',
+    sections: [
+      {
+        heading: 'Context',
+        paragraphs: [
+          'AI coding agentは、file edit、terminal command、verification、deploymentまで継続して動ける時に最も有効になる。しかしdefault CLI体験では、permission prompt、lost session context、terminal rendering issueが作業を止めることがある。',
+        ],
+      },
+      {
+        heading: 'Changes',
+        bullets: [
+          'Trusted local development environmentではrepeated permission interruptionを減らし、validationとCI guardrailで後段の安全性を補う。',
+          'Claude CodeとCodexの過去作業をraw session IDではなくsummaryで探せるTUI session browserを作成。',
+          'Windows terminalのencodingとfont behaviorを整え、日本語・韓国語・英語の出力を誤解なく確認できるようにした。',
+        ],
+      },
+      {
+        heading: 'Rule',
+        paragraphs: [
+          'AI-native developmentはprompt designだけではない。CLI ergonomics、session recovery、verification script、deployment guardrailが一緒に動くことで成立する。',
         ],
       },
     ],
