@@ -1,0 +1,28 @@
+#!/bin/sh
+
+FILE_AGENTS="AGENTS.md"
+FILE_STEERING=".kiro/steering.md"
+
+# 파일이 둘 다 없으면 진행하지 않음
+if [ ! -f "$FILE_AGENTS" ] && [ ! -f "$FILE_STEERING" ]; then
+    exit 0
+fi
+
+# 한쪽만 있을 경우 다른 쪽에 동기화
+if [ -f "$FILE_AGENTS" ] && [ ! -f "$FILE_STEERING" ]; then
+    mkdir -p .kiro
+    cp "$FILE_AGENTS" "$FILE_STEERING"
+    git add "$FILE_STEERING"
+elif [ ! -f "$FILE_AGENTS" ] && [ -f "$FILE_STEERING" ]; then
+    cp "$FILE_STEERING" "$FILE_AGENTS"
+    git add "$FILE_AGENTS"
+else
+    # 둘 다 있는 경우, 더 최근에 수정된 파일 기준으로 덮어씀
+    if [ "$FILE_AGENTS" -nt "$FILE_STEERING" ]; then
+        cp "$FILE_AGENTS" "$FILE_STEERING"
+        git add "$FILE_STEERING"
+    elif [ "$FILE_STEERING" -nt "$FILE_AGENTS" ]; then
+        cp "$FILE_STEERING" "$FILE_AGENTS"
+        git add "$FILE_AGENTS"
+    fi
+fi
