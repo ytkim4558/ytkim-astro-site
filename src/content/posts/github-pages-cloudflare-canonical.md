@@ -1,6 +1,6 @@
 ---
-title: "GitHub Pages 루트 URL을 끄고 Cloudflare Pages를 canonical로 정리한 기록"
-description: "ytkim4558.github.io를 더 이상 실제 사이트로 쓰지 않기 위해 GitHub Pages를 끄고, Astro 설정과 sitemap을 Cloudflare Pages 기준으로 바꾼 배포 정리 기록이다."
+title: "공식 URL을 pages.dev로 고정하며 source repo를 복구한 기록"
+description: "GitHub Pages 루트 URL을 끄는 과정에서 source repo를 archive로 잠가 push가 막힌 문제를 복구하고, Astro 설정과 sitemap을 pages.dev 기준으로 정리한 기록이다."
 pubDate: 2026-06-01
 tags:
   - AI Workflow
@@ -120,4 +120,3 @@ git@github.com-ytkim:ytkim4558/ytkim-astro-site.git
 ```
 
 공식 live URL은 `https://ytkim4558.pages.dev/`다. `ytkim4558.github.io`는 실제 source나 canonical site가 아니다.
-

@@ -137,8 +137,8 @@ export const enPosts: Record<string, LocalizedPost> = {
     ],
   },
   'github-pages-cloudflare-canonical': {
-    title: 'Making Cloudflare Pages the Canonical Site After Retiring the GitHub Pages Root',
-    description: 'A deployment log for disabling the old GitHub Pages root URL, recovering from a repository archive mistake, and making pages.dev the canonical site URL.',
+    title: 'Recovering the Source Repo While Making pages.dev the Canonical URL',
+    description: 'A deployment log about fixing an accidental read-only source repository state while moving Astro config, robots.txt, and sitemap.xml to the pages.dev canonical URL.',
     sections: [
       {
         heading: 'Trigger',
@@ -164,8 +164,8 @@ export const enPosts: Record<string, LocalizedPost> = {
     ],
   },
   'github-pages-redirect-shim': {
-    title: 'Building a Redirect-Only GitHub Pages Shim for Old Links',
-    description: 'Why the old github.io URL was restored as a thin redirect shim instead of a real site, and how deep links are forwarded to Cloudflare Pages.',
+    title: 'Creating a Redirect-Only Repository for Old github.io Links',
+    description: 'How the old github.io address was restored only as an index.html and 404.html redirect shim while the real site stayed on Cloudflare Pages.',
     sections: [
       {
         heading: 'Decision',
@@ -672,8 +672,8 @@ export const jaPosts: Record<string, LocalizedPost> = {
     ],
   },
   'github-pages-cloudflare-canonical': {
-    title: 'GitHub Pages rootを退役させ、Cloudflare Pagesをcanonicalにした記録',
-    description: '旧github.io URLを実サイトとして使うのをやめ、repository archiveミスを復旧し、pages.devをcanonical URLにしたdeployment記録。',
+    title: 'pages.devをcanonical URLに固定しながらsource repoを復旧した記録',
+    description: '旧GitHub Pages rootを外す過程でsource repositoryを誤ってread-onlyにした問題を復旧し、Astro config、robots.txt、sitemap.xmlをpages.dev基準に整理した記録。',
     sections: [
       {
         heading: 'きっかけ',
@@ -699,8 +699,8 @@ export const jaPosts: Record<string, LocalizedPost> = {
     ],
   },
   'github-pages-redirect-shim': {
-    title: '旧リンク用のredirect-only GitHub Pages shimを作った記録',
-    description: '旧github.io URLを実サイトではなく薄いredirect shimとして復活させ、deep linkをCloudflare Pagesへ送るようにした記録。',
+    title: '旧github.ioリンクだけを残すredirect-only repoを作った記録',
+    description: '実サイトのcontentはCloudflare Pagesに置いたまま、古いgithub.io linkだけを同じpathで転送するindex.html/404.html shimを作った記録。',
     sections: [
       {
         heading: '判断',
