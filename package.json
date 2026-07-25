@@ -16,15 +16,15 @@
     "cf:deploy": "npm run build && wrangler pages deploy dist --project-name ytkim4558"
   },
   "dependencies": {
-    "@astrojs/mdx": "^6.0.1",
+    "@astrojs/mdx": "^7.0.3",
     "@astrojs/react": "^5.0.6",
-    "astro": "^6.4.2",
+    "astro": "^7.1.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.60.0",
     "typescript": "^5.8.3",
-    "wrangler": "^4.95.0"
+    "wrangler": "^4.114.0"
   }
 }
